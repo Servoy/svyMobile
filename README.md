@@ -1,5 +1,5 @@
 # svyMobile
-A mobile application built using Servoy (For DEMO purposes)
+A mobile sample solution built using Servoy
 
 Getting started
 -------------
