@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- Works with Ant 1.7.0 and higher -->
+<project default="main" basedir=".">
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${ant_contrib.jar.location}" />
+        </classpath>
+    </taskdef>
+    <import file="exporter.xml" />
+    <import file="deploy.xml" />
+    <target name="main" depends="                            
+                            clean_deploy_exports,                            
+                            export_deploy_solutions,                            
+                            deploy_solutions" />
+    <target name="export_deploy_solutions" depends="process_export_params, get_equinox_jar, export_wars_for_deploy" />
+    <target name="process_export_params">
+        <condition property="export.dash.pl.if_needed" value="-pl">
+            <isset property="alternate_project_locations.on" />
+        </condition>
+        <property name="export.dash.pl.if_needed" value="" />
+        <echo level="info" message="Non-static export params: ${export.dash.pl.if_needed}" />
+    </target>
+    <target name="deploy_mobile_war_files_if_needed" if="mobile.deploy.webapps.dir">
+        <copy todir="${mobile.deploy.webapps.dir}">
+            <fileset dir="${passed.mc.exports.dir}" includes="**/*.war" />
+        </copy>
+    </target>
+</project>

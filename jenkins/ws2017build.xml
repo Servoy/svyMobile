@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!-- Works with Ant 1.7.0 and higher -->
+<!-- These are useful combined with command line/ant test runners for mobile/smart client solutions exports; -->
+<!-- see Servoy Wiki - Building A Software Factory for how to use test runners with ant on these exports -->
+<project name="Ant Solution Exporter" default="main" basedir=".">
+    <property name="eclipse_home" value="~/Applications/Servoy-Dev/developer" />
+    <property name="workspace_location" value="~/Applications/Servoy-Dev/WS/" />
+    <property name="solution_name" value="svyMobile" />
+    <property name="output_dir" value="~/Applications/Servoy-Dev/WS/build" />
+    <target name="setup">
+        <!-- store path to newest Eclipse launcher JAR in path id 'newest.equinox.launcher.path.id' -->
+        <path id="newest.equinox.launcher.path.id">
+            <first count="1">
+                <sort>
+                    <fileset dir="${eclipse_home}/plugins" includes="**/org.eclipse.equinox.launcher_*.jar" />
+                    <reverse xmlns="antlib:org.apache.tools.ant.types.resources.comparators">
+                        <date />
+                    </reverse>
+                </sort>
+            </first>
+        </path>
+        <!-- turn the path into a property -->
+        <property name="equinox.launcher.jar.location" refid="newest.equinox.launcher.path.id" />
+        <!-- now we are ready to start the workspace exporter -->
+        <echo level="info" message="Using equinox launcher jar: ${equinox.launcher.jar.location}" />
+    </target>
+    <target name="main" depends="setup">
+        <java classname="org.eclipse.equinox.launcher.Main" classpath="${equinox.launcher.jar.location}" failonerror="true" fork="true">
+            <jvmarg value="-Xms40m" />
+            <jvmarg value="-Xmx512m" />
+            <!-- <jvmarg value="-XX:MaxPermSize=256M" /> -->
+            <jvmarg value="-Dosgi.configuration.cascaded=false" />
+            <jvmarg value="-Djava.awt.headless=true" />
+            <arg value="-application" />
+            <arg value="com.servoy.eclipse.exporter.war.application" />
+            <arg value="-data" />
+            <arg value="${workspace_location}" />
+            <arg value="-s" />
+            <arg value="${solution_name}" />
+            <arg value="-o" />
+            <arg value="${output_dir}" />
+            <arg value="-defaultAdminUser" />
+            <arg value="tuan" />
+            <arg value="-defaultAdminPassword" />
+            <arg value="123456" />
+            <arg value="-p" />
+            <arg value="~/Applications/Servoy-Dev/WS/properties/servoy.properties" />
+            <arg value="-tables" />
+        </java>
+    </target>
+</project>

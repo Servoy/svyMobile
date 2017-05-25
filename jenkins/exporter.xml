@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!-- Works with Ant 1.7.0 and higher -->
+<project basedir=".">
+    <property file="local_ant_build.properties" />
+    <!-- this file is not available when running in Jenkins setup, only when running tests locally -->
+    <property file="ant_build.properties" />
+    <import file="utils.xml" />    
+    <target name="export_wars_for_deploy" depends="clean_deploy_exports" if="build.deploy">
+        <trycatch>
+            <try>
+                <!-- we need to export this with a deployment properties file as well (which probably doesn't have the ngclient e2e test mode property enabled) -->
+                <export-solutions-as-war solutionNames="${solutions_to_deploy}" outputDir="${deploy.export.dir}" propertiesFileForWar="deploy.servoy.properties" />
+            </try>
+            <finally>
+                <prepare_export_logs destSubdir="deploy" />
+            </finally>
+        </trycatch>
+    </target>
+   
+    <macrodef name="export-solutions-as-war">
+        <attribute name="solutionNames" />
+        <attribute name="outputDir" />
+        <attribute name="propertiesFileForWar" />
+        <attribute name="failOnError" default="true" />
+        <sequential>
+            <!-- store path to newest Eclipse launcher JAR in path id 'newest.equinox.launcher.path.id' -->
+            <!-- and turn the path into a property -->
+            <latest_jar pathName="equinox.launcher.jar.location" dir="${servoy.developer.dir}/plugins" includes="**/org.eclipse.equinox.launcher_*.jar" />
+            <!-- now we are ready to start the workspace exporter -->
+            <echo level="info" message="Using application_server dir: ${servoy.app_server.dir}" />
+            <echo level="info" message="Using developer          dir: ${servoy.developer.dir}" />
+            <echo level="info" message="Using equinox launcher   jar: ${equinox.launcher.jar.location_property}" />
+            <echo level="info" message="Using pluginLocations    dir: ${servoy.developer.dir}/plugins/" />
+            <echo level="info" message="Using workspace          dir: ${workspace.solutions.dir}" />
+            <var name="export.result" unset="true" />
+            <java classname="org.eclipse.equinox.launcher.Main" classpathref="equinox.launcher.jar.location" failonerror="@{failOnError}" resultproperty="export.result" fork="true">
+                <jvmarg value="-Xms40m" />
+                <jvmarg value="-Xmx512m" />
+                <jvmarg value="-XX:MaxPermSize=256M" />
+                <jvmarg value="-Dosgi.configuration.cascaded=false" />
+                <jvmarg value="-Dservoy.application_server.dir=${servoy.app_server.dir}" />
+                <!--jvmarg value="-Xdebug" />
+                <jvmarg value="-Xrunjdwp:transport=dt_socket,address=1000,server=y,suspend=y" /-->
+                <arg value="-application" />
+                <arg value="com.servoy.eclipse.exporter.war.application" />
+                <arg value="-data" />
+                <arg value="${workspace.solutions.dir}" />
+                <arg value="-s" />
+                <arg value="@{solutionNames}" />
+                <arg value="-p" />
+                <arg value="${export.servoy.properties}" />
+                <arg value="-o" />
+                <arg value="@{outputDir}" />
+                <arg value="-as" />
+                <arg value="${servoy.app_server.dir}" />
+                <arg value="-dbi" />
+                <arg value="-pluginLocations" />
+                <arg value="${servoy.developer.dir}/plugins/" />
+                <arg value="-i18n" />
+                <arg value="-defaultAdminUser" />
+                <arg value="tuan" />
+                <arg value="-defaultAdminPassword" />
+                <arg value="123456" />
+                <!-- SVY-9645 is to implement this -pfw option; until then the -p will be put in the war as well -->
+                <arg value="@{propertiesFileForWar}" />
+                <!-- add here any of the optional arguments supported by the exporter; see 'export -help' for more info; for example: -->
+                <!--<arg value="-help" />-->
+                <arg value="-verbose" />
+                <!--<arg value="-ie" /> -->
+            </java>
+            <check-exporter-exit-code/>
+        </sequential>
+    </macrodef>
+    <macrodef name="check-exporter-exit-code">
+        <sequential>
+            <var name="export.failed" unset="true" />
+            <condition property="export.failed">
+                <not>
+                    <equals arg1="${export.result}" arg2="0" />
+                </not>
+            </condition>
+        </sequential>
+    </macrodef>
+    <macrodef name="fail-if-export-failed">
+        <sequential>
+            <fail message="Exports failed: please check the exporter log files." if="export.failed" />
+        </sequential>
+    </macrodef>
+    <target name="get_equinox_jar">
+        <!-- store path to newest Eclipse launcher JAR in property 'equinox.launcher.jar.location_property' -->
+        <latest_jar pathName="equinox.launcher.jar.location" dir="${servoy.developer.dir}/plugins" includes="**/org.eclipse.equinox.launcher_*.jar" />
+    </target>
+    <target name="clean_jsunit_exports">
+        <echo level="verbose">
+            *** Cleaning exports ***
+        </echo>
+        <make-clean-dir dir="${smart.test.exports.dir}" />
+        <make-clean-dir dir="${mobile.export.dir}" />
+        <make-clean-dir dir="${mobile.service.export.dir}" />
+        <make-clean-dir dir="${mobile.test.war.dir}" />
+        <make-clean-dir dir="${mobile.deploy.s.dir}" />
+        <make-clean-dir dir="${mobile.deploy.w.dir}" />
+        <mkdir dir="${passed.exports.dir}" />
+        <mkdir dir="${passed.mc.exports.dir}" />
+        <mkdir dir="${passed.sc.exports.dir}" />
+        <antcall target="clean_passed_exports_if_needed" />
+        <delete failonerror="false" file="${workspace.solutions.dir}/.metadata/.log" />
+        <delete failonerror="false" file="${antScripts.dir}/servoy_log.txt" />
+        <!-- delete any temporary junit files that get left behind sometimes -->
+        <delete includeemptydirs="true" quiet="true">
+            <fileset dir="${antScripts.dir}" includes="junit*.properties" />
+        </delete>
+    </target>
+    <target name="clean_passed_exports_if_needed" unless="dont_clean_passed_exports">
+        <make-clean-dir dir="${passed.exports.dir}" />
+        <make-clean-dir dir="${passed.mc.exports.dir}" />
+        <make-clean-dir dir="${passed.sc.exports.dir}" />
+    </target>
+    <macrodef name="prepare_export_logs">
+        <attribute name="destSubdir" />
+        <sequential>
+            <move file="${servoy.app_server.dir}/servoy_log.txt" tofile="${export.logs.dir}/@{destSubdir}/workspace_exporter_app_server_log.txt" failonerror="false" />
+            <move file="${workspace.solutions.dir}/.metadata/.log" tofile="${export.logs.dir}/@{destSubdir}/workspace_exporter_workspace_log.txt" failonerror="false" />
+        </sequential>
+    </macrodef>
+    <target name="clean_deploy_exports" if="build.deploy">
+        <echo level="verbose">
+            *** Cleaning deployment exports ***
+        </echo>
+        <trycatch>
+            <try>
+                <make-clean-dir dir="${export.logs.dir}/deploy" />
+                <make-clean-dir dir="${deploy.export.dir}" />
+                <delete file="${servoy.app_server.dir}/servoy_log.txt" quiet="true" />
+                <!-- exporter produces this -->
+                <!-- also delete the workspace log file -->
+                <delete failonerror="false" file="${workspace.solutions.dir}/.metadata/.log" quiet="true" />
+            </try>
+        </trycatch>
+    </target>
+</project>

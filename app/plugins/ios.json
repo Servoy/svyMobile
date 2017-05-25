@@ -1,0 +1,39 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "it.innowatio.cordova.ios-fullscreen": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        }
+    }
+}

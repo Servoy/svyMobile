@@ -1,0 +1,365 @@
+/*Media Queries*/
+body {
+	transition: all 1s;
+	background-color: gray;
+}
+
+* {
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+	-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+	outline: none !important;
+}
+
+.svyPortalGridStyle .form-control[readonly] {
+	border: 1px solid white;
+	background-color: purple;
+}
+
+.ui-grid-cell-contents {
+	background-color: purple;
+}
+
+.start-btn {
+	border-radius: 15px;
+	animation-name: intro;
+	animation-duration: 2s;
+	font-size: 17px;
+	font-weight: bold;
+	background-color: #ff6600;
+	color: white;
+}
+
+.start-btn:hover {
+	-webkit-transition: all 2s; /* Safari */
+	transition: all 2s;
+}
+
+@keyframes intro { 
+	0% {
+	opacity: 0.25;
+	-webkit-transform: scale(1.5);
+	-ms-transition: all 200ms ease-in;
+	-ms-transform: scale(1.5);
+	-moz-transition: all 200ms ease-in;
+	-moz-transform: scale(1.5);
+	transition: all 200ms ease-in;
+	transform: scale(1.5);
+	}
+	100%{}
+}
+@keyframes example { 
+	0% {
+	opacity: 0.25;
+	-webkit-transform: scale(0.5);
+	-ms-transition: all 200ms ease-in;
+	-ms-transform: scale(0.5);
+	-moz-transition: all 200ms ease-in;
+	-moz-transform: scale(0.5);
+	transition: all 200ms ease-in;
+	transform: scale(0.5);
+	}
+
+	100%{
+	}
+}
+.center {
+	overflow: hidden;
+	padding-top: 30%;
+	position: relative;
+	text-align: center;
+	animation-name: intro;
+	animation-duration: 1s;
+}
+
+.examples {
+	animation-name: example;
+	animation-duration: 1s;
+	font-weight: bold;
+	padding-top: 20px;
+	color: white;
+}
+
+.example-label {
+	padding: 25px;
+}
+
+.examples img {
+	border-radius: 10px;
+}
+
+.col-xs-6 {	
+	padding-bottom:10px;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.example-card {
+	border-radius:15px;
+	background-color: white;
+	padding: 7px;
+	color:black;	
+	-webkit-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	-moz-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+}
+
+.example-img {
+	width: 100%;	
+}
+
+.brand-logo {
+	width: 60px;
+	height: 60px;
+}
+
+.brand-text {
+	font-weight: bold;
+	text-align: center;
+	font-size: 23px;
+}
+
+.brand-desc {
+	padding-top: 5%;
+	padding-bottom: 30%;
+	text-align: center;
+	font-size: 30px;
+}
+
+.brand-start {
+	padding-bottom: 20%;
+}
+
+.tab {
+	margin: 0;
+	height: 100%;
+	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.menu-item {
+	opacity: 0;
+	visibility: hidden;
+	transition: all 1s;
+	font-size: 10px;
+}
+
+.show {
+	font-size: 30px;
+	opacity: 1;
+	visibility: visible;
+}
+
+.home {
+	height: 100vh;
+	background-color: white;
+}
+
+.media {
+	overflow: hidden;
+	background-color: white;
+}
+
+
+.tables {
+	overflow: hidden;
+	background-color: purple;
+	color: white;
+}
+
+.animate {
+	animation-name: example;
+	animation-duration: 1s;	
+}
+
+.camera {
+	overflow: hidden;
+	background-color: red;
+	color: white;
+}
+
+.navbar {
+	z-index: 100 !important;
+	-webkit-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	-moz-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	font-weight: bold;
+	height: 45px;
+}
+
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>.active>a:focus
+	{
+	background-color: transparent;
+}
+
+.logo {
+	width: 25px;
+	height: 25px;
+}
+
+.table-order-detail {
+	color: white;
+	height: 70% !important;
+}
+
+.tablewrapper thead {
+	border-bottom: 1px solid white !important;
+}
+
+.table-servoyextra-selected {
+	color: black;
+}
+
+.table-servoyextra-header-label {
+	color: white;
+}
+
+.tablewrapper tbody {
+	color: white;
+}
+
+.tablewrapper ul {
+	-webkit-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	-moz-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1)
+}
+
+table-servoyextra-sort-show-up table-servoyextra-sort-up {
+	color: white !important;
+}
+
+.phone-img {
+	background-image: url("media:///phone.png");
+}
+
+.info-btn {
+	z-index: 200 !important; 
+	font-size : 20px !important;
+	color: white;
+	background-color: transparent;
+	font-weight: bold !important;
+	font-size: 20px !important;
+}
+
+.info-btn:active {
+	color: white;
+}
+
+.info-btn:hover {
+	background-color: transparent;
+	color: white;
+}
+
+.info-btn:visited {
+	background-color: transparent;
+	color: white;
+}
+
+.upload-btn {
+	font-size: 15px !important;
+	color: black;
+	font-weight: bold !important;
+	border: 1px solid lightgrey;
+}
+
+.upload-btn:active {
+	color: black;
+}
+
+.upload-btn:hover {
+	background-color: black;
+	color: black;
+}
+
+.upload-btn:visited {
+	background-color: black;
+	color: black;
+}
+
+.search-btn {
+	font-weight: bold;
+	font-size: 20px !important;
+}
+
+.chart-btn {
+	font-size: 25px !important;
+	color: green;
+	border: 3px solid lightgrey;
+}
+
+.chart-btn :active {
+	color: white;
+}
+
+.chart-btn :hover {
+	background-color: white;
+	color: white;
+}
+
+.chart-btn :visited {
+	background-color: white;
+	color: white;
+}
+
+.white-line {
+	background-color: white;
+}
+
+.search-box {
+	font-size: 15px;
+	-webkit-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	-moz-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+}
+
+.chart-main {
+	background-color: teal;
+}
+
+.chart {
+	width: 100%;
+	height: 100%;
+	color: black;
+	background-color: white;
+	-webkit-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	-moz-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+	box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
+}
+
+.contact-photo {
+	
+}
+
+.contact-photo img {
+	width: 100%;
+	height: 100%;
+}
+
+.tabs {
+	padding-left: 2%;
+}
+
+.tabs .nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus
+	{
+	color: black;
+	background: white;
+	font-weight: bold;
+}
+
+.tabs .nav-tabs>li>a {
+	color: white;
+	background: gray;
+	font-weight: bold;
+}
+
+.nav-tabs > li > a:hover {
+	border-color:transparent;
+}
+
+.nav-tabs {
+	border-bottom: none;
+}

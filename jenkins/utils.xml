@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<project name="utility_targets_and_macros" basedir=".">
+
+    <!-- Configure ant-contrib tasks and the tomcat provided Ant tasks for the Tomcat Manager application -->
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${ant_contrib.jar.location}" />
+        </classpath>
+    </taskdef>
+
+    <macrodef name="echotimestamp">
+        <sequential>
+            <local name="timestamp" />
+            <tstamp>
+                <format property="timestamp" pattern="yyyy-MM-dd HH:mm:ss" />
+            </tstamp>
+            <echo message="${timestamp}" />
+        </sequential>
+    </macrodef>
+    
+    <macrodef name="latest_jar">
+        <attribute name="pathName"/>
+        <attribute name="propertyName" default="@{pathName}_property"/>
+        <attribute name="dir"/>
+        <attribute name="includes"/>
+        <sequential>
+            <!-- store path to newest JAR -->
+            <path id="@{pathName}">
+                <first count="1">
+                    <sort>
+                        <fileset dir="@{dir}" includes="@{includes}" />
+                        <reverse xmlns="antlib:org.apache.tools.ant.types.resources.comparators">
+                            <date />
+                        </reverse>
+                    </sort>
+                </first>
+            </path>
+
+            <!-- create a property as well -->
+            <property name="@{propertyName}" refid="@{pathName}" />
+        </sequential>
+    </macrodef>
+    
+    <macrodef name="make-clean-dir">
+        <attribute name="dir"/>
+        <sequential>
+            <delete dir="@{dir}" quiet="true"/>
+            <mkdir dir="@{dir}"/>
+       </sequential>
+    </macrodef>
+
+</project>

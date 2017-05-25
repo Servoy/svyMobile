@@ -1,0 +1,43 @@
+# rename the template file to local_ant_build.properties and it will take precedence over the properties in ant_build.properties
+# so you can use that to run the build locally easier;
+# these properties, when running on Jenkins, are set in the ant build step properties directly...
+
+build.run.unit.tests                = yep
+build.run.mobile.unit.tests         = yep
+build.run.e2e.tests                 = yep
+build.deploy                        = yep
+
+servoy.install.dir                  = [your_jenkins_dedicated_servoy_installation_dir]
+servoy.install.url                  = http://localhost:8080
+webdriver.chrome.driver             = [path_to_the_downloaded_selenium_chrome_driver_executable]
+selenium.server.jar                 = [path_to_downloaded_selenium_server_jar]
+
+workspace.solutions.dir             = [the_root_of_the_workspace_containing_solutions]
+
+smart_test_solutions                = solution1,solution2
+
+mobile_test_solutions               = mobile_ipAddressValidatorTester
+mobile_service_solutions            = mobile_ipAddressValidatorTester_service
+
+mobile_to_deploy                    = mobile_ipAddressValidator
+mobile_to_deploy_services           = mobile_ipAddressValidator_service
+
+ngclient_e2e_test_solutions         = solution1
+solutions_to_deploy                 = solution1
+
+e2e.tomcat.start_stop.tools.tomcat  = yep
+e2e.tomcat.java.home                = [point_to_a_JDK_dir_that_should_be_used_when_starting_e2e_tomcat]
+
+#alternate_project_locations.on      = yep
+#servoy.properties.dir               = ${workspace.solutions.dir}/build_files/servoy_properties_files
+#e2e.scripts.dir                     = ${workspace.solutions.dir}/build_files/e2e_test_scripts
+
+#sauce.labs.user                     = [your Sauce Labs user here]
+#sauce.labs.token                    = [access token goes here]
+#sauce.labs.selenium.url             = http://${sauce.labs.user}:${sauce.labs.token}@localhost:${SAUCE_ONDEMAND_PORT}/wd/hub
+# define a timeout for sauce labs to not require additional Selenium commands for a solution (set to 1.5 min; should be updated for how long your test can possibly take to run, but not much higher)
+#sauce.labs.selenium.idle-timeout    = 90
+
+#mobile.deploy.servoy.install.dir    = [your_mobile_war_deployment_servoy_installation]
+#mobile.deploy.webapps.dir           = ${deploy.servoy.install.dir}/application_server/server/webapps
+

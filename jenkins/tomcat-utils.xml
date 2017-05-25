@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+
+<project name="tomcat-ant-utilities" basedir=".">
+
+    <!-- Set up used properties/paths -->
+    <property file="local_ant_build.properties" />
+    <!-- this file is not available when running in Jenkins setup, only when running tests locally -->
+    <property file="ant_build.properties" />
+
+    <import file="utils.xml" />
+
+    <macrodef name="init-tomcat-tools-if-needed">
+        <attribute name="tomcatDir" />
+        <sequential>
+            <if>
+                <not>
+                    <isset property="tomcatToolsInitialised" />
+                </not>
+                <then>
+                    <var name="catalina-ant-classpath" unset="true" />
+                    <path id="catalina-ant-classpath">
+                        <fileset dir="${e2e.tomcat.dir}/lib">
+                            <include name="catalina-ant.jar" />
+                            <include name="tomcat-coyote.jar" />
+                            <include name="tomcat-util.jar" />
+                        </fileset>
+                        <fileset dir="${e2e.tomcat.dir}/bin">
+                            <include name="tomcat-juli.jar" />
+                        </fileset>
+                    </path>
+                    <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="catalina-ant-classpath" />
+                    <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina-ant-classpath" />
+                    <property name="tomcatToolsInitialised" value="yep" />
+                </then>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="tomcat-start">
+        <attribute name="tomcatDir" />
+        <attribute name="servoyUserHome" />
+        <sequential>
+            <init-tomcat-tools-if-needed tomcatDir="@{tomcatDir}"/>
+            
+            <echo level="info" message="Starting Tomcat" />
+            <echo level="info" message="Using as JAVA_HOME: ${e2e.tomcat.java.home}." />
+            <property environment="environment_v" />
+            <echo>
+                Old values (will be ignored)
+                    JAVA_OPTS = ${environment_v.JAVA_OPTS} (before running Tomcat).
+                    CATALINA_OPTS = ${environment_v.CATALINA_OPTS} (before running Tomcat).
+            </echo>
+            <var name="environment_v" unset="true" />
+
+            <property name="absolute.ServoyUserHome" location="@{servoyUserHome}" />
+            <echo level="info" message="Using as SERVOY_USER_HOME: ${absolute.ServoyUserHome}">
+            </echo>
+
+            <property name="absolute.tomcat" location="@{tomcatDir}" />
+            <echo level="info" message="Using tomcat installed at: ${absolute.tomcat}">
+            </echo>
+
+            <exec dir="${e2e.tomcat.dir}/bin" executable="sh" osfamily="unix" newenvironment="true" failonerror="true">
+                <env key="JAVA_HOME" value="${e2e.tomcat.java.home}" />
+                <env key="CATALINA_BASE" value="${absolute.tomcat}" />
+                <env key="CATALINA_HOME" value="${absolute.tomcat}" />
+                <env key="CATALINA_OPTS" value="-Xmx2g -XX:MaxPermSize=512m -Xms512m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:+CMSPermGenSweepingEnabled" />
+                <env key="JAVA_OPTS" value="-DSERVOY_USER_HOME=${absolute.ServoyUserHome}" />
+                <!-- this will make war deployments write their log files in results dir / .servoy / ... -->
+                <arg line="catalina.sh" />
+                <arg line="start" />
+            </exec>
+            <exec dir="${e2e.tomcat.dir}/bin" executable="cmd" osfamily="windows" newenvironment="true" failonerror="true">
+                <env key="JAVA_HOME" value="${e2e.tomcat.java.home}" />
+                <env key="CATALINA_BASE" value="${absolute.tomcat}" />
+                <env key="CATALINA_HOME" value="${absolute.tomcat}" />
+                <env key="CATALINA_OPTS" value="-Xmx2g -XX:MaxPermSize=512m -Xms512m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:+CMSPermGenSweepingEnabled" />
+                <env key="JAVA_OPTS" value="-DSERVOY_USER_HOME=${absolute.ServoyUserHome}" />
+                <!-- this will make war deployments write their log files in results dir / .servoy / ... -->
+                <arg line="/C catalina.bat start" />
+            </exec>
+
+            <echo level="info" message="Tomcat started; sleeping 10 seconds to make sure things are stable.">
+            </echo>
+            <var name="absolute.ServoyUserHome" unset="true" />
+            <var name="absolute.tomcat" unset="true" />
+            <sleep seconds="10" />
+        </sequential>
+    </macrodef>
+
+    <macrodef name="tomcat-stop">
+        <attribute name="tomcatDir" />
+        <sequential>
+            <init-tomcat-tools-if-needed tomcatDir="@{tomcatDir}"/>
+            
+            <echo level="info" message="Stopping Tomcat" />
+            <property name="absolute.tomcat" location="@{tomcatDir}" />
+            <echo level="info" message="Using tomcat installed at: ${absolute.tomcat}">
+            </echo>
+
+            <exec dir="${e2e.tomcat.dir}/bin" executable="sh" osfamily="unix" failonerror="true">
+                <env key="JAVA_HOME" value="${e2e.tomcat.java.home}" />
+                <env key="CATALINA_BASE" value="${absolute.tomcat}" />
+                <env key="CATALINA_HOME" value="${absolute.tomcat}" />
+                <arg line="catalina.sh" />
+                <arg line="stop" />
+                <arg line="9" />
+                <!-- wait for it to close timeout in seconds larger then default 5 -->
+                <arg line="-force" />
+                <!-- force -KILL if it still didn't close -->
+            </exec>
+            <exec dir="${e2e.tomcat.dir}/bin" executable="cmd" osfamily="windows" newenvironment="true" failonerror="true">
+                <env key="JAVA_HOME" value="${e2e.tomcat.java.home}" />
+                <env key="CATALINA_BASE" value="${absolute.tomcat}" />
+                <env key="CATALINA_HOME" value="${absolute.tomcat}" />
+                <arg line="/C catalina.bat stop 9 -force" />
+            </exec>
+
+            <echo level="info" message="Tomcat stopped; waiting for 2 seconds." />
+            <var name="absolute.tomcat" unset="true" />
+            <sleep seconds="2" />
+        </sequential>
+    </macrodef>
+
+</project>
