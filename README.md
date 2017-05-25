@@ -5,7 +5,7 @@ Getting started
 -------------
 You can import the svyMobile project through the Servoy Developer to view the solution.
 
-Building entire application (including phonegap)
+Building phonegap solution
 -------------
 If you are looking to build the entire application including the phonegap.  You will need to download some additional libraries. In particular Node.JS, NPM, Phonegap CLI, (Android SDK or XCode).  For production builds you will need an Apple developer account and similarly for Android a Play store developer account.
 
