@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>resources</project>
-		<project>svychartjs</project>
 		<project>svyphonegap</project>
 		<project>servoy-extra-components</project>
 		<project>bootstrapextracomponents</project>
