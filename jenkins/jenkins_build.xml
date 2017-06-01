@@ -10,8 +10,7 @@
     <import file="deploy.xml" />
     <target name="main" depends="                            
                             clean_deploy_exports,                            
-                            export_deploy_solutions,                            
-                            deploy_solutions" />
+                            export_deploy_solutions" />
     <target name="export_deploy_solutions" depends="process_export_params, get_equinox_jar, export_wars_for_deploy" />
     <target name="process_export_params">
         <condition property="export.dash.pl.if_needed" value="-pl">
