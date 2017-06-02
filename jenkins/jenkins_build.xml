@@ -7,7 +7,6 @@
         </classpath>
     </taskdef>
     <import file="exporter.xml" />
-    <import file="deploy.xml" />
     <target name="main" depends="                            
                             clean_deploy_exports,                            
                             export_deploy_solutions" />
