@@ -5,8 +5,6 @@
     <property file="local_ant_build.properties"/> <!-- this file is not available when running in Jenkins setup, only when running tests locally -->
     <property file="ant_build.properties"/>
 
-    <import file="tomcat-utils.xml"/>
-
     <target name="deploy_solutions" if="build.deploy">
         <init-tomcat-tools-if-needed tomcatDir="${e2e.tomcat.dir}"/>
         
