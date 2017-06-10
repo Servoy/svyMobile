@@ -84,21 +84,27 @@ body {
 }
 
 .examples img {
+	border-radius: 10px;
+}
+
+.col-xs-6 {	
+	padding-bottom:10px;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.example-card {
+	border-radius:15px;
+	background-color: white;
+	padding: 7px;
+	color:black;	
 	-webkit-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
 	-moz-box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
 	box-shadow: 0px 6px 10px -2px rgba(56, 56, 56, 1);
 }
 
-.col-xs-6 {
-	text-align: center;
-	padding-top: 2%;
-}
-
 .example-img {
-	width: 100%;
-	border-radius: 10px;
-	background-color: white;
-	padding: 5px;
+	width: 100%;	
 }
 
 .brand-logo {
@@ -151,7 +157,7 @@ body {
 
 .media {
 	overflow: hidden;
-	background-color: darkgreen;	
+	background-color: white;
 }
 
 
@@ -255,23 +261,23 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 
 .upload-btn {
 	font-size: 15px !important;
-	color: white;
+	color: black;
 	font-weight: bold !important;
 	border: 1px solid lightgrey;
 }
 
 .upload-btn:active {
-	color: white;
+	color: black;
 }
 
 .upload-btn:hover {
-	background-color: white;
-	color: white;
+	background-color: black;
+	color: black;
 }
 
 .upload-btn:visited {
-	background-color: white;
-	color: white;
+	background-color: black;
+	color: black;
 }
 
 .search-btn {
@@ -348,4 +354,12 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 	color: white;
 	background: gray;
 	font-weight: bold;
+}
+
+.nav-tabs > li > a:hover {
+	border-color:transparent;
+}
+
+.nav-tabs {
+	border-bottom: none;
 }

@@ -63,14 +63,12 @@ module.exports = function(grunt) {
             setup_phonegap_app: 'phonegap create app <%= globalVars.buildName %>',
             upload_production_build: 'scp <%= globalVars.exportedWar %> <%= globalVars.prodServer %> ',
             open_android_emu: '~/Android/Sdk/tools/emulator -avd EMU &',
-            create_android_debug_build: 'cd app && phonegap build android --debug',
+            create_android_debug_build: 'cd app && phonegap run android --debug',
             create_android_release_build: 'cd app && phonegap build android --release --buildConfig build.json',
             uninstall_android_app: 'adb uninstall <%= globalVars.buildName %>',
-            install_android_app_arm: 'adb install apkoutput/android-armv7-debug.apk',
-            install_android_app_x86: 'adb install apkoutput/android-x86-debug.apk',
             run_android_app: 'adb shell am start -n <%= globalVars.buildName %>/<%= globalVars.buildName %>.MainActivity',
             delete_ios_build: 'rm -r /app/platforms/ios',
-            create_ios_debug_build: 'cd app && phonegap build ios --debug ',
+            create_ios_debug_build: 'cd app && phonegap run ios --debug ',
             create_ios_release_build: 'cd app && phonegap build ios --release '
         }
     });
@@ -87,8 +85,9 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['copy']);
     grunt.registerTask('deploy', ['exec:upload_production_build']);
     grunt.registerTask('runAndroidEmu', ['exec:open_android_emu']);
-    grunt.registerTask('buildForAndroidEmu', ['copy:main', 'exec:create_android_debug_build', 'exec:uninstall_android_app', 'exec:install_android_app_x86', 'exec:run_android_app']);
+    grunt.registerTask('buildForAndroidEmu', ['copy:main', 'exec:create_android_debug_build']);
     grunt.registerTask('buildForAndroid', ['bump','copy:bumpVersionBuild','copy:bumpAndroidBuild', 'copy:main', 'exec:create_android_release_build']);
-    grunt.registerTask('buildForIosEmu', ['bump', 'copy:bumpIOSBuild', 'copy:bumpVersionBuild', 'copy:main', 'exec:create_ios_debug_build']);
+    grunt.registerTask('buildForIOSEmu', ['copy:main', 'exec:create_ios_debug_build']);
+    grunt.registerTask('buildForIos', ['bump', 'copy:bumpIOSBuild', 'copy:bumpVersionBuild', 'copy:main', 'exec:create_ios_release_builds']);
 
 };
