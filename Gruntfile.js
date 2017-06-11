@@ -88,6 +88,6 @@ module.exports = function(grunt) {
     grunt.registerTask('buildForAndroidEmu', ['copy:main', 'exec:create_android_debug_build']);
     grunt.registerTask('buildForAndroid', ['bump','copy:bumpVersionBuild','copy:bumpAndroidBuild', 'copy:main', 'exec:create_android_release_build']);
     grunt.registerTask('buildForIOSEmu', ['copy:main', 'exec:create_ios_debug_build']);
-    grunt.registerTask('buildForIos', ['bump', 'copy:bumpIOSBuild', 'copy:bumpVersionBuild', 'copy:main', 'exec:create_ios_release_builds']);
+    grunt.registerTask('buildForIOS', ['bump', 'copy:bumpIOSBuild', 'copy:bumpVersionBuild', 'copy:main', 'exec:create_ios_release_build']);
 
 };
