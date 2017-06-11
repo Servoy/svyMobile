@@ -1,6 +1,5 @@
 var Bridge = new function() {
     this.iFrame = null;
-    this.ngClientSrc = "http://10.0.2.2:8080/solutions/svyMobile/index.html?f=main"
     this.init = function(iFrame) {
 
         this.iFrame = iFrame;
