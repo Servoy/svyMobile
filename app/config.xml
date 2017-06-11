@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="100022" id="com.servoy.mobile" ios-CFBundleversion="100015" version="1.0.22" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget android-versionCode="100023" id="com.servoy.mobile" ios-CFBundleversion="100015" version="1.0.23" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Servoy Mobile</name>
     <description>Mobile Demo for NGClient</description>
     <author email="tnguyen@servoy.com">Tuan Nguyen</author>

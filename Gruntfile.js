@@ -6,6 +6,7 @@ module.exports = function(grunt) {
             exportedWar:'/var/lib/jenkins/export_war/buildResults/exports/deploymentExports/svyMobile.war',
             prodServer:'root@yourtomcatserver.com:/opt/tomcat/webapps',             
             buildName:'com.servoy.mobile',
+            buildJson: '/home/tuan/git/server-related/deployment/build.json',
             solution:'svyMobile'
         },
         bump: {
@@ -64,7 +65,7 @@ module.exports = function(grunt) {
             upload_production_build: 'scp <%= globalVars.exportedWar %> <%= globalVars.prodServer %> ',
             open_android_emu: '~/Android/Sdk/tools/emulator -avd EMU &',
             create_android_debug_build: 'cd app && phonegap build android --debug',
-            create_android_release_build: 'cd app && phonegap build android --release --buildConfig build.json',
+            create_android_release_build: 'cd app && phonegap build android --release --buildConfig <%= globalVars.buildJson %>',
             uninstall_android_app: 'adb uninstall <%= globalVars.buildName %>',
             install_android_app_arm: 'adb install apkoutput/android-armv7-debug.apk',
             install_android_app_x86: 'adb install apkoutput/android-x86-debug.apk',
