@@ -12,7 +12,11 @@
  */
 function onSolutionOpen(arg, queryParams) {
 	//setup viewport for mobile view (disable zooming)
-	plugins.ngclientutils.setViewportMetaForMobileAwareSites(plugins.ngclientutils.VIEWPORT_MOBILE_DENY_ZOOM);	
+	plugins.ngclientutils.setViewportMetaForMobileAwareSites(plugins.ngclientutils.VIEWPORT_MOBILE_DENY_ZOOM);
+	
+	//load api keys
+	mapAPIKey = application.getUserProperty('googleAPIKey');
+	
 }
 
 /**
@@ -21,3 +25,10 @@ function onSolutionOpen(arg, queryParams) {
  * @properties={typeid:35,uuid:"0E934467-0DB7-40AE-8C9B-B24375085FA1"}
  */
 var currentTab = 'home'
+	
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"E6F1534E-7187-44E8-A2FC-745DC9C4429D"}
+ */
+var mapAPIKey = ''
