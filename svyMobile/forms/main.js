@@ -67,6 +67,10 @@ function onAction$info(event) {
 	case 'images':
 		plugins.dialogs.showInfoDialog('INFO', "This is an example of file image capture using the Phonegap camera and file plugins.  Servoy can easily integrate with these types of plugins through the use of a bridge service. (https://github.com/Servoy/svyPhonegap)")
 		break;
+	case 'location':
+		plugins.dialogs.showInfoDialog('INFO', "This is an example of using geolocation with the phonegap location plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service. (https://github.com/Servoy/svyPhonegap)")
+		break;
+
 	}
 
 }
