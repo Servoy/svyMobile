@@ -54,12 +54,19 @@ function onClick$menuItem(event, m) {
  * @properties={typeid:24,uuid:"D932F87D-8F9D-4A9C-8143-AAEE7FBCB56B"}
  */
 function onAction$info(event) {
+	var info_btn;
 	switch (scopes.globals.currentTab) {
 	case 'examples':
-		plugins.dialogs.showInfoDialog('INFO', "Here we have a few examples of Servoy's open-source components.  Select one of the examples to get a closer look.")
+		info_btn = plugins.dialogs.showInfoDialog('INFO', "A few examples of Servoy's open-source web components and services.  Select one of the examples to get a closer look.", "About Servoy", "Hide")
+		if (info_btn == 'About Servoy') {
+			application.showURL('https://servoy.com')
+		}
 		break;
 	case 'tables':
-		plugins.dialogs.showInfoDialog('INFO', "This is a high performance table component which is part of the servoy-extra-components package. (https://github.com/Servoy/servoy-extra-components)")
+		info_btn = plugins.dialogs.showInfoDialog('INFO', "This is a high performance & lightweight table component which is part of the servoy-extra-components package. (https://github.com/Servoy/servoy-extra-components)", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			application.showURL('https://github.com/Servoy/servoy-extra-components/wiki/Table')
+		}
 		break;
 	case 'charts':
 		plugins.dialogs.showInfoDialog('INFO', "These are a set of customizable and responsive charts based on the open-source ChartJS library.  They can be data bound to Servoy's foundset as well as to custom datasets. (https://github.com/Servoy/svyChartJS)")
