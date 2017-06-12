@@ -3,8 +3,7 @@ A mobile sample solution built using Servoy & Phonegap
 
 Demo
 -------------
-To check out the mobile solution on an Android device
-[Android Play Store](https://play.google.com/store/apps/details?id=com.servoy.mobile)
+Android release via the [Android Play Store](https://play.google.com/store/apps/details?id=com.servoy.mobile)
 
 Documentation
 -------------
