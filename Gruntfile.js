@@ -64,7 +64,7 @@ module.exports = function(grunt) {
             setup_phonegap_app: 'phonegap create app <%= globalVars.buildName %>',
             upload_production_build: 'scp <%= globalVars.exportedWar %> <%= globalVars.prodServer %> ',
             open_android_emu: '~/Android/Sdk/tools/emulator -avd EMU &',
-            create_android_debug_build: 'cd app && phonegap build android --debug',
+            create_android_debug_build: 'cd app && phonegap run android --debug',
             create_android_release_build: 'cd app && phonegap build android --release --buildConfig <%= globalVars.buildJson %>',
             uninstall_android_app: 'adb uninstall <%= globalVars.buildName %>',
             install_android_app_arm: 'adb install apkoutput/android-armv7-debug.apk',
@@ -87,10 +87,10 @@ module.exports = function(grunt) {
     grunt.registerTask('setupApp', ['exec:setup_phonegap_app']);
     grunt.registerTask('build', ['copy']);
     grunt.registerTask('deploy', ['exec:upload_production_build']);
-    grunt.registerTask('runAndroidEmu', ['exec:open_android_emu']);
-    grunt.registerTask('buildForAndroidEmu', ['copy:main', 'exec:create_android_debug_build', 'exec:uninstall_android_app', 'exec:install_android_app_x86', 'exec:run_android_app']);
-    grunt.registerTask('buildForAndroid', ['bump','copy:bumpVersionBuild','copy:bumpAndroidBuild', 'copy:main', 'exec:create_android_release_build']);
-    grunt.registerTask('buildForIOSEmu', ['copy:main', 'exec:create_ios_debug_build']);
-    grunt.registerTask('buildForIOS', ['bump', 'copy:bumpIOSBuild', 'copy:bumpVersionBuild', 'copy:main', 'exec:create_ios_release_build']);
+    grunt.registerTask('runAE', ['exec:open_android_emu']);
+    grunt.registerTask('buildDD', ['bump','copy:main', 'exec:create_android_debug_build']);
+    grunt.registerTask('buildDR', ['bump','copy:bumpVersionBuild','copy:bumpAndroidBuild', 'copy:main', 'exec:create_android_release_build']);
+    grunt.registerTask('buildID', ['bump','copy:main', 'exec:create_ios_debug_build']);
+    grunt.registerTask('buildIR', ['bump', 'copy:bumpIOSBuild', 'copy:bumpVersionBuild', 'copy:main', 'exec:create_ios_release_build']);
 
 };
