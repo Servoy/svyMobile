@@ -29,6 +29,12 @@
         },
         "it.innowatio.cordova.ios-fullscreen": {
             "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.servoy.mobile"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.servoy.mobile"
         }
     },
     "dependent_plugins": {
