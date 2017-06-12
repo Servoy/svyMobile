@@ -45,17 +45,6 @@ var app = {
                 navigator.splashscreen.hide();
             }
         )
-        history.pushState(null, null, 'inapp');
-        window.onpopstate = function(event) {
-            var c = confirm('Quit?')
-            if (c) {
-                window.history.back();
-                window.close();
-            }
-            history.pushState(null, null, 'inapp');
-        }
-
-
     },
 
     disablebase: function() {

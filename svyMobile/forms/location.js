@@ -4,7 +4,9 @@
  * @properties={typeid:24,uuid:"B80C837B-A71F-4900-A54E-862E08040BAD"}
  */
 function getLocation(event) {
-	plugins.svyphonegapLocation.getCurrentPosition(getLocationSuccess, getLocationFail, { enableHighAccuracy: true })
+	//watch when location changes.
+	plugins.svyphonegapLocation.watchPosition(null,getLocationSuccess,getLocationFail,{ enableHighAccuracy: true })
+	
 }
 
 /**
@@ -23,4 +25,16 @@ function getLocationSuccess(pos) {
  */
 function getLocationFail(err) {
 	plugins.dialogs.showInfoDialog('Error', err);
+}
+
+
+/**
+ * @param firstShow
+ * @param event
+ *
+ * @properties={typeid:24,uuid:"39422333-E68C-4C5D-9DB3-CAAE831D3633"}
+ */
+function onShow(firstShow,event) {
+	_super.onShow(firstShow,event)
+	getLocation(event);	
 }
