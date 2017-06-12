@@ -10,7 +10,7 @@ function getLocation(event) {
 }
 
 /**
- * Callback when picture received successfully
+ * Callback when location is aquired
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
 function getLocationSuccess(pos) {	
@@ -20,10 +20,10 @@ function getLocationSuccess(pos) {
 }
 
 /**
- * Callback when failed to get picture
+ * Callback when failed to get location
  * @properties={typeid:24,uuid:"C7DFB79D-C451-408E-A3BF-B2BCA1D0FE07"}
  */
-function getLocationFail(err) {
+function getLocationFail(err) {	
 	plugins.dialogs.showInfoDialog('Error', err);
 }
 
