@@ -16,9 +16,9 @@ typeid:19,
 uuid:"3555BC82-044B-4990-B82B-AA87A8761BA8"
 },
 {
-anchors:11,
+anchors:15,
 json:{
-anchors:11,
+anchors:15,
 apiKey:"scopes.globals.mapAPIKey",
 latitude:0,
 location:{
