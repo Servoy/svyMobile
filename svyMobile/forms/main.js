@@ -63,19 +63,28 @@ function onAction$info(event) {
 		}
 		break;
 	case 'tables':
-		info_btn = plugins.dialogs.showInfoDialog('INFO', "This is a high performance & lightweight table component which is part of the servoy-extra-components package. (https://github.com/Servoy/servoy-extra-components)", 'More Info', 'Hide')
+		info_btn = plugins.dialogs.showInfoDialog('INFO', "This is a high performance & lightweight table component which is part of the servoy-extra-components package.", 'More Info', 'Hide')
 		if (info_btn == 'More Info') {
 			application.showURL('https://github.com/Servoy/servoy-extra-components/wiki/Table')
 		}
 		break;
 	case 'charts':
-		plugins.dialogs.showInfoDialog('INFO', "These are a set of customizable and responsive charts based on the open-source ChartJS library.  They can be data bound to Servoy's foundset as well as to custom datasets. (https://github.com/Servoy/svyChartJS)")
+		info_btn = plugins.dialogs.showInfoDialog('INFO', "These are a set of customizable and responsive charts based on the open-source ChartJS library.  They can be data bound to Servoy's foundset as well as to custom datasets.", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			application.showURL('https://github.com/Servoy/svyChartJS')
+		}
 		break;
 	case 'images':
-		plugins.dialogs.showInfoDialog('INFO', "This is an example of file image capture using the Phonegap camera and file plugins.  Servoy can easily integrate with these types of plugins through the use of a bridge service. (https://github.com/Servoy/svyPhonegap)")
+		info_btn = plugins.dialogs.showInfoDialog('INFO', "This is an example of file image capture using the Phonegap camera and file plugins.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			application.showURL('https://github.com/Servoy/svyPhonegap')
+		}
 		break;
 	case 'location':
-		plugins.dialogs.showInfoDialog('INFO', "This is an example of using geolocation with the phonegap location plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service. (https://github.com/Servoy/svyPhonegap)")
+		info_btn = plugins.dialogs.showInfoDialog('INFO', "This is an example of using geolocation with the phonegap location plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service. (https://github.com/Servoy/svyPhonegap)", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			application.showURL('https://github.com/Servoy/svyPhonegap')
+		}
 		break;
 
 	}
