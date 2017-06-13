@@ -5,28 +5,27 @@
  */
 function getLocation(event) {
 	//watch when location changes.
-	plugins.svyphonegapLocation.watchPosition(null,getLocationSuccess,getLocationFail,{ enableHighAccuracy: true })
-	
+	var options = { enableHighAccuracy: true }
+	plugins.svyphonegapLocation.watchPosition(null, getLocationSuccess, getLocationFail, options);
 }
 
 /**
- * Callback when location is aquired
+ * Callback when location is acquired
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
-function getLocationSuccess(pos) {	
+function getLocationSuccess(pos) {
 	//send location to google map component
 	elements.map.latitude = pos.coords.latitude;
-	elements.map.longitude = pos.coords.longitude;	
+	elements.map.longitude = pos.coords.longitude;
 }
 
 /**
  * Callback when failed to get location
  * @properties={typeid:24,uuid:"C7DFB79D-C451-408E-A3BF-B2BCA1D0FE07"}
  */
-function getLocationFail(err) {	
+function getLocationFail(err) {
 	plugins.dialogs.showInfoDialog('Error', err);
 }
-
 
 /**
  * @param firstShow
@@ -34,7 +33,7 @@ function getLocationFail(err) {
  *
  * @properties={typeid:24,uuid:"39422333-E68C-4C5D-9DB3-CAAE831D3633"}
  */
-function onShow(firstShow,event) {
-	_super.onShow(firstShow,event)
-	getLocation(event);	
+function onShow(firstShow, event) {
+	_super.onShow(firstShow, event)
+	getLocation(event);
 }
