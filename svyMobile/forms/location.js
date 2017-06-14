@@ -13,10 +13,10 @@ function getLocation(event) {
  * Callback when location is acquired
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
-function getLocationSuccess(pos) {
+function getLocationSuccess(pos) {	
 	//send location to google map component
 	elements.map.latitude = pos.coords.latitude;
-	elements.map.longitude = pos.coords.longitude;
+	elements.map.longitude = pos.coords.longitude;	
 }
 
 /**

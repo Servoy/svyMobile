@@ -17,6 +17,7 @@ function getPicture(event, type) {
 		}
 		plugins.svyphonegapCamera.getPicture(getPicSuccess, getPicFail, options);
 	} else {
+		//get media from from default gallery on device
 		plugins.svyphonegapCamera.getPicture(getPicSuccess, getPicFail);
 	}
 }
