@@ -7,7 +7,7 @@ Android release on the [Play Store](https://play.google.com/store/apps/details?i
 
 Latest Release
 -------------
-You can view and download the latest Servoy solution [here](https://github.com/Servoy/svyMobile/releases)
+You can download the latest Servoy solution [here](https://github.com/Servoy/svyMobile/releases)
 
 Documentation
 -------------
