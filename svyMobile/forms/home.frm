@@ -112,7 +112,7 @@ items:[
 {
 json:{
 styleClass:"brand-desc",
-text:"Modernize your <br> complex applications"
+text:"Modernize your  complex applications"
 },
 location:"3,3",
 name:"branddesc",
