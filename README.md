@@ -5,6 +5,10 @@ Demo
 -------------
 Android release on the [Play Store](https://play.google.com/store/apps/details?id=com.servoy.mobile)
 
+Latest Release
+-------------
+You can view and download the latest release binaries [here](https://github.com/Servoy/svyMobile/releases)
+
 Documentation
 -------------
 See the [Wiki](https://github.com/Servoy/svyMobile/wiki) for the available documentation
