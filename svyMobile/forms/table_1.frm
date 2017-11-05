@@ -29,7 +29,7 @@ location:{
 x:3,
 y:3
 },
-pageSize:1000,
+pageSize:0,
 performanceSettings:{
 svyUUID:"8A0DE716-3543-40C8-9452-586B61F0F3BB"
 },

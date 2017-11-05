@@ -68,7 +68,7 @@ uuid:"C7B267ED-3A40-4D7D-B0BB-02B64AC4BDAB"
 {
 json:{
 styleClass:"example-label",
-text:"Tables"
+text:"Extras Table"
 },
 location:"2,2",
 name:"gridlabel",
