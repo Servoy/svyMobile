@@ -27,6 +27,13 @@ var tblImg = 'media:///table.png';
 var mediaImg = 'media:///media.png';
 
 /**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"E567EE44-7BE7-486B-8A23-F4736F690516"}
+ */
+var pushImg = 'media:///push.png';
+
+/**
  * @param {JSEvent} event
  * @param {String} type
  * @private

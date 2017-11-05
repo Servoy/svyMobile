@@ -44,6 +44,13 @@ uuid:"E1726099-6EA0-4926-AF10-DCA05DEA108A"
 {
 encapsulation:0,
 mimeType:"image/png",
+name:"push.png",
+typeid:37,
+uuid:"48AEFA59-E122-4639-9705-A24F707150AD"
+},
+{
+encapsulation:0,
+mimeType:"image/png",
 name:"servoy.png",
 typeid:37,
 uuid:"04C60E10-38ED-41B5-A7D9-44436B277844"
