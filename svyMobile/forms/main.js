@@ -40,7 +40,7 @@ function onClick$menuItem(event, m) {
 		elements.navbar.brandText = 'LOCATION';
 	}
 	if (scopes.globals.currentTab == 'push') {
-		elements.navbar.brandText = 'PUSH MESSAGES';
+		elements.navbar.brandText = 'PUSH NOTIFY';
 	}
 
 	elements.tabless.removeAllTabs();		
