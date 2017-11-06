@@ -34,8 +34,8 @@ function onShow(firstShow, event) {
  *
  * @properties={typeid:24,uuid:"E1646396-9BDD-4D1D-BEBD-D05EB8C80E94"}
  */
-function updateToken(t) {
-	plugins.dialogs.showInfoDialog('INFO', 'Token updated : ' + t);
+function updateToken(t) {	
+	messages = 'Token Updated : ' + t;
 	token = t;
 }
 
