@@ -80,7 +80,7 @@ function onHide(event) {
  * @properties={typeid:24,uuid:"A053116D-72A4-4246-B49E-5326496D56BF"}
  */
 function sendNotification() {
-	messages = 'Sending message to connected devices.'
+	messages = 'Sending message to connected devices..'
 	plugins.svyphonegapPush.sendNotification(scopes.globals.fcmAuthKey, 'INFO', 'This is a notification from svyMobile', 'svyMobile', logInfo, logInfo)
 }
 
@@ -109,7 +109,7 @@ function onAction$generateToken(event) {
  */
 function onAction$subscribe(event) {
 	//subscribe to notifications where topic = svyMobile
-	messages = 'Subscribed to notification topics.'
+	messages = 'Subscribing to notification topics..'
 	plugins.svyphonegapPush.subscribeToTopic(logInfo, logInfo, 'svyMobile')
 }
 
@@ -124,6 +124,6 @@ function onAction$subscribe(event) {
  */
 function onAction$unsubscribe(event) {
 	//unSubscribe from notifications
-	messages = 'unSubscribed from notification topics.'
+	messages = 'Unsubscribing from notification topics..'
 	plugins.svyphonegapPush.unubscribeFromTopic(logInfo, logInfo, 'svyMobile')
 }
