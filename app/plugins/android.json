@@ -1,51 +1,57 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.servoy.mobile"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-crosswalk-webview": {
+      "XWALK_VERSION": "21+",
+      "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+      "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+      "XWALK_MODE": "embedded",
+      "XWALK_MULTIPLEAPK": "true",
+      "PACKAGE_NAME": "com.servoy.mobile"
     },
-    "installed_plugins": {
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-crosswalk-webview": {
-            "XWALK_VERSION": "21+",
-            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-            "XWALK_MODE": "embedded",
-            "XWALK_MULTIPLEAPK": "true",
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "it.innowatio.cordova.ios-fullscreen": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        }
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.servoy.mobile"
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.servoy.mobile"
-        }
+    "cordova-plugin-fcm": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    },
+    "it.innowatio.cordova.ios-fullscreen": {
+      "PACKAGE_NAME": "com.servoy.mobile"
     }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.servoy.mobile"
+    }
+  }
 }
