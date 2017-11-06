@@ -43,7 +43,7 @@ function onClick$menuItem(event, m) {
 		elements.navbar.brandText = 'PUSH NOTIFY';
 	}
 
-	elements.tabless.removeAllTabs();		
+	elements.tabless.removeAllTabs();
 	elements.tabless.addTab(selected);
 }
 
@@ -84,7 +84,13 @@ function onAction$info(event) {
 		}
 		break;
 	case 'location':
-		info_btn = plugins.dialogs.showInfoDialog('Geo Location', "This is an example of using geolocation alongside Google Maps using the phonegap location plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		info_btn = plugins.dialogs.showInfoDialog('Geo Location', "This is an example of using geolocation alongside Google Maps using the Phonegap location plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
+		}
+		break;
+	case 'push':
+		info_btn = plugins.dialogs.showInfoDialog('Push Notifications', "This is an example of using push notifications using Google Firebase Cloud Messaging via Phonegap push plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
 		if (info_btn == 'More Info') {
 			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
 		}
