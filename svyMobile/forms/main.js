@@ -90,7 +90,7 @@ function onAction$info(event) {
 		}
 		break;
 	case 'push':
-		info_btn = plugins.dialogs.showInfoDialog('Push Notifications', "This is an example of using push notifications using Google Firebase Cloud Messaging via Phonegap push plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		info_btn = plugins.dialogs.showInfoDialog('Push Notifications', "This is an example of push notifications with Google Firebase Cloud Messaging via the Phonegap push plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
 		if (info_btn == 'More Info') {
 			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
 		}
