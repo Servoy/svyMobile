@@ -96,5 +96,6 @@ name:"push",
 onHideMethodID:"B5116BBB-29C7-45FC-8BEC-EE5F4CBB9996",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 size:"300,480",
+styleClass:"examples",
 typeid:3,
 uuid:"7FE161D7-A319-4EAB-9736-6718D8F3158C"

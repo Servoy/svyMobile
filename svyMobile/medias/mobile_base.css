@@ -34,8 +34,9 @@ body {
 	transition: all 2s;
 }
 
-@
-keyframes intro { 0% {
+@keyframes intro { 
+	
+	0% {
 	opacity: 0.25;
 	-webkit-transform: scale(1.5);
 	-ms-transition: all 200ms ease-in;
@@ -43,14 +44,12 @@ keyframes intro { 0% {
 	-moz-transition: all 200ms ease-in;
 	-moz-transform: scale(1.5);
 	transition: all 200ms ease-in;
-	transform: scale(1.5);
-}
+	transform: scale(1.5);}
 
-100%{
+	100% {}
 }
-}
-@
-keyframes example { 0% {
+@keyframes example { 
+	0% {
 	opacity: 0.25;
 	-webkit-transform: scale(0.5);
 	-ms-transition: all 200ms ease-in;
@@ -58,11 +57,9 @@ keyframes example { 0% {
 	-moz-transition: all 200ms ease-in;
 	-moz-transform: scale(0.5);
 	transition: all 200ms ease-in;
-	transform: scale(0.5);
-}
+	transform: scale(0.5);}
 
-100%{
-}
+	100% {}
 }
 .center {
 	overflow: hidden;
