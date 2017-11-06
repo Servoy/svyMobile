@@ -17,6 +17,8 @@ function onSolutionOpen(arg, queryParams) {
 	//load api keys
 	mapAPIKey = application.getUserProperty('googleAPIKey');
 	
+	//load google firebase messaging key
+	fcmAuthKey = application.getUserProperty('fcmAuthKey');
 }
 
 /**
@@ -32,3 +34,10 @@ var currentTab = 'home'
  * @properties={typeid:35,uuid:"E6F1534E-7187-44E8-A2FC-745DC9C4429D"}
  */
 var mapAPIKey = ''
+	
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"AD1C9C1A-E7BC-489E-89FD-C05CC83A0BB1"}
+ */
+var fcmAuthKey = ''

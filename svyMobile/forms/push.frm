@@ -10,8 +10,32 @@ parameters:null\
 }\
 }",
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
+items:[
+{
+extendsID:"189CCC12-5ABA-40FE-B65A-9310A976CA2B",
+height:271,
+typeid:19,
+uuid:"27C275B4-C782-424F-82D5-CFA4C42C9601"
+},
+{
+anchors:11,
+customProperties:"",
+displaysTags:true,
+fontType:"Noto Sans,0,13",
+location:"5,10",
+name:"chart_type_pie",
+onActionMethodID:"A053116D-72A4-4246-B49E-5326496D56BF",
+size:"290,40",
+styleClass:"upload-btn",
+text:"<span><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"><\/i><\/span> Send A Notification",
+transparent:true,
+typeid:7,
+uuid:"85A823A2-8BC7-45FE-A1CF-F749BD7C0274"
+}
+],
 name:"push",
 onHideMethodID:"B5116BBB-29C7-45FC-8BEC-EE5F4CBB9996",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
+size:"300,480",
 typeid:3,
 uuid:"7FE161D7-A319-4EAB-9736-6718D8F3158C"
