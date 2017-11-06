@@ -23,7 +23,6 @@ function onShow(firstShow, event) {
 	plugins.svyBlockUI.stop();
 	//initialize and generate notification token
 	plugins.svyphonegapPush.getToken(updateToken, logInfo);
-	plugins.svyphonegapPush.onTokenRefresh(updateToken, logInfo)
 
 	//when receiving a notification display a message if UI is visible.
 	plugins.svyphonegapPush.onNotification(showMessage, logInfo, logInfo)
@@ -43,7 +42,7 @@ function updateToken(t) {
 /**
  * @properties={typeid:24,uuid:"BB50DBAD-D720-425A-8B2B-A8ED48F2339E"}
  */
-function showMessage(data) {
+function showMessage(data) {	
 	if (data.wasTapped) {
 		messages = 'Notification received while UI closed.'
 	} else {
