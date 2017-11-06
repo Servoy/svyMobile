@@ -1,0 +1,103 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-fcm",
+        "scope": null,
+        "escapedName": "cordova-plugin-fcm",
+        "name": "cordova-plugin-fcm",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/tuan/git/svyMobile/app"
+    ]
+  ],
+  "_from": "cordova-plugin-fcm@latest",
+  "_id": "cordova-plugin-fcm@2.1.2",
+  "_inCache": true,
+  "_location": "/cordova-plugin-fcm",
+  "_nodeVersion": "6.10.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-fcm-2.1.2.tgz_1496489321495_0.32410533796064556"
+  },
+  "_npmUser": {
+    "name": "fechanique",
+    "email": "felipe.echanique@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-fcm",
+    "scope": null,
+    "escapedName": "cordova-plugin-fcm",
+    "name": "cordova-plugin-fcm",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-fcm/-/cordova-plugin-fcm-2.1.2.tgz",
+  "_shasum": "5f2f7c12c16556d21d3021e7d3ad89e215825747",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-fcm",
+  "_where": "/home/tuan/git/svyMobile/app",
+  "author": {
+    "name": "Felipe Echanique Torres",
+    "email": "felipe.echanique@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fechanique/cordova-plugin-fcm/issues"
+  },
+  "cordova_name": "Cordova FCM Push Plugin",
+  "dependencies": {},
+  "description": "Google Firebase Cloud Messaging Cordova Push Plugin",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "5f2f7c12c16556d21d3021e7d3ad89e215825747",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-fcm/-/cordova-plugin-fcm-2.1.2.tgz"
+  },
+  "engines": [],
+  "englishdoc": "",
+  "gitHead": "037cb5bc6cc17247c46dd433f3440e080f5f1a62",
+  "homepage": "https://github.com/fechanique/cordova-plugin-fcm#readme",
+  "issue": "",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "notifications",
+    "push",
+    "firebase",
+    "fcm",
+    "ios",
+    "android",
+    "cordova"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "fechanique",
+      "email": "felipe.echanique@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-fcm",
+  "optionalDependencies": {},
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "readme": "ERROR: No README data found!",
+  "repo": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fechanique/cordova-plugin-fcm.git"
+  },
+  "scripts": {},
+  "version": "2.1.2"
+}
