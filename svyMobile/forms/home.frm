@@ -74,7 +74,7 @@ items:[
 json:{
 onActionMethodID:"760796E3-921F-4352-A7FB-F7F7539F668D",
 styleClass:"start-btn btn btn-default",
-text:"GET STARTED"
+text:"VIEW EXAMPLES"
 },
 name:"startbtn",
 typeName:"bootstrapcomponents-button",

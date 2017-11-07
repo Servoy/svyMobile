@@ -17,7 +17,7 @@ onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
 size:"46,32",
 styleClass:"info-btn",
-text:"<span class=\"fa fa-info-circle\" ><\/span>",
+text:"<span class=\"fa fa-info\"><\/span>",
 typeid:7,
 uuid:"1AD704FB-E4A8-4B20-8A5A-4D9525D83AED",
 visible:false

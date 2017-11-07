@@ -238,22 +238,25 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 	z-index: 200 !important;
 	font-size: 20px !important;
 	color: white;
-	background-color: transparent;
+	background-color: #222!important;
 	font-weight: bold !important;
 	font-size: 20px !important;
+	border-color: #222;
+	
 }
 
 .info-btn:active {
+	background-color: #222!important;
 	color: white;
 }
 
 .info-btn:hover {
-	background-color: transparent;
+	background-color: #222!important;
 	color: white;
 }
 
 .info-btn:visited {
-	background-color: transparent;
+	background-color: #222!important;
 	color: white;
 }
 
