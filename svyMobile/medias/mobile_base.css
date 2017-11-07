@@ -117,7 +117,7 @@ body {
 }
 
 .examples {
-	animation-name: slideIn;
+	animation-name: slideDown;
 	animation-duration: 1s;
 	font-weight: bold;
 	padding-top: 20px;
