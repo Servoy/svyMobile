@@ -63,6 +63,7 @@ typeid:7,
 uuid:"D2B24A2F-2FC9-474D-900A-E5F5B171FCB2"
 },
 {
+anchors:11,
 dataProviderID:"messages",
 location:"15,7",
 size:"270,43",
