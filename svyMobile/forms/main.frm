@@ -26,9 +26,8 @@ visible:false
 anchors:11,
 json:{
 anchors:11,
-brandLogo:"04C60E10-38ED-41B5-A7D9-44436B277844",
 brandLogoStyleClass:"logo",
-brandText:"SERVOY MOBILE",
+brandText:"SERVOY MOBILE DEMO",
 collapsing:false,
 fixed:"top",
 inverse:true,

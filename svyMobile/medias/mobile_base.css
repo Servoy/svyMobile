@@ -107,14 +107,14 @@ body {
 }
 
 .brand-logo {
-	width: 60px;
-	height: 60px;
+	width: 100px;
+	height: 100px;
 }
 
 .brand-text {
 	font-weight: bold;
 	text-align: center;
-	font-size: 23px;
+	font-size: 29px;
 }
 
 .brand-desc {
@@ -265,8 +265,9 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 }
 
 .push-btn {
+	background-color: orange!important;
 	font-size: 15px !important;
-	color: white;
+	color: black;
 	font-weight: bold !important;
 	border: 1px solid lightgrey;
 }
@@ -277,12 +278,12 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 
 .push-btn:hover {
 	background-color: white;
-	color: black;
+	color: gray;
 }
 
 .push-btn:visited {
 	background-color: white;
-	color: black;
+	color: white;
 }
 
 .upload-btn {
