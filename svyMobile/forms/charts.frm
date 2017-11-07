@@ -69,6 +69,6 @@ name:"charts",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 showInMenu:true,
 size:"310,333",
-styleClass:"chart-main animate",
+styleClass:"chart-main slide-up-animation",
 typeid:3,
 uuid:"A4C021C4-AC1E-4214-AB85-F38E418846F7"

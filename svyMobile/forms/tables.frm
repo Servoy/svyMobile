@@ -40,6 +40,6 @@ name:"tables",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 showInMenu:true,
 size:"310,333",
-styleClass:"tables animate",
+styleClass:"tables slide-up-animation",
 typeid:3,
 uuid:"A25A39E6-9C8C-4920-BBE5-09A9EDE3C2FD"
