@@ -44,9 +44,9 @@ function updateToken(t) {
  */
 function showMessage(data) {	
 	if (data.wasTapped) {
-		messages = 'Notification received while UI closed.'
+		messages = 'Notification received <br> while UI closed.'
 	} else {
-		messages = 'Notification received while UI visible.'
+		messages = 'Notification received <br> while UI visible.'
 	}
 }
 
@@ -80,7 +80,7 @@ function onHide(event) {
  * @properties={typeid:24,uuid:"A053116D-72A4-4246-B49E-5326496D56BF"}
  */
 function sendNotification() {
-	messages = 'Sending message to connected devices..'
+	messages = 'Sending message <br> to connected devices..'
 	plugins.svyphonegapPush.sendNotification(scopes.globals.fcmAuthKey, 'INFO', 'This is a notification from svyMobile', 'svyMobile', logInfo, logInfo)
 }
 
@@ -109,7 +109,7 @@ function onAction$generateToken(event) {
  */
 function onAction$subscribe(event) {
 	//subscribe to notifications where topic = svyMobile
-	messages = 'Subscribing to notification topics..'
+	messages = 'Subscribing to <br> notification topics..'
 	plugins.svyphonegapPush.subscribeToTopic(logInfo, logInfo, 'svyMobile')
 }
 
@@ -124,6 +124,6 @@ function onAction$subscribe(event) {
  */
 function onAction$unsubscribe(event) {
 	//unSubscribe from notifications
-	messages = 'Unsubscribing from notification topics..'
+	messages = 'Unsubscribing from <br> notification topics..'
 	plugins.svyphonegapPush.unubscribeFromTopic(logInfo, logInfo, 'svyMobile')
 }
