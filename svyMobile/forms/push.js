@@ -19,8 +19,7 @@ var token
  * @properties={typeid:24,uuid:"79EA9E16-E42E-4F3C-B292-DBEB69BAB528"}
  */
 function onShow(firstShow, event) {
-	messages = '';
-	plugins.svyBlockUI.stop();
+	messages = '';	
 	//initialize and generate notification token
 	plugins.svyphonegapPush.getToken(updateToken, logInfo);
 

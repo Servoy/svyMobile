@@ -22,6 +22,7 @@ value:"subtotal"
 foundsetSelector:"orders_to_order_details"
 },
 hoverBackgroundColor:"hoverBackgroundColor",
+legendLabel:"orderid",
 location:{
 x:5,
 y:5
@@ -31,8 +32,7 @@ size:{
 height:227,
 width:300
 },
-styleClass:"chart",
-type:"pie"
+styleClass:"chart"
 },
 location:"5,5",
 name:"chart",
@@ -88,7 +88,7 @@ uuid:"F9903255-1DB1-4280-8251-EA3531EBF1B9"
 }
 ],
 name:"chart_5",
-onShowMethodID:"-1",
+onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 showInMenu:true,
 size:"310,333",
 styleClass:"chart-main",

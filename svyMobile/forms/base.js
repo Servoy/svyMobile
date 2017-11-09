@@ -34,6 +34,5 @@ function goToExamples(event){
  *
  * @properties={typeid:24,uuid:"969E7484-A39B-436D-AA0D-FD2BA9876415"}
  */
-function onShow(firstShow, event) {
-	plugins.svyBlockUI.stop(200);
+function onShow(firstShow, event) {	
 }

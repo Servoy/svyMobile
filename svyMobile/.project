@@ -7,6 +7,7 @@
 		<project>servoy-extra-components</project>
 		<project>googlemaps</project>
 		<project>svyphonegap</project>
+		<project>svychartjs</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

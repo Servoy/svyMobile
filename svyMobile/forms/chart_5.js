@@ -24,13 +24,12 @@ var type = 0;
  * @properties={typeid:24,uuid:"DF080F5B-F3D8-4C64-B558-0B2B5AACCA10"}
  */
 function onClick$switchTypes(index, label, value) {
-
 	switch (type) {
 	case 0:
 		elements.chart.type = 'pie';
 		break;
 	case 1:
-		elements.chart.type = 'bar';
+		elements.chart.type = 'polarArea';
 		break;
 	case 2:
 		elements.chart.type = 'doughnut';
@@ -43,5 +42,14 @@ function onClick$switchTypes(index, label, value) {
 	if (type == 4) {
 		type = 0;
 	}
+}
 
+/**
+ * @param {Boolean} firstShow
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"5D9E91C8-A8CD-4BAB-86E7-C0719BF24FE9"}
+ */
+function onShow(firstShow, event) {	
+	_super.onShow(firstShow, event)	
 }

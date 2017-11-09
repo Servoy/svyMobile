@@ -10,7 +10,18 @@
  */
 function onShow(firstShow, event) {
 	_super.onShow(firstShow, event);
-	//Your data node object which requires a type and the data.
+	randomizeAndDraw()
+}
+
+/**
+ * @properties={typeid:24,uuid:"031A1144-1A9E-4D7B-80FA-E04E9B3C224A"}
+ */
+function randomizeAndDraw() {
+	var options = {
+		legend: {
+			display: false
+		}
+	}
 	/**
 	 * @properties={typeid:35,uuid:"63796707-1832-4650-A4C1-0D847CC7C485",variableType:-4}
 	 */
@@ -19,22 +30,16 @@ function onShow(firstShow, event) {
 		data: {
 			labels: ["Red",
 			"Green",
-			"Yellow","Black"],
+			"Yellow", "Black"],
 			datasets: [{
-				data: [Number(Math.random()*100).toFixed(0),Number(Math.random()*100).toFixed(0),Number(Math.random()*100).toFixed(0),Number(Math.random()*100).toFixed(0)],
+				data: [Number(Math.random() * 100).toFixed(0), Number(Math.random() * 100).toFixed(0), Number(Math.random() * 100).toFixed(0), Number(Math.random() * 100).toFixed(0)],
 				backgroundColor: ["#F7464A",
 				"#46BFBD",
-				"#FDB45C","black"],
+				"#FDB45C", "black"],
 				hoverBackgroundColor: ["#FF5A5E",
 				"#5AD3D1",
-				"#FFC870","black"]
+				"#FFC870", "black"]
 			}]
-		}
-	}
-
-	var options = {
-		legend: {
-			display: false
 		}
 	}
 

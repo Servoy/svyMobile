@@ -19,10 +19,12 @@ uuid:"2278F0A3-3187-4873-9517-0CFA0E7FE3A9"
 anchors:15,
 json:{
 anchors:15,
+legendLabel:null,
 location:{
 x:5,
 y:5
 },
+onClick:"7136C636-4587-44D6-B86B-8F84A250A350",
 size:{
 height:445,
 width:300

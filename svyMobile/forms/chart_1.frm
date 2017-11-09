@@ -17,6 +17,7 @@ location:{
 x:5,
 y:5
 },
+onClick:"853D7DF4-4605-453A-B757-918A2576BF57",
 size:{
 height:445,
 width:300

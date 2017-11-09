@@ -23,8 +23,7 @@ function onClick$menuItem(event, m) {
 		elements.infobtn.visible = true;
 		elements.navbar.brandLogo = 'media:///servoy.png'
 	} else {
-		elements.navbar.brandLogo = 'media:///back.png'
-		plugins.svyBlockUI.show('loading...');
+		elements.navbar.brandLogo = 'media:///back.png'		
 	}
 
 	if (scopes.globals.currentTab == 'tables') {
