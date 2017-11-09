@@ -52,11 +52,14 @@ function onClick$switchTypes(index, label, value) {
  */
 function onShow(firstShow, event) {
 	var options = {
-		title:{
-			display:true,
-			text:'Foundset Bound Chart'
+		legend: {
+			display: false
+		},
+		title: {
+			display: true,
+			text: 'Foundset Bound Chart'
 		}
 	}
 	elements.chart.setOptions(options)
-	_super.onShow(firstShow, event)	
+	_super.onShow(firstShow, event)
 }
