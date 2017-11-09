@@ -35,5 +35,7 @@ function getLocationFail(err) {
  */
 function onShow(firstShow, event) {
 	_super.onShow(firstShow, event)
+	if (firstShow){
 	getLocation(event);
+	}
 }
