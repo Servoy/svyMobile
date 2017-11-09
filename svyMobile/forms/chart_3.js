@@ -18,8 +18,13 @@ function onShow(firstShow, event) {
  * @properties={typeid:24,uuid:"D6C493F8-878B-4743-8E39-C961E913B747"}
  */
 function randomizeAndDraw(){
+	var co = scopes.stringUtils.fnToString(scopes.chartExamples.colorize);
+	var bw = scopes.stringUtils.fnToString(scopes.chartExamples.borderWidth);
+	var hbw = scopes.stringUtils.fnToString(scopes.chartExamples.hoverBorderWidth);
+	var ra = scopes.stringUtils.fnToString(scopes.chartExamples.radius);
+	
 	var DATA_COUNT = scopes.chartExamples.randomIntFromInterval(10,50);
-
+	
 	function generateData() {
 		var d = [];
 		var i;
@@ -51,30 +56,6 @@ function randomizeAndDraw(){
 		}
 	};
 
-	var options = {
-		aspectRatio: 1,
-		legend: false,
-		tooltips: false,
-
-		elements: {
-			point: {
-				backgroundColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
-
-				borderColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
-
-				borderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.borderWidth },
-
-				hoverBackgroundColor: 'transparent',
-
-				hoverBorderColor: 'gray',
-
-				hoverBorderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.hoverBorderWidth },
-
-				radius: { isFunction: true, params: ['context'], expression: scopes.chartExamples.radius }
-			}
-		}
-	};
-	
 //	var options = {
 //		aspectRatio: 1,
 //		legend: false,
@@ -82,22 +63,46 @@ function randomizeAndDraw(){
 //
 //		elements: {
 //			point: {
-//				backgroundColor: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.colorize) },
+//				backgroundColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
 //
-//				borderColor: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.colorize) },
+//				borderColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
 //
-//				borderWidth: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.borderWidth) },
+//				borderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.borderWidth },
 //
 //				hoverBackgroundColor: 'transparent',
 //
 //				hoverBorderColor: 'gray',
 //
-//				hoverBorderWidth: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.hoverBorderWidth) },
+//				hoverBorderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.hoverBorderWidth },
 //
-//				radius: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.radius) }
+//				radius: { isFunction: true, params: ['context'], expression: scopes.chartExamples.radius }
 //			}
 //		}
 //	};
+	
+	var options = {
+		aspectRatio: 1,
+		legend: false,
+		tooltips: false,
+
+		elements: {
+			point: {
+				backgroundColor: { isFunction: true, params: ['context'], expression: co },
+
+				borderColor: { isFunction: true, params: ['context'], expression: co },
+
+				borderWidth: { isFunction: true, params: ['context'], expression: bw },
+
+				hoverBackgroundColor: 'transparent',
+
+				hoverBorderColor: 'gray',
+
+				hoverBorderWidth: { isFunction: true, params: ['context'], expression: hbw },
+
+				radius: { isFunction: true, params: ['context'], expression: ra }
+			}
+		}
+	};
 
 	//Initialize the chart by using setData
 	elements.chart.setData(data);
