@@ -8,6 +8,7 @@
 		<project>googlemaps</project>
 		<project>svyphonegap</project>
 		<project>svyChartUtils</project>
+		<project>svychartjs</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
