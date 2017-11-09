@@ -13,7 +13,7 @@ items:[
 anchors:6,
 formIndex:1,
 location:"270,413",
-onActionMethodID:"-1",
+onActionMethodID:"0C858346-75E0-4139-8FAA-B151ACA2F852",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
 size:"36,37",
@@ -37,6 +37,7 @@ location:{
 x:5,
 y:411
 },
+onActionMethodID:"0C858346-75E0-4139-8FAA-B151ACA2F852",
 placeholderText:"Search...",
 size:{
 height:41,
@@ -45,7 +46,7 @@ width:302
 styleClass:"form-control search-text"
 },
 location:"5,411",
-name:"textbox_834",
+name:"search_box",
 size:"302,41",
 typeName:"bootstrapcomponents-textbox",
 typeid:47,
