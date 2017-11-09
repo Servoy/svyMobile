@@ -74,7 +74,7 @@ function onClick$switchTypes(index, label, value) {
  * @properties={typeid:24,uuid:"5D9E91C8-A8CD-4BAB-86E7-C0719BF24FE9"}
  */
 function onShow(firstShow, event) {
-	plugins.svyBlockUI.stop();
+	plugins.svyBlockUI.show('loading...')
 	var options1 = {
 		legend: {
 			display: false
@@ -85,5 +85,6 @@ function onShow(firstShow, event) {
 		}
 	}
 	elements.chart.setOptions(options1)
+	plugins.svyBlockUI.stop();
 	_super.onShow(firstShow, event)
 }

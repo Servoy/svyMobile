@@ -38,7 +38,7 @@ x:7,
 y:6
 },
 onActionMethodID:"0C858346-75E0-4139-8FAA-B151ACA2F852",
-placeholderText:"Search...",
+placeholderText:"Search for an item.. (i.e chai)",
 size:{
 height:41,
 width:302
