@@ -58,22 +58,46 @@ function randomizeAndDraw(){
 
 		elements: {
 			point: {
-				backgroundColor: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.colorize) },
+				backgroundColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
 
-				borderColor: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.colorize) },
+				borderColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
 
-				borderWidth: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.borderWidth) },
+				borderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.borderWidth },
 
 				hoverBackgroundColor: 'transparent',
 
 				hoverBorderColor: 'gray',
 
-				hoverBorderWidth: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.hoverBorderWidth) },
+				hoverBorderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.hoverBorderWidth },
 
-				radius: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.radius) }
+				radius: { isFunction: true, params: ['context'], expression: scopes.chartExamples.radius }
 			}
 		}
 	};
+	
+//	var options = {
+//		aspectRatio: 1,
+//		legend: false,
+//		tooltips: false,
+//
+//		elements: {
+//			point: {
+//				backgroundColor: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.colorize) },
+//
+//				borderColor: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.colorize) },
+//
+//				borderWidth: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.borderWidth) },
+//
+//				hoverBackgroundColor: 'transparent',
+//
+//				hoverBorderColor: 'gray',
+//
+//				hoverBorderWidth: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.hoverBorderWidth) },
+//
+//				radius: { isFunction: true, params: ['context'], expression: scopes.stringUtils.fnToString(scopes.chartExamples.radius) }
+//			}
+//		}
+//	};
 
 	//Initialize the chart by using setData
 	elements.chart.setData(data);
