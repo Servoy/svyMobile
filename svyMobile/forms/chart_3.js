@@ -78,4 +78,7 @@ function randomizeAndDraw(){
 	//Initialize the chart by using setData
 	elements.chart.setData(data);
 	elements.chart.setOptions(options);
+	plugins.dialogs.showInfoDialog('Options',scopes.stringUtils.fnToString(scopes.chartExamples.colorize));
+	plugins.dialogs.showInfoDialog('Options',scopes.stringUtils.fnToString(scopes.chartExamples.radius));
+	plugins.dialogs.showInfoDialog('Options',d1);
 }
