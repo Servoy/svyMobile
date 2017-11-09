@@ -12,7 +12,7 @@ items:[
 {
 anchors:3,
 formIndex:1,
-location:"272,8",
+location:"269,8",
 onActionMethodID:"0C858346-75E0-4139-8FAA-B151ACA2F852",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
@@ -34,7 +34,7 @@ json:{
 anchors:11,
 dataProviderID:"searchTerm",
 location:{
-x:7,
+x:4,
 y:6
 },
 onActionMethodID:"0C858346-75E0-4139-8FAA-B151ACA2F852",
@@ -45,7 +45,7 @@ width:302
 },
 styleClass:"form-control search-text"
 },
-location:"7,6",
+location:"4,6",
 name:"search_box",
 size:"302,41",
 typeName:"bootstrapcomponents-textbox",
