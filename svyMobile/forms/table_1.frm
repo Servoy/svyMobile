@@ -1,5 +1,5 @@
 customProperties:"formComponent:false",
-dataSource:"db:/example_data/orders",
+dataSource:"db:/example_data/customers",
 encapsulation:60,
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
@@ -9,14 +9,14 @@ json:{
 anchors:15,
 columns:[
 {
-dataprovider:"orders_to_customers.companyname",
-headerText:"Company Name",
-svyUUID:"5A7A5B24-8DA8-4ABE-820F-72F68EDF4701"
+dataprovider:"customerid",
+headerText:"Customer",
+svyUUID:"ED534EF7-C3FE-42FC-AED8-3A562B59B57D"
 },
 {
-dataprovider:"orderdate",
+dataprovider:"country",
 format:"MM/dd/yyyy",
-headerText:"Date",
+headerText:"Country",
 svyUUID:"129D034D-06C0-4D5D-8A7E-259812FADCDD",
 width:"90"
 }

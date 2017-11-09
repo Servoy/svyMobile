@@ -32,7 +32,8 @@ size:{
 height:227,
 width:300
 },
-styleClass:"chart"
+styleClass:"chart",
+type:"horizontalBar"
 },
 location:"5,5",
 name:"chart",

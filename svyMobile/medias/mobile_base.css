@@ -460,3 +460,18 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 .nav-tabs {
 	border-bottom: none;
 }
+
+.btn-search{
+	font-weight:bold;
+	font-size: 17px;
+	border: none;
+}
+
+.search-text {
+	font-weight: bold;
+}
+
+.search-text: after{
+	font-family: FontAwesome;
+    content: "\f095";
+}

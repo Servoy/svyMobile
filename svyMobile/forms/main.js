@@ -27,7 +27,7 @@ function onClick$menuItem(event, m) {
 	}
 
 	if (scopes.globals.currentTab == 'tables') {
-		elements.navbar.brandText = 'TABLES';
+		elements.navbar.brandText = 'DATA';
 	}
 	if (scopes.globals.currentTab == 'charts') {
 		elements.navbar.brandText = 'CHARTS';

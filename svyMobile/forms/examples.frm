@@ -183,7 +183,7 @@ parameters:[\
 json:{
 onActionMethodID:"F2366CB2-D69A-4707-BE46-C5E4EDECB3CD",
 styleClass:"example-label",
-text:"Extras Table"
+text:"Data"
 },
 location:"2,2",
 name:"gridlabel",
