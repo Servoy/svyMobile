@@ -27,6 +27,7 @@ var borderWidth = function(context) {
  * @properties={typeid:35,uuid:"6A372696-DF12-47E9-98AA-BA32D4BBB4D9",variableType:-4}
  */
 var colorize = function(context) {
+	/** @type {{x:Number,y:Number,v:Number}} */	
 	var value = context.dataset.data[context.dataIndex];	
 	var x = value.x / 100;
 	var y = value.y / 100;
