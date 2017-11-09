@@ -18,6 +18,10 @@ function onShow(firstShow, event) {
  */
 function randomizeAndDraw() {
 	var options = {
+		title: {
+			display: true,
+			text: 'Horizontal Bar Chart'
+		},
 		legend: {
 			display: false
 		}

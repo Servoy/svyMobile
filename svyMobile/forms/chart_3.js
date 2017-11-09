@@ -13,22 +13,21 @@ function onShow(firstShow, event) {
 	randomizeAndDraw()
 }
 
-
 /**
  * @properties={typeid:24,uuid:"D6C493F8-878B-4743-8E39-C961E913B747"}
  */
-function randomizeAndDraw(){	
-	var DATA_COUNT = scopes.chartExamples.randomIntFromInterval(10,50);
-	
+function randomizeAndDraw() {
+	var DATA_COUNT = scopes.chartExamples.randomIntFromInterval(10, 50);
+
 	function generateData() {
 		var d = [];
 		var i;
 
 		for (i = 0; i < DATA_COUNT; ++i) {
 			d.push({
-				x: scopes.chartExamples.randomIntFromInterval(-150,150),
-				y: scopes.chartExamples.randomIntFromInterval(-150,150),
-				v: scopes.chartExamples.randomIntFromInterval(0,1000)
+				x: scopes.chartExamples.randomIntFromInterval(-150, 150),
+				y: scopes.chartExamples.randomIntFromInterval(-150, 150),
+				v: scopes.chartExamples.randomIntFromInterval(0, 1000)
 			});
 		}
 
@@ -52,6 +51,10 @@ function randomizeAndDraw(){
 	};
 
 	var options = {
+		title: {
+			display: true,
+			text: 'Scripted Bubble Chart'
+		},
 		aspectRatio: 1,
 		legend: false,
 		tooltips: false,

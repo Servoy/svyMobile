@@ -50,6 +50,13 @@ function onClick$switchTypes(index, label, value) {
  *
  * @properties={typeid:24,uuid:"5D9E91C8-A8CD-4BAB-86E7-C0719BF24FE9"}
  */
-function onShow(firstShow, event) {	
+function onShow(firstShow, event) {
+	var options = {
+		title:{
+			display:true,
+			text:'Foundset Bound Chart'
+		}
+	}
+	elements.chart.setOptions(options)
 	_super.onShow(firstShow, event)	
 }

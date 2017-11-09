@@ -36,7 +36,14 @@ function randomizeAndDraw() {
 			}]
 		}
 	}
-
+	
+	var options = {
+		title: {
+			display: true,
+			text: 'Pie Chart'
+		}
+	}
 	//Initialize the chart by using setData
 	elements.chart.setData(data);
+	elements.chart.setOptions(options);
 }
