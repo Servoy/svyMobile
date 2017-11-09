@@ -36,7 +36,7 @@ function randomizeAndDraw() {
 			"Green",
 			"Yellow", "Black"],
 			datasets: [{
-				data: [Number(Math.random() * 100).toFixed(0), Number(Math.random() * 100).toFixed(0), Number(Math.random() * 100).toFixed(0), Number(Math.random() * 100).toFixed(0)],
+				data: [scopes.chartExamples.randomIntFromInterval(0,100), scopes.chartExamples.randomIntFromInterval(0,100), scopes.chartExamples.randomIntFromInterval(0,100), scopes.chartExamples.randomIntFromInterval(0,100)],
 				backgroundColor: ["#F7464A",
 				"#46BFBD",
 				"#FDB45C", "black"],
