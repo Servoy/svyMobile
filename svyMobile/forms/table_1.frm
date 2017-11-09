@@ -1,5 +1,5 @@
 customProperties:"formComponent:false",
-dataSource:"db:/example_data/customers",
+dataSource:"db:/example_data/products",
 encapsulation:60,
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
@@ -9,14 +9,14 @@ json:{
 anchors:15,
 columns:[
 {
-dataprovider:"customerid",
-headerText:"Customer",
+dataprovider:"productname",
+headerText:"Product Name",
 svyUUID:"ED534EF7-C3FE-42FC-AED8-3A562B59B57D"
 },
 {
-dataprovider:"country",
-format:"MM/dd/yyyy",
-headerText:"Country",
+dataprovider:"unitprice",
+format:"¤#.00",
+headerText:"Price",
 svyUUID:"129D034D-06C0-4D5D-8A7E-259812FADCDD",
 width:"90"
 }

@@ -14,9 +14,9 @@ var searchTerm;
  * @AllowToRunInFind
  */
 function onAction$search(event) {
-	/** @type {JSFoundSet<db:/example_data/customers>} */
+	/** @type {JSFoundSet<db:/example_data/products>} */
 	var fs = forms.table_1.getFS();
 	fs.find();
-	fs.customerid = '%' + searchTerm + '%';
+	fs.productname = '#%' + searchTerm + '%';
 	fs.search();	
 }
