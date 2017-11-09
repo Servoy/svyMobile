@@ -42,6 +42,29 @@ function onClick$switchTypes(index, label, value) {
 	if (type == 4) {
 		type = 0;
 	}
+	var options1 = {
+		legend: {
+			display: false
+		},
+		title: {
+			display: true,
+			text: 'Foundset Bound Chart'
+		}
+	}
+	var options2 = {
+		legend: {
+			display: true
+		},
+		title: {
+			display: true,
+			text: 'Foundset Bound Chart'
+		}
+	}
+	if (elements.chart.type == 'horizontalBar') {
+		elements.chart.setOptions(options1)
+	} else {
+		elements.chart.setOptions(options2)
+	}
 }
 
 /**
@@ -51,15 +74,6 @@ function onClick$switchTypes(index, label, value) {
  * @properties={typeid:24,uuid:"5D9E91C8-A8CD-4BAB-86E7-C0719BF24FE9"}
  */
 function onShow(firstShow, event) {
-	var options = {
-		legend: {
-			display: false
-		},
-		title: {
-			display: true,
-			text: 'Foundset Bound Chart'
-		}
-	}
-	elements.chart.setOptions(options)
+
 	_super.onShow(firstShow, event)
 }
