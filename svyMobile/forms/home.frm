@@ -34,7 +34,7 @@ items:[
 {
 json:{
 styleClass:"brand-text",
-text:"Servoy"
+text:"SERVOY"
 },
 location:"2,2",
 name:"brandtext",

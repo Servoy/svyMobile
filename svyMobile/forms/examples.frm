@@ -92,7 +92,7 @@ parameters:[\
 json:{
 onActionMethodID:"F2366CB2-D69A-4707-BE46-C5E4EDECB3CD",
 styleClass:"example-label",
-text:"Push"
+text:"PUSH"
 },
 location:"252,303",
 name:"pushlabel",
@@ -183,7 +183,7 @@ parameters:[\
 json:{
 onActionMethodID:"F2366CB2-D69A-4707-BE46-C5E4EDECB3CD",
 styleClass:"example-label",
-text:"Data"
+text:"TABLES"
 },
 location:"2,2",
 name:"gridlabel",
@@ -258,7 +258,7 @@ parameters:[\
 json:{
 onActionMethodID:"F2366CB2-D69A-4707-BE46-C5E4EDECB3CD",
 styleClass:"example-label",
-text:"Charts"
+text:"CHARTS"
 },
 name:"Charts",
 typeName:"bootstrapcomponents-label",
@@ -323,7 +323,7 @@ parameters:[\
 json:{
 onActionMethodID:"F2366CB2-D69A-4707-BE46-C5E4EDECB3CD",
 styleClass:"example-label",
-text:"Media"
+text:"MEDIA"
 },
 location:"558,815",
 name:"imagelabel",
@@ -398,7 +398,7 @@ parameters:[\
 }",
 json:{
 onActionMethodID:"F2366CB2-D69A-4707-BE46-C5E4EDECB3CD",
-text:"Location"
+text:"LOCATION"
 },
 location:"575,821",
 name:"label_1",

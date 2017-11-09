@@ -27,16 +27,16 @@ function onClick$menuItem(event, m) {
 	}
 
 	if (scopes.globals.currentTab == 'tables') {
-		elements.navbar.brandText = 'DATA';
+		elements.navbar.brandText = 'DATA & TABLES';
 	}
 	if (scopes.globals.currentTab == 'charts') {
-		elements.navbar.brandText = 'CHARTS';
+		elements.navbar.brandText = 'DATA & CHARTS';
 	}
 	if (scopes.globals.currentTab == 'images') {
-		elements.navbar.brandText = 'MEDIA';
+		elements.navbar.brandText = 'USING MEDIA';
 	}
 	if (scopes.globals.currentTab == 'location') {
-		elements.navbar.brandText = 'LOCATION';
+		elements.navbar.brandText = 'USING LOCATION';
 	}
 	if (scopes.globals.currentTab == 'push') {
 		elements.navbar.brandText = 'PUSH NOTIFY';
