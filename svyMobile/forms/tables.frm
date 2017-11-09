@@ -11,6 +11,7 @@ extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
 anchors:6,
+formIndex:1,
 location:"270,413",
 onActionMethodID:"-1",
 onDoubleClickMethodID:"-1",
@@ -36,7 +37,6 @@ location:{
 x:5,
 y:411
 },
-onActionMethodID:"0C858346-75E0-4139-8FAA-B151ACA2F852",
 placeholderText:"Search...",
 size:{
 height:41,

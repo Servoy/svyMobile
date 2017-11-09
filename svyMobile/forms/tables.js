@@ -18,6 +18,16 @@ function onAction$search(event) {
 	var fs = forms.table_1.getFS();
 	fs.find();
 	fs.customerid = '%' + searchTerm + '%';
-	fs.search();
-	application.output(fs.getSize() + ' ' + searchTerm)
+	fs.search();	
+}
+
+/**
+ * @param {Boolean} firstShow
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"C51A97F5-A536-4215-8FBD-5336FDB93E2E"}
+ */
+function onShow(firstShow, event) {
+	plugins.keyListener.addKeyListener(elements.textbox_834,onAction$search(event))
+	return _super.onShow(firstShow, event)
 }
