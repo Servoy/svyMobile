@@ -1,4 +1,11 @@
 /**
+* Simulate Pressing the back button on header
+*/
+function goBack() {
+element.all(by.css('a[href*="#"]')).get(0).click();
+}
+
+/**
 * Simulate Pressing the enter key
 */
 function pressEnter(){
@@ -28,9 +35,9 @@ describe('Test A', function() {
 });
 
 
-//Test input
+//Test App
 describe('Test B', function() {
-  it('Fill in input and validate', function() {          
+  it('Fill in input and validate', function() {              
 
     browser.get('http://localhost:8080/solutions/svyMobile/index.html?f=main');
     
@@ -55,7 +62,7 @@ describe('Test B', function() {
     expect(tf.getText()).toEqual('Chai');    
     
     // leave tables view
-    element.all(by.css('a[href*="#"]')).get(0).click();
+    goBack();
     waitFor(tablesBtn);    
 
     // open up tables example again
@@ -65,6 +72,8 @@ describe('Test B', function() {
     input.clear(); 
     pressEnter();    
 
+    goBack();
+    waitFor(tablesBtn);    
 
     //wait a second...
     browser.pause();
