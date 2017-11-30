@@ -186,7 +186,7 @@ styleClass:"example-label",
 text:"TABLES"
 },
 location:"2,2",
-name:"gridlabel",
+name:"tables",
 typeName:"bootstrapcomponents-label",
 typeid:47,
 uuid:"FFEEA42C-E7A3-4869-A5B1-0007B162E8F8"
