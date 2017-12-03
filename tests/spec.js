@@ -26,7 +26,7 @@ describe('Test A', function() {
   it('Review The title', function() {
     //adjust height/width for mobile testing
     var width = 360;
-    var height = 680;
+    var height = 700;
     browser.driver.manage().window().setSize(width, height);
     browser.get('http://localhost:8080/solutions/svyMobile/index.html?f=main');
     //check title
@@ -45,9 +45,10 @@ describe('Test B', function() {
     var startBtn = element(by.buttonText("VIEW EXAMPLES"))    
     waitFor(startBtn);    
     startBtn.click();    
-      
-    // open up tables example
-    var tablesBtn = element(by.name('tables'));
+
+    //identify all the buttons on examples screen;
+    var tablesBtn = element(by.name('tables'));  
+    // open up tables example    
     waitFor(tablesBtn);    
     tablesBtn.click();            
     
