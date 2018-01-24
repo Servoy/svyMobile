@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>svychartjs</name>
+	<name>resources</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -12,7 +12,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.servoy.eclipse.core.ServoyNGPackage</nature>
+		<nature>com.servoy.eclipse.core.ServoyResources</nature>
 		<nature>sj.jsonSchemaValidationNature</nature>
 	</natures>
 </projectDescription>
