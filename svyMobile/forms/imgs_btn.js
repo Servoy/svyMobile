@@ -3,7 +3,7 @@
  *
  * @private
  *
- * @properties={typeid:24,uuid:"51B4F3A1-15C7-4402-9E6E-03AC6455EADA"}
+ * @properties={typeid:24,uuid:"5398F6E9-0D7C-4379-85CE-B7102E8CD87A"}
  */
 function uploadImg(event) {
 	forms.images.getPicture(event, 'get')
@@ -14,7 +14,7 @@ function uploadImg(event) {
  *
  * @private
  *
- * @properties={typeid:24,uuid:"3B489734-D2B1-423C-96CA-98EC71FC76F7"}
+ * @properties={typeid:24,uuid:"AEEE84E2-036D-4960-ACF2-43CC0E46F91E"}
  */
 function takeImg(event) {
 	forms.images.getPicture(event, 'take')

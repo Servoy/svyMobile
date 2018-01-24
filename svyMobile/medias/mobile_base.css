@@ -432,6 +432,10 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 }
 
 
+.images-btn-container {
+	overflow: hidden;
+}
+
 .upload-img-btn:before {
     font-family: FontAwesome;
     content: "\f1c5";
