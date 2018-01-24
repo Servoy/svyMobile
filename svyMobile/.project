@@ -6,9 +6,9 @@
 		<project>resources</project>
 		<project>servoy-extra-components</project>
 		<project>googlemaps</project>
-		<project>svyphonegap</project>
 		<project>svyChartUtils</project>
 		<project>svychartjs</project>
+		<project>svyphonegap</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

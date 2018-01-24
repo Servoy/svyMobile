@@ -10,10 +10,10 @@ encapsulation:60,
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
-extendsID:"189CCC12-5ABA-40FE-B65A-9310A976CA2B",
-height:455,
+height:454,
+partType:5,
 typeid:19,
-uuid:"2278F0A3-3187-4873-9517-0CFA0E7FE3A9"
+uuid:"AC4A0F18-C496-4935-A67D-0E58B16F0532"
 },
 {
 anchors:15,

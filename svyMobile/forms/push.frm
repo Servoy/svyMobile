@@ -12,10 +12,10 @@ parameters:null\
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
-extendsID:"189CCC12-5ABA-40FE-B65A-9310A976CA2B",
-height:271,
+height:248,
+partType:5,
 typeid:19,
-uuid:"27C275B4-C782-424F-82D5-CFA4C42C9601"
+uuid:"15BF2057-A65B-4C2D-8B80-0BDBFE06F2C4"
 },
 {
 anchors:11,

@@ -23,7 +23,7 @@ function onClick$menuItem(event, m) {
 		elements.infobtn.visible = true;
 		elements.navbar.brandLogo = 'media:///servoy.png'
 	} else {
-		elements.navbar.brandLogo = 'media:///back.png'		
+		elements.navbar.brandLogo = 'media:///back.png'
 	}
 
 	if (scopes.globals.currentTab == 'tables') {
@@ -40,6 +40,9 @@ function onClick$menuItem(event, m) {
 	}
 	if (scopes.globals.currentTab == 'push') {
 		elements.navbar.brandText = 'PUSH NOTIFY';
+	}
+	if (scopes.globals.currentTab == 'fingerprint') {
+		elements.navbar.brandText = 'FINGERPRINT';
 	}
 
 	elements.tabless.removeAllTabs();
@@ -90,6 +93,12 @@ function onAction$info(event) {
 		break;
 	case 'push':
 		info_btn = plugins.dialogs.showInfoDialog('Push Notifications', "This is an example of push notifications with Google Firebase Cloud Messaging via the Phonegap push plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
+		}
+		break;
+	case 'fingerprint':
+		info_btn = plugins.dialogs.showInfoDialog('Fingerprint Authentication', "This is an example of fingerprint authentication with Google Firebase Cloud Messaging via the Phonegap fingerprint plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
 		if (info_btn == 'More Info') {
 			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
 		}

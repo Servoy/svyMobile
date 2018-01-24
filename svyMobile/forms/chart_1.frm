@@ -10,6 +10,12 @@ encapsulation:60,
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
+height:455,
+partType:5,
+typeid:19,
+uuid:"96796BD4-65A9-4817-8ACA-E91E684B6D9F"
+},
+{
 anchors:15,
 json:{
 anchors:15,
@@ -30,12 +36,6 @@ size:"300,445",
 typeName:"svychartjs-chart",
 typeid:47,
 uuid:"9D160CFA-58BD-473D-BA6C-6289C21DEC48"
-},
-{
-extendsID:"189CCC12-5ABA-40FE-B65A-9310A976CA2B",
-height:455,
-typeid:19,
-uuid:"C2938072-3F6F-4068-AC3D-E5FBDE95FF46"
 }
 ],
 name:"chart_1",

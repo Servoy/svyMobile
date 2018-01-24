@@ -43,6 +43,12 @@ typeid:47,
 uuid:"8EC2DE0B-A730-4870-BC81-9BD6E350E977"
 },
 {
+height:457,
+partType:5,
+typeid:19,
+uuid:"ACBE003E-212C-4ACC-AEE4-180C95AA6837"
+},
+{
 anchors:15,
 json:{
 anchors:15,
@@ -80,12 +86,6 @@ size:"299,213",
 typeName:"servoyextra-table",
 typeid:47,
 uuid:"E34BD1C7-7272-483F-B74C-603C1341A564"
-},
-{
-extendsID:"189CCC12-5ABA-40FE-B65A-9310A976CA2B",
-height:455,
-typeid:19,
-uuid:"F9903255-1DB1-4280-8251-EA3531EBF1B9"
 }
 ],
 name:"chart_5",

@@ -23,6 +23,12 @@ uuid:"1AD704FB-E4A8-4B20-8A5A-4D9525D83AED",
 visible:false
 },
 {
+height:479,
+partType:5,
+typeid:19,
+uuid:"21F92E87-2206-480E-A5C8-CB694F5C9D47"
+},
+{
 anchors:11,
 json:{
 anchors:11,

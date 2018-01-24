@@ -1,15 +1,8 @@
 customProperties:"formComponent:false",
 encapsulation:60,
-items:[
-{
-height:480,
-partType:5,
-typeid:19,
-uuid:"189CCC12-5ABA-40FE-B65A-9310A976CA2B"
-}
-],
 name:"base",
 navigatorID:"-1",
+scrollbars:36,
 showInMenu:true,
 size:"351,480",
 typeid:3,

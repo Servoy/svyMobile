@@ -41,3 +41,12 @@ function getPicFail(err) {
 	application.output('failed to get picture - ' + err);
 	plugins.svyBlockUI.stop();
 }
+/**
+ * @param {Boolean} firstShow
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"40DB63D5-1B70-4369-9838-0437DE740083"}
+ */
+function onShow(firstShow, event) {
+	return _super.onShow(firstShow, event)
+}

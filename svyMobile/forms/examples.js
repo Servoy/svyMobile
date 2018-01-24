@@ -34,12 +34,19 @@ var mediaImg = 'media:///media.png';
 var pushImg = 'media:///push.png';
 
 /**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"4F78CD5A-4187-4FFB-83E0-188F7E27D83F"}
+ */
+var fingerImg = 'media:///fingerprint.png';
+
+/**
  * @param {JSEvent} event
  * @param {String} type
  * @private
  *
  * @properties={typeid:24,uuid:"F2366CB2-D69A-4707-BE46-C5E4EDECB3CD"}
  */
-function onAction$show(event,type) {
+function onAction$show(event, type) {
 	forms.main.onClick$menuItem(event, { itemId: type })
 }
