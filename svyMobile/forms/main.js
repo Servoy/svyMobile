@@ -98,7 +98,7 @@ function onAction$info(event) {
 		}
 		break;
 	case 'fingerprint':
-		info_btn = plugins.dialogs.showInfoDialog('Fingerprint Authentication', "This is an example of fingerprint authentication with Google Firebase Cloud Messaging via the Phonegap fingerprint plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		info_btn = plugins.dialogs.showInfoDialog('Fingerprint Authentication', "This is an example of fingerprint authentication via the Phonegap fingerprint plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
 		if (info_btn == 'More Info') {
 			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
 		}
