@@ -23,7 +23,7 @@ uuid:"1AD704FB-E4A8-4B20-8A5A-4D9525D83AED",
 visible:false
 },
 {
-height:479,
+height:481,
 partType:5,
 typeid:19,
 uuid:"21F92E87-2206-480E-A5C8-CB694F5C9D47"
@@ -81,6 +81,6 @@ uuid:"AF952CCF-8C4B-4F81-AD88-E1CB6D05F03B"
 ],
 name:"main",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
-size:"316,480",
+size:"317,481",
 typeid:3,
 uuid:"5D20721C-0FDD-4CB0-AFA4-4697479C6158"
