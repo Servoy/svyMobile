@@ -1,9 +1,5 @@
 customProperties:"formComponent:false,\
 methods:{\
-onHideMethodID:{\
-arguments:null,\
-parameters:null\
-},\
 onShowMethodID:{\
 arguments:null,\
 parameters:null\
@@ -61,7 +57,6 @@ uuid:"BC312506-748C-4F97-9C4A-8B9991E2475E"
 }
 ],
 name:"fingerprint",
-onHideMethodID:"CC813D24-1BE9-4BAC-8983-F957C5F7FB5B",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 size:"300,480",
 styleClass:"examples animate",
