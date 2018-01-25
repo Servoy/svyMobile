@@ -1,3 +1,5 @@
+user.fcmAuthKey=##SERVOY.FCM.KEY##
+user.googleAPIKey=##SERVOY.GMAP.KEY##
 license.0.code=##SERVOY.LIC.KEY##
 license.0.company_name=##SERVOY.LIC.NAME##
 license.0.licenses=##SERVOY.LIC.TYPE##
@@ -43,5 +45,3 @@ servoy.server.start.rmi=false
 servoy.use.client.timezone=true
 servoy.ngclient.enableWebResourceOptimizer=true
 servoy.ngclient.testingMode=true
-user.fcmAuthKey=##SERVOY.FCM.KEY##
-user.googleAPIKey=##SERVOY.GMAP.KEY##
