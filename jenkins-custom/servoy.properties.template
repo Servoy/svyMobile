@@ -43,5 +43,5 @@ servoy.server.start.rmi=false
 servoy.use.client.timezone=true
 servoy.ngclient.enableWebResourceOptimizer=true
 servoy.ngclient.testingMode=true
-user.property.fcmAuthKey=##SERVOY.FCM.KEY##
-user.property.googleAPIKey=##SERVOY.GMAP.KEY##
+user.fcmAuthKey=##SERVOY.FCM.KEY##
+user.googleAPIKey=##SERVOY.GMAP.KEY##
