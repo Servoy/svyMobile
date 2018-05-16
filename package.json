@@ -1,6 +1,6 @@
 {
   "name": "svyMobile",
-  "version": "1.0.61",
+  "version": "1.0.63",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bump": "^0.8.0",    
