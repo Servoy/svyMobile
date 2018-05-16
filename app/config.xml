@@ -8,6 +8,11 @@
     <allow-navigation href="*" />
     <allow-intent href="https://*/*" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
+    <universal-links>
+        <host name="demo.servoy.com" scheme="https" event="svyMobile">
+            <path url="/svyMobile/solutions/svyMobile/*" />
+        </host>
+    </universal-links>
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
