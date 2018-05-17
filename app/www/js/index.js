@@ -39,9 +39,18 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('online', this.disablebase);
         document.addEventListener('offline', this.enablebase);
+
+        //setup deep link handler
+        window.handleOpenURL = function(url) {
+            setTimeout(_ => {
+                document.getElementById('iframe').src = document.getElementById('iframe').src += url.split('//')[1];
+            });
+        }
+
+        //setup iframe
         document.getElementById('iframe').addEventListener('load',
             function() {
-                Bridge.init(this);                
+                Bridge.init(this);
                 navigator.splashscreen.hide();
             }
         )

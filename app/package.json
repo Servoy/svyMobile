@@ -27,7 +27,13 @@
       "cordova-plugin-fcm": {},
       "cordova-plugin-fingerprint-aio": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-universal-links-plugin": {}
+      "cordova-universal-links-plugin": {},
+      "cordova-plugin-customurlscheme": {
+        "URL_SCHEME": "servoymobile",
+        "ANDROID_SCHEME": " ",
+        "ANDROID_HOST": " ",
+        "ANDROID_PATHPREFIX": "/"
+      }
     }
   },
   "dependencies": {
@@ -37,6 +43,7 @@
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-crosswalk-webview": "^2.1.0",
+    "cordova-plugin-customurlscheme": "^4.3.0",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-fcm": "^2.1.2",
     "cordova-plugin-file": "^4.3.3",
