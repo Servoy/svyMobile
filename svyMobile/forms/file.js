@@ -33,6 +33,7 @@ function onAction$Save(event) {
 	if (isIOS != -1) {
 		dir = 'documentsDirectory';
 	}
+	application.output(dir)
 	plugins.svyphonegapFile.writeToFile(fileName, dir, fileContent, null, null);
 }
 
@@ -41,6 +42,15 @@ function onAction$Save(event) {
  */
 function readCB(data) {
 	fileContent = data;
+}
+
+/** 
+ * @param e
+ *
+ * @properties={typeid:24,uuid:"5FB17147-38B9-4818-8335-B7FD71CB0822"}
+ */
+function readErr(e) {
+	application.output(e);
 }
 
 /**
@@ -54,5 +64,5 @@ function onAction$Load(event) {
 	if (isIOS != -1) {
 		dir = 'documentsDirectory';
 	}
-	plugins.svyphonegapFile.readFromFile(fileName, dir, readCB, null);
+	plugins.svyphonegapFile.readFromFile(fileName, dir, readCB, readErr);
 }

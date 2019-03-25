@@ -21,7 +21,7 @@ function onSolutionOpen(arg, queryParams) {
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
 	
 	//load universal link
-	plugins.svyphonegapUniversalLink.subscribe('testEvent',uvLinkCallBack)
+//	plugins.svyphonegapUniversalLink.subscribe('testEvent',uvLinkCallBack)
 }
 
 /**

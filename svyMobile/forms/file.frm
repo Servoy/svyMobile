@@ -4,7 +4,7 @@ extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
 cssPosition:"calc( 100% - 55px),-1,-1,7,45%,47",
-onActionMethodID:"-1",
+onActionMethodID:"50E4486C-C68B-40C5-B7DA-6C334812100E",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
 text:"LOAD",

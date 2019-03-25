@@ -27,15 +27,14 @@ function getIP(data) {
 }
 
 /**
- * TODO generated, please specify type and doc for the params
  * @param data
  *
  * @properties={typeid:24,uuid:"62AB62E7-06C8-4158-8492-72EE1EF1027B"}
  */
 function getProxy(data) {
 	info += "<h4> PROXY: </h4>"
-	data.forEach(function(proxy) {
-		info += "<h4> Type:" + proxy.type + " Host:" + proxy.host + " Port:" + proxy.port + "</h4";
+	data.forEach(function(proxy) {		
+		info += "<h4> Type:" + proxy.type + " Host:" + proxy.host + " Port:" + proxy.port + "</h4";		
 	});
 }
 
@@ -52,17 +51,8 @@ function getProxy(data) {
  */
 function onShow(firstShow, event) {
 	info = '';
-	info += "<h4> IP ADDRESS: </h4> <h4><b>192.168.86.200</b></h4>"
-	info += "<h4> SUBNET: </h4> <h4><b>192.168.86.200</b></h4>"
 	plugins.svyphonegapNetworkinterface.getWiFiIPAddress(getIP, null)
-
-	info += "<h4> CARRIER ADDRESS: </h4> <h4><b>192.168.86.200</b></h4>"
-	info += "<h4> SUBNET: </h4> <h4><b>192.168.86.200</b></h4>"
 	plugins.svyphonegapNetworkinterface.getCarrierIPAddress(getIP, null)
-
-	info += "<h4> PROXY: </h4>"
-	info += "<h4> Type: test Host:test Port:3080</h4";
-	plugins.svyphonegapNetworkinterface.getHttpProxyInformation("www.github.com", getProxy, null)
-
+	plugins.svyphonegapNetworkinterface.getHttpProxyInformation("https://www.github.com", getProxy, null)
 	return _super.onShow(firstShow, event)
 }
