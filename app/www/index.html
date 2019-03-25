@@ -1,27 +1,16 @@
 <html>
-
-<head>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="./medias/svyMobile/medias/mobile_base.css" />
-    <title>SERVOY MOBILE</title>
-</head>
-
+<style>
+	html, body {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+</style>
 <body>
-    <nav class="navbar navbar-inverse bg-faded" id="navbar">
-        <a class="navbar-brand" href="#" style='padding:10px 15px 10px 15px;'>
-            <img src="./medias/svyMobile/medias/servoy.png" width="30" height="30" class="align-top" alt="">
-        </a>
-    </nav>
-    <iframe id="iframe" src='http://10.0.2.2:8080/solutions/svyMobile/index.html' style="width:100vw;height:100vh; display: none; border: none;"></iframe>
-    <div id="base" style="display: none; color:white; text-align: center;  position: fixed;top: 50%;left: 50%; transform: translate(-50%, -50%);">
-        <span style="font-size: 50px;"><u>Offline</u></span>
-        <span style="font-size: 15px;">Please check your connection...</span>
-    </div>
+    <iframe id="iframe" src='http://10.0.2.2:8080/solutions/svyMobile/index.html' frameborder="0" style="width:100%;height:100%; display: block; position:absolute;"></iframe>
     <script type="text/javascript" src="js/bridge.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/plugins/LaunchMyApp.js"></script>
     <script type="text/javascript">
     app.initialize();
     </script>
