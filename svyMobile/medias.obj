@@ -16,6 +16,13 @@ uuid:"B3B9A5DE-CC5C-4C90-BD74-878F0351F060"
 {
 encapsulation:0,
 mimeType:"image/png",
+name:"files.png",
+typeid:37,
+uuid:"6E279BE9-4E5B-4896-A65F-947913C451C4"
+},
+{
+encapsulation:0,
+mimeType:"image/png",
 name:"fingerprint.png",
 typeid:37,
 uuid:"C569AE91-5814-4D17-BABD-F5CED6E63A1F"
@@ -47,6 +54,13 @@ mimeType:"text/css",
 name:"mobile_base.css",
 typeid:37,
 uuid:"E1726099-6EA0-4926-AF10-DCA05DEA108A"
+},
+{
+encapsulation:0,
+mimeType:"image/png",
+name:"network.png",
+typeid:37,
+uuid:"03BCF8EB-756F-44FC-8319-9982CAE655BB"
 },
 {
 encapsulation:0,

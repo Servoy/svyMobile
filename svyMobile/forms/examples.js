@@ -41,6 +41,20 @@ var pushImg = 'media:///push.png';
 var fingerImg = 'media:///fingerprint.png';
 
 /**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"2D3E6532-958C-4CA8-9174-2084BE9D8A75"}
+ */
+var networkImg = "media:///network.png";
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"03F41A50-B2FE-42D2-9A85-6A8726723680"}
+ */
+var fileImg = "media:///files.png"
+
+/**
  * @param {JSEvent} event
  * @param {String} type
  * @private
