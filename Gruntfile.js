@@ -6,7 +6,7 @@ module.exports = function(grunt) {
             exportedWar:'/var/lib/jenkins/export_war/buildResults/exports/deploymentExports/svyMobile.war',
             prodServer:'root@yourtomcatserver.com:/opt/tomcat/webapps',             
             buildName:'com.servoy.mobile',
-            buildJson: '/home/tuan/git/server-related/deployment/build.json',
+            buildJson: 'app/build.json',
             solution:'svyMobile'
         },
         bump: {
