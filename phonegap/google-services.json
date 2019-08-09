@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "261917022703",
+    "firebase_url": "https://svymobile-38f3f.firebaseio.com",
+    "project_id": "svymobile-38f3f",
+    "storage_bucket": "svymobile-38f3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261917022703:android:2f31fc14d22c45d5",
+        "android_client_info": {
+          "package_name": "com.servoy.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261917022703-9bp6ipau9nh745kd2jr7r5r22uqq0p8q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATaXo3Q3Y8-kthGqh2dmeTxL47w6szpXI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>261917022703-q19vfttjk7m8krkkcrdgn9tm9fsmj7kq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.261917022703-q19vfttjk7m8krkkcrdgn9tm9fsmj7kq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDlFjMeu5fdsWZUtlJmVCtZG1Xw73shl8c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>261917022703</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.servoy.mobile</string>
+	<key>PROJECT_ID</key>
+	<string>svymobile-38f3f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>svymobile-38f3f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:261917022703:ios:2f31fc14d22c45d5</string>
+	<key>DATABASE_URL</key>
+	<string>https://svymobile-38f3f.firebaseio.com</string>
+</dict>
+</plist>
