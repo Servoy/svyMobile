@@ -4,26 +4,21 @@
  * @properties={typeid:35,uuid:"CEAAF0DC-B13A-462F-9563-576725F8A294"}
  */
 var info = '';
-/**
- * Perform the element default action.
- *
- * @param {JSEvent} event the event that triggered the action
- *
- * @private
- *
- * @properties={typeid:24,uuid:"8364583D-FE17-459F-880F-75A77C3A3327"}
- */
-function onActionGetNetworkIP(event) {
-	info += "<h4> IP ADDRESS: </h4> <h4><b>192.168.86.200</b></h4>"
-	plugins.svyphonegapNetworkinterface.getCarrierIPAddress(getIP, null)
-}
 
 /**
  * @properties={typeid:24,uuid:"A279F005-B242-4823-9379-42783E742200"}
  */
-function getIP(data) {
-	info += "<h4> IP ADDRESS: </h4> <h4><b>" + data.ip + "</b></h4>"
-	info += "<h4> SUBNET: </h4> <h4><b>" + data.ip + "</b></h4>"
+function getWifiIP(data) {
+	info += "<h4> WIFI IP ADDRESS: </h4> <h4><b>" + data.ip + "</b></h4>"
+}
+
+/**
+ * @param data
+ *
+ * @properties={typeid:24,uuid:"0FD03C6E-2DC1-4C27-B0C5-3592808C4702"}
+ */
+function getCarrierIP(data) {
+	info += "<h4> CARRIER IP ADDRESS: </h4> <h4><b>" + data.ip + "</b></h4>"
 }
 
 /**
@@ -51,8 +46,8 @@ function getProxy(data) {
  */
 function onShow(firstShow, event) {
 	info = '';
-	plugins.svyphonegapNetworkinterface.getWiFiIPAddress(getIP, null)
-	plugins.svyphonegapNetworkinterface.getCarrierIPAddress(getIP, null)
+	plugins.svyphonegapNetworkinterface.getWiFiIPAddress(getWifiIP, null)
+	plugins.svyphonegapNetworkinterface.getCarrierIPAddress(getCarrierIP, null)
 	plugins.svyphonegapNetworkinterface.getHttpProxyInformation("https://www.github.com", getProxy, null)
 	return _super.onShow(firstShow, event)
 }
