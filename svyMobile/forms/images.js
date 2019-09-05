@@ -10,7 +10,9 @@ function getPicture(event, type) {
 	if (type == 'take') {		
 		//use camera instead of file gallery
 		options = {
-			quality: 50,
+			targetWidth: 768,
+			targetHeight: 1024,
+			quality: 35,
 			destinationType: scopes.datamodel.Camera.DestinationType.DATA_URL,
 			sourceType: scopes.datamodel.Camera.PictureSourceType.CAMERA,
 			correctOrientation: true
