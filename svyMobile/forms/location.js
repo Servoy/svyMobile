@@ -32,8 +32,9 @@ function getLocationSuccess(pos) {
  * @properties={typeid:24,uuid:"C7DFB79D-C451-408E-A3BF-B2BCA1D0FE07"}
  */
 function getLocationFail(err) {
+	application.output(err)
 	located = false;
-	plugins.dialogs.showInfoDialog('Error', err);
+	plugins.dialogs.showInfoDialog('Error', err.message);
 }
 
 /**
