@@ -29,7 +29,7 @@ var messages = null;
  */
 function onAction$Save(event) {
 	var dir = 'externalApplicationStorageDirectory';
-	var isIOS = plugins.ngclientutils.getUserAgent().indexOf('iphone');
+	var isIOS = plugins.ngclientutils.getUserAgent().toLowerCase().indexOf('iphone');
 	if (isIOS != -1) {
 		dir = 'documentsDirectory';
 	}
@@ -44,7 +44,7 @@ function readCB(data) {
 	fileContent = data;
 }
 
-/** 
+/**
  * @param e
  *
  * @properties={typeid:24,uuid:"5FB17147-38B9-4818-8335-B7FD71CB0822"}
@@ -60,7 +60,7 @@ function readErr(e) {
  */
 function onAction$Load(event) {
 	var dir = 'externalApplicationStorageDirectory';
-	var isIOS = plugins.ngclientutils.getUserAgent().indexOf('iphone');
+	var isIOS = plugins.ngclientutils.getUserAgent().toLowerCase().indexOf('iphone');
 	if (isIOS != -1) {
 		dir = 'documentsDirectory';
 	}
