@@ -86,7 +86,7 @@ function onAction$info(event) {
 		}
 		break;
 	case 'location':
-		info_btn = plugins.dialogs.showInfoDialog('Geo Location', "This is an example of using geolocation alongside Google Maps using the Phonegap location plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		info_btn = plugins.dialogs.showInfoDialog('Geolocation', "This is an example of using geolocation alongside Google Maps using the Phonegap location plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
 		if (info_btn == 'More Info') {
 			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
 		}
@@ -99,6 +99,20 @@ function onAction$info(event) {
 		break;
 	case 'fingerprint':
 		info_btn = plugins.dialogs.showInfoDialog('Fingerprint Authentication', "This is an example of fingerprint authentication via the Phonegap fingerprint plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
+		}
+		break;
+
+	case 'file':
+		info_btn = plugins.dialogs.showInfoDialog('File Plugin', "This is an example of filesystem access via the Phonegap file plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
+		if (info_btn == 'More Info') {
+			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
+		}
+		break;
+
+	case 'network':
+		info_btn = plugins.dialogs.showInfoDialog('File Plugin', "This is an example of getting network information via the Phonegap network plugin.  Servoy can easily integrate with these types of plugins through the use of a bridge service.", 'More Info', 'Hide')
 		if (info_btn == 'More Info') {
 			plugins.svyphonegapBrowser.openExternalLink('https://github.com/Servoy/svyPhonegap');
 		}
