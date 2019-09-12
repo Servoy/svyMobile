@@ -3,7 +3,7 @@ useCssPosition:true",
 encapsulation:44,
 items:[
 {
-cssPosition:"571,-1,-1,10,95%,184",
+cssPosition:"601,-1,-1,10,95%,184",
 dataProviderID:"plugins_list",
 displayType:12,
 onDataChangeMethodID:"865432A7-61FE-4382-93B7-A9C3382D88DF",
@@ -13,7 +13,7 @@ uuid:"0224D7EF-B778-4E95-A054-56AEBC1866B4",
 valuelistID:"C094ED94-DEB5-4FF7-8BCF-325A65723268"
 },
 {
-cssPosition:"767,-1,-1,50%,45%,100",
+cssPosition:"797,-1,-1,50%,45%,100",
 json:{
 accept:".plist",
 cssPosition:{
@@ -21,7 +21,7 @@ bottom:"-1",
 height:"100",
 left:"50%",
 right:"-1",
-top:"767",
+top:"797",
 width:"45%"
 },
 dataProviderID:"googleplist",
@@ -76,7 +76,7 @@ typeid:19,
 uuid:"2A71D174-E9E2-4440-B11C-27DADA51B547"
 },
 {
-cssPosition:"480,-1,-1,9,94%,20",
+cssPosition:"510,-1,-1,9,93%,30",
 dataProviderID:"app_url",
 placeholderText:"https://myAppURL.com/",
 typeid:4,
@@ -110,28 +110,28 @@ typeid:47,
 uuid:"42CE7104-DC6E-450A-94DE-2A34957E005A"
 },
 {
-cssPosition:"458,-1,-1,10,94%,20",
+cssPosition:"488,-1,-1,10,94%,20",
 text:"App URL",
 transparent:true,
 typeid:7,
 uuid:"4807ADD2-34BB-4284-B356-62532A058AEB"
 },
 {
-cssPosition:"435,-1,-1,50%,45%,20",
+cssPosition:"455,-1,-1,50%,44%,30",
 dataProviderID:"app_email",
 placeholderText:"Author Email",
 typeid:4,
 uuid:"4B0DD429-898C-432E-8E26-C6736E3A8AA3"
 },
 {
-cssPosition:"365,-1,-1,10,45%,20",
+cssPosition:"375,-1,-1,10,45%,20",
 text:"App Name",
 transparent:true,
 typeid:7,
 uuid:"58ABA27C-D85F-45B0-8F1D-7AFCAC8A9260"
 },
 {
-cssPosition:"767,-1,-1,10,45%,100",
+cssPosition:"797,-1,-1,10,45%,100",
 json:{
 accept:".json",
 cssPosition:{
@@ -139,7 +139,7 @@ bottom:"-1",
 height:"100",
 left:"10",
 right:"-1",
-top:"767",
+top:"797",
 width:"45%"
 },
 dataProviderID:"googlejson",
@@ -181,28 +181,28 @@ typeid:47,
 uuid:"71985E0C-2053-49E8-8FFD-E06E4066B579"
 },
 {
-cssPosition:"365,-1,-1,50%,45%,20",
+cssPosition:"375,-1,-1,50%,45%,20",
 text:"App Description",
 transparent:true,
 typeid:7,
 uuid:"767E1D79-C4E6-4EEC-BE5C-EC165C77BDA3"
 },
 {
-cssPosition:"387,-1,-1,50%,45%,20",
+cssPosition:"397,-1,-1,50%,44%,30",
 dataProviderID:"app_desc",
 placeholderText:"My App Description...",
 typeid:4,
 uuid:"7C3C3DC8-6A0E-41AF-A856-1BC9C5030681"
 },
 {
-cssPosition:"340,-1,-1,50%,45%,20",
+cssPosition:"340,-1,-1,50%,44%,30",
 dataProviderID:"app_version",
 placeholderText:"1.0.0",
 typeid:4,
 uuid:"88E15A0E-DFB1-4E61-903D-04DD3FCE5DE4"
 },
 {
-cssPosition:"340,-1,-1,9,45%,20",
+cssPosition:"340,-1,-1,9,44%,30",
 dataProviderID:"appid",
 placeholderText:"com.mobile.appName",
 typeid:4,
@@ -230,7 +230,7 @@ typeid:7,
 uuid:"9CD511F0-0EE9-4170-BD9F-101D7BC2E2E1"
 },
 {
-cssPosition:"434,-1,-1,9,45%,20",
+cssPosition:"454,-1,-1,9,44%,30",
 dataProviderID:"app_author",
 placeholderText:"Author Name",
 typeid:4,
@@ -244,21 +244,21 @@ typeid:7,
 uuid:"B01AD1E0-E9DA-4896-9D46-59B201853B72"
 },
 {
-cssPosition:"518,-1,-1,10,390,40",
+cssPosition:"548,-1,-1,10,390,40",
 text:"<h4> Plugins <\/h4>  (Ctrl-click to select multiple)",
 transparent:true,
 typeid:7,
 uuid:"B11CD63B-3042-4B1E-93D4-EEE733079E9E"
 },
 {
-cssPosition:"387,-1,-1,9,45%,20",
+cssPosition:"397,-1,-1,9,44%,30",
 dataProviderID:"app_name",
 placeholderText:"My App",
 typeid:4,
 uuid:"BAD2674E-363F-4B63-B7CB-DC5A246365D7"
 },
 {
-cssPosition:"412,-1,-1,10,45%,20",
+cssPosition:"432,-1,-1,10,45%,20",
 text:"Author",
 transparent:true,
 typeid:7,
@@ -298,7 +298,7 @@ typeid:47,
 uuid:"CB7DFBFA-EE5F-4E1E-B188-31B98AC7E66B"
 },
 {
-cssPosition:"413,-1,-1,50%,45%,20",
+cssPosition:"433,-1,-1,50%,45%,20",
 text:"Email",
 transparent:true,
 typeid:7,
