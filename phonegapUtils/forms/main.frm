@@ -221,6 +221,7 @@ borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;1
 cssPosition:"calc( 100% - 55px),-1,-1,calc(100% - 180px),150,40",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
+name:"create_build",
 onActionMethodID:"846F44DB-9C0A-4D88-92DD-420947BCE716",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
