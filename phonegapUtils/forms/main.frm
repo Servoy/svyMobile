@@ -163,7 +163,6 @@ width:"45%"
 },
 dataProviderID:"splash_img",
 formIndex:0,
-iconStyleClass:"none",
 onDataChangeMethodID:"77D6E062-B6B3-4779-8C8C-AE8ED481853F",
 size:{
 height:20,
