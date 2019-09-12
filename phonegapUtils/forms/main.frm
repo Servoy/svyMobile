@@ -70,7 +70,7 @@ typeid:7,
 uuid:"1E55F1BE-6EF2-409B-9943-1780C17B5602"
 },
 {
-height:967,
+height:1010,
 partType:5,
 typeid:19,
 uuid:"2A71D174-E9E2-4440-B11C-27DADA51B547"
@@ -218,7 +218,7 @@ uuid:"937189B0-AC65-4967-A7AD-004DEB74621D"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"calc( 100% - 55px),-1,-1,calc(100% - 180px),150,40",
+cssPosition:"912,-1,-1,calc(100% - 160px),150,62",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 name:"create_build",
@@ -298,6 +298,13 @@ typeid:47,
 uuid:"CB7DFBFA-EE5F-4E1E-B188-31B98AC7E66B"
 },
 {
+cssPosition:"986,-1,-1,9,717,21",
+formIndex:3,
+transparent:true,
+typeid:7,
+uuid:"DC7B67A6-D7D4-4725-AB11-12BD903CB917"
+},
+{
 cssPosition:"433,-1,-1,50%,45%,20",
 text:"Email",
 transparent:true,
@@ -320,6 +327,7 @@ uuid:"F78AD78E-8F9F-40C9-AD95-2BAEEF3D0505"
 name:"main",
 navigatorID:"-1",
 onShowMethodID:"EFA2A5C2-7D3D-4CD7-A980-64FE205FC21C",
+scrollbars:33,
 showInMenu:true,
 size:"738,767",
 titleText:"Phonegap Build Generator",
