@@ -515,6 +515,8 @@ function createConfig() {
 	xml += ' <splash height="960" platform="ios" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />'
 	xml += ' <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />'
 	xml += '</platform>'
+	xml += '<engine name="ios" spec="~4.1.1" />'
+	xml += '<engine name="android" spec="~5.1.1" />'
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />'
@@ -525,9 +527,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />'
 	if (plugins_list.indexOf('In App Browser') != -1)xml += '<plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />'
 	if (plugins_list.indexOf('Device') != -1) xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />'
-	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />'
-	xml += '<engine name="ios" spec="~4.1.1" />'
-	xml += '<engine name="android" spec="~5.1.1" />'
+	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />'	
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated" />'
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
@@ -546,7 +546,6 @@ function createIndexHTML() {
 	htm += 'padding: 0px;';
 	htm += '}';
 	htm += '</style>';
-
 	htm += '<head>'
 	htm += '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">'
 	htm += '</head>'
