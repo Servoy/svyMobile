@@ -13,16 +13,16 @@ uuid:"0224D7EF-B778-4E95-A054-56AEBC1866B4",
 valuelistID:"C094ED94-DEB5-4FF7-8BCF-325A65723268"
 },
 {
-cssPosition:"767,-1,-1,237,200,90",
+cssPosition:"767,-1,-1,50%,45%,100",
 json:{
 accept:".plist",
 cssPosition:{
 bottom:"-1",
-height:"90",
-left:"237",
+height:"100",
+left:"50%",
 right:"-1",
 top:"767",
-width:"200"
+width:"45%"
 },
 dataProviderID:"googleplist",
 iconStyleClass:"none",
@@ -55,13 +55,15 @@ typeid:47,
 uuid:"0EB9BC49-4CFE-49E4-8D90-08967920F93A"
 },
 {
-cssPosition:"43,-1,-1,78%,17%,20",
+background:"#888a85",
+cssPosition:"43,-1,-1,calc( 95% - 125px),125,20",
+foreground:"#ffffff",
 formIndex:2,
 name:"clear_splash",
 onActionMethodID:"C69D7167-3887-4925-AE0F-83333BCB2DD9",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-text:"Clear Splash Screen",
+text:"Remove Splash",
 typeid:7,
 uuid:"1E55F1BE-6EF2-409B-9943-1780C17B5602"
 },
@@ -127,16 +129,16 @@ typeid:7,
 uuid:"58ABA27C-D85F-45B0-8F1D-7AFCAC8A9260"
 },
 {
-cssPosition:"767,-1,-1,9,200,90",
+cssPosition:"767,-1,-1,10,45%,100",
 json:{
 accept:".json",
 cssPosition:{
 bottom:"-1",
-height:"90",
-left:"9",
+height:"100",
+left:"10",
 right:"-1",
 top:"767",
-width:"200"
+width:"45%"
 },
 dataProviderID:"googlejson",
 iconStyleClass:"none",
@@ -214,13 +216,13 @@ uuid:"937189B0-AC65-4967-A7AD-004DEB74621D"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"894,-1,-1,calc(100% - 282px),245,40",
+cssPosition:"calc( 100% - 55px),-1,-1,calc(100% - 180px),150,40",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 onActionMethodID:"846F44DB-9C0A-4D88-92DD-420947BCE716",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-text:"Create Build",
+text:"Create Build +",
 typeid:7,
 uuid:"9CD511F0-0EE9-4170-BD9F-101D7BC2E2E1"
 },
@@ -298,12 +300,14 @@ typeid:7,
 uuid:"E57A2F4E-C431-45F5-B100-E4D350AFBCD8"
 },
 {
-cssPosition:"42,-1,-1,31%,15%,20",
+background:"#888a85",
+cssPosition:"42,-1,-1,calc( 46% - 100px),100,20",
+foreground:"#ffffff",
 name:"clear_icon",
 onActionMethodID:"1F3E4461-006A-4F30-BA79-D3499849C184",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-text:"Clear Icon",
+text:"Remove Icon",
 typeid:7,
 uuid:"F78AD78E-8F9F-40C9-AD95-2BAEEF3D0505"
 }
