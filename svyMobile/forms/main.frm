@@ -1,10 +1,4 @@
-customProperties:"formComponent:false,\
-methods:{\
-onShowMethodID:{\
-arguments:null,\
-parameters:null\
-}\
-}",
+customProperties:"formComponent:false",
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
@@ -80,7 +74,6 @@ uuid:"AF952CCF-8C4B-4F81-AD88-E1CB6D05F03B"
 }
 ],
 name:"main",
-onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 size:"317,481",
 typeid:3,
 uuid:"5D20721C-0FDD-4CB0-AFA4-4697479C6158"

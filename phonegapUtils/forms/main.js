@@ -341,19 +341,19 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/android/drawable-xxxhdpi-icon.png", createImageResize(img, 192, 192));
 
 	//generate Android Splash Screen
-	createFile(b_dir + "/www/res/screen/android/drawable-land-ldpi-screen.png", createImageResize(splash_img, 368, 207, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-mdpi-screen.png", createImageResize(splash_img, 442, 248, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-hdpi-screen.png", createImageResize(splash_img, 552, 311, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-xhdpi-screen.png", createImageResize(splash_img, 736, 414, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-xxhdpi-screen.png", createImageResize(splash_img, 1104, 621, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-xxxhdpi-screen.png", createImageResize(splash_img, 2208, 1242, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-ldpi-screen.png", createImageResize(splash_img, 207, 368, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-mdpi-screen.png", createImageResize(splash_img, 248, 442, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-hdpi-screen.png", createImageResize(splash_img, 311, 552, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-xhdpi-screen.png", createImageResize(splash_img, 414, 736, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-xxhdpi-screen.png", createImageResize(splash_img, 621, 1104, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-xxxhdpi-screen.png", createImageResize(splash_img, 1242, 2208, true));
 
-	createFile(b_dir + "/www/res/screen/android/drawable-port-ldpi-screen.png", createImageResize(splash_img, 368, 207));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-mdpi-screen.png", createImageResize(splash_img, 442, 248));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-hdpi-screen.png", createImageResize(splash_img, 552, 311));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-xhdpi-screen.png", createImageResize(splash_img, 736, 414));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-xxhdpi-screen.png", createImageResize(splash_img, 1104, 621));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-xxxhdpi-screen.png", createImageResize(splash_img, 2208, 1242));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-ldpi-screen.png", createImageResize(splash_img, 207, 368));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-mdpi-screen.png", createImageResize(splash_img, 248, 442));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-hdpi-screen.png", createImageResize(splash_img, 311, 552));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-xhdpi-screen.png", createImageResize(splash_img, 414, 736));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-xxhdpi-screen.png", createImageResize(splash_img, 621, 1104));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-xxxhdpi-screen.png", createImageResize(splash_img, 1242,2208));
 }
 
 /**

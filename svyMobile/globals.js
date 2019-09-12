@@ -20,15 +20,6 @@ function onSolutionOpen(arg, queryParams) {
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
 	
-	//load universal link
-//	plugins.svyphonegapUniversalLink.subscribe('testEvent',uvLinkCallBack)
-}
-
-/**
- * @properties={typeid:24,uuid:"BCC0AB28-E42F-46E7-8223-E3DE9A6DF797"}
- */
-function uvLinkCallBack(eventData){
-	plugins.dialogs.showInfoDialog('Universal Link',eventData);
 }
 
 
