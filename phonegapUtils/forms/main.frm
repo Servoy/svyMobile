@@ -3,7 +3,7 @@ useCssPosition:true",
 encapsulation:44,
 items:[
 {
-cssPosition:"571,-1,-1,10,700,184",
+cssPosition:"571,-1,-1,10,95%,184",
 dataProviderID:"plugins_list",
 displayType:12,
 onDataChangeMethodID:"865432A7-61FE-4382-93B7-A9C3382D88DF",
@@ -25,7 +25,7 @@ top:"767",
 width:"200"
 },
 dataProviderID:"googleplist",
-iconStyleClass:"fa",
+iconStyleClass:"none",
 onDataChangeMethodID:"5FEFAB57-52BE-4EB2-A9BA-7FEACBD9C8BA",
 uploadText:"Upload GoogleService-Info.plist file",
 visible:true
@@ -36,16 +36,16 @@ typeid:47,
 uuid:"05629951-0E04-41A8-84AD-085FC0C5F8AF"
 },
 {
-cssPosition:"42,-1,-1,255,229,206",
+cssPosition:"42,-1,-1,50%,45%,206",
 formIndex:1,
 json:{
 cssPosition:{
 bottom:"-1",
 height:"206",
-left:"255",
+left:"50%",
 right:"-1",
 top:"42",
-width:"229"
+width:"45%"
 },
 formIndex:1
 },
@@ -55,7 +55,7 @@ typeid:47,
 uuid:"0EB9BC49-4CFE-49E4-8D90-08967920F93A"
 },
 {
-cssPosition:"43,-1,-1,344,141,20",
+cssPosition:"43,-1,-1,78%,17%,20",
 formIndex:2,
 name:"clear_splash",
 onActionMethodID:"C69D7167-3887-4925-AE0F-83333BCB2DD9",
@@ -66,20 +66,20 @@ typeid:7,
 uuid:"1E55F1BE-6EF2-409B-9943-1780C17B5602"
 },
 {
-height:873,
+height:967,
 partType:5,
 typeid:19,
 uuid:"2A71D174-E9E2-4440-B11C-27DADA51B547"
 },
 {
-cssPosition:"480,-1,-1,9,462,20",
+cssPosition:"480,-1,-1,9,94%,20",
 dataProviderID:"app_url",
 placeholderText:"https://myAppURL.com/",
 typeid:4,
 uuid:"2F8BCF45-9EBC-4F49-B512-7DE5D31D35E0"
 },
 {
-cssPosition:"42,-1,-1,10,231,206",
+cssPosition:"42,-1,-1,10,45%,206",
 json:{
 accept:".png,.jpg,.jpeg",
 cssPosition:{
@@ -88,10 +88,10 @@ height:"206",
 left:"10",
 right:"-1",
 top:"42",
-width:"231"
+width:"45%"
 },
 dataProviderID:"img",
-iconStyleClass:"fa",
+iconStyleClass:"none",
 onDataChangeMethodID:"94F4804D-3E27-4D7D-B803-522C50C068B4",
 size:{
 height:20,
@@ -106,21 +106,21 @@ typeid:47,
 uuid:"42CE7104-DC6E-450A-94DE-2A34957E005A"
 },
 {
-cssPosition:"458,-1,-1,10,461,20",
+cssPosition:"458,-1,-1,10,94%,20",
 text:"App URL",
 transparent:true,
 typeid:7,
 uuid:"4807ADD2-34BB-4284-B356-62532A058AEB"
 },
 {
-cssPosition:"435,-1,-1,243,230,20",
+cssPosition:"435,-1,-1,50%,45%,20",
 dataProviderID:"app_email",
 placeholderText:"Author Email",
 typeid:4,
 uuid:"4B0DD429-898C-432E-8E26-C6736E3A8AA3"
 },
 {
-cssPosition:"365,-1,-1,10,230,20",
+cssPosition:"365,-1,-1,10,45%,20",
 text:"App Name",
 transparent:true,
 typeid:7,
@@ -139,7 +139,7 @@ top:"767",
 width:"200"
 },
 dataProviderID:"googlejson",
-iconStyleClass:"fa",
+iconStyleClass:"none",
 onDataChangeMethodID:"67D74457-2761-4F1B-AD89-E217CAD45D71",
 uploadText:"Upload google-services.json file",
 visible:true
@@ -150,20 +150,20 @@ typeid:47,
 uuid:"6625B06A-7B58-4157-AA94-266895D2523E"
 },
 {
-cssPosition:"43,-1,-1,255,231,206",
+cssPosition:"43,-1,-1,50%,45%,206",
 json:{
 accept:".png,.jpg,.jpeg",
 cssPosition:{
 bottom:"-1",
 height:"206",
-left:"255",
+left:"50%",
 right:"-1",
 top:"43",
-width:"231"
+width:"45%"
 },
 dataProviderID:"splash_img",
 formIndex:0,
-iconStyleClass:"fa",
+iconStyleClass:"none",
 onDataChangeMethodID:"77D6E062-B6B3-4779-8C8C-AE8ED481853F",
 size:{
 height:20,
@@ -178,28 +178,28 @@ typeid:47,
 uuid:"71985E0C-2053-49E8-8FFD-E06E4066B579"
 },
 {
-cssPosition:"365,-1,-1,244,230,20",
+cssPosition:"365,-1,-1,50%,45%,20",
 text:"App Description",
 transparent:true,
 typeid:7,
 uuid:"767E1D79-C4E6-4EEC-BE5C-EC165C77BDA3"
 },
 {
-cssPosition:"387,-1,-1,243,230,20",
+cssPosition:"387,-1,-1,50%,45%,20",
 dataProviderID:"app_desc",
 placeholderText:"My App Description...",
 typeid:4,
 uuid:"7C3C3DC8-6A0E-41AF-A856-1BC9C5030681"
 },
 {
-cssPosition:"340,-1,-1,245,230,20",
+cssPosition:"340,-1,-1,50%,45%,20",
 dataProviderID:"app_version",
 placeholderText:"1.0.0",
 typeid:4,
 uuid:"88E15A0E-DFB1-4E61-903D-04DD3FCE5DE4"
 },
 {
-cssPosition:"340,-1,-1,9,230,20",
+cssPosition:"340,-1,-1,9,45%,20",
 dataProviderID:"appid",
 placeholderText:"com.mobile.appName",
 typeid:4,
@@ -215,8 +215,8 @@ uuid:"937189B0-AC65-4967-A7AD-004DEB74621D"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"calc(100% - 50px),-1,-1,570,150,40",
-fontType:"FreeSans,1,11",
+cssPosition:"894,-1,-1,calc(100% - 282px),245,40",
+fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 onActionMethodID:"846F44DB-9C0A-4D88-92DD-420947BCE716",
 onDoubleClickMethodID:"-1",
@@ -226,14 +226,14 @@ typeid:7,
 uuid:"9CD511F0-0EE9-4170-BD9F-101D7BC2E2E1"
 },
 {
-cssPosition:"434,-1,-1,9,230,20",
+cssPosition:"434,-1,-1,9,45%,20",
 dataProviderID:"app_author",
 placeholderText:"Author Name",
 typeid:4,
 uuid:"A2140E3B-5991-4551-92FC-E6E640B05582"
 },
 {
-cssPosition:"318,-1,-1,10,230,20",
+cssPosition:"318,-1,-1,10,45%,20",
 text:"App ID",
 transparent:true,
 typeid:7,
@@ -247,35 +247,35 @@ typeid:7,
 uuid:"B11CD63B-3042-4B1E-93D4-EEE733079E9E"
 },
 {
-cssPosition:"387,-1,-1,9,230,20",
+cssPosition:"387,-1,-1,9,45%,20",
 dataProviderID:"app_name",
 placeholderText:"My App",
 typeid:4,
 uuid:"BAD2674E-363F-4B63-B7CB-DC5A246365D7"
 },
 {
-cssPosition:"412,-1,-1,10,230,20",
+cssPosition:"412,-1,-1,10,45%,20",
 text:"Author",
 transparent:true,
 typeid:7,
 uuid:"BDA94CF4-6E4C-40CE-AB48-6AC90575F46E"
 },
 {
-cssPosition:"7,-1,-1,10,561,30",
+cssPosition:"4,-1,-1,10,561,30",
 text:"<h3> Servoy Phonegap Build Generator <\/h3> ",
 transparent:true,
 typeid:7,
 uuid:"C0456531-C927-4372-B2D1-FB976A2C995D"
 },
 {
-cssPosition:"318,-1,-1,246,230,20",
+cssPosition:"318,-1,-1,50%,45%,20",
 text:"App Version",
 transparent:true,
 typeid:7,
 uuid:"C95D7412-639D-4A3F-BC71-EF1F36D071DA"
 },
 {
-cssPosition:"41,-1,-1,10,229,206",
+cssPosition:"41,-1,-1,10,45%,206",
 json:{
 cssPosition:{
 bottom:"-1",
@@ -283,7 +283,7 @@ height:"206",
 left:"10",
 right:"-1",
 top:"41",
-width:"229"
+width:"45%"
 }
 },
 name:"icon_preview",
@@ -292,14 +292,14 @@ typeid:47,
 uuid:"CB7DFBFA-EE5F-4E1E-B188-31B98AC7E66B"
 },
 {
-cssPosition:"413,-1,-1,244,230,20",
+cssPosition:"413,-1,-1,50%,45%,20",
 text:"Email",
 transparent:true,
 typeid:7,
 uuid:"E57A2F4E-C431-45F5-B100-E4D350AFBCD8"
 },
 {
-cssPosition:"42,-1,-1,169,71,20",
+cssPosition:"42,-1,-1,31%,15%,20",
 name:"clear_icon",
 onActionMethodID:"1F3E4461-006A-4F30-BA79-D3499849C184",
 onDoubleClickMethodID:"-1",
