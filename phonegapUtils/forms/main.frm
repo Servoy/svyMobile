@@ -99,7 +99,7 @@ size:{
 height:20,
 width:80
 },
-uploadText:"Drag or select Application icon (non-transparent)"
+uploadText:"Drag or select application icon to upload"
 },
 name:"icon_upload",
 size:"80,20",
@@ -170,7 +170,7 @@ size:{
 height:20,
 width:80
 },
-uploadText:"Drag or select Application splashscreen (non-transparent)"
+uploadText:"Drag or select application splashscreen to upload"
 },
 name:"splash_upload",
 size:"80,20",

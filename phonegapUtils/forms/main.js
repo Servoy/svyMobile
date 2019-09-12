@@ -247,22 +247,22 @@ function onDataChange$googleplist(oldValue, newValue, event) {
  * @properties={typeid:24,uuid:"846F44DB-9C0A-4D88-92DD-420947BCE716"}
  */
 function onAction$getLocalBuild(event) {
-		if (!img || !splash_img) {
-			plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
+	if (!img || !splash_img) {
+		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
+		return;
+	}
+
+	if (!app_author || !app_desc || !app_email || !app_name || !app_url || !app_version || !appid) {
+		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
+		return;
+	}
+
+	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
+		if (!googlejson || !googleplist) {
+			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json & GoogleService-Info.plist if using FCM plugin.')
 			return;
 		}
-	
-		if (!app_author || !app_desc || !app_email || !app_name || !app_url || !app_version || !appid) {
-			plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
-			return;
-		}
-	
-		if (plugins_list.indexOf('FCM Push Notifications') != -1) {
-			if (!googlejson || !googleplist) {
-				plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json & GoogleService-Info.plist if using FCM plugin.')
-				return;
-			}
-		}
+	}
 	plugins.svyBlockUI.show('Generating Phonegap build');
 	var build_id = application.getUUID().toString().split('-')[0];
 	var build_dir = plugins.file.convertToJSFile("build_" + build_id);
@@ -291,7 +291,7 @@ function onAction$getLocalBuild(event) {
 	var dt = new Date();
 	dt.setSeconds(dt.getSeconds() + 10);
 	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir + '.zip'])
-	plugins.file.deleteFolder(b_dir,false);
+	plugins.file.deleteFolder(b_dir, false);
 	plugins.file.deleteFile(build_file.getAbsolutePath())
 }
 
@@ -300,37 +300,37 @@ function onAction$getLocalBuild(event) {
  */
 function createIconAndSplash() {
 	//generate default icon
-	createFile(b_dir + "/www/res/icon/icon.png", createImageResize(img, 1024, 1024));
+	createFile(b_dir + "/www/res/icon/icon.png", createImageResize(img, 1024, 1024,false,true));
 
 	//generate IOS icons
-	createFile(b_dir + "/www/res/icon/ios/icon.png", createImageResize(img, 57, 57));
-	createFile(b_dir + "/www/res/icon/ios/icon@2x.png", createImageResize(img, 114, 114));
-	createFile(b_dir + "/www/res/icon/ios/icon-40.png", createImageResize(img, 40, 40));
-	createFile(b_dir + "/www/res/icon/ios/icon-40@2x.png", createImageResize(img, 80, 80));
-	createFile(b_dir + "/www/res/icon/ios/icon-50.png", createImageResize(img, 50, 50));
-	createFile(b_dir + "/www/res/icon/ios/icon-50@2x.png", createImageResize(img, 100, 100));
-	createFile(b_dir + "/www/res/icon/ios/icon-60.png", createImageResize(img, 60, 60));
-	createFile(b_dir + "/www/res/icon/ios/icon-60@2x.png", createImageResize(img, 120, 120));
-	createFile(b_dir + "/www/res/icon/ios/icon-60@3x.png", createImageResize(img, 180, 180));
-	createFile(b_dir + "/www/res/icon/ios/icon-72.png", createImageResize(img, 72, 72));
-	createFile(b_dir + "/www/res/icon/ios/icon-72@2x.png", createImageResize(img, 144, 144));
-	createFile(b_dir + "/www/res/icon/ios/icon-76.png", createImageResize(img, 76, 76));
-	createFile(b_dir + "/www/res/icon/ios/icon-76@2x.png", createImageResize(img, 152, 152));
-	createFile(b_dir + "/www/res/icon/ios/icon-small.png", createImageResize(img, 29, 29));
-	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58));
-	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87));
+	createFile(b_dir + "/www/res/icon/ios/icon.png", createImageResize(img, 57, 57,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon@2x.png", createImageResize(img, 114, 114,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-40.png", createImageResize(img, 40, 40,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-40@2x.png", createImageResize(img, 80, 80,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-50.png", createImageResize(img, 50, 50,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-50@2x.png", createImageResize(img, 100, 100,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-60.png", createImageResize(img, 60, 60,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-60@2x.png", createImageResize(img, 120, 120,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-60@3x.png", createImageResize(img, 180, 180,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-72.png", createImageResize(img, 72, 72,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-72@2x.png", createImageResize(img, 144, 144,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-76.png", createImageResize(img, 76, 76,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-76@2x.png", createImageResize(img, 152, 152,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-small.png", createImageResize(img, 29, 29,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87,false,true));
 
 	//generate IOS Splash Screen
-	createFile(b_dir + "/www/res/screen/ios/Default-568h@2x~iphone.png", createImageResize(splash_img, 640, 1136));
-	createFile(b_dir + "/www/res/screen/ios/Default-667h.png", createImageResize(splash_img, 750, 1334));
-	createFile(b_dir + "/www/res/screen/ios/Default-736h.png", createImageResize(splash_img, 1242, 2208));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape-736h.png", createImageResize(splash_img, 1242, 2208, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape@2x~ipad.png", createImageResize(splash_img, 2048, 1536, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape~ipad.png", createImageResize(splash_img, 1024, 768, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Portrait@2x~ipad.png", createImageResize(splash_img, 1536, 2048));
-	createFile(b_dir + "/www/res/screen/ios/Default-Portrait~ipad.png", createImageResize(splash_img, 768, 1024));
-	createFile(b_dir + "/www/res/screen/ios/Default@2x~iphone.png", createImageResize(splash_img, 640, 960));
-	createFile(b_dir + "/www/res/screen/ios/Default~iphone.png", createImageResize(splash_img, 480, 320));
+	createFile(b_dir + "/www/res/screen/ios/Default-568h@2x~iphone.png", createImageResize(splash_img, 640, 1136,false,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-667h.png", createImageResize(splash_img, 750, 1334,false,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-736h.png", createImageResize(splash_img, 1242, 2208,false,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape-736h.png", createImageResize(splash_img, 1242, 2208, true,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape@2x~ipad.png", createImageResize(splash_img, 2048, 1536, true,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape~ipad.png", createImageResize(splash_img, 1024, 768, true,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Portrait@2x~ipad.png", createImageResize(splash_img, 1536, 2048,false,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Portrait~ipad.png", createImageResize(splash_img, 768, 1024,false,true));
+	createFile(b_dir + "/www/res/screen/ios/Default@2x~iphone.png", createImageResize(splash_img, 640, 960,false,true));
+	createFile(b_dir + "/www/res/screen/ios/Default~iphone.png", createImageResize(splash_img, 480, 320,false,true));
 
 	//generate Android Icons
 	createFile(b_dir + "/www/res/icon/android/drawable-ldpi-icon.png", createImageResize(img, 192, 192));
@@ -361,9 +361,10 @@ function createIconAndSplash() {
  * @param w
  * @param h
  * @param [rotate]
+ * @param [removeTransparency]
  * @properties={typeid:24,uuid:"0A7DCB1F-A48F-464F-B3F7-FF7BCB00C5FA"}
  */
-function createImageResize(i, w, h, rotate) {
+function createImageResize(i, w, h, rotate, removeTransparency) {
 	var input = new java.io.File('tmp');
 	var fos = new java.io.FileOutputStream(input);
 	fos.write(i);
@@ -373,9 +374,21 @@ function createImageResize(i, w, h, rotate) {
 	var g2d = res.createGraphics();
 	g2d.drawImage(tmp, 0, 0, null);
 	g2d.dispose();
-
 	var baos = new java.io.ByteArrayOutputStream();
-	Packages.javax.imageio.ImageIO.write(res, "png", baos);
+
+	//remove transparency
+	if (removeTransparency) {
+		var cc = new java.awt.image.BufferedImage(res.getWidth(), res.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
+		g2d = cc.createGraphics();
+		g2d.setColor(java.awt.Color.WHITE);
+		g2d.fillRect(0, 0, res.getWidth(), res.getHeight());
+		g2d.drawImage(tmp, 0, 0, null);
+		g2d.dispose();
+		Packages.javax.imageio.ImageIO.write(cc, "png", baos);
+	} else {
+		Packages.javax.imageio.ImageIO.write(res, "png", baos);
+	}
+
 	baos.flush();
 	var bytes = baos.toByteArray();
 	baos.close();
