@@ -1,0 +1,16 @@
+[
+{
+encapsulation:0,
+mimeType:"text/css",
+name:"custom_servoy_theme_properties.less",
+typeid:37,
+uuid:"F83F3F4E-F901-4331-923A-63805C13071C"
+},
+{
+encapsulation:0,
+mimeType:"text/css",
+name:"phonegapUtils.less",
+typeid:37,
+uuid:"35DC5EFC-E6B3-4C9E-AE56-93E5B9068FF5"
+}
+]
