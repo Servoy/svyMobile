@@ -47,23 +47,25 @@ right:"-1",
 top:"42",
 width:"45%"
 },
-formIndex:1
+formIndex:1,
+styleClass:"preview"
 },
 name:"splash_preview",
+styleClass:"preview",
 typeName:"bootstrapcomponents-label",
 typeid:47,
 uuid:"0EB9BC49-4CFE-49E4-8D90-08967920F93A"
 },
 {
 background:"#888a85",
-cssPosition:"43,-1,-1,calc( 95% - 125px),125,20",
+cssPosition:"43,-1,-1,calc( 95% - 78px),75,20",
 foreground:"#ffffff",
 formIndex:2,
 name:"clear_splash",
 onActionMethodID:"C69D7167-3887-4925-AE0F-83333BCB2DD9",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-text:"Remove Splash",
+text:"Remove (X)",
 typeid:7,
 uuid:"1E55F1BE-6EF2-409B-9943-1780C17B5602"
 },
@@ -99,7 +101,7 @@ size:{
 height:20,
 width:80
 },
-uploadText:"Drag or select application icon to upload"
+uploadText:"Upload App Icon"
 },
 name:"icon_upload",
 size:"80,20",
@@ -170,7 +172,7 @@ size:{
 height:20,
 width:80
 },
-uploadText:"Drag or select application splashscreen to upload"
+uploadText:"Upload App Splashscreen"
 },
 name:"splash_upload",
 size:"80,20",
@@ -285,9 +287,11 @@ left:"10",
 right:"-1",
 top:"41",
 width:"45%"
-}
+},
+styleClass:"preview"
 },
 name:"icon_preview",
+styleClass:"preview",
 typeName:"bootstrapcomponents-label",
 typeid:47,
 uuid:"CB7DFBFA-EE5F-4E1E-B188-31B98AC7E66B"
@@ -301,13 +305,13 @@ uuid:"E57A2F4E-C431-45F5-B100-E4D350AFBCD8"
 },
 {
 background:"#888a85",
-cssPosition:"42,-1,-1,calc( 46% - 100px),100,20",
+cssPosition:"42,-1,-1,calc( 46% - 75px),75,20",
 foreground:"#ffffff",
 name:"clear_icon",
 onActionMethodID:"1F3E4461-006A-4F30-BA79-D3499849C184",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-text:"Remove Icon",
+text:"Remove (X)",
 typeid:7,
 uuid:"F78AD78E-8F9F-40C9-AD95-2BAEEF3D0505"
 }
