@@ -290,8 +290,8 @@ function onShow(firstShow, event) {
 		"closeButton": false,
 		"newestOnTop": false,
 		"positionClass": "toast-top-full-width",
-		"showDuration": "1500",
-		"hideDuration": "1000",
+		"showDuration": 30000,
+		"hideDuration": 1000,
 		"hideEasing": "linear",
 		"showMethod": "fadeIn",
 		"hideMethod": "fadeOut",
@@ -1011,7 +1011,7 @@ function getIOS() {
 		}
 	}
 	var url = createRemoteFile(iosFile);
-	application.showURL(url, '_blank');
+	application.showURL(url, '_blank');	
 	var dt = new Date()
 	dt.setSeconds(dt.getSeconds() + 15);
 	plugins.scheduler.addJob('removeios', dt, removeMiscFile, [iosFile])

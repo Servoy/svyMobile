@@ -53,14 +53,14 @@ uuid:"7D9703C2-F10F-47D0-83C9-15B1EF0B1C3B"
 {
 cssPosition:"5,-1,-1,7,528,55",
 horizontalAlignment:0,
-text:"<h3>Setup Android Signing Key<\/h3> (required for uploading to play store)",
+text:"<h3>Setup Android Keystore<\/h3> (required for uploading to play store)",
 transparent:true,
 typeid:7,
 uuid:"8DABCC22-D232-4F77-9ADB-D7A5AE70F3FB"
 },
 {
 cssPosition:"233,-1,-1,221,48%,20",
-text:"Key Store Password",
+text:"Key Store Password (required)",
 transparent:true,
 typeid:7,
 uuid:"95F813ED-064E-443B-AC9D-63EAC79748AD"
