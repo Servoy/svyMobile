@@ -1,7 +1,8 @@
 addEmptyValue:1,
 customValues:"Camera\
 Full screen\
-Network\
+Network Information\
+Network Interface\
 Location\
 Filesystem\
 In-App Browser\
