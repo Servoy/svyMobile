@@ -40,8 +40,8 @@ uuid:"8529D36C-F6B7-4125-8C26-A8C462F5EC18"
 {
 cssPosition:"29,-1,-1,37,375,112",
 horizontalAlignment:0,
-text:"<h4>If you do not have an account sign up\
-<br> for free at <a href=\"https://build.phonegap.com/people/sign_in\">phonegap cloud<\/a><\/h4>\
+text:"<h4>If you do not have an account, sign up\
+<br> for free at <a href=\"https://build.phonegap.com/people/sign_in\" target=\"_blank\">phonegap cloud<\/a>.<\/h4>\
 ",
 transparent:true,
 typeid:7,
