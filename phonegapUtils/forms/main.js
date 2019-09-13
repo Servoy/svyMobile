@@ -884,6 +884,7 @@ function channelCopy(src, dest) {
 function addKeys() {
 	var keys = forms.phonegap_keys.show();
 	if (keys.android_keystore || (keys.ios_cert && keys.ios_provision)) {
+		plugins.svyBlockUI.show('Adding keys..');
 		//we have keys to add, let's update local vars
 		android_title = (keys.android_title == null || keys.android_title == '') ? appid : keys.android_title;
 		android_alias = keys.android_alias;
@@ -967,7 +968,7 @@ function addIOSKey() {
  * @properties={typeid:24,uuid:"F8C626B5-E6AC-473A-8B61-E4623668C990"}
  */
 function getAndroid() {
-	plugins.svyBlockUI.show('Getting Android Binary');
+	plugins.svyBlockUI.show('Getting Android Binary..');
 	// download APK
 	var androidFile = null;
 	while (!androidFile) {
@@ -995,7 +996,7 @@ function getAndroid() {
  * @properties={typeid:24,uuid:"AC62A4CC-C848-4655-BFAD-51190EDF2767"}
  */
 function getIOS() {
-	plugins.svyBlockUI.show('Getting IOS Binary');
+	plugins.svyBlockUI.show('Getting IOS Binary..');
 	// download APK
 	var iosFile = null;
 	while (!iosFile) {

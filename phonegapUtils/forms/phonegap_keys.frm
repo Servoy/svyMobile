@@ -11,14 +11,14 @@ uuid:"023D011C-5122-4B02-A387-93290DE6D9C9"
 },
 {
 cssPosition:"362,-1,-1,273,45%,20",
-text:"Certificate Password",
+text:"Certificate Password (required)",
 transparent:true,
 typeid:7,
 uuid:"1B94A430-1A4A-4A99-9B77-85567050F102"
 },
 {
 cssPosition:"175,-1,-1,221,48%,20",
-text:"Key Password",
+text:"Key Password (required)",
 transparent:true,
 typeid:7,
 uuid:"2F03B835-E7B7-4B26-9938-FE43F2468B80"
