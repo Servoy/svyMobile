@@ -58,9 +58,23 @@ var appid = '';
 var googleplist;
 
 /**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"D4BC5E17-B914-4CA9-8E03-FD97C4E2802A"}
+ */
+var googleplist_filename;
+
+/**
  * @properties={typeid:35,uuid:"C5602B85-1436-4CB8-B7B8-C6A0B8D48799",variableType:-4}
  */
 var googlejson;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"DF14EDD4-8BB4-4177-8362-ED5BA6B92A52"}
+ */
+var googlejson_filename;
 
 /**
  * @type {String}
@@ -87,6 +101,91 @@ var info = '';
  * @properties={typeid:35,uuid:"45A6ACA0-3BCF-4674-BBCB-0EF08D2D900C"}
  */
 var b_dir = '';
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"33D3AC26-BAB9-4C48-94FC-0900A37ABC5D"}
+ */
+var build_id;
+
+/**
+ * @type {plugins.file.JSFile}
+ *
+ * @properties={typeid:35,uuid:"3DE861DF-51C9-4CB6-B07E-6864484689FF",variableType:-4}
+ */
+var build_dir;
+
+/**
+ * @properties={typeid:35,uuid:"5C5CDFF1-DBBB-4643-BB77-17FDC9DF00E7",variableType:-4}
+ */
+var android_keystore;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"C5E117E7-4144-4789-8186-8740C48025A9"}
+ */
+var android_key_pass;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"75665119-6234-4D0B-B482-4FE5049D42C3"}
+ */
+var android_key_store_pass;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"C55B7779-A422-47CD-8B40-2F45523DADF4"}
+ */
+var android_title = '';
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"DDE55CBA-0E6E-4A30-81D2-91F95108D76F"}
+ */
+var android_alias = '';
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"A317224A-FF1F-40A8-A7B9-7B298EE505FA"}
+ */
+var android_key_id = null;
+
+/**
+ * @properties={typeid:35,uuid:"100DB9EA-D1C0-476B-A4FB-32A82BF98D74",variableType:-4}
+ */
+var ios_cert;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"55D07CB1-786B-43DC-9EDC-B89E179D3C75"}
+ */
+var ios_cert_pass;
+
+/**
+ @properties={typeid:35,uuid:"6738EE74-13AB-491B-A3FD-6B7AD3D3A53B",variableType:-4}
+ */
+var ios_provision;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"47E3435D-A91E-4BAE-9031-9630EC9A7504"}
+ */
+var ios_title = '';
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"F4EED9B4-4750-4F5A-912D-4A913910C338"}
+ */
+var ios_key_id = null;
 
 /**
  * @param oldValue
@@ -183,6 +282,22 @@ function onShow(firstShow, event) {
 	elements.googleplist.visible = false;
 	googlejson = null;
 	googleplist = null;
+	elements.googlejson.uploadText = elements.googlejson.toolTipText
+	elements.googleplist.uploadText = elements.googleplist.toolTipText
+
+	/** @type {webnotificationsToastr.toastrOptions} */
+	var options = {
+		"closeButton": false,
+		"newestOnTop": false,
+		"positionClass": "toast-top-full-width",
+		"showDuration": "1500",
+		"hideDuration": "1000",
+		"hideEasing": "linear",
+		"showMethod": "fadeIn",
+		"hideMethod": "fadeOut",
+		"progressBar": false
+	}
+	plugins.webnotificationsToastr.setGlobalOptions(options);
 }
 
 /**
@@ -222,51 +337,53 @@ function onDataChange$plugins(oldValue, newValue, event) {
  *
  * @properties={typeid:24,uuid:"67D74457-2761-4F1B-AD89-E217CAD45D71"}
  */
-function onDataChange$googlejson(oldValue, newValue, event) {
+function onDataChange$fcmfiles(oldValue, newValue, event) {
+	elements[event.getElementName()].addStyleClass('added');
+	var fn = this[event.getSource().getDataProviderID() + '_filename'];
+	elements[event.getElementName()].uploadText = fn + ' added successfully.';
 	return true;
 }
 
 /**
- * @param oldValue
- * @param newValue
- * @param event
- *
- * @properties={typeid:24,uuid:"5FEFAB57-52BE-4EB2-A9BA-7FEACBD9C8BA"}
+ * @properties={typeid:24,uuid:"6518773D-3EF0-48D5-BFCD-0D06403E4BF0"}
  */
-function onDataChange$googleplist(oldValue, newValue, event) {
-	return true;
+function setBuildID() {
+	build_id = application.getUUID().toString().split('-')[0];
+	build_dir = plugins.file.convertToJSFile("build_" + build_id);
+	b_dir = "build_" + build_id;
 }
 
 /**
  * Perform the element default action.
  *
  * @param {JSEvent} event the event that triggered the action
- *
+ * @param {Function} cb
  * @private
  *
  * @properties={typeid:24,uuid:"846F44DB-9C0A-4D88-92DD-420947BCE716"}
  */
-function onAction$getLocalBuild(event) {
+function onAction$getLocalBuild(event, cb) {
+	if (!cb) {
+		setBuildID();
+	}
 	if (!img || !splash_img) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
-		return;
+		return null;
 	}
 
 	if (!app_author || !app_desc || !app_email || !app_name || !app_url || !app_version || !appid) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
-		return;
+		return null;
 	}
 
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
 		if (!googlejson || !googleplist) {
 			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json & GoogleService-Info.plist if using FCM plugin.')
-			return;
+			return null;
 		}
 	}
-	plugins.svyBlockUI.show('Generating Phonegap build');
-	var build_id = application.getUUID().toString().split('-')[0];
-	var build_dir = plugins.file.convertToJSFile("build_" + build_id);
-	b_dir = "build_" + build_id;
+	plugins.svyBlockUI.spinner = 'Wave';
+	plugins.svyBlockUI.show('Generating build...');
 	plugins.file.createFolder(b_dir);
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www"));
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www/js"));
@@ -286,51 +403,60 @@ function onAction$getLocalBuild(event) {
 	if (googleplist) createFile(b_dir + '/GoogleService-Info.plist', googleplist, null);
 	var build_file = zip(build_dir);
 	var url = createRemoteFile(build_file);
-	plugins.svyBlockUI.stop();
-	application.showURL(url, '_blank');
-	var dt = new Date();
-	dt.setSeconds(dt.getSeconds() + 10);
-	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir + '.zip'])
+
+	if (!cb) {
+		application.showURL(url, '_blank');
+	}
+
+	if (cb) {
+		var res = cb(build_file, { android: android_key_id, ios: ios_key_id });
+	}
+
 	plugins.file.deleteFolder(b_dir, false);
 	plugins.file.deleteFile(build_file.getAbsolutePath())
+	var dt = new Date();
+	dt.setSeconds(dt.getSeconds() + 10);
+	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir])
+	plugins.svyBlockUI.stop();
+	if (res) return res;
+	return null;
 }
-
 /**
  * @properties={typeid:24,uuid:"374EE099-0701-4F88-905F-E3BDC0DF37B4"}
  */
 function createIconAndSplash() {
 	//generate default icon
-	createFile(b_dir + "/www/res/icon/icon.png", createImageResize(img, 1024, 1024,false,true));
+	createFile(b_dir + "/www/res/icon/icon.png", createImageResize(img, 1024, 1024, false, true));
 
 	//generate IOS icons
-	createFile(b_dir + "/www/res/icon/ios/icon.png", createImageResize(img, 57, 57,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon@2x.png", createImageResize(img, 114, 114,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-40.png", createImageResize(img, 40, 40,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-40@2x.png", createImageResize(img, 80, 80,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-50.png", createImageResize(img, 50, 50,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-50@2x.png", createImageResize(img, 100, 100,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-60.png", createImageResize(img, 60, 60,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-60@2x.png", createImageResize(img, 120, 120,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-60@3x.png", createImageResize(img, 180, 180,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-72.png", createImageResize(img, 72, 72,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-72@2x.png", createImageResize(img, 144, 144,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-76.png", createImageResize(img, 76, 76,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-76@2x.png", createImageResize(img, 152, 152,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-small.png", createImageResize(img, 29, 29,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58,false,true));
-	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87,false,true));
+	createFile(b_dir + "/www/res/icon/ios/icon.png", createImageResize(img, 57, 57, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon@2x.png", createImageResize(img, 114, 114, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-40.png", createImageResize(img, 40, 40, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-40@2x.png", createImageResize(img, 80, 80, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-50.png", createImageResize(img, 50, 50, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-50@2x.png", createImageResize(img, 100, 100, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-60.png", createImageResize(img, 60, 60, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-60@2x.png", createImageResize(img, 120, 120, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-60@3x.png", createImageResize(img, 180, 180, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-72.png", createImageResize(img, 72, 72, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-72@2x.png", createImageResize(img, 144, 144, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-76.png", createImageResize(img, 76, 76, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-76@2x.png", createImageResize(img, 152, 152, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-small.png", createImageResize(img, 29, 29, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87, false, true));
 
 	//generate IOS Splash Screen
-	createFile(b_dir + "/www/res/screen/ios/Default-568h@2x~iphone.png", createImageResize(splash_img, 640, 1136,false,true));
-	createFile(b_dir + "/www/res/screen/ios/Default-667h.png", createImageResize(splash_img, 750, 1334,false,true));
-	createFile(b_dir + "/www/res/screen/ios/Default-736h.png", createImageResize(splash_img, 1242, 2208,false,true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape-736h.png", createImageResize(splash_img, 1242, 2208, true,true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape@2x~ipad.png", createImageResize(splash_img, 2048, 1536, true,true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape~ipad.png", createImageResize(splash_img, 1024, 768, true,true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Portrait@2x~ipad.png", createImageResize(splash_img, 1536, 2048,false,true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Portrait~ipad.png", createImageResize(splash_img, 768, 1024,false,true));
-	createFile(b_dir + "/www/res/screen/ios/Default@2x~iphone.png", createImageResize(splash_img, 640, 960,false,true));
-	createFile(b_dir + "/www/res/screen/ios/Default~iphone.png", createImageResize(splash_img, 480, 320,false,true));
+	createFile(b_dir + "/www/res/screen/ios/Default-568h@2x~iphone.png", createImageResize(splash_img, 640, 1136, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-667h.png", createImageResize(splash_img, 750, 1334, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-736h.png", createImageResize(splash_img, 1242, 2208, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape-736h.png", createImageResize(splash_img, 1242, 2208, true, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape@2x~ipad.png", createImageResize(splash_img, 2048, 1536, true, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape~ipad.png", createImageResize(splash_img, 1024, 768, true, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Portrait@2x~ipad.png", createImageResize(splash_img, 1536, 2048, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Portrait~ipad.png", createImageResize(splash_img, 768, 1024, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default@2x~iphone.png", createImageResize(splash_img, 640, 960, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default~iphone.png", createImageResize(splash_img, 480, 320, false, true));
 
 	//generate Android Icons
 	createFile(b_dir + "/www/res/icon/android/drawable-ldpi-icon.png", createImageResize(img, 192, 192));
@@ -353,7 +479,7 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/screen/android/drawable-port-hdpi-screen.png", createImageResize(splash_img, 311, 552));
 	createFile(b_dir + "/www/res/screen/android/drawable-port-xhdpi-screen.png", createImageResize(splash_img, 414, 736));
 	createFile(b_dir + "/www/res/screen/android/drawable-port-xxhdpi-screen.png", createImageResize(splash_img, 621, 1104));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-xxxhdpi-screen.png", createImageResize(splash_img, 1242,2208));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-xxxhdpi-screen.png", createImageResize(splash_img, 1242, 2208));
 }
 
 /**
@@ -365,7 +491,7 @@ function createIconAndSplash() {
  * @properties={typeid:24,uuid:"0A7DCB1F-A48F-464F-B3F7-FF7BCB00C5FA"}
  */
 function createImageResize(i, w, h, rotate, removeTransparency) {
-	var input = new java.io.File('tmp');
+	var input = new java.io.File(b_dir + '_tmp');
 	var fos = new java.io.FileOutputStream(input);
 	fos.write(i);
 	var im = Packages.javax.imageio.ImageIO.read(input);
@@ -408,6 +534,15 @@ function createImageResize(i, w, h, rotate, removeTransparency) {
  * @properties={typeid:24,uuid:"2EDC46E5-A9C8-4349-A87A-2FDAB39413E3"}
  */
 function removeFile(fname) {
+	var file = plugins.file.convertToRemoteJSFile('/' + fname + '.zip');
+	application.output('remove file ' + fname + ' ' + plugins.file.deleteFile(file));
+}
+/**
+ * @properties={typeid:24,uuid:"ECF90525-0B1B-4178-8E49-8A69822BAE41"}
+ */
+function removeMiscFile(fname) {
+	application.output(fname)
+	plugins.file.convertToJSFile(fname).deleteFile();
 	var file = plugins.file.convertToRemoteJSFile('/' + fname);
 	application.output('remove file ' + fname + ' ' + plugins.file.deleteFile(file));
 }
@@ -527,7 +662,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
 	if (plugins_list.indexOf('In App Browser') != -1)xml += '<plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />\n'
 	if (plugins_list.indexOf('Device') != -1) xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
-	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />\n'	
+	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />\n'
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated" />\n'
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
@@ -743,3 +878,142 @@ function channelCopy(src, dest) {
 	src.close();
 }
 
+/**
+ * @properties={typeid:24,uuid:"39181E26-0B58-4B7C-9CB3-C62FE6533BDB"}
+ */
+function addKeys() {
+	var keys = forms.phonegap_keys.show();
+	if (keys.android_keystore || (keys.ios_cert && keys.ios_provision)) {
+		//we have keys to add, let's update local vars
+		android_title = (keys.android_title == null || keys.android_title == '') ? appid : keys.android_title;
+		android_alias = keys.android_alias;
+		android_keystore = keys.android_keystore;
+		android_key_pass = keys.android_key_pass;
+		android_key_store_pass = keys.android_key_store_pass;
+		ios_cert = keys.ios_cert;
+		ios_cert_pass = keys.ios_cert_pass;
+		ios_provision = keys.ios_provision;
+		ios_title = (keys.ios_title == null || keys.ios_title == '') ? appid : keys.ios_title;
+		if (keys.android_keystore) {
+			android_key_id = addAndroidKey()['id'];
+		}
+
+		if (keys.ios_cert && keys.ios_provision) {
+			ios_key_id = addIOSKey()['id'];
+		}
+	}
+}
+
+/**
+ * Perform the element default action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"87172287-5C65-4EEE-A837-43C099F502BF"}
+ */
+function onAction$getCloudBuild(event) {
+	setBuildID();
+	if (!scopes.phonegapAuth.authenticated) {
+		if (forms.phonegap_auth.show()) {
+			addKeys();
+			var res = onAction$getLocalBuild(event, scopes.phonegapAuth.createApp);
+		}
+	} else {
+		addKeys();
+		res = onAction$getLocalBuild(event, scopes.phonegapAuth.createApp);
+	}
+
+	if (res && res.id) {
+		application.output('Created App with ID:' + res.id)
+		getAndroid();
+		getIOS();
+	}
+}
+
+/**
+ * @properties={typeid:24,uuid:"C2FD3F83-2BA1-4D25-ADCC-E756F0AB31C1"}
+ */
+function addAndroidKey() {
+	var f = createFile(b_dir + 'android.keystore', android_keystore);
+	var keys = scopes.phonegapAuth.getKeys('android');
+	for (var i = 0; i < keys.length; i++) {
+		if (keys[i].title == android_title) {
+			//if we already added this key (based on title) , let's remove it first
+			scopes.phonegapAuth.deleteKey('android', keys[i].id);
+		}
+	}
+	return scopes.phonegapAuth.addAndroidKey(f, appid, android_alias, android_key_pass, android_key_store_pass);
+}
+
+/**
+ * @properties={typeid:24,uuid:"0B1FD978-BCF2-4656-A9A6-8602C64FD070"}
+ */
+function addIOSKey() {
+	var f_cert = createFile(b_dir + 'ios.p12', ios_cert);
+	var f_prov = createFile(b_dir + 'ios.mobileprovision', ios_provision);
+	var keys = scopes.phonegapAuth.getKeys('ios');
+	for (var i = 0; i < keys.length; i++) {
+		if (keys[i].title == ios_title) {
+			//if we already added this key (based on title) , let's remove it first
+			scopes.phonegapAuth.deleteKey('ios', keys[i].id);
+		}
+	}
+	return scopes.phonegapAuth.addIOSKey(f_cert, f_prov, appid, ios_cert_pass);
+}
+
+/**
+ * @properties={typeid:24,uuid:"F8C626B5-E6AC-473A-8B61-E4623668C990"}
+ */
+function getAndroid() {
+	plugins.svyBlockUI.show('Getting Android Binary');
+	// download APK
+	var androidFile = null;
+	while (!androidFile) {
+		if (scopes.phonegapAuth.getApps()[0].status.android == 'error') {
+			plugins.svyBlockUI.stop();
+			plugins.dialogs.showInfoDialog('INFO', 'Failed to get Android Binary, please refer to cloud build logs.')
+			return;
+		}
+		if (scopes.phonegapAuth.getApps()[0].status.android == 'complete') {
+			androidFile = scopes.phonegapAuth.downloadAndroid(b_dir);
+			application.output('get android : ' + androidFile);
+		}
+	}
+	var url = createRemoteFile(androidFile);
+	application.showURL(url, '_blank');
+	var dt = new Date()
+	dt.setSeconds(dt.getSeconds() + 15);
+	plugins.scheduler.addJob('removeandroid', dt, removeMiscFile, [androidFile])
+	plugins.svyBlockUI.stop();
+	plugins.webnotificationsToastr.success('Android Build Complete');
+	
+}
+
+/**
+ * @properties={typeid:24,uuid:"AC62A4CC-C848-4655-BFAD-51190EDF2767"}
+ */
+function getIOS() {
+	plugins.svyBlockUI.show('Getting IOS Binary');
+	// download APK
+	var iosFile = null;
+	while (!iosFile) {
+		if (scopes.phonegapAuth.getApps()[0].status.ios == 'error') {
+			plugins.svyBlockUI.stop();
+			plugins.dialogs.showInfoDialog('INFO', 'Failed to get IOS Binary, please refer to cloud build logs.')
+			return;
+		}
+		if (scopes.phonegapAuth.getApps()[0].status.ios == 'complete') {
+			iosFile = scopes.phonegapAuth.downloadIOS(b_dir);
+			application.output('get ios : ' + iosFile);
+		}
+	}
+	var url = createRemoteFile(iosFile);
+	application.showURL(url, '_blank');
+	var dt = new Date()
+	dt.setSeconds(dt.getSeconds() + 15);
+	plugins.scheduler.addJob('removeios', dt, removeMiscFile, [iosFile])
+	plugins.svyBlockUI.stop();
+	plugins.webnotificationsToastr.success('IOS Build Complete');
+}

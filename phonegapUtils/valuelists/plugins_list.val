@@ -2,10 +2,10 @@ addEmptyValue:1,
 customValues:"Camera\
 Full screen\
 Network\
-Geo Location\
-File\
-In App Browser\
-Device\
+Location\
+Filesystem\
+In-App Browser\
+Device Information\
 Fingerprint\
 FCM Push Notifications",
 displayValueType:12,

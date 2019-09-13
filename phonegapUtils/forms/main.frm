@@ -26,7 +26,9 @@ width:"45%"
 },
 dataProviderID:"googleplist",
 iconStyleClass:"none",
-onDataChangeMethodID:"5FEFAB57-52BE-4EB2-A9BA-7FEACBD9C8BA",
+onDataChangeMethodID:"67D74457-2761-4F1B-AD89-E217CAD45D71",
+showProgress:false,
+toolTipText:"Upload GoogleService-Info.plist file",
 uploadText:"Upload GoogleService-Info.plist file",
 visible:true
 },
@@ -55,6 +57,20 @@ styleClass:"preview",
 typeName:"bootstrapcomponents-label",
 typeid:47,
 uuid:"0EB9BC49-4CFE-49E4-8D90-08967920F93A"
+},
+{
+background:"#4e9a06",
+borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
+cssPosition:"922,-1,-1,calc(100% - 197px),160,62",
+fontType:"FreeSans,1,15",
+foreground:"#ffffff",
+name:"create_buildc",
+onActionMethodID:"87172287-5C65-4EEE-A837-43C099F502BF",
+onDoubleClickMethodID:"-1",
+onRightClickMethodID:"-1",
+text:"Build via Cloud ",
+typeid:7,
+uuid:"1E0289FE-C97C-4896-A765-E226C535D429"
 },
 {
 background:"#888a85",
@@ -145,6 +161,8 @@ width:"45%"
 dataProviderID:"googlejson",
 iconStyleClass:"none",
 onDataChangeMethodID:"67D74457-2761-4F1B-AD89-E217CAD45D71",
+showProgress:false,
+toolTipText:"Upload GoogleService-Info.plist file",
 uploadText:"Upload google-services.json file",
 visible:true
 },
@@ -218,14 +236,14 @@ uuid:"937189B0-AC65-4967-A7AD-004DEB74621D"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"912,-1,-1,calc(100% - 160px),150,62",
+cssPosition:"922,-1,-1,calc(100% - 375px),170,62",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 name:"create_build",
 onActionMethodID:"846F44DB-9C0A-4D88-92DD-420947BCE716",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-text:"Create Build +",
+text:"Download Template",
 typeid:7,
 uuid:"9CD511F0-0EE9-4170-BD9F-101D7BC2E2E1"
 },
