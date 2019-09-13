@@ -554,7 +554,7 @@ function createConfig() {
 	//create config.xml for build
 	var xml = '';
 	xml = "<?xml version='1.0' encoding='utf-8'?>\n";
-	xml += '<widget android-versionCode="10000000" id="com.servoy.mobile" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
+	xml += '<widget android-versionCode="10000000" id="'+appid+'" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
 	xml += '<name>' + app_name + '</name>\n';
 	xml += '<description>' + app_desc + '</description>\n';
 	xml += '<author email="' + app_email + '">' + app_author + '</author>\n';
