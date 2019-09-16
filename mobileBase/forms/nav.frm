@@ -27,7 +27,7 @@ typeid:16,
 uuid:"0C190844-A532-4913-8434-40D9A9C7F136"
 },
 {
-cssPosition:"0,0,calc( 100% - 40px),0,100%,40",
+cssPosition:"0,0,calc( 100% - 50px),0,100%,50",
 items:[
 {
 containsFormID:"DB77AD75-4BC1-4F02-AEBC-24916E01A536",

@@ -4,14 +4,14 @@ extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
 anchors:13,
-cssPosition:"calc( 100% - 50px),-1,-1,52%,45%,40",
+cssPosition:"calc( 100% - 50px),-1,-1,50%,45%,30",
 customProperties:"",
 json:{
 anchors:13,
 cssPosition:{
 bottom:"-1",
-height:"40",
-left:"52%",
+height:"30",
+left:"50%",
 right:"-1",
 top:"calc( 100% - 50px)",
 width:"45%"
@@ -44,14 +44,14 @@ uuid:"A232ADD8-FF59-4668-867B-6D225B583473"
 },
 {
 anchors:13,
-cssPosition:"calc( 100% - 50px),-1,-1,5,45%,40",
+cssPosition:"calc( 100% - 50px),-1,-1,10,45%,30",
 customProperties:"",
 json:{
 anchors:13,
 cssPosition:{
 bottom:"-1",
-height:"40",
-left:"5",
+height:"30",
+left:"10",
 right:"-1",
 top:"calc( 100% - 50px)",
 width:"45%"
@@ -77,7 +77,7 @@ uuid:"B2ADF39C-5678-4253-A00A-561ED9AE4987"
 {
 cssPosition:"9,-1,-1,5,calc( 100% - 10px),30",
 dataProviderID:"fileName",
-placeholderText:"filename..",
+placeholderText:"Filename",
 typeid:4,
 uuid:"C5D1C29D-983D-423B-891F-329E793D300F"
 },
