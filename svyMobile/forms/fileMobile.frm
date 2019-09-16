@@ -35,7 +35,7 @@ typeid:47,
 uuid:"310E6A72-3F65-4327-95F6-6F6383F7ED38"
 },
 {
-cssPosition:"45,-1,-1,5,calc( 100% - 10px),calc( 100% - 110px)",
+cssPosition:"49,-1,-1,5,calc( 100% - 10px),calc( 100% - 110px)",
 dataProviderID:"fileContent",
 displayType:1,
 placeholderText:"Content...",
@@ -75,7 +75,7 @@ typeid:47,
 uuid:"B2ADF39C-5678-4253-A00A-561ED9AE4987"
 },
 {
-cssPosition:"5,-1,-1,5,calc( 100% - 10px),30",
+cssPosition:"9,-1,-1,5,calc( 100% - 10px),30",
 dataProviderID:"fileName",
 placeholderText:"filename..",
 typeid:4,
