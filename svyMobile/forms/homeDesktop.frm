@@ -24,7 +24,6 @@ uuid:"E436B322-9122-4CE9-9710-4B46F8EE9F0B"
 }
 ],
 name:"homeDesktop",
-onShowMethodID:"94A20D0C-A5DE-4111-87F2-F4851757A476",
 showInMenu:true,
 typeid:3,
 uuid:"1D3F491B-6603-4A4F-876D-184D33EB292A"
