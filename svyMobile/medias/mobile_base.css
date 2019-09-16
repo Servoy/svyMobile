@@ -479,10 +479,12 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 	border-bottom: none;
 }
 
-.btn-search{
+.btn-search,.btn-search:hover{
 	font-weight:bold;
 	font-size: 17px;
 	border: none;
+	background: none!important;
+	color: gray!important;
 }
 
 .search-text {
