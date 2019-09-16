@@ -1,0 +1,244 @@
+@import "mobileBase.less";
+
+/* Custom Theme Variables White Theme*/
+@main-color:#f57900;
+@inactive-color:white;
+@active-color:lightgray;
+@button-color-main:@main-color;
+@button-color-sec:blue;
+@text-color:#2e3436;
+@text-color-active:white;
+@text-color-header:@text-color;
+@validate-text-color-focus:white;
+@main-bg-color:white;
+@validate-bg-color:white;
+@inverse-bg-color:black;
+@header-bg-color:@main-color;
+@footer-bg-color:rgb(34, 34, 34);
+@label-text-size:17px;
+@input-text-size:15px;
+@color-warn:#ef2929;
+@text-shadow:none;
+
+/* Black Theme*/
+@main-color:#73d216;
+@inactive-color:rgb(34, 34, 34);
+@active-color:rgb(78, 78, 78);
+@button-color-main:@main-color;
+@button-color-sec:blue;
+@text-color:#fcfcfc;
+@text-color-active:black;
+@text-color-header:@text-color;
+@validate-text-color-focus:@text-color;
+@main-bg-color:rgb(34, 34, 34);
+@validate-bg-color:white;
+@inverse-bg-color:white;
+@header-bg-color:@main-color;
+@footer-bg-color:rgb(34, 34, 34);
+@label-text-size:17px;
+@input-text-size:15px;
+@color-warn:#ef2929;
+@text-shadow:1px 1px black;
+@validate-text-color:black;
+
+/*Navigation Menu*/
+.mobile_menu_header{
+	font-weight:bold;
+	font-size:20px;
+	color:@text-color!important;
+}
+
+[name="nav_menu"] > div{
+	width:100%!important;
+	height:100%!important;
+}
+
+[name="main_menu"] > div [svy-form-component="model.containedForm"] {
+	width:33%!important;
+	height:33%!important;
+	max-height:120px;
+}
+
+/* [name="sub_menu"] > div{
+	overflow:auto!important;
+} */
+
+.svy-listformcomponent {
+	overflow:auto!important;
+}
+
+.svy-listformcomponent {
+	z-index:100;
+}
+
+.nav_button{
+	border:none;
+	font-weight:bold;
+	color:@text-color!important;
+	font-size:15px!important;
+	padding:10px;
+	text-align:center;
+}
+
+.nav_list_button{
+	border-bottom:2px solid gray;
+	font-weight:bold;
+	color:@text-color!important;
+	font-size:17px;
+}
+
+.nav_list_button::after{
+	padding-right:5px;
+	float:right;
+	content:'\f054';
+	font-family:FontAwesome;	
+}
+
+.nav_list_button:active,.nav_button:active{
+	opacity:0.5;	
+}
+
+.nav_button .fas{
+	padding-bottom:10px;
+	font-size:45px;
+}
+
+.nav-orange .fas{
+	color:rgb(254, 120, 24)!important;
+}
+
+.nav-blue .fas{
+	color:#3465a4;
+}
+
+.nav-teal .fas{
+	color:rgb(14, 85, 156);
+}
+
+.nav-yellow .fas{
+	color:#fdd225;
+}
+
+.nav-neon .fas{
+	color:#cd4bd8;
+}
+
+.nav-purple .fas{
+	color:#5b3e8f;	
+}
+
+.nav-green .fas{
+	color:#4ed865;
+}
+
+.nav-skyblue .fas{
+	color:#59c7f9;
+}
+
+.nav-gray .fas{
+	color:rgb(180, 180, 180);
+}
+
+/*  UI Components*/
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none!important;
+}
+
+* {
+	outline: 0px!important;
+}
+
+/*Labels and Inputs*/
+
+.header_title{
+	background-color:@main-bg-color;
+	font-weight:bold;
+	font-size: @label-text-size;
+	color:@text-color-header!important;
+	text-align:center;
+	text-shadow: @text-shadow;
+	border:none;
+}
+.mobile_label{
+	background-color:@main-bg-color;
+	font-weight:bold;
+	font-size: @label-text-size;
+	color:@text-color!important;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control,.form-control{
+	border-radius:10px;	
+	font-weight:bold;
+	font-size: @input-text-size;
+	color:@text-color;
+	background-color:@active-color;
+	border:none!important;
+	outline:none!important;
+	box-shadow:none;
+	padding:10px;	
+}
+
+.form-control[disabled],.form-control[readonly],
+.form-control[disabled]:active,.form-control[disabled]:focus,
+.form-control[readonly]:active,.form-control[readonly]:focus
+{
+	color:@text-color;
+	background-color:@inactive-color;
+}
+
+.form-control:focus {
+	color:@text-color-active;
+	background-color:@inverse-bg-color;
+}
+
+.input-group-addon {
+	border:none;
+	padding:6px 12px!important;
+	background-color:@active-color;
+	color:@text-color;
+}
+
+/*Buttons*/
+
+.mobile_button,.mobile_button:hover,.mobile_button:active,.mobile_button:visited {
+	font-weight:bold;
+	font-size: 25px;
+	color:@text-color!important;
+	border-radius:10px;
+	background-color:@button-color-main!important;
+	border:none;		
+	text-shadow: @text-shadow;
+}
+
+.mobile_button:active{
+	opacity:0.8;
+	border:1px solid gray;
+	border-radius:10px;
+}
+
+.header_button,.header_button:hover,.header_button:active,.header_button:visited{
+	font-weight:bold;
+	font-size: 16px;
+	color:@text-color-header!important;
+	background-color:@main-color!important;
+	border:none!important;
+	border-radius:10px;
+	text-shadow: @text-shadow;
+}
+
+.header_button:active{
+	opacity:0.5;
+}
+
+/*Misc items*/
+.mobile_line{
+	border-color:#555753!important;
+}
+
+.hidden {
+	display:none;
+}

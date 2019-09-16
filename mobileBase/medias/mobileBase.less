@@ -1,0 +1,105 @@
+@import 'grid.css';
+/* Theme Variables*/
+@main-color:#73d216;
+@inactive-color:rgb(34, 34, 34);
+@active-color:rgb(78, 78, 78);
+@button-color-main:@main-color;
+@button-color-sec:blue;
+@text-color:#fcfcfc;
+@text-color-active:black;
+@text-color-header:@text-color;
+@validate-text-color-focus:@text-color;
+@main-bg-color:rgb(34, 34, 34);
+@validate-bg-color:white;
+@inverse-bg-color:white;
+@header-bg-color:@main-color;
+@footer-bg-color:rgb(34, 34, 34);
+@label-text-size:17px;
+@input-text-size:15px;
+@color-warn:#ef2929;
+@text-shadow:1px 1px black;
+@validate-text-color:black;
+
+
+/*Mobile and Desktop specific displays*/
+
+.base_mobile,.footer_mobile,.header_mobile,[ng-style="layout.header_mobile"]
+,[ng-style="layout.footer_mobile"],[ng-style="layout.mobile"] {	
+	display: none;
+	background-color: @main-bg-color;
+}
+
+[ng-style="layout.header_desktop"],[ng-style="layout.footer_desktop"]
+,[ng-style="layout.desktop"],.base_desktop,.footer_desktop,.header_desktop {
+	display: block;
+	background-color: @main-bg-color;
+}
+
+@media only screen and (max-width: 600px) {
+	[ng-style="layout.header_mobile"],[ng-style="layout.footer_mobile"]
+	,[ng-style="layout.mobile"],.base_mobile,.footer_mobile,.header_mobile {
+		display: block;
+	}
+	[ng-style="layout.header_desktop"],[ng-style="layout.footer_desktop"]
+	,[ng-style="layout.desktop"],.base_desktop,.footer_desktop,.header_desktop {	
+		display: none;
+	}
+}
+
+.footer_mobile,.footer_desktop {
+	background-color:@footer-bg-color;
+}
+
+.header_desktop,.header_mobile {
+	background-color:@header-bg-color;
+}
+
+
+/*Validation */
+
+[svyform="validate_popup"]:after, [svyform="validate_popup"]:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+[svyform="validate_popup"]:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: @validate-bg-color;
+	border-width: 5px;
+	margin-left: -5px;
+}
+[svyform="validate_popup"]:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: black;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+[svyform="validate_popup"] {	
+	position: relative;	
+	border: 5px solid #c2e1f5;
+	border-color:black;
+	background-color:@validate-bg-color;
+	border-radius:10px;	
+}
+
+.validate_message{
+	font-size:17px!important;
+	color:@validate-text-color!important;	
+	background-color:@validate-bg-color!important;
+    border-radius: 10px!important;
+}
+
+.validate_focus{
+	border:4px solid gray;
+	border:@color-warn;
+	color:@validate-text-color-focus!important;
+	background-color:@color-warn!important;
+}
+

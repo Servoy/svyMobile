@@ -1,0 +1,14 @@
+customProperties:"formComponent:false,\
+useCssPosition:true",
+extendsID:"949256C2-DB35-4FED-93B4-5CC2E0643090",
+items:[
+{
+height:50,
+partType:5,
+typeid:19,
+uuid:"3A63E00F-3974-4727-97D3-B5E7A2CAA896"
+}
+],
+name:"footerMobile",
+typeid:3,
+uuid:"BBC7AC8C-E79F-4699-ACE1-EED59845814B"

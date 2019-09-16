@@ -4,7 +4,8 @@ onShowMethodID:{\
 arguments:null,\
 parameters:null\
 }\
-}",
+},\
+useCssPosition:true",
 dataSource:"db:/example_data/orders",
 encapsulation:60,
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
@@ -17,8 +18,17 @@ uuid:"7A7F6F82-6CD4-4B04-86DA-E5D570DE796F"
 },
 {
 anchors:15,
+cssPosition:"5,5,6,5,300,445",
 json:{
 anchors:15,
+cssPosition:{
+bottom:"6",
+height:"445",
+left:"5",
+right:"5",
+top:"5",
+width:"300"
+},
 location:{
 x:5,
 y:5

@@ -1,9 +1,0 @@
-customProperties:"formComponent:false",
-encapsulation:60,
-name:"base",
-navigatorID:"-1",
-scrollbars:36,
-showInMenu:true,
-size:"351,480",
-typeid:3,
-uuid:"41A4A812-1F60-4887-8AFD-FA76C5F54876"

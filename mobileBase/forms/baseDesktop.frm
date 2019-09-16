@@ -1,0 +1,14 @@
+customProperties:"formComponent:false,\
+useCssPosition:true",
+extendsID:"949256C2-DB35-4FED-93B4-5CC2E0643090",
+items:[
+{
+height:480,
+partType:5,
+typeid:19,
+uuid:"1C4072B7-F1FE-4C86-8302-0B7078B88FA1"
+}
+],
+name:"baseDesktop",
+typeid:3,
+uuid:"1D0DF975-8F2F-49F2-8069-DC7E67E22A03"

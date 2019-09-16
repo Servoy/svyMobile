@@ -117,11 +117,11 @@ body {
 }
 
 .examples {
-	animation-name: slideDown;
+/* 	animation-name: slideDown;
 	animation-duration: 1s;
 	font-weight: bold;
 	padding-top: 20px;
-	color: white;
+	color: white; */
 }
 
 .example-label {
@@ -212,29 +212,29 @@ body {
 }
 
 .animate {
-	animation-name: slideUp;
-	animation-duration: 1s;
+/* 	animation-name: slideUp;
+	animation-duration: 1s; */
 }
 
 .slide-in-animation {
-	animation-name: slideIn;
-	animation-duration: 1s;
+	/* animation-name: slideIn;
+	animation-duration: 1s; */
 }
 
 .tips-animation {
-	animation-name: tips;
+/* 	animation-name: tips;
 	animation-duration: 1s;
-	font-weight: bold;
+	font-weight: bold; */
 }
 
 .slide-down-animation {
-	animation-name: slideDown;
-	animation-duration: 1s;
+	/* animation-name: slideDown;
+	animation-duration: 1s; */
 }
 
 .slide-up-animation {
-	animation-name: slideUp;
-	animation-duration: 1s;
+/* 	animation-name: slideUp;
+	animation-duration: 1s; */
 }
 
 .camera {
@@ -414,7 +414,7 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 }
 
 .chart-main {
-	background-color: teal;
+	/* background-color: teal; */
 }
 
 .chart {

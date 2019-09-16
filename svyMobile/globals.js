@@ -1,3 +1,23 @@
+/**
+ * @properties={typeid:24,uuid:"61692780-D4C9-4817-9BDE-E0D9D615579E"}
+ */
+function createMenuData() {
+	var f = datasources.mem.menu.getFoundSet();
+	f.deleteAllRecords();
+
+	//Add Main Menu
+	scopes.nav.addMenuItem('tablesContainer', 'Tables', 'fa-table', 'nav-neon', 1);
+	scopes.nav.addMenuItem('chartsContainer', 'Charts', 'fa-chart-pie', 'nav-skyblue', 3);
+	scopes.nav.addMenuItem('mediaContainer', 'Media', 'fa-images', 'nav-yellow', 3);
+	scopes.nav.addMenuItem('locationContainer', 'Location', 'fa-search-location', 'nav-green', 3);
+	scopes.nav.addMenuItem('pushContainer', 'Push', 'fa-bell', 'nav-orange', 3);
+	scopes.nav.addMenuItem('fingerprintContainer', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
+	scopes.nav.addMenuItem('fileContainer', 'File', 'fa-folder', 'nav-yellow', 3);	
+	scopes.nav.addMenuItem('settingsContainer', 'Settings', 'fa-cog', 'nav-gray', 3);
+	databaseManager.saveData(f);
+}
+
+
 
 /**
  * Callback method for when solution is opened.
@@ -11,8 +31,17 @@
  * @properties={typeid:24,uuid:"5FB44370-D763-4043-AFF8-46E0F5CD1FF5"}
  */
 function onSolutionOpen(arg, queryParams) {
-	//setup viewport for mobile view (disable zooming)
-	plugins.ngclientutils.setViewportMetaForMobileAwareSites(plugins.ngclientutils.VIEWPORT_MOBILE_DENY_ZOOM);
+	//initialize mobile base
+	scopes.mobileBase.onSolutionOpen(arg, queryParams);
+
+	//setup main/sub menu
+	createMenuData();
+
+	//setup headers
+	scopes.nav.setHeaders('headerMobile', true);
+	scopes.nav.setHeaders('headerDesktop', false);
+
+	scopes.nav.init();	
 	
 	//load api keys
 	mapAPIKey = application.getUserProperty('googleAPIKey');

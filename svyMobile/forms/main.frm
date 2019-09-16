@@ -1,8 +1,10 @@
-customProperties:"formComponent:false",
+customProperties:"formComponent:false,\
+useCssPosition:true",
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
 anchors:3,
+cssPosition:"8,13,-1,-1,46,32",
 formIndex:2,
 location:"258,8",
 name:"infobtn",
@@ -24,12 +26,21 @@ uuid:"21F92E87-2206-480E-A5C8-CB694F5C9D47"
 },
 {
 anchors:11,
+cssPosition:"0,1,-1,0,316,50",
 json:{
 anchors:11,
 brandLogo:"04C60E10-38ED-41B5-A7D9-44436B277844",
 brandLogoStyleClass:"logo",
 brandText:"SERVOY MOBILE DEMO",
 collapsing:false,
+cssPosition:{
+bottom:"-1",
+height:"50",
+left:"0",
+right:"1",
+top:"0",
+width:"316"
+},
 fixed:"top",
 inverse:true,
 location:{
@@ -53,6 +64,7 @@ uuid:"4B606895-BB4E-48F8-B209-F9C64DC44519"
 },
 {
 anchors:15,
+cssPosition:"49,1,1,0,316,431",
 formIndex:1,
 items:[
 {

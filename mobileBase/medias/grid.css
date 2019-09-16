@@ -1,0 +1,18 @@
+.ag-side-bar .ag-side-buttons  {
+	display: none!important;
+}
+
+.ag-header-row {
+	background-color:black;
+	color:white;
+}
+
+.ag-row{
+	background-color:black!important;
+	color:white;
+}
+
+.ag-row-selected{
+	background-color:gray!important;
+	color:white;
+}
