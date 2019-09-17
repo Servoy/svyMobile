@@ -12,7 +12,7 @@ extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
 anchors:11,
-cssPosition:"5,5,-1,5,300,227",
+cssPosition:"5,5,-1,5,100%,227",
 json:{
 anchors:11,
 backgroundColor:"backgroundColor",
@@ -22,7 +22,7 @@ height:"227",
 left:"5",
 right:"5",
 top:"5",
-width:"300"
+width:"100%"
 },
 foundset:{
 dataproviders:{

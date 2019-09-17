@@ -1,5 +1,6 @@
 customProperties:"formComponent:false,\
 useCssPosition:true",
+dataSource:"db:/example_data/orders",
 extendsID:"DB5448CA-5817-4529-AAE3-B4A316724044",
 items:[
 {
@@ -19,7 +20,7 @@ uuid:"3D5420F2-DFA1-4A1A-A6B1-6E15C9D9A1F6"
 extendsID:"3AFDFA57-4A4B-49E3-BA2C-FCF15B21674C",
 items:[
 {
-containsFormID:"A4C021C4-AC1E-4214-AB85-F38E418846F7",
+containsFormID:"4A25F26A-0A21-46AC-9C21-6F31014B6DF6",
 extendsID:"8A03C749-3974-4431-A791-1D9CDE8A9AF8",
 typeid:15,
 uuid:"04B0958B-CFDD-4774-AB31-EE7645B1906A"
