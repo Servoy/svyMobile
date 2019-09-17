@@ -6,7 +6,7 @@ parameters:null\
 }\
 },\
 useCssPosition:true",
-dataSource:"db:/example_data/orders",
+dataSource:"db:/example_data/products",
 encapsulation:60,
 extendsID:"949256C2-DB35-4FED-93B4-5CC2E0643090",
 items:[
@@ -31,7 +31,7 @@ json:{
 anchors:15,
 columns:[
 {
-dataprovider:"productname",
+dataprovider:"product_name",
 headerText:"Product Name",
 svyUUID:"130D5234-A542-4E7D-8E49-79D5F8698360"
 },
