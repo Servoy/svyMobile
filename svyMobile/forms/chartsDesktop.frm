@@ -6,7 +6,7 @@ items:[
 {
 cssPosition:"10,-1,-1,5,48%,250",
 json:{
-containedForm:"3BF4A4AF-FC16-40C5-A802-212C443285E8",
+containedForm:"0F9027DB-A6FF-40A7-BB97-FC7662423E80",
 cssPosition:{
 bottom:"-1",
 height:"250",
@@ -15,6 +15,7 @@ right:"-1",
 top:"10",
 width:"48%"
 },
+visible:true,
 waitForData:false
 },
 name:"tablesspanel_615",
