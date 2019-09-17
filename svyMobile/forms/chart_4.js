@@ -105,6 +105,18 @@ function randomizeAndDraw() {
  */
 function onShow(firstShow, event) {
 	_super.onShow(firstShow, event);
-	randomizeAndDraw();
 }
 
+
+/**
+ * Callback method when form is (re)loaded.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"C1ED22A6-44AE-4522-93E3-0C95B7D929E4"}
+ */
+function onLoad(event) {
+	randomizeAndDraw();
+}

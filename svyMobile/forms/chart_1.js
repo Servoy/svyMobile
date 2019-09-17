@@ -10,7 +10,6 @@
  */
 function onShow(firstShow, event) {
 	_super.onShow(firstShow, event);
-	randomizeAndDraw()
 }
 /**
  * @properties={typeid:24,uuid:"853D7DF4-4605-453A-B757-918A2576BF57"}
@@ -46,4 +45,17 @@ function randomizeAndDraw() {
 	//Initialize the chart by using setData
 	elements.chart.setData(data);
 	elements.chart.setOptions(options);
+}
+
+/**
+ * Callback method when form is (re)loaded.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"3EBA990B-5638-4E79-8899-A3C564416EBD"}
+ */
+function onLoad(event) {
+	randomizeAndDraw();
 }

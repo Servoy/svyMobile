@@ -1,5 +1,9 @@
 customProperties:"formComponent:false,\
 methods:{\
+onLoadMethodID:{\
+arguments:null,\
+parameters:null\
+},\
 onShowMethodID:{\
 arguments:null,\
 parameters:null\
@@ -49,6 +53,7 @@ uuid:"477A6BF9-DF99-4A24-B491-220F567D7D6C"
 }
 ],
 name:"chart_3",
+onLoadMethodID:"BC26B056-548F-4D97-B391-56E614A2657E",
 onShowMethodID:"B8EA27F4-2EC3-4691-BBAE-35F9F1F9E066",
 showInMenu:true,
 size:"310,333",

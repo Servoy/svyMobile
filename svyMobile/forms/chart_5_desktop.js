@@ -75,6 +75,20 @@ function onClick$switchTypes(index, label, value) {
  * @properties={typeid:24,uuid:"E25FA730-A61E-4E76-BC0A-69B4750FA34D"}
  */
 function onShow(firstShow, event) {	
+	
+	_super.onShow(firstShow, event)
+}
+
+/**
+ * Callback method when form is (re)loaded.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"5EE8B7B3-C126-4D37-A639-195E170B8184"}
+ */
+function onLoad(event) {
 	var options1 = {
 		legend: {
 			display: false
@@ -85,5 +99,4 @@ function onShow(firstShow, event) {
 		}
 	}
 	elements.chart.setOptions(options1)	
-	_super.onShow(firstShow, event)
 }

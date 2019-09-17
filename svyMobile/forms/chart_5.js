@@ -73,7 +73,20 @@ function onClick$switchTypes(index, label, value) {
  *
  * @properties={typeid:24,uuid:"5D9E91C8-A8CD-4BAB-86E7-C0719BF24FE9"}
  */
-function onShow(firstShow, event) {	
+function onShow(firstShow, event) {		
+	_super.onShow(firstShow, event)
+}
+
+/**
+ * Callback method when form is (re)loaded.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"0881A182-E558-4115-B90A-10643AA06B6F"}
+ */
+function onLoad(event) {
 	var options1 = {
 		legend: {
 			display: false
@@ -83,6 +96,5 @@ function onShow(firstShow, event) {
 			text: 'Foundset Bound Chart'
 		}
 	}
-	elements.chart.setOptions(options1)	
-	_super.onShow(firstShow, event)
+	elements.chart.setOptions(options1)
 }
