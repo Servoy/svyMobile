@@ -4,12 +4,12 @@ encapsulation:44,
 items:[
 {
 anchors:15,
-cssPosition:"5,5,5,5,100%,100%",
+cssPosition:"5,5,5,5,100%,90%",
 json:{
 anchors:15,
 cssPosition:{
 bottom:"5",
-height:"100%",
+height:"90%",
 left:"5",
 right:"5",
 top:"5",

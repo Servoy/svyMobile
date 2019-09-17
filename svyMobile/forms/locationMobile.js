@@ -9,9 +9,13 @@ var located = false;
  * @properties={typeid:24,uuid:"B80C837B-A71F-4900-A54E-862E08040BAD"}
  */
 function getLocation(event) {
-	//watch when location changes.
-	var options = { enableHighAccuracy: true }
-	plugins.svyphonegapLocation.watchPosition(null, getLocationSuccess, getLocationFail, options);
+	try {
+		//watch when location changes.
+		var options = { enableHighAccuracy: true }
+		plugins.svyphonegapLocation.watchPosition(null, getLocationSuccess, getLocationFail, options);
+	} catch (e) {
+	}
+
 }
 
 /**
