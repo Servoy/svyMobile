@@ -31,7 +31,7 @@ json:{
 anchors:15,
 columns:[
 {
-dataprovider:"product_name",
+dataprovider:"productname",
 headerText:"Product Name",
 svyUUID:"130D5234-A542-4E7D-8E49-79D5F8698360"
 },
