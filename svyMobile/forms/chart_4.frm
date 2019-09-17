@@ -18,16 +18,16 @@ uuid:"AC4A0F18-C496-4935-A67D-0E58B16F0532"
 },
 {
 anchors:15,
-cssPosition:"5,0,5,5,calc( 100% - 10px),calc( 100% - 20px)",
+cssPosition:"5,5,5,5,100%,100%",
 json:{
 anchors:15,
 cssPosition:{
 bottom:"5",
-height:"calc( 100% - 20px)",
+height:"100%",
 left:"5",
-right:"0",
+right:"5",
 top:"5",
-width:"calc( 100% - 10px)"
+width:"100%"
 },
 legendLabel:null,
 location:{
