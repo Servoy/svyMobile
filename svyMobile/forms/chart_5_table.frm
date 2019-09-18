@@ -59,7 +59,7 @@ uuid:"D1E64171-79CF-4D78-A845-99DBDF3EC33E"
 }
 ],
 name:"chart_5_table",
-onShowMethodID:"25B4AC50-55CD-4EC9-AB1B-771238CE56B4",
+onShowMethodID:"-1",
 scrollbars:36,
 showInMenu:true,
 styleClass:"chart-main",
