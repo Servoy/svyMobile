@@ -22,12 +22,12 @@ uuid:"AC4A0F18-C496-4935-A67D-0E58B16F0532"
 },
 {
 anchors:15,
-cssPosition:"5,5,5,5,100%,100%",
+cssPosition:"5,5,5,5,100%,90%",
 json:{
 anchors:15,
 cssPosition:{
 bottom:"5",
-height:"100%",
+height:"90%",
 left:"5",
 right:"5",
 top:"5",

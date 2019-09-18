@@ -24,7 +24,24 @@ typeid:47,
 uuid:"2094EA16-9638-4780-A3C8-E50B8F70EEC1"
 },
 {
-cssPosition:"530,-1,-1,5,calc( 100% - 20px),230",
+cssPosition:"530,-1,-1,50%,48%,250",
+items:[
+{
+containsFormID:"50FB7EA9-A11F-4AC3-A6FD-1DE41558D61C",
+location:"10,40",
+text:"chart_5_table",
+typeid:15,
+uuid:"0BC5B031-0C85-4159-AADE-D3FCD2729A4E"
+}
+],
+name:"tab_chart_5_table",
+printable:false,
+transparent:true,
+typeid:16,
+uuid:"264B7183-604E-4354-AF3D-5D6A0B4ECFAF"
+},
+{
+cssPosition:"530,-1,-1,5,48%,250",
 items:[
 {
 containsFormID:"ADF6F5AE-C9F4-4843-A1AD-0F69172BA0B2",
