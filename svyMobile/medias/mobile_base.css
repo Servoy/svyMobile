@@ -488,6 +488,7 @@ table-servoyextra-sort-show-up table-servoyextra-sort-up {
 }
 
 .search-text {
+	padding:1px 10px!important;
 	font-weight: bold;
 }
 
