@@ -12,9 +12,9 @@ extendsID:"949256C2-DB35-4FED-93B4-5CC2E0643090",
 items:[
 {
 cssPosition:"163,-1,-1,52%,45%,20",
-dataProviderID:"category_id",
+dataProviderID:"categoryid",
 name:"category_id",
-text:"Category Id",
+text:"Category ID",
 typeid:4,
 uuid:"02C4933B-FC81-40CC-B8F2-CDB587F1A6BB"
 },
@@ -169,7 +169,7 @@ uuid:"389982D6-FABC-436D-B12D-4BEEFE66A87F"
 },
 {
 cssPosition:"583,-1,-1,52%,45%,20",
-dataProviderID:"supplier_id",
+dataProviderID:"supplierid",
 name:"supplier_id",
 text:"Supplier Id",
 typeid:4,
@@ -217,7 +217,7 @@ uuid:"5099CEBC-726D-4FF9-87C9-C3E80FA1FBD0"
 },
 {
 cssPosition:"653,-1,-1,52%,45%,20",
-dataProviderID:"unit_price",
+dataProviderID:"unitprice",
 name:"unit_price",
 text:"Unit Price",
 typeid:4,
@@ -298,7 +298,7 @@ uuid:"725E1E8D-CC0D-41B0-9616-82F3F497C37E"
 },
 {
 cssPosition:"723,-1,-1,52%,45%,20",
-dataProviderID:"units_in_stock",
+dataProviderID:"unitsinstock",
 name:"units_in_stock",
 text:"Units In Stock",
 typeid:4,
@@ -306,7 +306,7 @@ uuid:"8D47E71A-793B-4436-9ED3-1D45E7875463"
 },
 {
 cssPosition:"443,-1,-1,52%,45%,20",
-dataProviderID:"quantity_per_unit",
+dataProviderID:"quantityperunit",
 name:"quantity_per_unit",
 text:"Quantity Per Unit",
 typeid:4,
@@ -334,7 +334,7 @@ uuid:"95F8F3EA-62E3-4837-8A1D-3F53B82C3ABB"
 },
 {
 cssPosition:"93,-1,-1,52%,45%,20",
-dataProviderID:"product_id",
+dataProviderID:"productid",
 editable:false,
 name:"product_id",
 text:"Product Id",
@@ -343,7 +343,7 @@ uuid:"C20C8583-CB8D-48BB-85CB-4B45467F2A2F"
 },
 {
 cssPosition:"513,-1,-1,52%,45%,20",
-dataProviderID:"reorder_level",
+dataProviderID:"reorderlevel",
 name:"reorder_level",
 text:"Reorder Level",
 typeid:4,
@@ -391,7 +391,7 @@ uuid:"E1CF8EEB-3825-4211-A403-EBFEBBCFAB88"
 },
 {
 cssPosition:"303,-1,-1,52%,45%,20",
-dataProviderID:"product_name",
+dataProviderID:"productname",
 name:"product_name",
 text:"Product Name",
 typeid:4,
@@ -413,7 +413,7 @@ uuid:"E89D918D-4B61-482F-B67D-D9AF2C40FBB2"
 },
 {
 cssPosition:"793,-1,-1,52%,45%,20",
-dataProviderID:"units_on_order",
+dataProviderID:"unitsonorder",
 name:"units_on_order",
 text:"Units On Order",
 typeid:4,
