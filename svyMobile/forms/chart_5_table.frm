@@ -45,7 +45,7 @@ width:299
 styleClass:"table"
 },
 location:"6,237",
-name:"table_537",
+name:"table",
 size:"299,213",
 typeName:"servoyextra-table",
 typeid:47,
