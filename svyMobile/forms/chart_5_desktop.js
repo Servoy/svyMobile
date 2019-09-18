@@ -88,5 +88,16 @@ function onShow(firstShow, event) {
  * @properties={typeid:24,uuid:"CA3626F3-D05A-42BD-B549-C75AEC6C3AA6"}
  */
 function onLoad(event) {
+	var options = {
+		title: {
+			display: true,
+			text: 'Foundset Bound Chart'
+		},
+		legend: {
+			display: false
+		}
+	}
+
+	elements.chart.setOptions(options);
 	elements.chart.refreshChart();
 }
