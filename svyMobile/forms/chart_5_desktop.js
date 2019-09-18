@@ -43,29 +43,17 @@ function onClick$switchTypes(index, label, value) {
 	if (type == 4) {
 		type = 0;
 	}
-	var options1 = {
+	var options = {
+		title: {
+			display: true,
+			text: 'Foundset Bound Chart'
+		},
 		legend: {
 			display: false
-		},
-		title: {
-			display: true,
-			text: 'Foundset Bound Chart'
 		}
 	}
-	var options2 = {
-		legend: {
-			display: true
-		},
-		title: {
-			display: true,
-			text: 'Foundset Bound Chart'
-		}
-	}
-	if (elements.chart.type == 'horizontalBar') {
-		elements.chart.setOptions(options1)
-	} else {
-		elements.chart.setOptions(options2)
-	}
+
+	elements.chart.setOptions(options);
 }
 
 /**
@@ -74,9 +62,20 @@ function onClick$switchTypes(index, label, value) {
  *
  * @properties={typeid:24,uuid:"E25FA730-A61E-4E76-BC0A-69B4750FA34D"}
  */
-function onShow(firstShow, event) {	
-	
+function onShow(firstShow, event) {
 	_super.onShow(firstShow, event)
+		var options = {
+		title: {
+			display: true,
+			text: 'Foundset Bound Chart'
+		},
+		legend: {
+			display: false
+		}
+	}
+
+	elements.chart.setOptions(options);
+	elements.chart.refreshChart();
 }
 
 /**
@@ -86,17 +85,8 @@ function onShow(firstShow, event) {
  *
  * @private
  *
- * @properties={typeid:24,uuid:"5EE8B7B3-C126-4D37-A639-195E170B8184"}
+ * @properties={typeid:24,uuid:"CA3626F3-D05A-42BD-B549-C75AEC6C3AA6"}
  */
 function onLoad(event) {
-	var options1 = {
-		legend: {
-			display: false
-		},
-		title: {
-			display: true,
-			text: 'Foundset Bound Chart'
-		}
-	}
-	elements.chart.setOptions(options1)	
+	elements.chart.refreshChart();
 }
