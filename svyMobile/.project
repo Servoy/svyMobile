@@ -7,7 +7,7 @@
 		<project>servoy-extra-components</project>
 		<project>googlemaps</project>
 		<project>svyChartUtils</project>
-		<project>svyphonegap</project>
+		<project>mobileBase</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
