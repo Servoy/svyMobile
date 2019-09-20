@@ -4,6 +4,11 @@
 var located = false;
 
 /**
+ * @properties={typeid:35,uuid:"91ABA2BB-EA97-4FCF-834E-8801ABE476B6",variableType:-4}
+ */
+var supported = false;
+
+/**
  * Get current location using location service
  * @param {JSEvent} event
  * @properties={typeid:24,uuid:"B80C837B-A71F-4900-A54E-862E08040BAD"}
@@ -23,12 +28,11 @@ function getLocation(event) {
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
 function getLocationSuccess(pos) {
-	if (!located) {
-		//send location to google map component
-		elements.map.latitude = pos.coords.latitude;
-		elements.map.longitude = pos.coords.longitude;
+	if (!located) {				
 		located = true;
 	}
+	//send location to google map component	
+	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);	
 }
 
 /**
@@ -48,9 +52,13 @@ function getLocationFail(err) {
  * @properties={typeid:24,uuid:"39422333-E68C-4C5D-9DB3-CAAE831D3633"}
  */
 function onShow(firstShow, event) {
-	_super.onShow(firstShow, event)
-	if (firstShow) {
+	_super.onShow(firstShow, event);
+	if (firstShow && scopes.globals.phonegapEnabled) {
+		application.output('Loading location')
 		getLocation(event);
+	} else {
+		plugins.dialogs.showInfoDialog('INFO','Cannot run this solution via web.');
+		scopes.nav.goBack(event);
 	}
 }
 

@@ -119,7 +119,7 @@ uuid:"9C9C276A-A0A2-4C57-8D07-A77DAB1B607A"
 }
 ],
 name:"mediaMobile",
-onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
+onShowMethodID:"40DB63D5-1B70-4369-9838-0437DE740083",
 showInMenu:true,
 size:"310,333",
 styleClass:"media animate",

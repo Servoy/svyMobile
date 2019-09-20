@@ -6,6 +6,11 @@
 var messages = null;
 
 /**
+ * @properties={typeid:35,uuid:"BBDF39D0-3DC3-4C02-B197-DF5E1665C104",variableType:-4}
+ */
+var supported = false;
+
+/**
  * @type {String}
  *
  * @properties={typeid:35,uuid:"93FE711E-D2DF-4370-BC7A-15B10F8CE9B0"}
@@ -19,12 +24,17 @@ var token
  * @properties={typeid:24,uuid:"79EA9E16-E42E-4F3C-B292-DBEB69BAB528"}
  */
 function onShow(firstShow, event) {
-	messages = '';	
+	messages = '';
+	if (scopes.globals.phonegapEnabled) {
 	//initialize and generate notification token
 	plugins.svyphonegapPush.getToken(updateToken, logInfo);
-
 	//when receiving a notification display a message if UI is visible.
 	plugins.svyphonegapPush.onNotification(showMessage, logInfo, logInfo)
+	} else {
+		messages = 'Plugin is not loaded or supported.'
+		plugins.dialogs.showInfoDialog('INFO','Cannot run this solution via web.');
+		scopes.nav.goBack(event);
+	}
 	return _super.onShow(firstShow, event)
 }
 
@@ -33,7 +43,7 @@ function onShow(firstShow, event) {
  *
  * @properties={typeid:24,uuid:"E1646396-9BDD-4D1D-BEBD-D05EB8C80E94"}
  */
-function updateToken(t) {	
+function updateToken(t) {
 	messages = 'Token Updated : ' + t;
 	token = t;
 }
@@ -41,7 +51,7 @@ function updateToken(t) {
 /**
  * @properties={typeid:24,uuid:"BB50DBAD-D720-425A-8B2B-A8ED48F2339E"}
  */
-function showMessage(data) {	
+function showMessage(data) {
 	if (data.wasTapped) {
 		messages = 'Notification received <br> while UI closed.'
 	} else {

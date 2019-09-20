@@ -66,3 +66,22 @@ function onAction$Load(event) {
 	}
 	plugins.svyphonegapFile.readFromFile(fileName, dir, readCB, readErr);
 }
+
+/**
+ * Callback method for when form is shown.
+ *
+ * @param {Boolean} firstShow form is shown first time after load
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ * @override
+ *
+ * @properties={typeid:24,uuid:"DAD6D2D0-8B1E-40B2-A573-7A1218817F9B"}
+ */
+function onShow(firstShow, event) {
+	_super.onShow(firstShow, event);
+	if (!scopes.globals.phonegapEnabled) {
+		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
+		scopes.nav.goBack(event);
+	}
+}

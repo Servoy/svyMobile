@@ -12,12 +12,10 @@ function createMenuData() {
 	scopes.nav.addMenuItem('locationContainer', 'Location', 'fa-search-location', 'nav-green', 3);
 	scopes.nav.addMenuItem('pushContainer', 'Push', 'fa-bell', 'nav-orange', 3);
 	scopes.nav.addMenuItem('fingerprintContainer', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
-	scopes.nav.addMenuItem('fileContainer', 'File', 'fa-folder', 'nav-yellow', 3);	
-//	scopes.nav.addMenuItem('settingsContainer', 'Settings', 'fa-cog', 'nav-gray', 3);
+	scopes.nav.addMenuItem('fileContainer', 'File', 'fa-folder', 'nav-yellow', 3);
+	//	scopes.nav.addMenuItem('settingsContainer', 'Settings', 'fa-cog', 'nav-gray', 3);
 	databaseManager.saveData(f);
 }
-
-
 
 /**
  * Callback method for when solution is opened.
@@ -41,16 +39,30 @@ function onSolutionOpen(arg, queryParams) {
 	scopes.nav.setHeaders('headerMobile', true);
 	scopes.nav.setHeaders('headerDesktop', false);
 
-	scopes.nav.init();	
-	
+	scopes.nav.init();
+
 	//load api keys
 	mapAPIKey = application.getUserProperty('googleAPIKey');
-	
+
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
-	
+
+	//check if phonegap is supported
+	plugins.svyphonegapPhonegap.executeScript('', [], support);
 }
 
+/**
+ * @properties={typeid:24,uuid:"283AF069-3264-4BD2-93C0-CC9C22A93D92"}
+ */
+function support() {
+	application.output('supported');
+	phonegapEnabled = true;
+}
+
+/**
+ * @properties={typeid:35,uuid:"51B0C634-C3F8-4698-8E24-425144F1BEDB",variableType:-4}
+ */
+var phonegapEnabled = false;
 
 /**
  * @type {String}
@@ -58,14 +70,14 @@ function onSolutionOpen(arg, queryParams) {
  * @properties={typeid:35,uuid:"0E934467-0DB7-40AE-8C9B-B24375085FA1"}
  */
 var currentTab = 'home'
-	
+
 /**
  * @type {String}
  *
  * @properties={typeid:35,uuid:"E6F1534E-7187-44E8-A2FC-745DC9C4429D"}
  */
 var mapAPIKey = ''
-	
+
 /**
  * @type {String}
  *

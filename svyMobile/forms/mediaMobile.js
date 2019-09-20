@@ -7,7 +7,7 @@
 function getPicture(event, type) {
 	plugins.svyBlockUI.show('Getting image...');
 	var options = { }
-	if (type == 'take') {		
+	if (type == 'take') {
 		//use camera instead of file gallery
 		options = {
 			targetWidth: 768,
@@ -49,6 +49,9 @@ function getPicFail(err) {
  *
  * @properties={typeid:24,uuid:"40DB63D5-1B70-4369-9838-0437DE740083"}
  */
-function onShow(firstShow, event) {
-	return _super.onShow(firstShow, event)
+function onShow(firstShow, event) {	
+	if (!scopes.globals.phonegapEnabled) {
+		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
+		scopes.nav.goBack(event);
+	}
 }

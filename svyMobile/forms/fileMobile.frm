@@ -1,4 +1,10 @@
 customProperties:"formComponent:false,\
+methods:{\
+onShowMethodID:{\
+arguments:null,\
+parameters:null\
+}\
+},\
 useCssPosition:true",
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
@@ -89,5 +95,6 @@ uuid:"FA8B9DB1-F3A3-47A6-9C82-41E73ED65CA8"
 }
 ],
 name:"fileMobile",
+onShowMethodID:"DAD6D2D0-8B1E-40B2-A573-7A1218817F9B",
 typeid:3,
 uuid:"D19B830E-087C-4FB7-A449-634F96C5E703"

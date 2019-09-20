@@ -34,6 +34,7 @@ right:"5",
 top:"11",
 width:"300"
 },
+fullscreenControl:true,
 latitude:0,
 location:{
 x:5,

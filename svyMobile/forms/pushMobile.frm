@@ -4,6 +4,10 @@ onHideMethodID:{\
 arguments:null,\
 parameters:null\
 },\
+onLoadMethodID:{\
+arguments:null,\
+parameters:null\
+},\
 onShowMethodID:{\
 arguments:null,\
 parameters:null\
@@ -97,6 +101,7 @@ uuid:"EE2D989C-7655-43D4-BB1F-49500FF59FF5"
 ],
 name:"pushMobile",
 onHideMethodID:"B5116BBB-29C7-45FC-8BEC-EE5F4CBB9996",
+onLoadMethodID:"12CBF683-6F8C-439B-BE8A-A832E34308CE",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 size:"300,480",
 styleClass:"examples animate",
