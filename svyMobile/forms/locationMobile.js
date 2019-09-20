@@ -32,7 +32,9 @@ function getLocationSuccess(pos) {
 		located = true;
 	}
 	//send location to google map component	
-	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);	
+	elements.map.latitude = pos.coords.latitude
+	elements.map.longitude = pos.coords.longitude
+//	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);	
 }
 
 /**
