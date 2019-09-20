@@ -53,3 +53,19 @@ function onShow(firstShow, event) {
 		getLocation(event);
 	}
 }
+
+/**
+ * Handle hide window.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @return {Boolean}
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"9C681DA5-92DB-4CE2-80B6-D3E34BFB4866"}
+ */
+function onHide(event) {
+	plugins.svyphonegapLocation.clearWatch();
+	return true
+}

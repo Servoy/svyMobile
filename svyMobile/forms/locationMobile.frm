@@ -1,5 +1,9 @@
 customProperties:"formComponent:false,\
 methods:{\
+onHideMethodID:{\
+arguments:null,\
+parameters:null\
+},\
 onShowMethodID:{\
 arguments:null,\
 parameters:null\
@@ -50,6 +54,7 @@ uuid:"7D73974D-DD99-4C4A-A048-AA175133FD1D"
 }
 ],
 name:"locationMobile",
+onHideMethodID:"9C681DA5-92DB-4CE2-80B6-D3E34BFB4866",
 onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
 showInMenu:true,
 size:"310,333",
