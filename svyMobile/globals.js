@@ -46,27 +46,6 @@ function onSolutionOpen(arg, queryParams) {
 
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
-
-	//check if phonegap is supported
-	plugins.svyphonegapPhonegap.executeScript('', [], support);
-	
-	//add check for back button press
-	plugins.svyphonegapPhonegap.setBackMethod(executeBack);
-}
-
-/**
- * @properties={typeid:24,uuid:"1F238BDF-5019-49E0-8C19-5756A560299D"}
- */
-function executeBack(){
-	plugins.dialogs.showInfoDialog("INFO","Back button pressed.")
-}
-
-/**
- * @properties={typeid:24,uuid:"283AF069-3264-4BD2-93C0-CC9C22A93D92"}
- */
-function support() {
-	application.output('supported');
-	phonegapEnabled = true;
 }
 
 /**
