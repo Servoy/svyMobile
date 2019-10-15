@@ -49,6 +49,16 @@ function onSolutionOpen(arg, queryParams) {
 
 	//check if phonegap is supported
 	plugins.svyphonegapPhonegap.executeScript('', [], support);
+	
+	//add check for back button press
+	plugins.svyphonegapPhonegap.setBackMethod(executeBack);
+}
+
+/**
+ * @properties={typeid:24,uuid:"1F238BDF-5019-49E0-8C19-5756A560299D"}
+ */
+function executeBack(){
+	plugins.dialogs.showInfoDialog("INFO","Back button pressed.")
 }
 
 /**
