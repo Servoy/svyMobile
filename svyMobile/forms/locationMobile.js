@@ -28,13 +28,15 @@ function getLocation(event) {
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
 function getLocationSuccess(pos) {
-	if (!located) {				
+	if (!located) {
 		located = true;
 	}
-	//send location to google map component	
+	//send location to google map component
 	elements.map.latitude = pos.coords.latitude
 	elements.map.longitude = pos.coords.longitude
-//	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);	
+	//clear watch once location found
+	plugins.svyphonegapLocation.clearWatch();
+	//	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);
 }
 
 /**
@@ -55,12 +57,13 @@ function getLocationFail(err) {
  */
 function onShow(firstShow, event) {
 	_super.onShow(firstShow, event);
-	if (firstShow && scopes.globals.phonegapEnabled) {
+	if (!scopes.globals.phonegapEnabled) {
+		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
+		scopes.nav.goBack(event);
+	}
+	if (firstShow) {
 		application.output('Loading location')
 		getLocation(event);
-	} else {
-		plugins.dialogs.showInfoDialog('INFO','Cannot run this solution via web.');
-		scopes.nav.goBack(event);
 	}
 }
 
@@ -76,6 +79,7 @@ function onShow(firstShow, event) {
  * @properties={typeid:24,uuid:"9C681DA5-92DB-4CE2-80B6-D3E34BFB4866"}
  */
 function onHide(event) {
+	application.output('hide')
 	plugins.svyphonegapLocation.clearWatch();
 	return true
 }

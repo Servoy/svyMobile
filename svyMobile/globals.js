@@ -46,6 +46,33 @@ function onSolutionOpen(arg, queryParams) {
 
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
+
+	//check if phonegap is supported
+	plugins.svyphonegapPhonegap.executeScript('', [], support);
+	//add check for back button press
+	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
+}
+
+/**
+ * @properties={typeid:24,uuid:"D3B192E4-A883-4B65-8862-D01A0693B818"}
+ */
+function goBack() {
+	var item = scopes.svyNavigation.getCurrentItem();
+	if (item.getFormName() == 'homeContainer') {
+		var ans = plugins.dialogs.showQuestionDialog('INFO', 'Exit App?', 'Yes', 'No');
+		if (ans == 'Yes') {
+			plugins.svyphonegapPhonegap.exit();
+		}
+	}
+	scopes.nav.goBack(null);
+}
+
+/**
+ * @properties={typeid:24,uuid:"68C881CF-FA6D-4C5F-BE3F-92AA583AE668"}
+ */
+function support() {
+	application.output('supported');
+	phonegapEnabled = true;
 }
 
 /**
