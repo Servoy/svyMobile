@@ -15,6 +15,7 @@ var supported = false;
  */
 function getLocation(event) {
 	try {
+		plugins.svyBlockUI.show('Getting location...');
 		//watch when location changes.
 		var options = { enableHighAccuracy: true }
 		plugins.svyphonegapLocation.watchPosition(null, getLocationSuccess, getLocationFail, options);
@@ -28,6 +29,7 @@ function getLocation(event) {
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
 function getLocationSuccess(pos) {
+	plugins.svyBlockUI.stop();
 	if (!located) {
 		located = true;
 	}
@@ -35,7 +37,7 @@ function getLocationSuccess(pos) {
 	elements.map.latitude = pos.coords.latitude
 	elements.map.longitude = pos.coords.longitude
 	//clear watch once location found
-	plugins.svyphonegapLocation.clearWatch();
+	plugins.svyphonegapLocation.clearWatch();	
 	//	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);
 }
 
@@ -44,9 +46,10 @@ function getLocationSuccess(pos) {
  * @properties={typeid:24,uuid:"C7DFB79D-C451-408E-A3BF-B2BCA1D0FE07"}
  */
 function getLocationFail(err) {
+	plugins.svyBlockUI.stop();
 	application.output(err)
 	located = false;
-	plugins.dialogs.showInfoDialog('Error', err.message);
+	plugins.dialogs.showInfoDialog('Error', err.message);	
 }
 
 /**

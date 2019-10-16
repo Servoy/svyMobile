@@ -61,6 +61,7 @@ function goBack() {
 	if (item.getFormName() == 'homeContainer') {
 		var ans = plugins.dialogs.showQuestionDialog('INFO', 'Exit App?', 'Yes', 'No');
 		if (ans == 'Yes') {
+			application.exit();
 			plugins.svyphonegapPhonegap.exit();
 		}
 	}
