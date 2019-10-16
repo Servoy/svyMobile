@@ -60,9 +60,9 @@ function goBack() {
 	var item = scopes.svyNavigation.getCurrentItem();
 	if (item.getFormName() == 'homeContainer') {
 		var ans = plugins.dialogs.showQuestionDialog('INFO', 'Exit App?', 'Yes', 'No');
-		if (ans == 'Yes') {
-			application.exit();
+		if (ans == 'Yes') {			
 			plugins.svyphonegapPhonegap.exit();
+			application.exit();
 		}
 	}
 	scopes.nav.goBack(null);

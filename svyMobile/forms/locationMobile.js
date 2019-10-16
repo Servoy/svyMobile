@@ -14,8 +14,7 @@ var supported = false;
  * @properties={typeid:24,uuid:"B80C837B-A71F-4900-A54E-862E08040BAD"}
  */
 function getLocation(event) {
-	try {
-		plugins.svyBlockUI.show('Getting location...');
+	try {		
 		//watch when location changes.
 		var options = { enableHighAccuracy: true }
 		plugins.svyphonegapLocation.watchPosition(null, getLocationSuccess, getLocationFail, options);
@@ -65,6 +64,7 @@ function onShow(firstShow, event) {
 		scopes.nav.goBack(event);
 	}
 	if (firstShow) {
+		plugins.svyBlockUI.show('Getting location...');
 		application.output('Loading location')
 		getLocation(event);
 	}
