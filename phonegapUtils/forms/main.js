@@ -397,8 +397,7 @@ function onAction$getLocalBuild(event, cb) {
 	createIconAndSplash();
 	createConfig();
 	createIndexHTML();
-	createFile(b_dir + '/www/js/bridge.js', plugins.http.getMediaData('https://raw.githubusercontent.com/Servoy/svyMobile/master/phonegap/www/js/bridge.js'))
-	createFile(b_dir + '/www/js/index.js', plugins.http.getMediaData('https://raw.githubusercontent.com/Servoy/svyMobile/master/phonegap/www/js/index.js'))
+	createFile(b_dir + '/www/js/bridge.js', plugins.http.getMediaData('https://raw.githubusercontent.com/Servoy/svyMobile/master/phonegap/www/js/bridge.js'))	
 	if (googlejson) createFile(b_dir + '/google-services.json', googlejson, null);
 	if (googleplist) createFile(b_dir + '/GoogleService-Info.plist', googleplist, null);
 	var build_file = zip(build_dir);
@@ -687,8 +686,7 @@ function createIndexHTML() {
 	htm += '<body>'
 	htm += "<iframe id='iframe' src='" + app_url + "' frameborder='0' style='padding-top: env(safe-area-inset-top);height: 100%;width:100%;display: block; position:absolute;'></iframe>"
 	htm += '<script type="text/javascript" src="js/bridge.js"></script>'
-	htm += '<script type="text/javascript" src="cordova.js"></script>'
-	htm += '<script type="text/javascript" src="js/index.js"></script>'
+	htm += '<script type="text/javascript" src="cordova.js"></script>'	
 	htm += '<script type="text/javascript">'
 	htm += 'app.initialize();'
 	htm += '</script>'
