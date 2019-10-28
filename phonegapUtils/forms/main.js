@@ -1,4 +1,11 @@
 /**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"C71494F5-92F0-42EB-AABC-FD2B3586DBFF"}
+ */
+var app_orientation = 'default';
+
+/**
  * @properties={typeid:35,uuid:"692CB251-083A-43E2-BC6D-8D8F2C835831",variableType:-4}
  */
 var splash_img;
@@ -371,7 +378,7 @@ function onAction$getLocalBuild(event, cb) {
 		return null;
 	}
 
-	if (!app_author || !app_desc || !app_email || !app_name || !app_url || !app_version || !appid) {
+	if (!app_name || !app_url || !app_version || !appid) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
 		return null;
 	}
@@ -397,7 +404,7 @@ function onAction$getLocalBuild(event, cb) {
 	createIconAndSplash();
 	createConfig();
 	createIndexHTML();
-	createFile(b_dir + '/www/js/bridge.js', plugins.http.getMediaData('https://raw.githubusercontent.com/Servoy/svyMobile/master/phonegap/www/js/bridge.js'))	
+	createFile(b_dir + '/www/js/bridge.js', plugins.http.getMediaData('https://raw.githubusercontent.com/Servoy/svyMobile/master/phonegap/www/js/bridge.js'))
 	if (googlejson) createFile(b_dir + '/google-services.json', googlejson, null);
 	if (googleplist) createFile(b_dir + '/GoogleService-Info.plist', googleplist, null);
 	var build_file = zip(build_dir);
@@ -553,7 +560,7 @@ function createConfig() {
 	//create config.xml for build
 	var xml = '';
 	xml = "<?xml version='1.0' encoding='utf-8'?>\n";
-	xml += '<widget android-versionCode="10000000" id="'+appid+'" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
+	xml += '<widget android-versionCode="10000000" id="' + appid + '" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
 	xml += '<name>' + app_name + '</name>\n';
 	xml += '<description>' + app_desc + '</description>\n';
 	xml += '<author email="' + app_email + '">' + app_author + '</author>\n';
@@ -565,12 +572,13 @@ function createConfig() {
 	xml += '<preference name="target-device" value="universal" />\n'
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
 	xml += '<preference name="InAppBrowserStorageEnabled" value="true" />\n'
-	xml += '<preference name="Orientation" value="portrait" />\n'
-	xml += '<preference name="phonegap-version" value="cli-7.1.0" />\n'
+	xml += '<preference name="Orientation" value="' + app_orientation + '" />\n'
+	xml += '<preference name="phonegap-version" value="cli-9.0.0" />\n'
 	xml += '<platform name="android">\n'
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
+	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
 	xml += '<preference name="android-targetSdkVersion" value="26"/>\n'
 	xml += '<preference name="AndroidLaunchMode" value="singleInstance" />\n'
 	xml += '<preference name="ShowSplashScreenSpinner" value="false" />\n'
@@ -611,6 +619,7 @@ function createConfig() {
 	xml += '<string>Required for capturing camera images.</string>\n'
 	xml += '</edit-config>\n'
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
+	if (googleplist) xml += '<resource-file src="app/GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
 	xml += '<allow-intent href="itms-apps:*" />\n'
 	xml += '<feature name="CDVWKWebViewEngine">\n'
@@ -649,8 +658,6 @@ function createConfig() {
 	xml += '<splash height="960" platform="ios" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />\n'
 	xml += '<splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />\n'
 	xml += '</platform>\n'
-	xml += '<engine name="ios" spec="~4.1.1" />\n'
-	xml += '<engine name="android" spec="~5.1.1" />\n'
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
@@ -686,7 +693,7 @@ function createIndexHTML() {
 	htm += '<body>'
 	htm += "<iframe id='iframe' src='" + app_url + "' frameborder='0' style='padding-top: env(safe-area-inset-top);height: 100%;width:100%;display: block; position:absolute;'></iframe>"
 	htm += '<script type="text/javascript" src="js/bridge.js"></script>'
-	htm += '<script type="text/javascript" src="cordova.js"></script>'	
+	htm += '<script type="text/javascript" src="cordova.js"></script>'
 	htm += '<script type="text/javascript">'
 	htm += 'app.initialize();'
 	htm += '</script>'
@@ -987,7 +994,7 @@ function getAndroid() {
 	plugins.scheduler.addJob('removeandroid', dt, removeMiscFile, [androidFile])
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('Android Build Complete');
-	
+
 }
 
 /**
@@ -1009,7 +1016,7 @@ function getIOS() {
 		}
 	}
 	var url = createRemoteFile(iosFile);
-	application.showURL(url, '_blank');	
+	application.showURL(url, '_blank');
 	var dt = new Date()
 	dt.setSeconds(dt.getSeconds() + 15);
 	plugins.scheduler.addJob('removeios', dt, removeMiscFile, [iosFile])

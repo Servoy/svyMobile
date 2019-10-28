@@ -3,7 +3,7 @@ useCssPosition:true",
 encapsulation:44,
 items:[
 {
-cssPosition:"601,-1,-1,10,95%,184",
+cssPosition:"661,-1,-1,10,95%,184",
 dataProviderID:"plugins_list",
 displayType:12,
 onDataChangeMethodID:"865432A7-61FE-4382-93B7-A9C3382D88DF",
@@ -13,7 +13,7 @@ uuid:"0224D7EF-B778-4E95-A054-56AEBC1866B4",
 valuelistID:"C094ED94-DEB5-4FF7-8BCF-325A65723268"
 },
 {
-cssPosition:"797,-1,-1,50%,45%,100",
+cssPosition:"857,-1,-1,50%,45%,100",
 json:{
 accept:".plist",
 cssPosition:{
@@ -21,7 +21,7 @@ bottom:"-1",
 height:"100",
 left:"50%",
 right:"-1",
-top:"797",
+top:"857",
 width:"45%"
 },
 dataProviderID:"googleplist",
@@ -61,7 +61,7 @@ uuid:"0EB9BC49-4CFE-49E4-8D90-08967920F93A"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"922,-1,-1,calc(100% - 197px),160,62",
+cssPosition:"982,-1,-1,calc(100% - 197px),160,62",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 name:"create_buildc",
@@ -86,7 +86,7 @@ typeid:7,
 uuid:"1E55F1BE-6EF2-409B-9943-1780C17B5602"
 },
 {
-height:1010,
+height:1075,
 partType:5,
 typeid:19,
 uuid:"2A71D174-E9E2-4440-B11C-27DADA51B547"
@@ -147,7 +147,7 @@ typeid:7,
 uuid:"58ABA27C-D85F-45B0-8F1D-7AFCAC8A9260"
 },
 {
-cssPosition:"797,-1,-1,10,45%,100",
+cssPosition:"857,-1,-1,10,45%,100",
 json:{
 accept:".json",
 cssPosition:{
@@ -155,7 +155,7 @@ bottom:"-1",
 height:"100",
 left:"10",
 right:"-1",
-top:"797",
+top:"857",
 width:"45%"
 },
 dataProviderID:"googlejson",
@@ -206,6 +206,16 @@ typeid:7,
 uuid:"767E1D79-C4E6-4EEC-BE5C-EC165C77BDA3"
 },
 {
+cssPosition:"568,-1,-1,8,44%,30",
+dataProviderID:"app_orientation",
+displayType:2,
+editable:false,
+placeholderText:"Orientation",
+typeid:4,
+uuid:"7A8925C6-E2A1-499C-B248-C69CEAD7ECAA",
+valuelistID:"482F439E-1D42-410C-9F0D-71CC4C150394"
+},
+{
 cssPosition:"397,-1,-1,50%,44%,30",
 dataProviderID:"app_desc",
 placeholderText:"My App Description...",
@@ -236,7 +246,7 @@ uuid:"937189B0-AC65-4967-A7AD-004DEB74621D"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"922,-1,-1,calc(100% - 375px),170,62",
+cssPosition:"982,-1,-1,calc(100% - 375px),170,62",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 name:"create_build",
@@ -262,7 +272,7 @@ typeid:7,
 uuid:"B01AD1E0-E9DA-4896-9D46-59B201853B72"
 },
 {
-cssPosition:"548,-1,-1,10,390,40",
+cssPosition:"608,-1,-1,10,390,40",
 text:"<h4> Plugins <\/h4>  (Ctrl-click to select multiple)",
 transparent:true,
 typeid:7,
@@ -316,7 +326,7 @@ typeid:47,
 uuid:"CB7DFBFA-EE5F-4E1E-B188-31B98AC7E66B"
 },
 {
-cssPosition:"986,-1,-1,9,717,21",
+cssPosition:"1046,-1,-1,9,717,21",
 formIndex:3,
 transparent:true,
 typeid:7,
@@ -328,6 +338,13 @@ text:"Email",
 transparent:true,
 typeid:7,
 uuid:"E57A2F4E-C431-45F5-B100-E4D350AFBCD8"
+},
+{
+cssPosition:"546,-1,-1,9,45%,20",
+text:"Lock Display Orientation",
+transparent:true,
+typeid:7,
+uuid:"E9A3A3D0-A0BB-4849-866D-5D989F82BB07"
 },
 {
 background:"#888a85",
