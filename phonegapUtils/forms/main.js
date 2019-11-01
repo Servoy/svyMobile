@@ -660,6 +660,10 @@ function createConfig() {
 	xml += '</platform>\n'
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
+	if (plugins_list.indexOf('WKWebView') != -1) {
+		xml += '<plugin name="cordova-plugin-wkwebview-engine" source="npm" />'
+		xml += '<plugin name="cordova-plugin-webview-switch" source="npm" />'
+	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
