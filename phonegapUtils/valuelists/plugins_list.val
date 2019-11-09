@@ -9,8 +9,7 @@ Filesystem\
 In-App Browser\
 Device Information\
 Fingerprint\
-FCM Push Notifications\
-Ionic WebView",
+FCM Push Notifications",
 displayValueType:12,
 name:"plugins_list",
 realValueType:12,
