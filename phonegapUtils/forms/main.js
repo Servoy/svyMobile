@@ -292,7 +292,7 @@ function onShow(firstShow, event) {
 	elements.googlejson.uploadText = elements.googlejson.toolTipText
 	elements.googleplist.uploadText = elements.googleplist.toolTipText
 
-	/** @type {webnotificationsToastr.toastrOptions} */
+	/** @type {CustomType<webnotificationsToastr.toastrOptions>} */
 	var options = {
 		"closeButton": false,
 		"newestOnTop": false,
