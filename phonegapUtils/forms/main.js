@@ -403,8 +403,7 @@ function onAction$getLocalBuild(event, cb) {
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www/res/screen/android"));
 	createIconAndSplash();
 	createConfig();
-	createIndexHTML();
-	createFile(b_dir + '/www/js/bridge.js', plugins.http.getMediaData('https://raw.githubusercontent.com/Servoy/svyMobile/master/phonegap/www/js/bridge.js'))
+	createIndexHTML();	
 	if (googlejson) createFile(b_dir + '/google-services.json', googlejson, null);
 	if (googleplist) createFile(b_dir + '/GoogleService-Info.plist', googleplist, null);
 	var build_file = zip(build_dir);
