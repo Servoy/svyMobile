@@ -564,7 +564,8 @@ function createConfig() {
 	xml += '<name>' + app_name + '</name>\n';
 	xml += '<description>' + app_desc + '</description>\n';
 	xml += '<author email="' + app_email + '">' + app_author + '</author>\n';
-	xml += '<content src="index.html" />\n'
+	//	xml += '<content src="index.html" />\n'
+	xml += '<content src="' + app_url + '" />\n'
 	xml += '<access origin="*" />\n'
 	xml += '<allow-navigation href="*" />\n'
 	xml += '<allow-intent href="https://*/*" />\n'
@@ -660,12 +661,10 @@ function createConfig() {
 	xml += '</platform>\n'
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
-	// if (plugins_list.indexOf('Ionic WebView') != -1) {
-	// 	xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />'
-	// 	xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />'
-	// 	xml += '<plugin name="cordova-plugin-webview-switch" source="npm" />'	
-	// 	xml += '<plugin name="cordova-plugin-wkwebview-cookie-sync" source="npm" />'				
-	// }
+	if (plugins_list.indexOf('Ionic WebView') != -1) {
+		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />'
+		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />'
+	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'

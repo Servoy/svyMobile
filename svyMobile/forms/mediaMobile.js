@@ -30,7 +30,7 @@ function getPicture(event, type) {
  */
 function getPicSuccess(res) {
 	//display the image.
-	elements.contact_photo.imageURL = '';
+	elements.contact_photo.imageURL = null;
 	elements.contact_photo.text = '<img src="data:image/png;base64,' + res + '"/>'
 	plugins.svyBlockUI.stop(150);
 }

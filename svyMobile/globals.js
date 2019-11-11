@@ -29,6 +29,9 @@ function createMenuData() {
  * @properties={typeid:24,uuid:"5FB44370-D763-4043-AFF8-46E0F5CD1FF5"}
  */
 function onSolutionOpen(arg, queryParams) {
+	//initialize phonegap module
+	plugins.svyphonegapPhonegap.init();	
+
 	//initialize mobile base
 	scopes.mobileBase.onSolutionOpen(arg, queryParams);
 
@@ -48,8 +51,8 @@ function onSolutionOpen(arg, queryParams) {
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
 
 	//check if phonegap is supported
-	plugins.svyphonegapPhonegap.executeScript('', [], support);
-	//add check for back button press
+	//	plugins.svyphonegapPhonegap.executeScript('', [], support);
+	//	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
 }
 
@@ -60,7 +63,7 @@ function goBack() {
 	var item = scopes.svyNavigation.getCurrentItem();
 	if (item.getFormName() == 'homeContainer') {
 		var ans = plugins.dialogs.showQuestionDialog('INFO', 'Exit App?', 'Yes', 'No');
-		if (ans == 'Yes') {			
+		if (ans == 'Yes') {
 			plugins.svyphonegapPhonegap.exit();
 			application.exit();
 		}
@@ -79,7 +82,7 @@ function support() {
 /**
  * @properties={typeid:35,uuid:"51B0C634-C3F8-4698-8E24-425144F1BEDB",variableType:-4}
  */
-var phonegapEnabled = false;
+var phonegapEnabled = true;
 
 /**
  * @type {String}
