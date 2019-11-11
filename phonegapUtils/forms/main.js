@@ -564,7 +564,6 @@ function createConfig() {
 	xml += '<name>' + app_name + '</name>\n';
 	xml += '<description>' + app_desc + '</description>\n';
 	xml += '<author email="' + app_email + '">' + app_author + '</author>\n';
-	//	xml += '<content src="index.html" />\n'
 	xml += '<content src="' + app_url + '" />\n'
 	xml += '<access origin="*" />\n'
 	xml += '<allow-navigation href="*" />\n'
