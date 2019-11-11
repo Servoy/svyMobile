@@ -3,7 +3,7 @@
     <name>Servoy Mobile</name>
     <description>Mobile Demo for NGClient</description>
     <author email="tnguyen@servoy.com">Tuan Nguyen</author>
-    <content src="index.html" />
+    <content src="https://svymobile.servoy.com/solutions/svyMobile/index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="https://*/*" />
