@@ -697,12 +697,6 @@ function createIndexHTML() {
 	htm += '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">'
 	htm += '</head>'
 	htm += '<body>'
-//	htm += "<iframe id='iframe' src='" + app_url + "' frameborder='0' style='padding-top: env(safe-area-inset-top);height: 100%;width:100%;display: block; position:absolute;'></iframe>"
-//	htm += '<script type="text/javascript" src="js/bridge.js"></script>'
-//	htm += '<script type="text/javascript" src="cordova.js"></script>'
-//	htm += '<script type="text/javascript">'
-//	htm += 'app.initialize();'
-//	htm += '</script>'
 	htm += '</body>'
 	htm += '</html>'
 	createFile(b_dir + '/www/index.html', null, htm);
