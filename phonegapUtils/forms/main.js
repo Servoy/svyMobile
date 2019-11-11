@@ -619,7 +619,6 @@ function createConfig() {
 	xml += '<string>Required for capturing camera images.</string>\n'
 	xml += '</edit-config>\n'
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
-	if (googleplist) xml += '<resource-file src="app/GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
 	xml += '<allow-intent href="itms-apps:*" />\n'
 	xml += '<feature name="CDVWKWebViewEngine">\n'
