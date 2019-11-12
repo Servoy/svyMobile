@@ -10,7 +10,9 @@ In-App Browser\
 Device Information\
 Fingerprint\
 FCM Push Notifications\
-Ionic WebView",
+Ionic WebView\
+Screen Orientation\
+Launch Navigator",
 displayValueType:12,
 name:"plugins_list",
 realValueType:12,
