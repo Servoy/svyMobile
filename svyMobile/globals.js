@@ -31,8 +31,8 @@ function createMenuData() {
 function onSolutionOpen(arg, queryParams) {
 	
 	//initialize phonegap module
-	plugins.svyphonegapPhonegap.init();	
-
+	scopes.phonegap.onSolutionOpen(arg,queryParams);
+	
 	//initialize mobile base
 	scopes.mobileBase.onSolutionOpen(arg, queryParams);
 
