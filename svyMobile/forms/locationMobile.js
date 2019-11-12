@@ -33,17 +33,19 @@ function getLocation(event) {
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
 function getLocationSuccess(pos, id) {
+	application.output(pos);
 	watchID = id;
 	plugins.svyBlockUI.stop();
 	if (!located) {
 		located = true;
 	}
 	//send location to google map component
-	elements.map.latitude = pos.coords.latitude
-	elements.map.longitude = pos.coords.longitude
+	if (pos && pos.coords) {
+		elements.map.latitude = pos.coords.latitude
+		elements.map.longitude = pos.coords.longitude
+	}
 	//clear watch once location found
 	plugins.svyphonegapLocation.clearWatch(watchID);
-	//	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);
 }
 
 /**

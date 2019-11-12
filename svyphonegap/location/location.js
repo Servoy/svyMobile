@@ -14,12 +14,12 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			 * @param {{maximumAge: Number, timeout: Number, enableHighAccuracy: Boolean}} [options]
 			 *
 			 */
-			getCurrentPosition: function(successCallback, errorCallback, options) {
+			getCurrentPosition: function(successCallback, errorCallback, options) {				
 				try {
 					navigator.geolocation.getCurrentPosition(function(data) {
 							$window.executeInlineScript(successCallback.formname, successCallback.script, [data]);
-						}, function(err) {
-							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err]);
+						}, function(err) {							
+							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);
 						}, options);
 				} catch (e) {
 					window.alert('error getting geolocation: ' + e.message);
@@ -39,11 +39,15 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			 *
 			 */
 			watchPosition: function(successCallback, errorCallback, options) {
-				watchID = navigator.geolocation.watchPosition(function(res) {
-						$window.executeInlineScript(successCallback.formname, successCallback.script, [res, watchID]);
-					}, function(err) {
-						$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err]);
-					}, options);
+				try {
+					watchID = navigator.geolocation.watchPosition(function(data) {
+							$window.executeInlineScript(successCallback.formname, successCallback.script, [data, watchID]);
+						}, function(err) {
+							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);
+						}, options);
+				} catch (e) {
+					window.alert('error getting geolocation: ' + e.message);
+				}
 			},
 			/**
 			 * Remove an existing watcher which will disable tracking of location.
