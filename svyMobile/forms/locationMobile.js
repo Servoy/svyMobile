@@ -42,7 +42,7 @@ function getLocationSuccess(pos, id) {
 	elements.map.latitude = pos.coords.latitude
 	elements.map.longitude = pos.coords.longitude
 	//clear watch once location found
-	plugins.svyphonegapLocation.clearWatch();
+	plugins.svyphonegapLocation.clearWatch(watchID);
 	//	elements.map.newMarkers([{addressString:null,latitude:pos.coords.latitude,longitude:pos.coords.longitude}]);
 }
 

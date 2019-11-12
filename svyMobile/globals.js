@@ -28,7 +28,7 @@ function createMenuData() {
  *
  * @properties={typeid:24,uuid:"5FB44370-D763-4043-AFF8-46E0F5CD1FF5"}
  */
-function onSolutionOpen(arg, queryParams) {
+function onSolutionOpen(arg, queryParams) {		
 	//initialize phonegap module
 	plugins.svyphonegapPhonegap.init();	
 
