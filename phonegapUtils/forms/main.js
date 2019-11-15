@@ -578,7 +578,7 @@ function createConfig() {
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
-	xml += '<preference name="android-targetSdkVersion" value="26"/>\n'
+	xml += '<preference name="android-targetSdkVersion" value="28"/>\n'
 	xml += '<preference name="AndroidLaunchMode" value="singleInstance" />\n'
 	xml += '<preference name="ShowSplashScreenSpinner" value="false" />\n'
 	xml += '<preference name="AutoHideSplashScreen " value="true" />\n'
