@@ -62,7 +62,7 @@ function onSolutionOpen(arg, queryParams) {
  */
 function goBack() {
 	var item = scopes.svyNavigation.getCurrentItem();
-	if (item.getFormName() == 'homeContainer') {
+	if (item.getFormName() == 'homeContainer') {		
 		var ans = plugins.dialogs.showQuestionDialog('INFO', 'Exit App?', 'Yes', 'No');
 		if (ans == 'Yes') {
 			plugins.svyphonegapPhonegap.exit();

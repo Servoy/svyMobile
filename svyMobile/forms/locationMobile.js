@@ -19,13 +19,10 @@ var watchID = null;
  * @properties={typeid:24,uuid:"B80C837B-A71F-4900-A54E-862E08040BAD"}
  */
 function getLocation(event) {
-	try {
-		//watch when location changes.
-		var options = { enableHighAccuracy: true }
-		plugins.svyphonegapLocation.watchPosition(getLocationSuccess, getLocationFail, options);
-	} catch (e) {
-	}
-
+	//watch when location changes.
+	var options = { enableHighAccuracy: true }
+	plugins.svyphonegapLocation.watchPosition(getLocationSuccess, getLocationFail, options);	
+	plugins.svyphonegapLocation.getCurrentPosition(getLocationSuccess,getLocationFail,options);
 }
 
 /**
@@ -34,6 +31,7 @@ function getLocation(event) {
  */
 function getLocationSuccess(pos, id) {
 	application.output(pos);
+	application.output(id);
 	watchID = id;
 	plugins.svyBlockUI.stop();
 	if (!located) {
@@ -53,8 +51,7 @@ function getLocationSuccess(pos, id) {
  * @properties={typeid:24,uuid:"C7DFB79D-C451-408E-A3BF-B2BCA1D0FE07"}
  */
 function getLocationFail(err) {
-	plugins.svyBlockUI.stop();
-	application.output(err)
+	plugins.svyBlockUI.stop();	
 	located = false;
 	plugins.dialogs.showInfoDialog('Error', err);
 }
@@ -71,11 +68,11 @@ function onShow(firstShow, event) {
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
 		scopes.nav.goBack(event);
 	}
-	if (firstShow) {
+//	if (firstShow) {
 		plugins.svyBlockUI.show('Getting location...');
 		application.output('Loading location')
 		getLocation(event);
-	}
+//	}
 }
 
 /**
