@@ -4,6 +4,19 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
         init: function() {
 
             App = {
+            	
+            	cloneAsObject: function(obj) {
+        		    if (obj === null || !(obj instanceof Object)) {
+        		        return obj;
+        		    }
+        		    var temp = (obj instanceof Array) ? [] : {};
+        		    // ReSharper disable once MissingHasOwnPropertyInForeach
+        		    for (var key in obj) {
+        		        temp[key] = this.cloneAsObject(obj[key]);
+        		    }
+        		    return temp;
+        		},
+            	
                 initialize: function() {
                     this.bindEvents();
                 },

@@ -1,7 +1,8 @@
 angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation", function($services, $window) {
 		var scope = $services.getServiceScope('svyphonegapLocation');
+		
 		return {
-
+			
 			/**
 			 * Returns the device's current position to the successCallback function with a <br>Position object as the parameter. If there is an error, the errorCallback callback is passed a PositionError object. <br>Possible options are<br><ul>
 			 * <li>enableHighAccuracy: Provides a hint that the application needs the best possible results. By default, the device attempts to retrieve a Position using network-based methods. Setting this property to true tells the framework to use more accurate methods, such as satellite positioning.</li>
@@ -15,16 +16,12 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			 *
 			 */
 			getCurrentPosition: function(successCallback, errorCallback, options) {
+				
 				try {
-					navigator.geolocation.getCurrentPosition(function(data) {
-							console.log(data)
-							console.log(successCallback)
-							$window.executeInlineScript(successCallback.formname, successCallback.script, [data]);
-						}, function(err) {			
-							console.log(err)
-							console.log(errorCallback)
-							console.log(err.message)
-							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);
+					navigator.geolocation.getCurrentPosition(function(data) {							
+							$window.executeInlineScript(successCallback.formname, successCallback.script, [App.cloneAsObject(data)]);
+						}, function(err) {
+							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [App.cloneAsObject(err)]);
 						}, options);
 				} catch (e) {
 					window.alert('error getting geolocation: ' + e.message);
@@ -45,11 +42,11 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			 */
 			watchPosition: function(successCallback, errorCallback, options) {
 				try {
-				Servoy.watchID = navigator.geolocation.watchPosition(function(res) {
-						$window.executeInlineScript(successCallback.formname, successCallback.script, [res, Servoy.watchID]);
-					}, function(err) {
-						$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);
-					}, options);
+					watchID = navigator.geolocation.watchPosition(function(res) {
+							$window.executeInlineScript(successCallback.formname, successCallback.script, [App.cloneAsObject(res), watchID]);
+						}, function(err) {
+							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [App.cloneAsObject(err)]);
+						}, options);
 				} catch (e) {
 					window.alert('error watching position: ' + e.message);
 				}
@@ -60,7 +57,6 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			 *
 			 */
 			clearWatch: function(watchId) {
-				if (Servoy.watchID) navigator.geolocation.clearWatch(Servoy.watchID);
 				return navigator.geolocation.clearWatch(watchId);
 			},
 

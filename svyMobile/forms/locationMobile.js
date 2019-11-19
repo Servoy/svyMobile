@@ -21,8 +21,7 @@ var watchID = null;
 function getLocation(event) {
 	//watch when location changes.
 	var options = { enableHighAccuracy: true }
-//	plugins.svyphonegapLocation.watchPosition(getLocationSuccess, getLocationFail, options);	
-	plugins.svyphonegapLocation.getCurrentPosition(getLocationSuccess,getLocationFail,options);
+	plugins.svyphonegapLocation.watchPosition(getLocationSuccess, getLocationFail, options);	
 }
 
 /**
@@ -31,7 +30,9 @@ function getLocation(event) {
  */
 function getLocationSuccess(pos, id) {
 	application.output(pos);
+	application.output(pos.coords);
 	application.output(id);
+	if (id)
 	watchID = id;
 	plugins.svyBlockUI.stop();
 	if (!located) {
