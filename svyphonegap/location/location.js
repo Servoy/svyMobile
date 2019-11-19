@@ -45,8 +45,8 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			 */
 			watchPosition: function(successCallback, errorCallback, options) {
 				try {
-				watchID = navigator.geolocation.watchPosition(function(res) {
-						$window.executeInlineScript(successCallback.formname, successCallback.script, [res, watchID]);
+				Servoy.watchID = navigator.geolocation.watchPosition(function(res) {
+						$window.executeInlineScript(successCallback.formname, successCallback.script, [res, Servoy.watchID]);
 					}, function(err) {
 						$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);
 					}, options);
@@ -60,7 +60,7 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			 *
 			 */
 			clearWatch: function(watchId) {
-				if (watchID) navigator.geolocation.clearWatch(watchID);
+				if (Servoy.watchID) navigator.geolocation.clearWatch(Servoy.watchID);
 				return navigator.geolocation.clearWatch(watchId);
 			},
 
