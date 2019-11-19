@@ -3,6 +3,7 @@
 	<name>phonegap</name>
 	<comment></comment>
 	<projects>
+		<project>svyphonegap</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
