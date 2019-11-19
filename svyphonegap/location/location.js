@@ -17,9 +17,14 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			getCurrentPosition: function(successCallback, errorCallback, options) {
 				try {
 					navigator.geolocation.getCurrentPosition(function(data) {
+							console.log($window)
+							console.log(successCallback)
 							$window.executeInlineScript(successCallback.formname, successCallback.script, [data]);
-						}, function(err) {
-							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err]);
+						}, function(err) {			
+							console.log($window)
+							console.log(errorCallback)
+							console.log(err.message)
+							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);
 						}, options);
 				} catch (e) {
 					window.alert('error getting geolocation: ' + e.message);
@@ -43,7 +48,7 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 				watchID = navigator.geolocation.watchPosition(function(res) {
 						$window.executeInlineScript(successCallback.formname, successCallback.script, [res, watchID]);
 					}, function(err) {
-						$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err]);
+						$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);
 					}, options);
 				} catch (e) {
 					window.alert('error watching position: ' + e.message);

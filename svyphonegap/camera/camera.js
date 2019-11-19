@@ -1,7 +1,7 @@
 angular.module('svyphonegapCamera', ['servoy']).factory("svyphonegapCamera", function($services, $window) {
 		var scope = $services.getServiceScope('svyphonegapCamera');
 		return {
-			getPicture: function(cb, err, options) {
+			getPicture: function(cb, errcb, options) {
 				if (!options) {
 					options = {
 						quality: 50,
@@ -10,10 +10,10 @@ angular.module('svyphonegapCamera', ['servoy']).factory("svyphonegapCamera", fun
 						correctOrientation: true
 					}
 				}
-				navigator.camera.getPicture(function(res) {
+				navigator.camera.getPicture(function(res) {						
 						$window.executeInlineScript(cb.formname, cb.script, [res]);
-					}, function(err) {
-						$window.executeInlineScript(err.formname, err.script, [err]);
+					}, function(err) {						
+						$window.executeInlineScript(errcb.formname, errcb.script, [err]);
 					}, options);
 
 			},
@@ -21,7 +21,7 @@ angular.module('svyphonegapCamera', ['servoy']).factory("svyphonegapCamera", fun
 				Bridge.executeMethod(isSupported, callbackMethod);
 
 				function isSupported() {
-					return !!window.Notification;
+					return !!navigator.camera;
 				}
 
 				function callback(result) {
