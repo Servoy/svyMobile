@@ -68,13 +68,15 @@ function onShow(firstShow, event) {
 	_super.onShow(firstShow, event);
 	if (!scopes.globals.phonegapEnabled) {
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
-		return scopes.nav.goBack(event);		
+		scopes.nav.goBack(event);
+		return;
 	}
 	if (firstShow) {
 		plugins.svyBlockUI.show('Getting location...');
 		application.output('Loading location')
 		getLocation(event);
 	}
+	
 }
 
 /**

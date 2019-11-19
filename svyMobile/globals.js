@@ -52,7 +52,8 @@ function onSolutionOpen(arg, queryParams) {
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
 
 	//check if phonegap is supported
-	//	plugins.svyphonegapPhonegap.executeScript('', [], support);
+	phonegapEnabled = scopes.phonegap.isMobile.any();
+	
 	//	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
 }
@@ -75,7 +76,7 @@ function goBack() {
 /**
  * @properties={typeid:24,uuid:"68C881CF-FA6D-4C5F-BE3F-92AA583AE668"}
  */
-function support() {
+function support(data) {
 	application.output('supported');
 	phonegapEnabled = true;
 }
@@ -83,7 +84,7 @@ function support() {
 /**
  * @properties={typeid:35,uuid:"51B0C634-C3F8-4698-8E24-425144F1BEDB",variableType:-4}
  */
-var phonegapEnabled = true;
+var phonegapEnabled = false;
 
 /**
  * @type {String}
