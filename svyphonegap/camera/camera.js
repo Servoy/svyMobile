@@ -17,16 +17,8 @@ angular.module('svyphonegapCamera', ['servoy']).factory("svyphonegapCamera", fun
 					}, options);
 
 			},
-			isSupported: function(callbackMethod) {
-				Bridge.executeMethod(isSupported, callbackMethod);
-
-				function isSupported() {
-					return !!navigator.camera;
-				}
-
-				function callback(result) {
-					alert('Is supported: ' + result);
-				}
+			isSupported: function(callbackMethod) {				
+					return !!navigator.camera;				
 			}
 
 		}
