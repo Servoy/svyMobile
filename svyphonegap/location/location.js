@@ -17,11 +17,11 @@ angular.module('svyphonegapLocation', ['servoy']).factory("svyphonegapLocation",
 			getCurrentPosition: function(successCallback, errorCallback, options) {
 				try {
 					navigator.geolocation.getCurrentPosition(function(data) {
-							console.log($window)
+							console.log(data)
 							console.log(successCallback)
 							$window.executeInlineScript(successCallback.formname, successCallback.script, [data]);
 						}, function(err) {			
-							console.log($window)
+							console.log(err)
 							console.log(errorCallback)
 							console.log(err.message)
 							$window.executeInlineScript(errorCallback.formname, errorCallback.script, [err.message]);

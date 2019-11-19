@@ -63,6 +63,7 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
             };
 
             Servoy = {
+            	watchID:null,
                 initwebview: null,
                 bridgeInit: null,
                 onPauseMethod: null,
