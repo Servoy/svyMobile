@@ -1,0 +1,16 @@
+{
+"_":{
+"DATETIME":"servoydefault-calendar",
+"FIELD_HEIGTH":"",
+"FIELD_SPACING":"",
+"FIELD_WIDTH":"",
+"I18N_PREFIX":"",
+"INTEGER":"servoydefault-textfield",
+"LABEL_HEIGTH":"",
+"LABEL_SPACING":"",
+"LABEL_WIDTH":"",
+"MEDIA":"servoydefault-imagemedia",
+"NUMBER":"servoydefault-textfield",
+"TEXT":"servoydefault-textfield"
+}
+}
