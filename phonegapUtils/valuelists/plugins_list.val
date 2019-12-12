@@ -12,6 +12,7 @@ Fingerprint\
 FCM Push Notifications\
 Ionic WebView\
 Screen Orientation\
+Zebra Scanner (Android Only)\
 Launch Navigator",
 displayValueType:12,
 name:"plugins_list",

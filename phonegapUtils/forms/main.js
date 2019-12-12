@@ -669,6 +669,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
 	if (plugins_list.indexOf('Filesystem') != -1) xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
+	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra.git" />\n'
 	if (plugins_list.indexOf('In-App Browser') != -1)xml += '<plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />\n'
 	if (plugins_list.indexOf('Device Information') != -1) xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
 	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />\n'
