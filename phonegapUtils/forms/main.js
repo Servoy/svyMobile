@@ -572,7 +572,8 @@ function createConfig() {
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
 	xml += '<preference name="InAppBrowserStorageEnabled" value="true" />\n'
 	xml += '<preference name="Orientation" value="' + app_orientation + '" />\n'
-	xml += '<preference name="phonegap-version" value="cli-9.0.0" />\n'
+	if (plugins_list.indexOf('Zebra Scanner') != -1) { xml += '<preference name="phonegap-version" value="cli-7.1.0" />\n'} 
+		else { xml += '<preference name="phonegap-version" value="cli-9.0.0" />\n'	}
 	xml += '<platform name="android">\n'
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
