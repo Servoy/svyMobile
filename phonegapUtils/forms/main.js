@@ -659,6 +659,7 @@ function createConfig() {
 	xml += '</platform>\n'
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
+	xml += '<plugin name="cordova-plugin-cleartext" spec="https://github.com/tuanway/cordova-plugin-cleartext" />\n'
 	if (plugins_list.indexOf('Ionic WebView') != -1) {
 		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />'
 		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />'
