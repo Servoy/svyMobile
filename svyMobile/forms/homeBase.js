@@ -51,9 +51,9 @@ function onShow(firstShow, event) {
 
 	//	//get build information
 	var bi = plugins.svyphonegapPhonegap.getBuildInfo();
-	application.output(bi, LOGGINGLEVEL.ERROR);
+	application.output(bi, LOGGINGLEVEL.INFO);
 	
 	if (bi) {
-		scopes.nav.header_title = 'V.' + bi.versionNumber
+		scopes.nav.header_title = 'V' + bi.versionNumber
 	}
 }
