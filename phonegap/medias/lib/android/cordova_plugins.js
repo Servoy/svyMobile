@@ -9,6 +9,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+    "id": "cordova-plugin-app-version.AppVersionPlugin",
+    "file": "plugins/cordova-plugin-app-version/www/AppVersionPlugin.js",
+    "pluginId": "cordova-plugin-app-version",
+    "clobbers": [
+      "cordova.getAppVersion"
+    ]
+    },
+    {
       "id": "cordova-plugin-ionic-webview.IonicWebView",
       "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
       "pluginId": "cordova-plugin-ionic-webview",
@@ -370,11 +378,28 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "merges": [
         "launchnavigator"
       ]
+    }, 
+    {
+    "id": "com.jkt.zebra.barcode.plugin.ZebraBarcodePlugin",
+    "file": "plugins/com.jkt.zebra.barcode.plugin/www/ZebraBarcodePlugin.js",
+    "pluginId": "com.jkt.zebra.barcode.plugin",
+    "clobbers": [
+      "zebraBarcodePlugin"
+    ]
+  },
+    {
+      "id": "cordova-plugin-cleartext.CordovaPluginsCleartext",
+      "file": "plugins/cordova-plugin-cleartext/www/CordovaPluginsCleartext.js",
+      "pluginId": "cordova-plugin-cleartext",
+      "clobbers": [
+        "cordova.plugins.CordovaPluginsCleartext"
+      ]
     }
   ];
   module.exports.metadata = {
     "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-whitelist": "1.3.4",
+    "cordova-plugin-app-version": "0.1.9",
     "cordova-plugin-ionic-webview": "4.1.3",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "phonegap-plugin-barcodescanner": "8.1.0",
@@ -392,6 +417,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-screen-orientation": "3.0.2",
     "cordova-plugin-actionsheet": "2.3.3",
     "cordova-plugin-dialogs": "2.0.2",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "5.0.4"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "5.0.4",
+    "com.jkt.zebra.barcode.plugin": "0.0.1",
+    "cordova-plugin-cleartext": "1.0.0"
   };
 });

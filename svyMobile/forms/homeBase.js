@@ -7,7 +7,7 @@ function loadMainMenu() {
 	foundset.find();
 	foundset.menu_parent = '^';
 	foundset.search();
-	foundset.sort('menu_order asc');	
+	foundset.sort('menu_order asc');
 }
 
 /**
@@ -25,11 +25,11 @@ function loadSubMenu(id) {
 
 /**
  * @param {JSEvent} event
- * @public 
+ * @public
  * @properties={typeid:24,uuid:"082784C1-8390-4E6D-B755-D88F2876888B"}
  */
-function selectMenuItem(event) {	
-	scopes.nav.gotoForm(event,menu_id,menu_title);
+function selectMenuItem(event) {
+	scopes.nav.gotoForm(event, menu_id, menu_title);
 	scopes.nav.toggleHeaderButtons(['home', 'back', 'title']);
 	scopes.nav.gotoSubForm(1);
 	scopes.nav.header_title = menu_title;
@@ -47,5 +47,12 @@ function selectMenuItem(event) {
  */
 function onShow(firstShow, event) {
 	loadMainMenu();
-	scopes.nav.toggleHeaderButtons(['title','home']);
+	scopes.nav.toggleHeaderButtons(['title', 'home']);
+
+	//	//get build information
+	var bi = plugins.svyphonegapPhonegap.getBuildInfo();
+	application.output(bi, LOGGINGLEVEL.INFO);
+	if (bi) {
+		scopes.nav.header_title = 'V.' + bi.versionNumber
+	}
 }

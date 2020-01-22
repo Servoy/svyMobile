@@ -54,8 +54,9 @@ function onSolutionOpen(arg, queryParams) {
 	//check if phonegap is supported
 	phonegapEnabled = scopes.phonegap.isMobile.any();
 	
-	//	//add check for back button press
+	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
+	
 }
 
 /**
