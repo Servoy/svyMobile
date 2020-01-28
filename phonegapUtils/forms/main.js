@@ -384,8 +384,8 @@ function onAction$getLocalBuild(event, cb) {
 	}
 
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
-		if (!googlejson || !googleplist) {
-			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json & GoogleService-Info.plist if using FCM plugin.')
+		if (!googlejson && !googleplist) {
+			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.')
 			return null;
 		}
 	}
