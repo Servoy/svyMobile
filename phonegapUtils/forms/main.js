@@ -556,6 +556,13 @@ function removeMiscFile(fname) {
  * @properties={typeid:24,uuid:"0C1A301F-0E06-43AA-A477-928DA769768F"}
  */
 function createConfig() {
+	//setup deeplink for phonegap
+	if (app_url.indexOf('?') != -1) {
+		app_url += '&phonegap=true';
+	} else {
+		app_url = app_url.split('?')[0] + '?phonegap=true';
+	}
+
 	//create config.xml for build
 	var xml = '';
 	xml = "<?xml version='1.0' encoding='utf-8'?>\n";
