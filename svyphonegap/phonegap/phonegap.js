@@ -26,15 +26,33 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
 
                 },
                 onDeviceReady: function() {
+                	console.log('device ready!')
                     document.addEventListener("pause", onPause, false);
                     document.addEventListener("resume", onResume, false);
+                    
+                    //get build info
+                    cordova.getAppVersion.getVersionNumber(function (d) {		                		            
+    		            Servoy.buildInfo.versionNumber = d;
+    		        });
+                    
+                    cordova.getAppVersion.getVersionCode(function (d) {		                		            
+    		            Servoy.buildInfo.versionCode = d;
+    		        });
+                    
+                    cordova.getAppVersion.getPackageName(function (d) {		                		            
+    		            Servoy.buildInfo.packageName = d;
+    		        });
+                    
+                    cordova.getAppVersion.getAppName(function (d) {		                		            
+    		            Servoy.buildInfo.appName = d;
+    		        });                    
 
                     document.addEventListener("backbutton", function(e) {
                         e.preventDefault();
                         onBack();
                     }, false);
 
-                    function onBack() {
+                    function onBack() {                      	
                         console.log('back');
                         // Handle the hardware back button event
 
@@ -53,7 +71,7 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
                         // Handle the pause event
                         try {
                             if (Servoy.onPauseMethod) {
-                                Servoy.onPauseMethod();
+                            	$window.executeInlineScript(Servoy.onPauseMethod.formname, Servoy.onPauseMethod.script, []);                                
                             }
                         } catch (e) {
                             console.log(e)
@@ -66,7 +84,7 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
                         // Handle the resume event
                         try {
                             if (Servoy.onResumeMethod) {
-                                Servoy.onResumeMethod();
+                            	$window.executeInlineScript(Servoy.onResumeMethod.formname, Servoy.onResumeMethod.script, []);                                
                             }
                         } catch (e) {
                             console.log(e)
@@ -82,7 +100,14 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
                 onPauseMethod: null,
                 onResumeMethod: null,
                 onBackMethod: null,
+				buildInfo:{
+					versionCode:null,
+					appName:null,
+					packageName:null,
+					versionNumber:null
+				},
                 setPauseMethod: function(cb) {
+                	console.log(cb)
                     //set call back for servoy client
                     Servoy.onPauseMethod = cb;
                 },
@@ -139,6 +164,9 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
             }
             var f = eval("(" + script + ")");
             return f.apply(this, mArgs);
-        }
+        },
+		getBuildInfo: function(){
+			return Servoy.buildInfo;						  
+		}
     }
 }).run(function($rootScope, $services) {})
