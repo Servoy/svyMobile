@@ -373,6 +373,8 @@ function onAction$getLocalBuild(event, cb) {
 	if (!cb) {
 		setBuildID();
 	}
+	
+	
 	if (!img || !splash_img) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
 		return null;
@@ -380,6 +382,11 @@ function onAction$getLocalBuild(event, cb) {
 
 	if (!app_name || !app_url || !app_version || !appid) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
+		return null;
+	}
+	
+	if (appid.split('.').length!=3){
+		plugins.dialogs.showInfoDialog('INFO', 'Your App ID must be in the following naming convention: com.mobile.appname');
 		return null;
 	}
 
