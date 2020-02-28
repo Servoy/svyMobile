@@ -563,11 +563,12 @@ function removeMiscFile(fname) {
  * @properties={typeid:24,uuid:"0C1A301F-0E06-43AA-A477-928DA769768F"}
  */
 function createConfig() {
+	var temp_app_url = '';
 	//setup deeplink for phonegap
 	if (app_url.indexOf('?') != -1) {
-		app_url += '&phonegap=true';
+		temp_app_url = app_url + '&phonegap=true';
 	} else {
-		app_url = app_url.split('?')[0] + '?phonegap=true';
+		temp_app_url = app_url.split('?')[0] + '?phonegap=true'
 	}
 
 	//create config.xml for build
@@ -577,7 +578,7 @@ function createConfig() {
 	xml += '<name>' + app_name + '</name>\n';
 	xml += '<description>' + app_desc + '</description>\n';
 	xml += '<author email="' + app_email + '">' + app_author + '</author>\n';
-	xml += '<content src="' + app_url + '" />\n'
+	xml += '<content src="' + temp_app_url + '" />\n'
 	xml += '<access origin="*" />\n'
 	xml += '<allow-navigation href="*" />\n'
 	xml += '<allow-intent href="https://*/*" />\n'
