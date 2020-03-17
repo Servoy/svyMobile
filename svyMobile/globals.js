@@ -57,6 +57,9 @@ function onSolutionOpen(arg, queryParams) {
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
 	
+	application.output('Device Info',LOGGINGLEVEL.ERROR)
+	application.output(plugins.svyphonegapDevice.getDeviceInfo(),LOGGINGLEVEL.ERROR)
+	
 }
 
 /**
