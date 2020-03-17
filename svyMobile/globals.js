@@ -31,7 +31,7 @@ function createMenuData() {
 function onSolutionOpen(arg, queryParams) {
 	
 	//initialize phonegap module
-	scopes.phonegap.onSolutionOpen(arg,queryParams);
+	scopes.phonegap.onSolutionOpen(arg,queryParams,onReadyCallBack);
 	
 	//initialize mobile base
 	scopes.mobileBase.onSolutionOpen(arg, queryParams);
@@ -57,9 +57,15 @@ function onSolutionOpen(arg, queryParams) {
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
 	
-	application.output('Device Info',LOGGINGLEVEL.ERROR)
-	application.output(plugins.svyphonegapDevice.getDeviceInfo(),LOGGINGLEVEL.ERROR)
 	
+}
+
+/**
+ * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
+ */
+function onReadyCallBack(){	
+	application.output('Device Info',LOGGINGLEVEL.DEBUG)
+	application.output(plugins.svyphonegapDevice.getDeviceInfo(),LOGGINGLEVEL.DEBUG)	
 }
 
 /**
