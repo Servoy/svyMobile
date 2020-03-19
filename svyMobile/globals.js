@@ -29,10 +29,10 @@ function createMenuData() {
  * @properties={typeid:24,uuid:"5FB44370-D763-4043-AFF8-46E0F5CD1FF5"}
  */
 function onSolutionOpen(arg, queryParams) {
-	
+
 	//initialize phonegap module
-	scopes.phonegap.onSolutionOpen(arg,queryParams,onReadyCallBack);
-	
+	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);
+
 	//initialize mobile base
 	scopes.mobileBase.onSolutionOpen(arg, queryParams);
 
@@ -53,20 +53,27 @@ function onSolutionOpen(arg, queryParams) {
 
 	//check if phonegap is supported
 	phonegapEnabled = scopes.phonegap.isMobile.any();
-	
+
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
-	
-	
+
 }
 
 /**
  * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
  */
-function onReadyCallBack(){		
-	application.output('Device Info',LOGGINGLEVEL.DEBUG)
-	application.output(plugins.svyphonegapDevice.getDeviceInfo(),LOGGINGLEVEL.DEBUG)
-	plugins.dialogs.showInfoDialog('Device Info',plugins.svyphonegapDevice.getDeviceInfo())
+function onReadyCallBack() {
+	application.output('Device Info', LOGGINGLEVEL.DEBUG)
+	application.output(plugins.svyphonegapDevice.getDeviceInfo(), LOGGINGLEVEL.DEBUG)
+
+	/** @type {Array<String>} */	
+	var info = plugins.svyphonegapDevice.getDeviceInfo();
+	var msg = "";
+	for (var i = 0; i < info.length; i++) {
+		msg += info[i] + '\n';
+	}
+
+	plugins.dialogs.showInfoDialog('Device Info', msg)
 }
 
 /**
@@ -74,7 +81,7 @@ function onReadyCallBack(){
  */
 function goBack() {
 	var item = scopes.svyNavigation.getCurrentItem();
-	if (item.getFormName() == 'homeContainer') {		
+	if (item.getFormName() == 'homeContainer') {
 		var ans = plugins.dialogs.showQuestionDialog('INFO', 'Exit App?', 'Yes', 'No');
 		if (ans == 'Yes') {
 			plugins.svyphonegapPhonegap.exit();
