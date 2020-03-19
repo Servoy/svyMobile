@@ -63,9 +63,10 @@ function onSolutionOpen(arg, queryParams) {
 /**
  * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
  */
-function onReadyCallBack(){	
+function onReadyCallBack(){		
 	application.output('Device Info',LOGGINGLEVEL.DEBUG)
-	application.output(plugins.svyphonegapDevice.getDeviceInfo(),LOGGINGLEVEL.DEBUG)	
+	application.output(plugins.svyphonegapDevice.getDeviceInfo(),LOGGINGLEVEL.DEBUG)
+	plugins.dialogs.showInfoDialog('Device Info',plugins.svyphonegapDevice.getDeviceInfo())
 }
 
 /**
