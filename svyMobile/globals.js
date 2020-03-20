@@ -66,11 +66,11 @@ function onReadyCallBack() {
 	application.output('Device Info', LOGGINGLEVEL.DEBUG)
 	application.output(plugins.svyphonegapDevice.getDeviceInfo(), LOGGINGLEVEL.DEBUG)
 	var msg = "";
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('cordova')
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('version')
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('platform')
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('model')
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('uuid')
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('cordova') +'\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('version') +'\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('platform') +'\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('model') +'\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('uuid') +'\n'
 	plugins.dialogs.showInfoDialog('Device Info', msg)
 }
 
