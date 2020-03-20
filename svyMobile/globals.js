@@ -65,14 +65,12 @@ function onSolutionOpen(arg, queryParams) {
 function onReadyCallBack() {
 	application.output('Device Info', LOGGINGLEVEL.DEBUG)
 	application.output(plugins.svyphonegapDevice.getDeviceInfo(), LOGGINGLEVEL.DEBUG)
-
-	/** @type {Array<String>} */	
-	var info = plugins.svyphonegapDevice.getDeviceInfo();
 	var msg = "";
-	for (var i = 0; i < info.length; i++) {
-		msg += info[i] + '\n';
-	}
-
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('cordova')
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('version')
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('platform')
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('model')
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('uuid')
 	plugins.dialogs.showInfoDialog('Device Info', msg)
 }
 
