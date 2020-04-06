@@ -1,0 +1,67 @@
+customProperties:"formComponent:false,\
+methods:{\
+onShowMethodID:{\
+arguments:null,\
+parameters:null\
+}\
+},\
+useCssPosition:true",
+extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
+items:[
+{
+anchors:11,
+cssPosition:"105,15,-1,15,270,40",
+customProperties:"",
+displaysTags:true,
+fontType:"Noto Sans,0,13",
+location:"15,155",
+name:"chart_type_pieccc",
+onActionMethodID:"A9AF7528-9943-4322-9D88-ED274A8B88E3",
+size:"270,40",
+styleClass:"push-btn",
+text:"<span><i class=\"fa fa-times\" aria-hidden=\"true\"><\/i><\/span> Stop Reading",
+transparent:true,
+typeid:7,
+uuid:"26B5A3DE-B292-4D3D-977C-EA2751F4050D"
+},
+{
+anchors:11,
+cssPosition:"7,15,-1,15,270,43",
+dataProviderID:"messages",
+location:"15,7",
+size:"270,43",
+styleClass:"push-message",
+transparent:true,
+typeid:7,
+uuid:"470ADB0A-98C1-4875-BCDB-B83E85506712"
+},
+{
+height:248,
+partType:5,
+typeid:19,
+uuid:"766B9CB9-9F7B-4DB8-AA0E-4DEECD4FA391"
+},
+{
+anchors:11,
+cssPosition:"57,15,-1,15,270,40",
+customProperties:"",
+displaysTags:true,
+fontType:"Noto Sans,0,13",
+formIndex:1,
+location:"15,57",
+name:"chart_type_piec",
+onActionMethodID:"E41712B6-6D69-4A57-AB13-2020A3DA8D76",
+size:"270,40",
+styleClass:"push-btn",
+text:"<span><i class=\"fa fa-plus aria-hidden=\"true\"><\/i><\/span> Start Reading",
+transparent:true,
+typeid:7,
+uuid:"8BF99169-2A37-4B80-8F7E-D3B0582F92AE"
+}
+],
+name:"cardMobile",
+onShowMethodID:"969E7484-A39B-436D-AA0D-FD2BA9876415",
+size:"300,480",
+styleClass:"examples animate",
+typeid:3,
+uuid:"CF89B68C-6D4D-420D-B50D-54D2863570BD"

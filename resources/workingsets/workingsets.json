@@ -17,6 +17,14 @@
 ]
 },
 {
+"name":"cardReaders",
+"paths":[
+"/svyMobile/.project",
+"/svyMobile/forms/cardContainer.frm",
+"/svyMobile/forms/cardMobile.frm"
+]
+},
+{
 "name":"charts",
 "paths":[
 "/svyMobile/.project",

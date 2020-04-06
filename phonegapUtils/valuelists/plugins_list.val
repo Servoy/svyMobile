@@ -1,19 +1,21 @@
 addEmptyValue:1,
-customValues:"Bar Code Scanner\
-Camera\
-Full screen\
-Network Information\
-Network Interface\
-Location\
-Filesystem\
-In-App Browser\
-Device Information\
-Fingerprint\
-FCM Push Notifications\
-Ionic WebView\
-Screen Orientation\
-Zebra Scanner (Android Only)\
-Launch Navigator",
+customValues:"Bar Code Scanner\r\
+Camera\r\
+Full screen\r\
+Network Information\r\
+Network Interface\r\
+Location\r\
+Filesystem\r\
+In-App Browser\r\
+Device Information\r\
+Fingerprint\r\
+FCM Push Notifications\r\
+Ionic WebView\r\
+Screen Orientation\r\
+Zebra Scanner (Android Only)\r\
+Launch Navigator\r\
+Magnetic CR\r\
+IDTech CR",
 displayValueType:12,
 name:"plugins_list",
 realValueType:12,
