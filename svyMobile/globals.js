@@ -62,19 +62,12 @@ function onSolutionOpen(arg, queryParams) {
  */
 function onReadyCallBack() {
 	//get build version
-	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()
-	application.output(buildInfo.versionNumber)
-//	scopes.nav.header_title = 'V' + buildInfo.versionNumber;	
+	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0]
+	scopes.nav.header_title = 'V' + buildInfo.versionNumber;
 	//check if phonegap is supported
 	phonegapEnabled = true;
-//	application.output('Device Info', LOGGINGLEVEL.DEBUG)
-	var msg = "";
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('cordova') + '\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('version') + '\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('platform') + '\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('model') + '\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('uuid') + '\n'
-//	application.output(msg, LOGGINGLEVEL.DEBUG)
+	application.output('Device Info', LOGGINGLEVEL.DEBUG)
+	application.output(plugins.svyphonegapDevice.getDeviceInfo(), LOGGINGLEVEL.DEBUG)
 }
 
 /**
@@ -101,9 +94,9 @@ function support(data) {
 }
 
 /**
- * @type {String}
+ * @type {{versionNumber:String}}
  *
- * @properties={typeid:35,uuid:"1C4C7199-42B0-421C-92BA-5C47BF963F88"}
+ * @properties={typeid:35,uuid:"1C4C7199-42B0-421C-92BA-5C47BF963F88",variableType:-4}
  */
 var buildInfo;
 
