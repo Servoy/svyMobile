@@ -50,8 +50,8 @@ function logInfo(m) {
  * @properties={typeid:24,uuid:"205E2C4A-2469-404D-A0C5-120762C32842"}
  */
 function success(r) {
-	application.output(r)
-	logInfo(r);
+	messages = 'Swipe Started.';
+	application.output(messages);
 }
 
 /**
@@ -60,10 +60,115 @@ function success(r) {
  * @properties={typeid:24,uuid:"58A040A3-2009-4CE7-841E-7861C0688672"}
  */
 function error(r) {
-	application.output(r)
-	logInfo(r);
+	messages = 'Reader is not connected';
+	application.output(messages);
 }
 
+/**
+ * @properties={typeid:35,uuid:"A62CF2CE-B4B3-4D3D-A1A3-25E934AE9D34",variableType:-4}
+ */
+var connected = false;
+
+/**
+ * @properties={typeid:24,uuid:"C5AD228F-FDFA-4C59-A11E-999BFE4D6E29"}
+ */
+function connectingCB() {
+	messages = 'Connecting';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"894DF7B5-554E-48F9-8B7E-64F0E084CA3A"}
+ */
+function connectedCB() {
+	connected = true;
+	messages = 'Successfully connected';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"5A1C3F46-C1E6-46A1-8159-19075BB62D42"}
+ */
+function disconnectedCB() {
+	connected = false;
+	messages = 'Disconnected';
+	application.output(messages);
+}
+
+/**
+ * @param r
+ *
+ * @properties={typeid:24,uuid:"62866647-D5D8-42AB-973D-77E7D46EAF25"}
+ */
+function timeoutCB(r) {
+	if (connected) {
+		messages = 'ERROR: Swipe timed out - ' + r.detail;
+	} else {
+		messages = 'ERROR: Connection timed out - ' + r.detail;
+	}
+
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"282D8B23-9782-4760-9E7A-E7170B945B1B"}
+ */
+function swipe_processingCB() {
+	messages = 'Processing...';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"6FF4444B-9577-4261-BB91-561B773B54F0"}
+ */
+function swipe_successCB(r) {
+	var data = JSON.parse(r.detail);
+	messages = '';
+	messages += 'cardholder name: ' + data.first_name + ' ' + data.last_name + '\n';
+	messages += 'card number:' + data.card_number + '\n';
+	messages += 'expiration:' + data.expiry_month + '/' + data.expiry_year + '\n';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"AF917E8A-8AE5-450D-B80D-955BA4104FBF"}
+ */
+function swipe_errorCB() {
+	messages = 'ERROR: Could not parse card data.';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"DAF2060E-F022-4054-9B05-418D478B8C8F"}
+ */
+function connection_errorCB(r) {
+	messages = 'Connection Error:  ' + r;
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"09172A69-B3C3-4968-B5F8-24BF9D5D11A5"}
+ */
+function xml_errorCB(r) {
+	messages = 'XML Error:  ' + r;
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"BADE65F8-3565-47D0-B1B4-59339240FE3D"}
+ */
+function autoconfig_completedCB() {
+	messages = 'Autoconfig complete';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"35EC28B8-4916-45C1-9B67-1A2F7D1DBF38"}
+ */
+function autoconfig_errorCB(r) {
+	messages = 'Autoconfig error: ' + r;
+	application.output(messages);
+}
 /**
  * Perform the element default action.
  *
@@ -73,8 +178,11 @@ function error(r) {
  *
  * @properties={typeid:24,uuid:"E41712B6-6D69-4A57-AB13-2020A3DA8D76"}
  */
-function onAction$startReading(event) {
-	messages = 'Swipe your card'
+function onAction$Activate(event) {
+	plugins.svyphonegapUnimag.activate(success, error);
+	plugins.svyphonegapUnimag.enableLogs(true, success, error)
+	plugins.svyphonegapUnimag.setReaderType('unimag_ii', success, error)
+	plugins.svyphonegapUnimag.onEvent(connectingCB, connectedCB, disconnectedCB, timeoutCB, swipe_processingCB, swipe_successCB, swipe_errorCB, connection_errorCB, xml_errorCB, autoconfig_completedCB, autoconfig_errorCB)
 }
 
 /**
@@ -86,6 +194,9 @@ function onAction$startReading(event) {
  *
  * @properties={typeid:24,uuid:"A9AF7528-9943-4322-9D88-ED274A8B88E3"}
  */
-function onAction$StopReading(event) {
-	messages = '';
+function onAction$Swipe(event) {
+	if (connected) {
+		plugins.svyphonegapUnimag.swipe(success, error);
+	}
 }
+
