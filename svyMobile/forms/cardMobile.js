@@ -50,6 +50,7 @@ function logInfo(m) {
  * @properties={typeid:24,uuid:"205E2C4A-2469-404D-A0C5-120762C32842"}
  */
 function success(r) {
+	application.output(r)
 	logInfo(r);
 }
 
@@ -59,6 +60,7 @@ function success(r) {
  * @properties={typeid:24,uuid:"58A040A3-2009-4CE7-841E-7861C0688672"}
  */
 function error(r) {
+	application.output(r)
 	logInfo(r);
 }
 
@@ -73,7 +75,6 @@ function error(r) {
  */
 function onAction$startReading(event) {
 	messages = 'Swipe your card'
-	plugins.svyphonegapMagcard.start(success, error);
 }
 
 /**
@@ -86,5 +87,5 @@ function onAction$startReading(event) {
  * @properties={typeid:24,uuid:"A9AF7528-9943-4322-9D88-ED274A8B88E3"}
  */
 function onAction$StopReading(event) {
-	plugins.svyphonegapMagcard.stop(success, error);
+	messages = '';
 }

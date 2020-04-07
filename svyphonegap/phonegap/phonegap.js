@@ -1,7 +1,7 @@
 angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap", function($services, $window) {
     var scope = $services.getServiceScope('svyphonegapPhonegap');
     return {
-        init: function() {
+        init: function(onReady) {
 
             App = {
             	
@@ -29,6 +29,8 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
                 	console.log('device ready!')
                     document.addEventListener("pause", onPause, false);
                     document.addEventListener("resume", onResume, false);
+
+                    $window.executeInlineScript(onReady.formname,onReady.script, []);
                     
                     //get build info
                     cordova.getAppVersion.getVersionNumber(function (d) {		                		            
@@ -156,6 +158,10 @@ angular.module('svyphonegapPhonegap', ['servoy']).factory("svyphonegapPhonegap",
             } catch (e) {
                 console.error('Error : ' + e.message)
             }
+        },
+        quitServoySolution: function(){
+        	sessionStorage.clear();
+        	location.reload();
         },
         executeScript: function(script, scriptArgs) {
             var mArgs = scriptArgs;

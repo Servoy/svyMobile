@@ -52,9 +52,6 @@ function onSolutionOpen(arg, queryParams) {
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
 
-	//check if phonegap is supported
-	phonegapEnabled = scopes.phonegap.isMobile.any();
-
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
 
@@ -64,15 +61,20 @@ function onSolutionOpen(arg, queryParams) {
  * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
  */
 function onReadyCallBack() {
-	application.output('Device Info', LOGGINGLEVEL.DEBUG)
-	application.output(plugins.svyphonegapDevice.getDeviceInfo(), LOGGINGLEVEL.DEBUG)
+	//get build version
+	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()
+	application.output(buildInfo.versionNumber)
+//	scopes.nav.header_title = 'V' + buildInfo.versionNumber;	
+	//check if phonegap is supported
+	phonegapEnabled = true;
+//	application.output('Device Info', LOGGINGLEVEL.DEBUG)
 	var msg = "";
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('cordova') +'\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('version') +'\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('platform') +'\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('model') +'\n'
-	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('uuid') +'\n'
-	plugins.dialogs.showInfoDialog('Device Info', msg)
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('cordova') + '\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('version') + '\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('platform') + '\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('model') + '\n'
+	msg += plugins.svyphonegapDevice.getDeviceInfoProperty('uuid') + '\n'
+//	application.output(msg, LOGGINGLEVEL.DEBUG)
 }
 
 /**
@@ -97,6 +99,13 @@ function support(data) {
 	application.output('supported');
 	phonegapEnabled = true;
 }
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"1C4C7199-42B0-421C-92BA-5C47BF963F88"}
+ */
+var buildInfo;
 
 /**
  * @properties={typeid:35,uuid:"51B0C634-C3F8-4698-8E24-425144F1BEDB",variableType:-4}

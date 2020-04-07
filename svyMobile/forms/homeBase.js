@@ -48,12 +48,6 @@ function selectMenuItem(event) {
 function onShow(firstShow, event) {
 	loadMainMenu();
 	scopes.nav.toggleHeaderButtons(['title', 'home']);
-
-	//	//get build information
-	var bi = plugins.svyphonegapPhonegap.getBuildInfo();
-	application.output(bi, LOGGINGLEVEL.INFO);
-	
-	if (bi) {
-		scopes.nav.header_title = 'V' + bi.versionNumber
-	}
+	if (scopes.globals.buildInfo && scopes.globals.buildInfo.versionNumber)
+	scopes.nav.header_title = 'V' + scopes.globals.buildInfo.versionNumber;
 }

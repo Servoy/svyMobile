@@ -8,7 +8,10 @@
  	"api": {
  		"init": 
 	   	{
-	    	"parameters": []
+	    	"parameters": [{
+				"name": "onReady",
+				"type": "function"
+			}]
 		},
  		"setOnResumeMethod": 
 	   	{
@@ -29,6 +32,10 @@
 				"type": "function"
 			}]
 		},"exit": 
+	   	{
+	    	"parameters": []
+		},
+		"quitServoySolution": 
 	   	{
 	    	"parameters": []
 		},
