@@ -60,7 +60,7 @@ function success(r) {
  * @properties={typeid:24,uuid:"58A040A3-2009-4CE7-841E-7861C0688672"}
  */
 function error(r) {
-	messages = 'Reader is not connected';
+	messages = 'Reader is not connected.';
 	application.output(messages);
 }
 
@@ -73,7 +73,7 @@ var connected = false;
  * @properties={typeid:24,uuid:"C5AD228F-FDFA-4C59-A11E-999BFE4D6E29"}
  */
 function connectingCB() {
-	messages = 'Connecting';
+	messages = 'Connecting.';
 	application.output(messages);
 }
 
@@ -82,7 +82,7 @@ function connectingCB() {
  */
 function connectedCB() {
 	connected = true;
-	messages = 'Successfully connected';
+	messages = 'Successfully connected.';
 	application.output(messages);
 }
 
@@ -91,7 +91,7 @@ function connectedCB() {
  */
 function disconnectedCB() {
 	connected = false;
-	messages = 'Disconnected';
+	messages = 'Disconnected.';
 	application.output(messages);
 }
 
@@ -158,7 +158,7 @@ function xml_errorCB(r) {
  * @properties={typeid:24,uuid:"BADE65F8-3565-47D0-B1B4-59339240FE3D"}
  */
 function autoconfig_completedCB() {
-	messages = 'Autoconfig complete';
+	messages = 'Autoconfig complete.';
 	application.output(messages);
 }
 
@@ -167,6 +167,54 @@ function autoconfig_completedCB() {
  */
 function autoconfig_errorCB(r) {
 	messages = 'Autoconfig error: ' + r;
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"3282DB78-6802-44D0-BA1A-44560ED749AC"}
+ */
+function enableLogsSuccess() {
+	messages = 'Logs Enabled.';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"1A5B36B5-55D1-4AE1-A73C-9C4C80F07580"}
+ */
+function enableLogsError() {
+	messages = 'Failed to enable logs.';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"4F6BED71-69D2-44A1-955D-BA9953BFACB4"}
+ */
+function setReaderSuccess() {
+	messages = 'Set Reader successfully.';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"86AA0CB9-6B43-43CB-AC1B-D7FB9948B2D8"}
+ */
+function setReaderFail() {
+	messages = 'Failed to set Reader.';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"394B31CC-38AD-4F02-8788-F340344CA4C3"}
+ */
+function activateSuccess() {
+	messages = 'Activate Success.';
+	application.output(messages);
+}
+
+/**
+ * @properties={typeid:24,uuid:"E404FFCA-E6DE-4703-9C7B-7E77C9176119"}
+ */
+function activateFail() {
+	messages = 'Activate Fail.';
 	application.output(messages);
 }
 /**
@@ -179,9 +227,9 @@ function autoconfig_errorCB(r) {
  * @properties={typeid:24,uuid:"E41712B6-6D69-4A57-AB13-2020A3DA8D76"}
  */
 function onAction$Activate(event) {
-	plugins.svyphonegapUnimag.activate(success, error);
-	plugins.svyphonegapUnimag.enableLogs(true, success, error)
-	plugins.svyphonegapUnimag.setReaderType('unimag_ii', success, error)
+	plugins.svyphonegapUnimag.activate(activateSuccess, activateFail);
+	plugins.svyphonegapUnimag.enableLogs(true, enableLogsSuccess, enableLogsError)
+	plugins.svyphonegapUnimag.setReaderType('unimag_ii', setReaderSuccess, setReaderFail)
 	plugins.svyphonegapUnimag.onEvent(connectingCB, connectedCB, disconnectedCB, timeoutCB, swipe_processingCB, swipe_successCB, swipe_errorCB, connection_errorCB, xml_errorCB, autoconfig_completedCB, autoconfig_errorCB)
 }
 
