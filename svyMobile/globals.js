@@ -13,7 +13,7 @@ function createMenuData() {
 	scopes.nav.addMenuItem('pushContainer', 'Push', 'fa-bell', 'nav-orange', 3);
 	scopes.nav.addMenuItem('fingerprintContainer', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
 	scopes.nav.addMenuItem('fileContainer', 'File', 'fa-folder', 'nav-yellow', 3);
-	scopes.nav.addMenuItem('cardContainer', 'Card', 'fa-credit-card', 'nav-gray', 3);
+	scopes.nav.addMenuItem('cardContainer', 'Card', 'fa-credit-card', 'nav-white', 3);
 	//	scopes.nav.addMenuItem('settingsContainer', 'Settings', 'fa-cog', 'nav-gray', 3);
 	databaseManager.saveData(f);
 }
@@ -30,7 +30,10 @@ function createMenuData() {
  * @properties={typeid:24,uuid:"5FB44370-D763-4043-AFF8-46E0F5CD1FF5"}
  */
 function onSolutionOpen(arg, queryParams) {
-
+	plugins.svyBlockUI.show('')
+	
+	plugins.fontawesomeLib.load();
+	
 	//initialize phonegap module
 	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);
 
@@ -54,6 +57,8 @@ function onSolutionOpen(arg, queryParams) {
 
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
+	
+	plugins.svyBlockUI.stop();
 
 }
 

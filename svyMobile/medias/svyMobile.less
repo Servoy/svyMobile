@@ -252,3 +252,57 @@ button:focus {
 .hidden {
 	display:none;
 }
+
+.loading-i-holder {
+    display: none;
+}
+
+.svy-reconnecting-overlay {
+	opacity: 1!important;
+    display: block!important;
+    background: rgba(0, 0, 0, 0);
+}
+
+.svy-reconnecting-overlay.ng-hide-remove {
+  transition-delay: 10s !important;
+}
+
+.svy-reconnecting {
+  color: white;
+  text-shadow: 2px 2px black;
+  position: absolute;
+  left: 8px;
+  width: 100%;
+  top: 5px;
+  animation: bulge 5s infinite;
+}
+
+@keyframes bulge {
+  from {
+    left:8px;
+    color:white;
+  }
+  to {
+    left:12px;
+    color:yellow;
+    text-shadow: 2px 2px red;
+  }
+}
+
+.svy-reconnecting-overlay.ng-hide::after{
+	  content: "\f017";
+      font-family: "Font Awesome 5 Free"
+}
+
+.svy-body {
+  animation: fadeIn ease 0.5s;
+}
+
+@keyframes fadeIn {
+  0% {	
+    opacity:0.35;
+  }
+  100% {
+    opacity:1;
+  }
+}
