@@ -622,18 +622,32 @@ function createConfig() {
 	xml += '<splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />\n'
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
-	xml += '<edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
-	xml += '<string>Require Location for showing Map</string>\n'
-	xml += '</edit-config>\n'
-	xml += '<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
-	xml += '<string>Require Location for showing Map</string>\n'
+	
+	if (plugins_list.indexOf('Location') != -1) {
+		xml += '<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
+		xml += '<string>Require Location for showing Map</string>\n'
+		xml += '</edit-config>\n'
+		xml += '<edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
+		xml += '<string>Require Location for showing Map</string>\n'
+		xml += '</edit-config>\n'
+	}
+		
+	if (plugins_list.indexOf('Bar Code Scanner') != -1 || plugins_list.indexOf('Camera') != -1) {
+	xml += '<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
+	xml += '<string>Required for capturing camera images.</string>\n'
 	xml += '</edit-config>\n'
 	xml += '<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge" overwrite="true" >\n'
 	xml += '<string>Required for showing gallery</string>\n'
 	xml += '</edit-config>\n'
-	xml += '<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
-	xml += '<string>Required for capturing camera images.</string>\n'
-	xml += '</edit-config>\n'
+	}
+	
+	if (plugins_list.indexOf('IDTech CR') != -1) {
+		xml += '</edit-config>\n'
+		xml += '<edit-config target="NSMicrophoneUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
+		xml += '<string>This app needs microphone access</string>\n'
+		xml += '</edit-config>\n'		
+	}
+	
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
 	xml += '<allow-intent href="itms-apps:*" />\n'
@@ -677,12 +691,15 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
 	xml += '<plugin name="cordova-plugin-cleartext" spec="https://github.com/tuanway/cordova-plugin-cleartext" />\n'
+		
 	if (plugins_list.indexOf('Ionic WebView') != -1) {
 		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />'
 		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />'
 	}
 	
-	if (plugins_list.indexOf('IDTech CR') != -1)xml += '<plugin name="com.wodify.cordova.plugin.unimag-swiper" spec="https://github.com/tuanway/cordova-plugin-unimag-swiper.git" />\n'	
+	if (plugins_list.indexOf('IDTech CR') != -1) {
+		xml += '<plugin name="com.wodify.cordova.plugin.unimag-swiper" spec="https://github.com/tuanway/cordova-plugin-unimag-swiper.git" />\n'		
+	}	
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
