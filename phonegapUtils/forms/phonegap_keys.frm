@@ -75,7 +75,7 @@ uuid:"9E2C820C-E4BA-4C30-9720-DFF8AFCAE4B1"
 {
 cssPosition:"302,-1,-1,10,527,55",
 horizontalAlignment:0,
-text:"<h3>Setup iOS Certificate and Provision<\/h3> (required for uploading to app store)",
+text:"<h3>Setup iOS Certificate and Provision<\/h3> (required for building IOS Applications)",
 transparent:true,
 typeid:7,
 uuid:"AC0D05CC-659A-4DB9-AB41-9C59DF89856D"

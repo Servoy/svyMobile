@@ -178,6 +178,13 @@ function onAction$addKeys(event) {
  * @properties={typeid:24,uuid:"B0D03AD8-A9AF-4E09-B02D-F43249890991"}
  */
 function onAction$skip(event) {
+	if (!ios_cert || !ios_provision || !ios_cert_pass) {
+		var res = plugins.dialogs.showQuestionDialog('INFO', "You haven't uploaded an IOS certiface or provisioning profile. The IOS binary will not be built, is that okay?", "Yes, skip IOS build", "Cancel");
+		if (res == "Cancel") {
+			return;
+		}
+	}
+
 	android_keystore = null;
 	android_title = '';
 	ios_cert = null;

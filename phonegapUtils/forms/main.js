@@ -942,6 +942,28 @@ function addKeys() {
  * @properties={typeid:24,uuid:"87172287-5C65-4EEE-A837-43C099F502BF"}
  */
 function onAction$getCloudBuild(event) {
+	if (!img || !splash_img) {
+		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
+		return null;
+	}
+
+	if (!app_name || !app_url || !app_version || !appid) {
+		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
+		return null;
+	}
+	
+	if (appid.split('.').length!=3){
+		plugins.dialogs.showInfoDialog('INFO', 'Your App ID must be in the following naming convention: com.mobile.appname');
+		return null;
+	}
+
+	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
+		if (!googlejson && !googleplist) {
+			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.')
+			return null;
+		}
+	};
+	
 	setBuildID();
 	if (!scopes.phonegapAuth.authenticated) {
 		if (forms.phonegap_auth.show()) {
@@ -956,7 +978,11 @@ function onAction$getCloudBuild(event) {
 	if (res && res.id) {
 		application.output('Created App with ID:' + res.id)
 		getAndroid();
-		getIOS();
+		
+		if (ios_cert || ios_provision || ios_cert_pass) {
+			getIOS();	
+		}
+		
 	}
 }
 
