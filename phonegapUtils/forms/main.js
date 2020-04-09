@@ -697,7 +697,9 @@ function createConfig() {
 		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />'
 	}
 	
-	if (plugins_list.indexOf('IDTech CR') != -1)xml += '<plugin name="com.wodify.cordova.plugin.unimag-swiper" spec="https://github.com/tuanway/cordova-plugin-unimag-swiper.git" />\n'	
+	if (plugins_list.indexOf('IDTech CR') != -1) {		
+		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag.git" />\n'
+	}	
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
