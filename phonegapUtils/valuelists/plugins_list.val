@@ -14,7 +14,7 @@ Ionic WebView\r\
 Screen Orientation\r\
 Zebra Scanner (Android Only)\r\
 Launch Navigator\r\
-IDTech CR",
+IDTech CR (IOS Only)",
 displayValueType:12,
 name:"plugins_list",
 realValueType:12,
