@@ -14,6 +14,7 @@
 "name":"cardReaders",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/cardDesktop.frm",
 "/svyMobile/forms/cardMobile.frm"
 ]
 },
@@ -42,6 +43,7 @@
 "name":"filesystem",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/fileDesktop.frm",
 "/svyMobile/forms/fileMobile.frm"
 ]
 },
@@ -49,6 +51,7 @@
 "name":"fingerprint",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/fingerprintDesktop.frm",
 "/svyMobile/forms/fingerprintMobile.frm"
 ]
 },
@@ -60,6 +63,7 @@
 "name":"location",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/locationDesktop.frm",
 "/svyMobile/forms/locationMobile.frm"
 ]
 },
@@ -67,6 +71,7 @@
 "name":"media",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/mediaDesktop.frm",
 "/svyMobile/forms/mediaMobile.frm"
 ]
 },
@@ -74,6 +79,7 @@
 "name":"network",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/networkDesktop.frm",
 "/svyMobile/forms/networkMobile.frm"
 ]
 },
@@ -85,6 +91,7 @@
 "name":"push",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/pushDesktop.frm",
 "/svyMobile/forms/pushMobile.frm"
 ]
 },
