@@ -1,10 +1,4 @@
 customProperties:"formComponent:false,\
-methods:{\
-onShowMethodID:{\
-arguments:null,\
-parameters:null\
-}\
-},\
 useCssPosition:true",
 dataSource:"mem:menu",
 extendsID:"8101B80B-EB4E-44DA-AB3C-D1EE7748D4AA",
@@ -46,7 +40,6 @@ uuid:"B7B3DF65-5C38-419C-B40F-8F332C010A3D"
 }
 ],
 name:"homeMobile",
-onShowMethodID:"990C4C77-4D43-40E2-B75B-F4D6D9BC5F24",
 size:"262,522",
 typeid:3,
 uuid:"DA19F83D-D6BF-4EB1-9285-030142ED00B4"

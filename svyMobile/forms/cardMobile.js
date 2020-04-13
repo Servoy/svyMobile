@@ -35,7 +35,7 @@ function onShow(firstShow, event) {
 	} else {
 		messages = 'Plugin is not loaded or supported.'
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
-		scopes.nav.goBack(event);
+		scopes.mobileBase.goBack(event);
 	}
 
 	if (connected) {

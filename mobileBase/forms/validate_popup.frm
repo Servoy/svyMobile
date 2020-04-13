@@ -9,7 +9,7 @@ typeid:19,
 uuid:"2A607B45-CF1F-4EEF-98D1-4E88C9CEDF53"
 },
 {
-cssPosition:"0,-1,-1,0,100%,115%",
+cssPosition:"5,10,10,0,-1,-1",
 dataProviderID:"msg",
 displayType:1,
 editable:false,

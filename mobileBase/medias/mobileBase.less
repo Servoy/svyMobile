@@ -1,61 +1,43 @@
-@import 'grid.css';
-/* Theme Variables*/
-@main-color:#73d216;
-@inactive-color:rgb(34, 34, 34);
-@active-color:rgb(78, 78, 78);
+@main-color:#f57900;
+@inactive-color:white;
+@active-color:lightgray;
 @button-color-main:@main-color;
 @button-color-sec:blue;
-@text-color:#fcfcfc;
-@text-color-active:black;
+@text-color:#2e3436;
+@text-color-active:white;
 @text-color-header:@text-color;
-@validate-text-color-focus:@text-color;
-@main-bg-color:rgb(34, 34, 34);
+@validate-text-color-focus:white;
+@main-bg-color:white;
 @validate-bg-color:white;
-@inverse-bg-color:white;
-@header-bg-color:@main-color;
+@validate-text-color:black;
+@inverse-bg-color:black;
+@header-bg-color:lightgray;
 @footer-bg-color:rgb(34, 34, 34);
 @label-text-size:17px;
 @input-text-size:15px;
 @color-warn:#ef2929;
-@text-shadow:1px 1px black;
-@validate-text-color:black;
+@text-shadow:none;
 
-
-* {
-  	-webkit-overflow-scrolling: touch;
-}
 
 /*Mobile and Desktop specific displays*/
 
-.base_mobile,.footer_mobile,.header_mobile,[ng-style="layout.header_mobile"]
-,[ng-style="layout.footer_mobile"],[ng-style="layout.mobile"] {	
+[ng-style="layout.mobile"] {	
 	display: none;
 	background-color: @main-bg-color;
 }
 
-[ng-style="layout.header_desktop"],[ng-style="layout.footer_desktop"]
-,[ng-style="layout.desktop"],.base_desktop,.footer_desktop,.header_desktop {
+[ng-style="layout.desktop"] {
 	display: block;
 	background-color: @main-bg-color;
 }
 
 @media only screen and (max-width: 600px) {
-	[ng-style="layout.header_mobile"],[ng-style="layout.footer_mobile"]
-	,[ng-style="layout.mobile"],.base_mobile,.footer_mobile,.header_mobile {
+	[ng-style="layout.mobile"],.base_mobile {
 		display: block;
 	}
-	[ng-style="layout.header_desktop"],[ng-style="layout.footer_desktop"]
-	,[ng-style="layout.desktop"],.base_desktop,.footer_desktop,.header_desktop {	
+	[ng-style="layout.desktop"],.base_desktop {	
 		display: none;
 	}
-}
-
-.footer_mobile,.footer_desktop {
-	background-color:@footer-bg-color;
-}
-
-.header_desktop,.header_mobile {
-	background-color:@header-bg-color;
 }
 
 

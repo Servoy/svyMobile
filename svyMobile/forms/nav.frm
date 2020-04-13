@@ -1,0 +1,66 @@
+customProperties:"formComponent:false,\
+useCssPosition:true",
+extendsID:"BAF88EAF-4F50-4569-84A9-BC9DA82DDFCD",
+items:[
+{
+cssPosition:"5,0,-1,-1,calc( 30% - 10px),30",
+name:"home",
+styleClass:"header_button",
+text:"<i class=\"fas fa-home\"><\/i> Home",
+typeid:7,
+uuid:"1BE1FDBC-1903-4EFE-9F0B-6F8FD104906B"
+},
+{
+cssPosition:"5,-1,-1,0,calc(30% - 10px),30",
+name:"back",
+onActionMethodID:"B129AD39-98FB-41A7-9171-3652FA9F5147",
+styleClass:"header_button",
+text:"<i class=\"fas fa-arrow-left\"><\/i> Back",
+typeid:7,
+uuid:"489527E4-6B8E-4396-84DE-83C4369CEE2C"
+},
+{
+height:40,
+partType:2,
+styleClass:"header",
+typeid:19,
+uuid:"678F9228-DF60-4B56-86E6-EE9DE7FF1B9E"
+},
+{
+cssPosition:"40,0,0,0,-1,-1",
+json:{
+cssPosition:{
+bottom:"0",
+height:"-1",
+left:"0",
+right:"0",
+top:"40",
+width:"-1"
+}
+},
+name:"content",
+typeName:"bootstrapcomponents-tablesspanel",
+typeid:47,
+uuid:"B5039CB7-188F-428F-B2A9-DD34BBB1075C"
+},
+{
+cssPosition:"4,30%,-1,30%,calc( 40% - 20px),30",
+dataProviderID:"title",
+name:"title",
+styleClass:"header_title",
+text:"Header",
+transparent:true,
+typeid:7,
+uuid:"B8092842-2284-461A-BBE4-BE05B1A3D609"
+},
+{
+height:320,
+partType:5,
+typeid:19,
+uuid:"F95229A1-BBCA-441F-B84F-D93B4C466A36"
+}
+],
+name:"nav",
+size:"280,480",
+typeid:3,
+uuid:"05EDA771-DCF7-40E3-BA8C-E31D67DA4E4C"

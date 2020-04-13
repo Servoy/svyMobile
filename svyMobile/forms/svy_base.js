@@ -21,7 +21,7 @@ function getFS(){
  * @properties={typeid:24,uuid:"79985692-4A58-4EF3-8D8C-7731A0D1EF26"}
  */
 function goToExamples(event){
-	forms.main.onClick$menuItem(event,{itemId:'examples'})
+
 }
 
 /**

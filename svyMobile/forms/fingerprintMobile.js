@@ -16,7 +16,7 @@ function onShow(firstShow, event) {
 	_super.onShow(firstShow, event)
 	if (!scopes.globals.phonegapEnabled) {
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
-		scopes.nav.goBack(event);
+		scopes.mobileBase.goBack(event);
 	}
 }
 

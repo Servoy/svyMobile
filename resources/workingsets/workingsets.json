@@ -3,16 +3,10 @@
 "name":"base",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/examples.frm",
-"/svyMobile/forms/headerBase.frm",
-"/svyMobile/forms/headerDesktop.frm",
-"/svyMobile/forms/headerMobile.frm",
-"/svyMobile/forms/home.frm",
 "/svyMobile/forms/homeBase.frm",
-"/svyMobile/forms/homeContainer.frm",
 "/svyMobile/forms/homeDesktop.frm",
 "/svyMobile/forms/homeMobile.frm",
-"/svyMobile/forms/main.frm",
+"/svyMobile/forms/nav.frm",
 "/svyMobile/forms/svy_base.frm"
 ]
 },
@@ -20,7 +14,6 @@
 "name":"cardReaders",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/cardContainer.frm",
 "/svyMobile/forms/cardMobile.frm"
 ]
 },
@@ -37,7 +30,6 @@
 "/svyMobile/forms/chart_5_table.frm",
 "/svyMobile/forms/chart_6.frm",
 "/svyMobile/forms/chartsBase.frm",
-"/svyMobile/forms/chartsContainer.frm",
 "/svyMobile/forms/chartsDesktop.frm",
 "/svyMobile/forms/chartsMobile.frm"
 ]
@@ -50,7 +42,6 @@
 "name":"filesystem",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/fileContainer.frm",
 "/svyMobile/forms/fileMobile.frm"
 ]
 },
@@ -58,7 +49,6 @@
 "name":"fingerprint",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/fingerprintContainer.frm",
 "/svyMobile/forms/fingerprintMobile.frm"
 ]
 },
@@ -70,7 +60,6 @@
 "name":"location",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/locationContainer.frm",
 "/svyMobile/forms/locationMobile.frm"
 ]
 },
@@ -78,7 +67,6 @@
 "name":"media",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/mediaContainer.frm",
 "/svyMobile/forms/mediaMobile.frm"
 ]
 },
@@ -86,7 +74,6 @@
 "name":"network",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/networkContainer.frm",
 "/svyMobile/forms/networkMobile.frm"
 ]
 },
@@ -98,7 +85,6 @@
 "name":"push",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/pushContainer.frm",
 "/svyMobile/forms/pushMobile.frm"
 ]
 },
@@ -106,7 +92,6 @@
 "name":"tables",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/tablesContainer.frm",
 "/svyMobile/forms/tablesDesktop.frm",
 "/svyMobile/forms/tablesMobile.frm"
 ]

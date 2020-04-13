@@ -83,7 +83,7 @@ function resetValidation() {
 		elem.removeStyleClass('validate_focus');
 	}
 	//hide popup
-	plugins.window.cancelFormPopup();
+	forms.validate_popup.hide();
 }
 
 /**
@@ -124,8 +124,18 @@ function submit() {
  *
  * @properties={typeid:24,uuid:"45935E75-C8B7-4A51-8FC0-9E238B2FE23A"}
  */
-function onLoad(event) {	
+function onLoad(event) {
 	scopes.svyApplicationCore.addDataBroadcastListener(dataBroadcastEventListener);
+}
+
+/**
+ * Method is called when form appears, should be overridden
+ * @param event
+ *
+ * @properties={typeid:24,uuid:"97845267-B9F4-40A2-BB2B-AE3A9CEEE7CF"}
+ */
+function onShow(event){
+	
 }
 
 /**
@@ -137,7 +147,7 @@ function onLoad(event) {
  */
 function dataBroadcastEventListener(dataSource, action, pks, cached) {
 	refreshData(dataSource, action, pks);
-//	refreshData(dataSource, action, pks,[foundset1,fooundset2]); optional
+	//	refreshData(dataSource, action, pks,[foundset1,fooundset2]); optional
 }
 
 /**
@@ -171,16 +181,16 @@ function refreshData(dataSource, action, pks, foundsets) {
  * @properties={typeid:24,uuid:"20FC24DB-F37B-4A88-B4DD-91A44E342410"}
  */
 function broadCastChange(dataSource, table, pks, action) {
-	
+
 	//if we don't have a default action
 	if (!action) {
-		if (foundset.getSelectedRecord().isNew()){
+		if (foundset.getSelectedRecord().isNew()) {
 			action = SQL_ACTION_TYPES.INSERT_ACTION;
 		} else {
 			action = SQL_ACTION_TYPES.UPDATE_ACTION;
 		}
 	}
-	
+
 	//get pks from current record
 	if (!pks) {
 		pks = foundset.getSelectedRecord().getPKs();

@@ -6,15 +6,14 @@ function createMenuData() {
 	f.deleteAllRecords();
 
 	//Add Main Menu
-	scopes.nav.addMenuItem('tablesContainer', 'Tables', 'fa-table', 'nav-neon', 1);
-	scopes.nav.addMenuItem('chartsContainer', 'Charts', 'fa-chart-pie', 'nav-skyblue', 3);
-	scopes.nav.addMenuItem('mediaContainer', 'Media', 'fa-images', 'nav-yellow', 3);
-	scopes.nav.addMenuItem('locationContainer', 'Location', 'fa-search-location', 'nav-green', 3);
-	scopes.nav.addMenuItem('pushContainer', 'Push', 'fa-bell', 'nav-orange', 3);
-	scopes.nav.addMenuItem('fingerprintContainer', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
-	scopes.nav.addMenuItem('fileContainer', 'File', 'fa-folder', 'nav-yellow', 3);
-	scopes.nav.addMenuItem('cardContainer', 'Card', 'fa-credit-card', 'nav-white', 3);
-	//	scopes.nav.addMenuItem('settingsContainer', 'Settings', 'fa-cog', 'nav-gray', 3);
+	scopes.mobileBase.addMenuItem('tables', 'Tables', 'fa-table', 'nav-neon', 1);
+	scopes.mobileBase.addMenuItem('charts', 'Charts', 'fa-chart-pie', 'nav-skyblue', 3);
+	scopes.mobileBase.addMenuItem('media', 'Media', 'fa-images', 'nav-yellow', 3);
+	scopes.mobileBase.addMenuItem('location', 'Location', 'fa-search-location', 'nav-green', 3);
+	scopes.mobileBase.addMenuItem('push', 'Push', 'fa-bell', 'nav-orange', 3);
+	scopes.mobileBase.addMenuItem('fingerprint', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
+	scopes.mobileBase.addMenuItem('file', 'File', 'fa-folder', 'nav-yellow', 3);
+	scopes.mobileBase.addMenuItem('card', 'Card', 'fa-credit-card', 'nav-white', 3);		
 	databaseManager.saveData(f);
 }
 
@@ -43,11 +42,7 @@ function onSolutionOpen(arg, queryParams) {
 	//setup main/sub menu
 	createMenuData();
 
-	//setup headers
-	scopes.nav.setHeaders('headerMobile', true);
-	scopes.nav.setHeaders('headerDesktop', false);
-
-	scopes.nav.init();
+	scopes.mobileBase.init('nav');
 
 	//load api keys
 	mapAPIKey = application.getUserProperty('googleAPIKey');
@@ -67,8 +62,8 @@ function onSolutionOpen(arg, queryParams) {
  */
 function onReadyCallBack() {
 	//get build version
-	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0]
-	scopes.nav.header_title = 'V' + buildInfo.versionNumber;
+	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0];	
+	forms.nav.title = 'V' + buildInfo.versionNumber;
 	//check if phonegap is supported
 	phonegapEnabled = true;
 	application.output('Device Info', LOGGINGLEVEL.DEBUG)
@@ -87,7 +82,7 @@ function goBack() {
 			application.exit();
 		}
 	}
-	scopes.nav.goBack(null);
+	scopes.mobileBase.goBack(null);
 }
 
 /**
@@ -109,13 +104,6 @@ var buildInfo;
  * @properties={typeid:35,uuid:"51B0C634-C3F8-4698-8E24-425144F1BEDB",variableType:-4}
  */
 var phonegapEnabled = false;
-
-/**
- * @type {String}
- * Store current view
- * @properties={typeid:35,uuid:"0E934467-0DB7-40AE-8C9B-B24375085FA1"}
- */
-var currentTab = 'home'
 
 /**
  * @type {String}

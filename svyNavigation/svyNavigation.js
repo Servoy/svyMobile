@@ -1,6 +1,14 @@
 /**
+ * @private 
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"A92F5349-B980-4FEB-B4DF-DE5EA17E2C48"}
+ */
+var SVY_NAVIGATION_VERSION = '1.0.2';
+
+/**
  * Enumeration for navigation policy options which control how to update the stack of navigation item when an item is opened or closed.
- * @public 
+ * @private  
  * @enum 
  * @properties={typeid:35,uuid:"58A3FF05-89EB-403F-A003-D984BB984064",variableType:-4}
  */
@@ -34,18 +42,61 @@ var NAVIGATION_POLICY = {
  * @properties={typeid:35,uuid:"564021D4-081B-4FE5-8FE4-FF2585815D29",variableType:-4}
  */
 var NAVIGATION_EVENT = {
+	/** 
+	 * register for navigation event to listen for this event (@see addNavigationListener)
+	 * beforeClose event will be fired before navigating allowing a chance to react or cancel 
+	 * */
 	BEFORE_CLOSE: 'before-close',
+	/** 
+	 * register for navigation event to listen for this event (@see addNavigationListener)
+	 * afterOpen event will be fired when a navigation item has been opened; react to the after_open event to implement your navigation 
+	 * */
 	AFTER_OPEN: 'after-open'
 };
 
 /**
- * Maximium number of items in the navigation history (defaults to 100)
- * @type {Number}
- * @private 
- *
- * @properties={typeid:35,uuid:"DDE2AD7F-B03C-49C5-9881-6EC8DEFC268D",variableType:4}
+ * Enumeration for the data selection type specified in the open function. 
+ * The chosen selection type is passed to the open function [open](@link open) [afterOpen](@link afterOpen) and needs to be implemented accordingly. The Default value is LOAD_RECORDS
+ * @public 
+ * @enum
+ * @see open(itemOrId, dataToShow, dataSelectionType)
+ * @properties={typeid:35,uuid:"D3C9A2CC-0D47-4BA4-88F1-BE35392E1E3C",variableType:-4}
  */
-var MAX_HISTORY_LENGTH = 100;
+var NAVIGATION_SELECTION_TYPE = {
+	/**
+	 * This is the DEFAULT selection type.
+	 * Will run foundset.loadRecords(dataToShow) on the form to be shown.<br/>
+	 * Load records into the form's foundset. If you load a relation into this foundset, then this foundset will not be a related foundset, 
+	 * it will not automatically update its state of records are updated or added that belong to that relation. 
+	 * It will only be a snapshot of that related foundsets state. 
+	 * Foundset filter params are copied over from the source foundset and are merged with the existing filters on this foundset.
+	 * */ 
+	LOAD_RECORDS: 'load-records',
+	
+	/** 
+	 * Can be used only when the dataToShow is of type JSFoundSet.
+	 * Will run controller.loadRecords(dataToShow) for the target form.<br/>
+	 * Replace the default form's foundset with setting the (related) foundset into the form. The form will no longer share the default foundset with forms of the same datasource,
+	 * use loadAllRecords to restore the default foundset. This will really update the foundset instance itself of the form, so now existing foundset is altered just the new foundset is shown. 
+	 * When the form uses a seperate foundset, foundset filter params are copied over from the source foundset and are merged with the existing filters.
+	 * */ 
+	SET_FOUNDSET: 'set-foundset',
+	
+	/** 
+	 * Can be used only when the dataToShow is a JSRecord.
+	 * Selects the record with the given pk in the foundset even if the record is not loaded in foundset yet. 
+	 * <b>Warning</b>: can be very expensive, as the entire foundset may needs to be loaded. Returns false if the record cannot be found in the entire foundset. 
+	 * */ 
+	SELECT_RECORD: 'select-record',
+	
+	/** 
+	 * Can be used only when the dataToShow is a JSRecord.
+	 * Selects the record with the given pk in the foundset even if the record is not loaded in foundset yet. 
+	 * <b>Warning</b>: can be very expensive, as the entire foundset may needs to be loaded. Returns false if the record cannot be found in the entire foundset.
+	 * If the record is not present in the foundset will force the selection by loading all records into the foundset. If there are active foundset or table filters these won't be removed, they will still apply.
+	 * */ 
+	FORCE_SELECT_RECORD: 'force-select-record'
+}
 
 /**
  * @private 
@@ -62,30 +113,6 @@ var listeners = [];
 var items = [];
 
 /**
- * TODO it can be used as a proper history stack. 
- * Open items are pushed into the history stack.
- * It could have 2 types of policies LINEAR, CONCURRENT. A linear policy could behave like a stack. 
- * While concurrent policy would always add an open item on top of it (even if already exists in the stack, like browser history);
- * 
- * @private 
- * @type {Array<NavigationItem>}
- * @properties={typeid:35,uuid:"96297058-1B48-46D4-BFBF-103287F9F507",variableType:-4}
- */
-var itemsHistory = [];
-
-/**
- * When navigating through the history, this index is used
- * Whenever a new navigation item is added while walking through history,
- * this history stack is cut off (items after this index will be removed) 
- * and the index is reset
- * @private 
- * @type {Number}
- *
- * @properties={typeid:35,uuid:"543C177C-5C58-4160-B8A5-61359A058CE2",variableType:4}
- */
-var itemsHistoryIndex = -1;
-
-/**
  * Set the navigation policies when the 
  * @type {NavigationPolicies}
  * @private
@@ -96,7 +123,7 @@ var navigationPolicies = createNavigationPolicies();
 /**
  * Internal constructor. To create a new instance of the NavigationPolicies class use the method {@link createNavigationPolicies}.
  * @classdesc This class encapsulates the various supported navigation policies.
- * @protected 
+ * @private  
  * @constructor
  * @properties={typeid:24,uuid:"DE6AB0B7-8695-4B46-9B2E-DE5D8BC8FFEB"}
  */
@@ -132,7 +159,7 @@ function NavigationPolicies() {
 
 /**
  * Factory method for creating {@link NavigationPolicies} objects.
- * @public 
+ * @private  
  * @return {NavigationPolicies} The created {@link NavigationPolicies} object.
  * 
  * @example <pre>// create new navigation policies
@@ -150,7 +177,7 @@ function createNavigationPolicies() {
 
 /**
  * Sets the navigation policies; is suggested to call this method at the onOpenSolution event to properly initialize the navigation
- * @public 
+ * @private  
  * @param {NavigationPolicies} policies
  * @example <pre>// create new navigation policies
 	var navPolicies = scopes.svyNavigation.createNavigationPolicies();
@@ -168,16 +195,51 @@ function setNavigationPolicies(policies) {
 /**
  * Opens the navigation item. 
  * If the item already exists in the stack, then all items after the specified item are closed
- * beforeClose event will be fired allowing a chance to rect or cancel
+ * beforeClose event will be fired allowing a chance to react or cancel
  * afterOpen will fire allowing UIs to update
  * 
  * @public 
  * @param {NavigationItem|String} itemOrID
+ * @param {JSRecord|JSFoundSet|QBSelect} [dataToShow] The data to show for the given navigation item. The data is passed to the afterOpen event
+ * @param {String} [dataSelectionType] Determine the type of selection in the target navigation item with the given dataToShow {@link NAVIGATION_SELECTION_TYPE} enumeration options. The chosen selection type is passed to the afterOpen and needs to be implemented accordingly. Default NAVIGATION_SELECTION_TYPE.LOAD_RECORDS
+ * 
+ * @example <pre>//open a form
+ * var item = new scopes.svyNavigation.NavigationItem(formName);
+ * scopes.svyNavigation.open(item);
+ * 
+ * //open an item and pass data selection
+ * var item = new scopes.svyNavigation.NavigationItem(formName);
+ * scopes.svyNavigation.open(item,foundset.getSelectedRecord(),scopes.svyNavigation.NAVIGATION_SELECTION_TYPE.LOAD_RECORDS);
+ * 
+ * // open a form and pass custom data
+ * var item = new scopes.svyNavigation.NavigationItem("ordersTableView");
+ * item.setCustomData({ filter: { dataprovider: "orderdate", operator: "between", values: [startDate, endDate] } });
+ * scopes.svyNavigation.open(item);
+ * </pre>
+ * 
  * @return {Boolean}
  * @properties={typeid:24,uuid:"1210FE48-6A94-40DD-9BF4-B843044EA1ED"}
  */
-function open(itemOrID) {
-	return openHandler(itemOrID);
+function open(itemOrID, dataToShow, dataSelectionType) {
+	
+	if (!dataToShow && dataSelectionType) {
+		throw new Error(utils.stringFormat('Cannot open item; dataSelectionType "%1$s" cannot be applied and dataToShow Undefined', [dataSelectionType]));
+	}
+	
+	// use default selection type
+	if (dataToShow && !dataSelectionType) dataSelectionType = NAVIGATION_SELECTION_TYPE.LOAD_RECORDS;
+	
+	// set foundset can be called on a JSFoundSet
+	if (!(dataToShow instanceof JSFoundSet) && dataSelectionType === NAVIGATION_SELECTION_TYPE.SET_FOUNDSET) {
+		throw new Error('Cannot open item; dataSelectionType SET_FOUNDSET can be used only for data of type JSFoundSet');
+	}
+	
+	// select record can be used only on data of type record
+	if (!(dataToShow instanceof JSRecord) && ( dataSelectionType === NAVIGATION_SELECTION_TYPE.SELECT_RECORD || dataSelectionType === NAVIGATION_SELECTION_TYPE.FORCE_SELECT_RECORD)) {
+		throw new Error("Cannot open item; dataSelectionType SELECT_RECORD or FORCE_SELECT_RECORD can be applied only for data of type JSRecord");
+	}
+	
+	return openHandler(itemOrID, null, dataToShow, dataSelectionType);
 }
 
 /**
@@ -186,10 +248,17 @@ function open(itemOrID) {
  * @private  
  * @param {NavigationItem|String} itemOrID
  * @param {Boolean} [skipHistoryEntry] when true, no entry will be added to the history stack
+ * @param {JSRecord|JSFoundSet|QBSelect} [dataToShow]
+ * @param {String} [dataSelectionType]
  * @return {Boolean}
  * @properties={typeid:24,uuid:"808C5DC6-56D3-4429-B3B1-05D7A4C485C1"}
  */
-function openHandler(itemOrID, skipHistoryEntry) {
+function openHandler(itemOrID, skipHistoryEntry, dataToShow, dataSelectionType) {
+	
+	// make sure svyNavigationHistory scope is loaded when calling the open
+	if (!('svyNavigationHistory' in scopes)) {
+		scopes.svyNavigationHistory;
+	}
 
 	// look for existing item in nav stack
 	var id = itemOrID instanceof String ? itemOrID : itemOrID.getID();
@@ -239,23 +308,25 @@ function openHandler(itemOrID, skipHistoryEntry) {
 		items = items.slice(0, index);
 	}
 
-	// add item
+//	// add item
 	items.push(navItem);
-	if (skipHistoryEntry !== true && itemsHistoryIndex !== -1) {
-		//we have been navigating through history, but now a new item is opened
-		//the new item is added at the current history index and the history is cut off at that point
-		itemsHistory.splice(itemsHistoryIndex + 1, itemsHistory.length - itemsHistoryIndex, navItem);
-		itemsHistoryIndex = -1;
-	} else if (skipHistoryEntry !== true) {
-		//we are not navigating through history, item is added to history
-		itemsHistory.push(navItem);
-		if (MAX_HISTORY_LENGTH !== -1 && itemsHistory.length > MAX_HISTORY_LENGTH) {
-			itemsHistory.shift();
-		}
-	}
+	
+	// track history
+//	if (skipHistoryEntry !== true && itemsHistoryIndex !== -1) {
+//		//we have been navigating through history, but now a new item is opened
+//		//the new item is added at the current history index and the history is cut off at that point
+//		itemsHistory.splice(itemsHistoryIndex + 1, itemsHistory.length - itemsHistoryIndex, navItem);
+//		itemsHistoryIndex = -1;
+//	} else if (skipHistoryEntry !== true) {
+//		//we are not navigating through history, item is added to history
+//		itemsHistory.push(navItem);
+//		if (MAX_HISTORY_LENGTH !== -1 && itemsHistory.length > MAX_HISTORY_LENGTH) {
+//			itemsHistory.shift();
+//		}
+//	}
 
 	// after event
-	afterOpen();
+	afterOpen(dataToShow, dataSelectionType);
 
 	return true;
 }
@@ -281,7 +352,7 @@ function indexOf(itemOrID){
  * Closes current navigation item and opens the previous item
  * @param {NavigationItem|String} [itemOrID]
  * 
- * @public 
+ * @private 
  * @return {Boolean}
  * @properties={typeid:24,uuid:"2F17EE08-7E2D-4559-9C53-53D50612A8FB"}
  */
@@ -354,7 +425,7 @@ function close(itemOrID) {
 }
 
 /**
- * @public 
+ * @private  
  * @param {NavigationItem} navigationItem
  * @return {Boolean}
  * @properties={typeid:24,uuid:"2E121717-BF41-45FB-A7A0-86C384EC2359"}
@@ -377,7 +448,7 @@ function reset(navigationItem){
 }
 
 /**
- * @public 
+ * @private  
  * @return {Array<NavigationItem>}
  * @properties={typeid:24,uuid:"37235352-825E-4881-8E35-78A52A467961"}
  */
@@ -391,7 +462,7 @@ function getNavigationItems(){
 
 /**
  * Returns the item with the given ID from the items stack when found and null otherwise
- * @public 
+ * @private  
  * @param {String} id
  * @return {NavigationItem}
  * @properties={typeid:24,uuid:"73F69D5E-6708-4937-AE3D-ACBC5C620A89"}
@@ -400,23 +471,6 @@ function getNavigationItem(id){
 	// TODO consider making a map for performance improvement
 	for(var i in items){
 		var item = items[i];
-		if (item.getID() == id){
-			return item;
-		}
-	}
-	return null;
-}
-
-/**
- * Returns the item with the given ID from the history stack when found and null otherwise
- * @public 
- * @param {String} id
- * @return {NavigationItem}
- * @properties={typeid:24,uuid:"63DBA653-9A7C-4583-82D6-A1A3DD9D69F4"}
- */
-function getNavigationItemFromHistory(id){
-	for(var i in itemsHistory){
-		var item = itemsHistory[i];
 		if (item.getID() == id){
 			return item;
 		}
@@ -434,7 +488,7 @@ function getCurrentItem(){
 }
 
 /**
- * @public 
+ * @private  
  * @param {NavigationItem|String} itemOrID
  * @return {Boolean}
  * @properties={typeid:24,uuid:"A9618AEE-8091-49D1-B838-EAC9CFDC7CCB"}
@@ -445,7 +499,56 @@ function hasItem(itemOrID){
 
 /**
  * @public 
- * @param {Function} listener
+ * @param {function(NavigationEvent)} listener
+ * 
+ * @example
+ * <pre> // register for navigation event
+ * scopes.svyNavigation.addNavigationListener(onOpen);
+ * 
+ * function onOpen(event) {
+ *	var type = event.getEventType();
+ *	if (type == scopes.svyNavigation.NAVIGATION_EVENT.AFTER_OPEN) {
+ *		var item = event.getNavigationItem();
+ *		var formName = item.getFormName();
+ *		var dataToShow = event.getDataToShow();
+ *		var dataSelectionType = event.getDataSelectionType();
+ *		
+ *		// get the form instance
+ *		var form = forms[formName];
+ *		
+ *		switch (dataSelectionType) {
+ *		case scopes.svyNavigation.NAVIGATION_SELECTION_TYPE.LOAD_RECORDS:
+ *		// load the given data into the foundset form
+ *		if (dataToShow instanceof JSFoundSet) {
+ *			// load the passed foundset into the form's foundset
+ *			form.foundset.loadRecords(dataToShow);
+ *		} else if (dataToShow instanceof QBSelect) {
+ *			// load the QBSelect into the form's foundset
+ *			form.foundset.loadRecords(dataToShow);
+ *		} else if (dataToShow instanceof JSRecord) {
+ *			// load the record into the form's foundset
+ *			scopes.svyDataUtils.loadRecords(form.foundset, dataToShow.getPKs());
+ *		}
+ *		break;
+ *		case scopes.svyNavigation.NAVIGATION_SELECTION_TYPE.SET_FOUNDSET:
+ *			form.controller.loadRecords(dataToShow);
+ *			break;
+ *		default:
+ *			break;
+ *		}
+ *		
+ *		// show the form
+ *		application.showForm(form);
+ *	} else if (event.getEventType() == scopes.svyNavigation.NAVIGATION_EVENT.BEFORE_CLOSE) {
+ *      // cancel navigation if there are pending edits to be saved
+ *      if (databaseManager.getEditedRecords().length) {
+ *          return false;   // or ask in a dialog
+ *      }
+ *  }
+ *	return true;
+ *}
+ * 
+ * </pre>
  *
  * @properties={typeid:24,uuid:"04A23E5B-4EC6-4E24-BAB1-AA9CAF0A8169"}
  */
@@ -457,8 +560,13 @@ function addNavigationListener(listener) {
 
 /**
  * @public 
- * @param {Function} listener
+ * @param {function(NavigationEvent)} listener
  * @return {Boolean}
+ * 
+ * @example
+ * <pre>
+ * scopes.svyNavigation.removeNavigationListener(onOpen);
+ * </pre>
  *
  * @properties={typeid:24,uuid:"E5011D75-223B-40AA-A4A0-79C4A13CB464"}
  */
@@ -484,23 +592,27 @@ function beforeClose(item){
 }
 
 /**
+ * @param {JSRecord|JSFoundSet|QBSelect} [dataToShow]
+ * @param {String} [dataSelectionType]
  * @private 
  * @properties={typeid:24,uuid:"6E9FD4C0-BD9C-4257-80F3-677953F8ACE6"}
  */
-function afterOpen(){
-	fireEvent(NAVIGATION_EVENT.AFTER_OPEN, getCurrentItem());
+function afterOpen(dataToShow, dataSelectionType){
+	fireEvent(NAVIGATION_EVENT.AFTER_OPEN, getCurrentItem(), dataToShow, dataSelectionType);
 }
 
 /**
  * @private 
  * @param {String} eventType
  * @param {NavigationItem} [item]
+ * @param {JSRecord|JSFoundSet|QBSelect} [dataToShow]
+ * @param {String} [dataSelectionType]
  * @return {Boolean}
  *
  * @properties={typeid:24,uuid:"CFB73B7E-56EB-4FBD-B48F-F8BA4C312B0B"}
  */
-function fireEvent(eventType, item) {
-	var event = new NavigationEvent(eventType, item);
+function fireEvent(eventType, item, dataToShow, dataSelectionType) {
+	var event = new NavigationEvent(eventType, item, dataToShow, dataSelectionType);
 	for (var i in listeners) {
 		/** @type {Function} */
 		var listener = listeners[i];
@@ -514,143 +626,22 @@ function fireEvent(eventType, item) {
 	return true;
 }
 
-
 /**
- * Returns the history of navigation items
- * @public 
- * @return {Array<NavigationItem>}
- *
- * @properties={typeid:24,uuid:"3ACE4E67-28CC-419D-A031-4944AA4A7809"}
- */
-function getHistory() {
-	return itemsHistory;
-}
-
-/**
- * Clears the history
- * @public 
- * @properties={typeid:24,uuid:"938BB658-5465-421D-A1C7-3FE835522B77"}
- */
-function clearHistory() {
-	itemsHistory = [];
-}
-
-/**
- * Goes back one step in the navigation history from the current position
- * @return {NavigationItem}
- * @public 
- * @properties={typeid:24,uuid:"526F3087-9A7A-4540-AFD5-F069FDE8D6FA"}
- */
-function historyBack() {
-	if (itemsHistory.length <= 1 || itemsHistoryIndex === 0) {
-		//nowhere to go back or we already sit on the first item
-		return null;
-	}
-	if (itemsHistoryIndex === -1) {
-		itemsHistoryIndex = itemsHistory.length - 1;
-	}
-	//reduce index by 1
-	itemsHistoryIndex --;
-	var historyItem = itemsHistory[itemsHistoryIndex];
-	//open previous item and return that
-	openHandler(historyItem, true);
-	return historyItem;
-}
-
-/**
- * Goes forward one step in the navigation history from the current position
- * @return {NavigationItem}
- * @public
- * @properties={typeid:24,uuid:"090823B5-6A79-4219-879A-789C0B8FA5EF"}
- */
-function historyNext() {
-	if (itemsHistory.length <= 1 || itemsHistoryIndex === -1 || itemsHistoryIndex >= (itemsHistory.length - 1)) {
-		//nowhere to go to, we have not been through history at all or we already sit on the last item of the stack
-		return null;
-	}
-	//advance index by 1
-	itemsHistoryIndex ++;
-	var historyItem = itemsHistory[itemsHistoryIndex];
-	//open next item and return that
-	openHandler(historyItem, true);
-	return historyItem;
-}
-
-/**
- * Returns <code>true</code> when a historyNext can be performed
- * @return {Boolean}
- * @public 
- * @properties={typeid:24,uuid:"25CBB80E-C496-4703-A34D-6606C105028E"}
- */
-function historyHasNext() {
-	return itemsHistoryIndex !== -1 && itemsHistoryIndex <= itemsHistory.length - 2;
-}
-
-/**
- * Returns <code>true</code> when a historyBack can be performed
- * @return {Boolean}
- * @public 
- * @properties={typeid:24,uuid:"4BFC6545-7B49-44EC-BC71-D108370A9029"}
- */
-function historyHasPrevious() {
-	return !(itemsHistory.length <= 1 || itemsHistoryIndex === 0);
-}
-
-/**
- * Returns the current index when navigating through the history or -1, when not navigating
- * @return {Number}
- * @public 
- * @properties={typeid:24,uuid:"93410851-45D1-40C7-87E4-3C38FA26D978"}
- */
-function getHistoryIndex() {
-	return itemsHistoryIndex;
-}
-
-/**
- * Removes the given item from the history stack
- * @param {NavigationItem} itemToRemove
- *
- * @properties={typeid:24,uuid:"53F01671-D8B2-48E5-B8F0-093A0E5733D1"}
- */
-function removeItemFromHistory(itemToRemove) {
-	if (!itemToRemove) return;
-	for (var i = 0; i < itemsHistory.length; i++) {
-		if (itemsHistory[i].getID() === itemToRemove.getID()) {
-			itemsHistory.splice(i, 1);
-		}
-	}
-}
-
-/**
- * Sets the maximum number of items held in the navigation history
- * A maximum number of -1 means there is no limit to the number of items in the history
- * @param {Number} historyLength
- * @public 
- *
- * @properties={typeid:24,uuid:"5E5051CF-F74E-4FE4-A24B-414140E6C522"}
- */
-function setMaxHistoryLength(historyLength) {
-	if (!(historyLength >= -1)) {
-		//nothing reasonable given
-		return;
-	}
-	MAX_HISTORY_LENGTH = historyLength;
-	if (historyLength !== -1 && itemsHistory.length > historyLength) {
-		//history already longer than given; remove from start what doesn't fit anymore
-		itemsHistory.splice(0, itemsHistory.length - historyLength);
-	}
-}
-
-/**
+ * 
  * @constructor
  * @private 
  * @param {String} eventType
  * @param {NavigationItem} [item]
+ * @param {JSRecord|JSFoundSet|QBSelect} [data]
+ * @param {String} [dataSelectionType]
  * @properties={typeid:24,uuid:"B809ACA1-1541-4A8B-A0F7-0557C2034248"}
  */
-function NavigationEvent(eventType, item){
+function NavigationEvent(eventType, item, data, dataSelectionType){
 	
 	/**
+	 * Returns the navigation event type;
+	 * The event type value can be scopes.svyNavigation.NAVIGATION_EVENT.AFTER_OPEN or scopes.svyNavigation.NAVIGATION_EVENT.BEFORE_OPEN
+	 * 
 	 * @public 
 	 * @return {String}
 	 */
@@ -659,12 +650,49 @@ function NavigationEvent(eventType, item){
 	}
 	
 	/**
+	 * Returns the navigation item
+	 * 
 	 * @public 
 	 * @return {NavigationItem}
 	 */
 	this.getNavigationItem = function(){
 		return item;
 	}
+	
+	/**
+	 * 
+	 * @public 
+	 * @return {JSRecord|JSFoundSet|QBSelect}
+	 */
+	this.getDataToShow = function(){
+		return data;
+	}
+	/**
+	 * Returns the data selection type.
+	 * The value of the data selection type can be one from the enum scopes.svyNavigation.NAVIGATION_SELECTION_TYPE
+	 * 
+	 * @public 
+	 * @return {String}
+	 */
+	this.getDataSelectionType = function(){
+		return dataSelectionType;
+	}
+}
+
+/**
+ * Creates a NavigationItem object to the given formName
+ * 
+ * @param {String} [formName]
+ * @param {String} [text]
+ * @param {String} [tooltipText]
+ * @public 
+ * 
+ * @return {NavigationItem}
+ *
+ * @properties={typeid:24,uuid:"88AE45D1-10B7-4EBB-AF45-BCCDB8B3482E"}
+ */
+function createNavigationItem(formName, text, tooltipText) {
+	return new NavigationItem(formName, text, tooltipText);
 }
 
 /**
@@ -816,6 +844,20 @@ function setupNavigationItem() {
      * @public
      * @return {*}
      * @this {NavigationItem}
+     * 
+     * @example <pre>
+     * function onShow() {
+     *   // get the current navigation item
+     *    var item = scopes.svyNavigation.getCurrentItem();
+     *    var customData = item.getCustomData();
+     *    if (customData && customData.filter) {
+     *       var filter = customData.filter;
+     *       foundset.addFoundSetFilterParam(filter.dataprovider, filter.operator, filter.values);
+     *       foundset.loadRecords();
+     *    }
+     * }
+     * </pre>
+     * 
      */
     NavigationItem.prototype.getCustomData = function() {
         return this.customData;
@@ -826,11 +868,28 @@ function setupNavigationItem() {
      * @param {*} customData
      * @return {NavigationItem}
      * @this {NavigationItem}
+     * 
+     * @example <pre>
+     * var item = new scopes.svyNavigation.NavigationItem("ordersTableView");
+     * item.setCustomData({ filter: { dataprovider: "orderdate", operator: "between", values: [startDate, endDate] } });
+     * scopes.svyNavigation.open(item);
+     * </pre>
+     * 
      */
     NavigationItem.prototype.setCustomData = function(customData) {
         this.customData = customData;
         return this;
     };
+}
+
+/**
+ * Gets the version of this module
+ * @public 
+ * @return {String} the version of the module using the format Major.Minor.Revision
+ * @properties={typeid:24,uuid:"1D3CA4FB-0CEF-4443-89C3-FD9C7618C84F"}
+ */
+function getVersion() {
+    return SVY_NAVIGATION_VERSION;
 }
 
 /**
