@@ -63,7 +63,7 @@ function onSolutionOpen(arg, queryParams) {
 function onReadyCallBack() {
 	//get build version
 	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0];	
-	forms.nav.title = 'V' + buildInfo.versionNumber;
+	forms.nav.version = 'V' + buildInfo.versionNumber;
 	//check if phonegap is supported
 	phonegapEnabled = true;
 	application.output('Device Info', LOGGINGLEVEL.DEBUG)

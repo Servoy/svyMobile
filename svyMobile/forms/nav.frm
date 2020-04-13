@@ -4,9 +4,10 @@ extendsID:"BAF88EAF-4F50-4569-84A9-BC9DA82DDFCD",
 items:[
 {
 cssPosition:"5,0,-1,-1,calc( 30% - 10px),30",
-name:"home",
+dataProviderID:"version",
+horizontalAlignment:0,
+name:"version",
 styleClass:"header_button",
-text:"<i class=\"fas fa-home\"><\/i> Home",
 typeid:7,
 uuid:"1BE1FDBC-1903-4EFE-9F0B-6F8FD104906B"
 },
@@ -44,7 +45,7 @@ typeid:47,
 uuid:"B5039CB7-188F-428F-B2A9-DD34BBB1075C"
 },
 {
-cssPosition:"4,30%,-1,30%,calc( 40% - 20px),30",
+cssPosition:"5,30%,-1,30%,calc( 40% - 20px),30",
 dataProviderID:"title",
 name:"title",
 styleClass:"header_title",

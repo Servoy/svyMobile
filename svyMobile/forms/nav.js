@@ -4,6 +4,13 @@
  * @properties={typeid:35,uuid:"76DC6B23-868C-4D94-9F24-D6B09F32AA74"}
  */
 var title = 'Main Menu'
+	
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"6269B02C-3C41-447C-908C-521AFCD08AAF"}
+ */
+var version = '';
 /**
  * @param formName
  * @override
