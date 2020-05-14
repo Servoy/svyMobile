@@ -49,18 +49,30 @@ function onSolutionOpen(arg, queryParams) {
 
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
-
-	//add check for back button press
-	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
 	
 	plugins.svyBlockUI.stop();
+	
+	/** @type {CustomType<ngclientutils.tag>} */
+	var sw = {
+		tagName: "script",
+		attrs: [{
+			name: "src",
+			value: application.getServerURL() + "resources/fs/" + application.getSolutionName() + "/" + 'service-worker.js'
+		}]
+	};
 
+	//add service worker check
+	plugins.ngclientutils.contributedTags.push(sw);
+	
 }
 
 /**
  * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
  */
 function onReadyCallBack() {
+	//add check for back button press
+	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);	
+	
 	//get build version
 	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0];	
 	forms.nav.version = 'V' + buildInfo.versionNumber;
