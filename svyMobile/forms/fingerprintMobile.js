@@ -24,7 +24,7 @@ function onShow(firstShow, event) {
  * @properties={typeid:24,uuid:"8739F40B-EE27-44A3-B731-BEB555F746DF"}
  */
 function isAvail() {
-	plugins.svyphonegapFingerprint.isAvailable(isAvailSuccess, isAvailError);
+	plugins.svyphonegapFingerprintscan.isAvailable(isAvailSuccess, isAvailError);
 }
 
 /**
@@ -49,7 +49,7 @@ function showAuth() {
 		clientId: "Fingerprint-Demo",
 		clientSecret: "password" //Only necessary for Android
 	};
-	plugins.svyphonegapFingerprint.show(config, showAuthSuccess, showAuthErr)
+	plugins.svyphonegapFingerprintscan.show(config, showAuthSuccess, showAuthErr)
 }
 
 /**
