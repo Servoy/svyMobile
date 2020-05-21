@@ -52,9 +52,9 @@ function onSolutionOpen(arg, queryParams) {
 	
 	plugins.svyBlockUI.stop();
 	
-	//add service worker (from root)
+	//add a javascript file to the head tag (helps us load a service worker if it exists in ROOT Context)
 	/** @type {CustomType<ngclientutils.tag>} */
-	var sw = {
+	var load_sw = {
 		tagName: "script",
 		attrs: [{
 			name: "src",
@@ -62,9 +62,7 @@ function onSolutionOpen(arg, queryParams) {
 		}]
 	};
 	
-	
-	//add service worker check
-	plugins.ngclientutils.contributedTags.push(sw);
+	plugins.ngclientutils.contributedTags.push(load_sw);
 	
 }
 
