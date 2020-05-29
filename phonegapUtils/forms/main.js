@@ -514,7 +514,7 @@ function createImageResize(i, w, h, rotate, removeTransparency) {
 	var im = Packages.javax.imageio.ImageIO.read(input);
 
 	if (!im) {
-		errors = 'The image cannot be converted for use as an app icon.  Please upload an image that has no transparency layer (ex. jpeg)';
+		errors = 'The image cannot be converted for use as an app icon.  Please upload an image that has no transparency layer (ex. jpeg).';
 		return null;
 	}
 
