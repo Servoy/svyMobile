@@ -6,11 +6,6 @@
 var app_orientation = 'default';
 
 /**
- * @properties={typeid:35,uuid:"692CB251-083A-43E2-BC6D-8D8F2C835831",variableType:-4}
- */
-var splash_img;
-
-/**
  * @type {String}
  *
  * @properties={typeid:35,uuid:"3E6FC647-7479-4DAC-AA73-CD97E7CF53E2"}
@@ -195,6 +190,13 @@ var ios_title = '';
 var ios_key_id = null;
 
 /**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"3EED66ED-7D7C-48DA-9684-4E39C0C3A614"}
+ */
+var errors = '';
+
+/**
  * @param oldValue
  * @param newValue
  * @param {JSEvent} event
@@ -267,7 +269,6 @@ function onAction$clearSplash(event) {
 	elements.splash_preview.text = '';
 	elements.splash_preview.visible = false;
 	elements.clear_splash.visible = false;
-	splash_img = null;
 }
 
 /**
@@ -282,9 +283,7 @@ function onAction$clearSplash(event) {
  */
 function onShow(firstShow, event) {
 	elements.icon_preview.visible = false;
-	elements.splash_preview.visible = false;
 	elements.clear_icon.visible = false;
-	elements.clear_splash.visible = false;
 	elements.googlejson.visible = false;
 	elements.googleplist.visible = false;
 	googlejson = null;
@@ -373,9 +372,8 @@ function onAction$getLocalBuild(event, cb) {
 	if (!cb) {
 		setBuildID();
 	}
-	
-	
-	if (!img || !splash_img) {
+
+	if (!img) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
 		return null;
 	}
@@ -384,8 +382,8 @@ function onAction$getLocalBuild(event, cb) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
 		return null;
 	}
-	
-	if (appid.split('.').length!=3){
+
+	if (appid.split('.').length != 3) {
 		plugins.dialogs.showInfoDialog('INFO', 'Your App ID must be in the following naming convention: com.mobile.appname');
 		return null;
 	}
@@ -409,8 +407,15 @@ function onAction$getLocalBuild(event, cb) {
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www/res/screen/ios"));
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www/res/screen/android"));
 	createIconAndSplash();
+	
+	if (errors) {
+		plugins.svyBlockUI.stop();
+		plugins.dialogs.showInfoDialog('INFO', errors);
+		return null;
+	}
+	
 	createConfig();
-	createIndexHTML();	
+	createIndexHTML();
 	if (googlejson) createFile(b_dir + '/google-services.json', googlejson, null);
 	if (googleplist) createFile(b_dir + '/GoogleService-Info.plist', googleplist, null);
 	var build_file = zip(build_dir);
@@ -458,18 +463,6 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87, false, true));
 
-	//generate IOS Splash Screen
-	createFile(b_dir + "/www/res/screen/ios/Default-568h@2x~iphone.png", createImageResize(splash_img, 640, 1136, false, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-667h.png", createImageResize(splash_img, 750, 1334, false, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-736h.png", createImageResize(splash_img, 1242, 2208, false, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape-736h.png", createImageResize(splash_img, 1242, 2208, true, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape@2x~ipad.png", createImageResize(splash_img, 2048, 1536, true, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Landscape~ipad.png", createImageResize(splash_img, 1024, 768, true, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Portrait@2x~ipad.png", createImageResize(splash_img, 1536, 2048, false, true));
-	createFile(b_dir + "/www/res/screen/ios/Default-Portrait~ipad.png", createImageResize(splash_img, 768, 1024, false, true));
-	createFile(b_dir + "/www/res/screen/ios/Default@2x~iphone.png", createImageResize(splash_img, 640, 960, false, true));
-	createFile(b_dir + "/www/res/screen/ios/Default~iphone.png", createImageResize(splash_img, 480, 320, false, true));
-
 	//generate Android Icons
 	createFile(b_dir + "/www/res/icon/android/drawable-ldpi-icon.png", createImageResize(img, 192, 192));
 	createFile(b_dir + "/www/res/icon/android/drawable-mdpi-icon.png", createImageResize(img, 192, 192));
@@ -477,21 +470,6 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/android/drawable-xhdpi-icon.png", createImageResize(img, 192, 192));
 	createFile(b_dir + "/www/res/icon/android/drawable-xxhdpi-icon.png", createImageResize(img, 192, 192));
 	createFile(b_dir + "/www/res/icon/android/drawable-xxxhdpi-icon.png", createImageResize(img, 192, 192));
-
-	//generate Android Splash Screen
-	createFile(b_dir + "/www/res/screen/android/drawable-land-ldpi-screen.png", createImageResize(splash_img, 207, 368, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-mdpi-screen.png", createImageResize(splash_img, 248, 442, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-hdpi-screen.png", createImageResize(splash_img, 311, 552, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-xhdpi-screen.png", createImageResize(splash_img, 414, 736, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-xxhdpi-screen.png", createImageResize(splash_img, 621, 1104, true));
-	createFile(b_dir + "/www/res/screen/android/drawable-land-xxxhdpi-screen.png", createImageResize(splash_img, 1242, 2208, true));
-
-	createFile(b_dir + "/www/res/screen/android/drawable-port-ldpi-screen.png", createImageResize(splash_img, 207, 368));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-mdpi-screen.png", createImageResize(splash_img, 248, 442));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-hdpi-screen.png", createImageResize(splash_img, 311, 552));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-xhdpi-screen.png", createImageResize(splash_img, 414, 736));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-xxhdpi-screen.png", createImageResize(splash_img, 621, 1104));
-	createFile(b_dir + "/www/res/screen/android/drawable-port-xxxhdpi-screen.png", createImageResize(splash_img, 1242, 2208));
 }
 
 /**
@@ -507,6 +485,12 @@ function createImageResize(i, w, h, rotate, removeTransparency) {
 	var fos = new java.io.FileOutputStream(input);
 	fos.write(i);
 	var im = Packages.javax.imageio.ImageIO.read(input);
+
+	if (!im) {
+		errors = 'The image cannot be converted for use as an app icon.  Please upload a different image.';
+		return null;
+	}
+
 	var tmp = im.getScaledInstance(w, h, Packages.java.awt.Image.SCALE_SMOOTH);
 	var res = new java.awt.image.BufferedImage(w, h, java.awt.image.BufferedImage.TYPE_INT_ARGB);
 	var g2d = res.createGraphics();
@@ -587,8 +571,11 @@ function createConfig() {
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
 	xml += '<preference name="InAppBrowserStorageEnabled" value="true" />\n'
 	xml += '<preference name="Orientation" value="' + app_orientation + '" />\n'
-	if (plugins_list.indexOf('Zebra Scanner') != -1) { xml += '<preference name="phonegap-version" value="cli-7.1.0" />\n'} 
-		else { xml += '<preference name="phonegap-version" value="cli-9.0.0" />\n'	}
+	if (plugins_list.indexOf('Zebra Scanner') != -1) {
+		xml += '<preference name="phonegap-version" value="cli-7.1.0" />\n'
+	} else {
+		xml += '<preference name="phonegap-version" value="cli-9.0.0" />\n'
+	}
 	xml += '<platform name="android">\n'
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
@@ -601,7 +588,7 @@ function createConfig() {
 	xml += '<preference name="SplashShowOnlyFirstTime" value="false" />\n'
 	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
 	xml += '<preference name="SplashScreenDelay" value="10000" />\n'
-	xml += '<preference name="loadUrlTimeoutValue" value="999999999" />'			
+	xml += '<preference name="loadUrlTimeoutValue" value="999999999" />'
 	xml += '<icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />\n'
 	xml += '<icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />\n'
 	xml += '<icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />\n'
@@ -623,7 +610,6 @@ function createConfig() {
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
 
-		
 	if (plugins_list.indexOf('Location') != -1) {
 		xml += '<edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Require Location for showing Map</string>\n'
@@ -632,7 +618,7 @@ function createConfig() {
 		xml += '<string>Require Location for showing Map</string>\n'
 		xml += '</edit-config>\n'
 	}
-	
+
 	if (plugins_list.indexOf('Bar Code Scanner') != -1 || plugins_list.indexOf('Camera') != -1) {
 		xml += '<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge" overwrite="true" >\n'
 		xml += '<string>Required for showing gallery</string>\n'
@@ -641,13 +627,12 @@ function createConfig() {
 		xml += '<string>Required for capturing camera images.</string>\n'
 		xml += '</edit-config>\n'
 	}
-	
+
 	if (plugins_list.indexOf('IDTech CR') != -1) {
 		xml += '<edit-config target="NSMicrophoneUsageDescription" file="*-Info.plist" mode="merge" overwrite="true" >\n'
 		xml += '<string>This app needs microphone access</string>\n'
-		xml += '</edit-config>\n'	
+		xml += '</edit-config>\n'
 	}
-	
 
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
@@ -696,16 +681,16 @@ function createConfig() {
 		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />'
 		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />'
 	}
-	
-	if (plugins_list.indexOf('IDTech CR') != -1) {		
+
+	if (plugins_list.indexOf('IDTech CR') != -1) {
 		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag.git" />\n'
-	}	
+	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
-	if (plugins_list.indexOf('Filesystem') != -1) xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'	
+	if (plugins_list.indexOf('Filesystem') != -1) xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
 	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra.git" />\n'
 	if (plugins_list.indexOf('In-App Browser') != -1)xml += '<plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />\n'
@@ -714,7 +699,7 @@ function createConfig() {
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated" />\n'
 	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation"     source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
-	
+
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
 }
@@ -959,7 +944,7 @@ function addKeys() {
  * @properties={typeid:24,uuid:"87172287-5C65-4EEE-A837-43C099F502BF"}
  */
 function onAction$getCloudBuild(event) {
-	if (!img || !splash_img) {
+	if (!img) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
 		return null;
 	}
@@ -968,8 +953,8 @@ function onAction$getCloudBuild(event) {
 		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
 		return null;
 	}
-	
-	if (appid.split('.').length!=3){
+
+	if (appid.split('.').length != 3) {
 		plugins.dialogs.showInfoDialog('INFO', 'Your App ID must be in the following naming convention: com.mobile.appname');
 		return null;
 	}
@@ -979,8 +964,9 @@ function onAction$getCloudBuild(event) {
 			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.')
 			return null;
 		}
-	};
-	
+	}
+	;
+
 	setBuildID();
 	if (!scopes.phonegapAuth.authenticated) {
 		if (forms.phonegap_auth.show()) {
@@ -995,11 +981,11 @@ function onAction$getCloudBuild(event) {
 	if (res && res.id) {
 		application.output('Created App with ID:' + res.id)
 		getAndroid();
-		
+
 		if (ios_cert || ios_provision || ios_cert_pass) {
-			getIOS();	
+			getIOS();
 		}
-		
+
 	}
 }
 

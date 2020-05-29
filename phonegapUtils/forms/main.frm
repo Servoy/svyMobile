@@ -38,27 +38,6 @@ typeid:47,
 uuid:"05629951-0E04-41A8-84AD-085FC0C5F8AF"
 },
 {
-cssPosition:"42,-1,-1,50%,45%,206",
-formIndex:1,
-json:{
-cssPosition:{
-bottom:"-1",
-height:"206",
-left:"50%",
-right:"-1",
-top:"42",
-width:"45%"
-},
-formIndex:1,
-styleClass:"preview"
-},
-name:"splash_preview",
-styleClass:"preview",
-typeName:"bootstrapcomponents-label",
-typeid:47,
-uuid:"0EB9BC49-4CFE-49E4-8D90-08967920F93A"
-},
-{
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
 cssPosition:"982,-1,-1,calc(100% - 197px),160,62",
@@ -71,19 +50,6 @@ onRightClickMethodID:"-1",
 text:"Build via Cloud ",
 typeid:7,
 uuid:"1E0289FE-C97C-4896-A765-E226C535D429"
-},
-{
-background:"#888a85",
-cssPosition:"43,-1,-1,calc( 95% - 78px),75,20",
-foreground:"#ffffff",
-formIndex:2,
-name:"clear_splash",
-onActionMethodID:"C69D7167-3887-4925-AE0F-83333BCB2DD9",
-onDoubleClickMethodID:"-1",
-onRightClickMethodID:"-1",
-text:"Remove (X)",
-typeid:7,
-uuid:"1E55F1BE-6EF2-409B-9943-1780C17B5602"
 },
 {
 height:1075,
@@ -170,33 +136,6 @@ name:"googlejson",
 typeName:"servoyextra-fileupload",
 typeid:47,
 uuid:"6625B06A-7B58-4157-AA94-266895D2523E"
-},
-{
-cssPosition:"43,-1,-1,50%,45%,206",
-json:{
-accept:".png,.jpg,.jpeg",
-cssPosition:{
-bottom:"-1",
-height:"206",
-left:"50%",
-right:"-1",
-top:"43",
-width:"45%"
-},
-dataProviderID:"splash_img",
-formIndex:0,
-onDataChangeMethodID:"77D6E062-B6B3-4779-8C8C-AE8ED481853F",
-size:{
-height:20,
-width:80
-},
-uploadText:"Upload App Splashscreen"
-},
-name:"splash_upload",
-size:"80,20",
-typeName:"servoyextra-fileupload",
-typeid:47,
-uuid:"71985E0C-2053-49E8-8FFD-E06E4066B579"
 },
 {
 cssPosition:"375,-1,-1,50%,45%,20",
