@@ -85,6 +85,7 @@ function getApps() {
 }
 
 /**
+ * @return {Array<{title:String, id:String}>}
  * @properties={typeid:24,uuid:"B5ABEB84-709B-4D17-A8CC-EBB3D88895C3"}
  */
 function getKeys(platform) {
@@ -155,7 +156,7 @@ function createApp(f, keys) {
 	}
 	if (keys.android) {
 		keyObj.android = keys.android;
-	}	
+	}
 	req.addParameter('keys', JSON.stringify(keyObj));
 	req.addParameter('create_method', 'file');
 	if (f && f.exists()) req.addFile('file', 'app.zip', f);
@@ -183,7 +184,7 @@ function downloadAndroid(b_id) {
 		var res = req.executeRequest(username, password);
 		if (res && (res.getStatusCode() == 200)) {
 			var bytes = res.getMediaData();
-			var f = plugins.file.createFile('android_'+b_id+'.apk');
+			var f = plugins.file.createFile('android_' + b_id + '.apk');
 			f.createNewFile();
 			f.setBytes(bytes);
 			c.close();
@@ -205,11 +206,11 @@ function downloadIOS(b_id) {
 	if (apps && apps[0]) {
 		//get users app
 		var req = c.createGetRequest(apiURL + '/' + apps[0].id + '/ios');
-		var res = req.executeRequest(username, password);		
+		var res = req.executeRequest(username, password);
 		application.output(res.getStatusCode())
 		if (res && (res.getStatusCode() == 200)) {
 			var bytes = res.getMediaData();
-			var f = plugins.file.createFile('ios_'+b_id+'.ipa');
+			var f = plugins.file.createFile('ios_' + b_id + '.ipa');
 			f.createNewFile();
 			f.setBytes(bytes);
 			c.close();
@@ -227,7 +228,7 @@ function downloadIOS(b_id) {
 function addAndroidKey(f, _title, _alias, _key_pw, _key_store_pw) {
 	var c = plugins.http.createNewHttpClient();
 	var req = c.createPostRequest(keyURL + '/android');
-	
+
 	if (f && f.exists()) req.addFile('keystore', 'android.keystore', f);
 	req.addParameter("title", _title)
 	req.addParameter("alias", _alias)

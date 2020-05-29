@@ -218,27 +218,6 @@ function onDataChange(oldValue, newValue, event) {
 }
 
 /**
- * @param oldValue
- * @param newValue
- * @param {JSEvent} event
- *
- * @return {boolean}
- *
- * @private
- *
- * @properties={typeid:24,uuid:"77D6E062-B6B3-4779-8C8C-AE8ED481853F"}
- */
-function onDataChangeSplash(oldValue, newValue, event) {
-	var b64 = new Packages.org.apache.commons.codec.binary.Base64();
-	//display the image.
-	elements.splash_preview.text = '<img src="data:image/png;base64,' + b64.encodeAsString(newValue) + '"/>'
-	elements.splash_preview.visible = true;
-	elements.splash_upload.visible = false;
-	elements.clear_splash.visible = true;
-	return true;
-}
-
-/**
  * Perform the element default action.
  *
  * @param {JSEvent} event the event that triggered the action
@@ -253,22 +232,6 @@ function onAction$clearIcon(event) {
 	elements.icon_preview.visible = false;
 	elements.clear_icon.visible = false;
 	img = null;
-}
-
-/**
- * Perform the element default action.
- *
- * @param {JSEvent} event the event that triggered the action
- *
- * @private
- *
- * @properties={typeid:24,uuid:"C69D7167-3887-4925-AE0F-83333BCB2DD9"}
- */
-function onAction$clearSplash(event) {
-	elements.splash_upload.visible = true;
-	elements.splash_preview.text = '';
-	elements.splash_preview.visible = false;
-	elements.clear_splash.visible = false;
 }
 
 /**
@@ -407,13 +370,13 @@ function onAction$getLocalBuild(event, cb) {
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www/res/screen/ios"));
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www/res/screen/android"));
 	createIconAndSplash();
-	
+
 	if (errors) {
 		plugins.svyBlockUI.stop();
 		plugins.dialogs.showInfoDialog('INFO', errors);
 		return null;
 	}
-	
+
 	createConfig();
 	createIndexHTML();
 	if (googlejson) createFile(b_dir + '/google-services.json', googlejson, null);
@@ -462,7 +425,7 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/ios/icon-small.png", createImageResize(img, 29, 29, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87, false, true));
-	
+
 	//generate IOS Splash Screen
 	createFile(b_dir + "/www/res/screen/ios/Default-568h@2x~iphone.png", createImageResize(img, 640, 1136, false, true));
 	createFile(b_dir + "/www/res/screen/ios/Default-667h.png", createImageResize(img, 750, 1334, false, true));
@@ -482,7 +445,7 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/android/drawable-xhdpi-icon.png", createImageResize(img, 192, 192));
 	createFile(b_dir + "/www/res/icon/android/drawable-xxhdpi-icon.png", createImageResize(img, 192, 192));
 	createFile(b_dir + "/www/res/icon/android/drawable-xxxhdpi-icon.png", createImageResize(img, 192, 192));
-	
+
 	//generate Android Splash Screen
 	createFile(b_dir + "/www/res/screen/android/drawable-land-ldpi-screen.png", createImageResize(img, 207, 368, true));
 	createFile(b_dir + "/www/res/screen/android/drawable-land-mdpi-screen.png", createImageResize(img, 248, 442, true));
@@ -1014,6 +977,7 @@ function onAction$getCloudBuild(event) {
 		}
 
 	}
+	return null;
 }
 
 /**

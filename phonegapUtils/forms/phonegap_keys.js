@@ -77,6 +77,10 @@ var ios_provision_filename = '';
 var ios_title = '';
 
 /**
+ * @return {{ android_keystore:String,  android_key_pass:String, 
+ * android_key_store_pass:String, android_title:String, 
+ * android_alias:String, ios_cert:String,ios_cert_pass: String
+ * ,ios_provision: String, ios_title: String}}
  * @properties={typeid:24,uuid:"274BB23A-834D-4AAA-BC96-215D7262E423"}
  */
 function show() {
