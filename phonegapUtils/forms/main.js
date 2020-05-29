@@ -462,6 +462,18 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/ios/icon-small.png", createImageResize(img, 29, 29, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87, false, true));
+	
+	//generate IOS Splash Screen
+	createFile(b_dir + "/www/res/screen/ios/Default-568h@2x~iphone.png", createImageResize(img, 640, 1136, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-667h.png", createImageResize(img, 750, 1334, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-736h.png", createImageResize(img, 1242, 2208, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape-736h.png", createImageResize(img, 1242, 2208, true, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape@2x~ipad.png", createImageResize(img, 2048, 1536, true, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Landscape~ipad.png", createImageResize(img, 1024, 768, true, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Portrait@2x~ipad.png", createImageResize(img, 1536, 2048, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default-Portrait~ipad.png", createImageResize(img, 768, 1024, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default@2x~iphone.png", createImageResize(img, 640, 960, false, true));
+	createFile(b_dir + "/www/res/screen/ios/Default~iphone.png", createImageResize(img, 480, 320, false, true));
 
 	//generate Android Icons
 	createFile(b_dir + "/www/res/icon/android/drawable-ldpi-icon.png", createImageResize(img, 192, 192));
@@ -470,6 +482,21 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/android/drawable-xhdpi-icon.png", createImageResize(img, 192, 192));
 	createFile(b_dir + "/www/res/icon/android/drawable-xxhdpi-icon.png", createImageResize(img, 192, 192));
 	createFile(b_dir + "/www/res/icon/android/drawable-xxxhdpi-icon.png", createImageResize(img, 192, 192));
+	
+	//generate Android Splash Screen
+	createFile(b_dir + "/www/res/screen/android/drawable-land-ldpi-screen.png", createImageResize(img, 207, 368, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-mdpi-screen.png", createImageResize(img, 248, 442, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-hdpi-screen.png", createImageResize(img, 311, 552, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-xhdpi-screen.png", createImageResize(img, 414, 736, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-xxhdpi-screen.png", createImageResize(img, 621, 1104, true));
+	createFile(b_dir + "/www/res/screen/android/drawable-land-xxxhdpi-screen.png", createImageResize(img, 1242, 2208, true));
+
+	createFile(b_dir + "/www/res/screen/android/drawable-port-ldpi-screen.png", createImageResize(img, 207, 368));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-mdpi-screen.png", createImageResize(img, 248, 442));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-hdpi-screen.png", createImageResize(img, 311, 552));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-xhdpi-screen.png", createImageResize(img, 414, 736));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-xxhdpi-screen.png", createImageResize(img, 621, 1104));
+	createFile(b_dir + "/www/res/screen/android/drawable-port-xxxhdpi-screen.png", createImageResize(img, 1242, 2208));
 }
 
 /**
