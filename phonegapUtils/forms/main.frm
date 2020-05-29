@@ -65,7 +65,7 @@ typeid:4,
 uuid:"2F8BCF45-9EBC-4F49-B512-7DE5D31D35E0"
 },
 {
-cssPosition:"42,-1,-1,10,45%,206",
+cssPosition:"42,-1,-1,10,200,206",
 json:{
 accept:".png,.jpg,.jpeg",
 cssPosition:{
@@ -74,7 +74,7 @@ height:"206",
 left:"10",
 right:"-1",
 top:"42",
-width:"45%"
+width:"200"
 },
 dataProviderID:"img",
 iconStyleClass:"none",
@@ -246,7 +246,7 @@ typeid:7,
 uuid:"C95D7412-639D-4A3F-BC71-EF1F36D071DA"
 },
 {
-cssPosition:"41,-1,-1,10,45%,206",
+cssPosition:"41,-1,-1,10,200,206",
 json:{
 cssPosition:{
 bottom:"-1",
@@ -254,7 +254,7 @@ height:"206",
 left:"10",
 right:"-1",
 top:"41",
-width:"45%"
+width:"200"
 },
 styleClass:"preview"
 },
@@ -287,7 +287,7 @@ uuid:"E9A3A3D0-A0BB-4849-866D-5D989F82BB07"
 },
 {
 background:"#888a85",
-cssPosition:"42,-1,-1,calc( 46% - 75px),75,20",
+cssPosition:"42,-1,-1,135,75,20",
 foreground:"#ffffff",
 name:"clear_icon",
 onActionMethodID:"1F3E4461-006A-4F30-BA79-D3499849C184",
