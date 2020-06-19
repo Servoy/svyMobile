@@ -630,6 +630,7 @@ function createConfig() {
 	xml += '<feature name="CDVWKWebViewEngine">\n'
 	xml += '<param name="ios-package" value="CDVWKWebViewEngine" />\n'
 	xml += '</feature>\n'
+	xml += '<preference name="WKWebViewOnly" value="true" />\n'
 	xml += '<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />\n'
 	xml += '<preference name="SplashScreenDelay" value="10000" />\n'
 	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
