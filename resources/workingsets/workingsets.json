@@ -63,8 +63,7 @@
 "name":"location",
 "paths":[
 "/svyMobile/.project",
-"/svyMobile/forms/locationDesktop.frm",
-"/svyMobile/forms/locationMobile.frm"
+"/svyMobile/forms/locationContainer.frm"
 ]
 },
 {
