@@ -60,11 +60,11 @@ function createApp(f, key) {
 	}
 	if (f && f.exists()) req.addFile('build', 'app.zip', f);
 	req.addHeader('Accept', 'application/json; charset=UTF-16');
-	req.executeRequest()
 	//set up a scheduler to get files
 	var d = new Date();
-	d.setMinutes(d.getMinutes() + 2);
-	plugins.scheduler.addJob('getBuildJob', d, getBuildJob)
+	d.setSeconds(d.getSeconds() + 60);
+	plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
+	req.executeAsyncRequest(null, null);
 	return null;
 }
 
@@ -76,6 +76,7 @@ function getBuildJob() {
 	c = plugins.http.createNewHttpClient();
 	var req = c.createGetRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
 	req.addHeader('build_num', forms.main.build_id)
+	application.output('get build ' + forms.main.build_id);
 	var res = req.executeRequest();
 	if (res) {
 		try {
@@ -83,19 +84,32 @@ function getBuildJob() {
 			var r = JSON.parse(res.getResponseBody())
 			r = JSON.parse(r['data']);
 			if (r && r.result) {
+				//if results are ready stop the job
 				plugins.scheduler.removeJob('getBuildJob');
 				plugins.svyBlockUI.stop();
 			}
 			if (r && r.result.android == 'SUCCESS') {
 				forms.main.getAndroid(r);
 			} else {
-				plugins.webnotificationsToastr.error('Could not compile Android build')
+				var msg = 'Could not compile Android build. \n'
+				if (r.log.length < 5) {
+					msg += 'Build Server is down...';
+				} else {
+					//					application.output(r.log)
+				}
+				plugins.webnotificationsToastr.error(msg)
 			}
 			if (r && r.result.ios == 'SUCCESS') {
 				if (forms.main.ios_cert || forms.main.ios_provision || forms.main.ios_cert_pass) {
 					forms.main.getIOS(r);
 				}
 			} else if (forms.main.ios_cert) {
+				var msg = 'Failed to compile IOS build. \n'
+				if (r.log.length < 5) {
+					msg += 'Build Server is down...';
+				} else {
+					//					application.output(r.log)
+				}
 				plugins.webnotificationsToastr.error('Failed to compile IOS build')
 			}
 		} catch (e) {

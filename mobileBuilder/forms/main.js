@@ -385,7 +385,7 @@ function onAction$getLocalBuild(event, cb) {
 	plugins.file.deleteFile(build_file.getAbsolutePath())
 	var dt = new Date();
 	dt.setSeconds(dt.getSeconds() + 10);
-	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir])	
+	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir])
 	if (res) return res;
 	return null;
 }
@@ -657,12 +657,12 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
 	xml += '<plugin name="cordova-plugin-cleartext" spec="https://github.com/tuanway/cordova-plugin-cleartext" />\n'
 	if (plugins_list.indexOf('Ionic WebView') != -1) {
-		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />'
-		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />'
+		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
+		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
 	}
 
 	if (plugins_list.indexOf('IDTech CR') != -1) {
-		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag.git" />\n'
+		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag" />\n'
 	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
@@ -671,7 +671,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
 	if (plugins_list.indexOf('Filesystem') != -1) xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
-	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra.git" />\n'
+	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra" />\n'
 	if (plugins_list.indexOf('In-App Browser') != -1)xml += '<plugin name="cordova-plugin-inappbrowser" />\n'
 	if (plugins_list.indexOf('Device Information') != -1) xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
 	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />\n'
@@ -950,7 +950,7 @@ function onAction$getCloudBuild(event) {
 	setBuildID();
 	if (!scopes.cordovaAuth.authenticated) {
 		if (forms.cordova_auth.show()) {
-			if (!addKeys()) return null;			
+			if (!addKeys()) return null;
 			onAction$getLocalBuild(event, scopes.cordovaAuth.createApp);
 		}
 	} else {
@@ -981,10 +981,10 @@ function addIOSKey() {
  * @properties={typeid:24,uuid:"F8C626B5-E6AC-473A-8B61-E4623668C990"}
  */
 function getAndroid(res) {
-	plugins.svyBlockUI.show('Getting Android Binary..');
 	// download APK
-	res.androidURL = utils.stringReplace(res.androidURL, 'localhost', scopes.cordovaAuth.apiURL)
-	application.showURL(res.androidURL, '_blank');
+	res.androidURL = utils.stringReplace(res.androidURL, 'localhost', scopes.cordovaAuth.apiURL);
+	var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
+	application.showURL(createRemoteFile(f), '_blank');
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('Android Build Complete');
 
@@ -994,10 +994,10 @@ function getAndroid(res) {
  * @properties={typeid:24,uuid:"AC62A4CC-C848-4655-BFAD-51190EDF2767"}
  */
 function getIOS(res) {
-	plugins.svyBlockUI.show('Getting IOS Binary..');
 	// download IPA
 	res.iosURL = utils.stringReplace(res.iosURL, 'localhost', scopes.cordovaAuth.apiURL)
-	application.showURL(res.iosURL, '_blank');
+	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
+	application.showURL(createRemoteFile(f), '_blank');
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');
 }
