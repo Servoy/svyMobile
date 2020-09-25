@@ -33,7 +33,7 @@ var c;
 function createApp(f, key) {
 	apiURL = application.getUserProperty('pgURL');
 	//	apiURL = '192.168.1.24:8183';
-	//	apiURL = '192.168.1.24:8081/ws';
+	//		apiURL = '192.168.1.24:8081/ws';
 	c = plugins.http.createNewHttpClient();
 	var req = c.createPostRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
 
@@ -62,7 +62,7 @@ function createApp(f, key) {
 	req.addHeader('Accept', 'application/json; charset=UTF-16');
 	//set up a scheduler to get files
 	var d = new Date();
-	d.setSeconds(d.getSeconds() + 60);
+	d.setSeconds(d.getSeconds() + 120);
 	plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
 	req.executeAsyncRequest(null, null);
 	return null;
@@ -79,6 +79,12 @@ function getBuildJob() {
 	application.output('get build ' + forms.main.build_id);
 	var res = req.executeRequest();
 	if (res) {
+		if (res.getStatusCode() == 404) {
+			var d = new Date();
+			d.setSeconds(d.getSeconds() + 60);
+			plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
+			return;
+		}
 		try {
 			/** @type {{result:{android:string,ios:string}}} */
 			var r = JSON.parse(res.getResponseBody())
