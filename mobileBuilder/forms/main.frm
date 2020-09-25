@@ -47,7 +47,7 @@ name:"create_buildc",
 onActionMethodID:"87172287-5C65-4EEE-A837-43C099F502BF",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-text:"Build via Cloud ",
+text:"Start Build",
 typeid:7,
 uuid:"1E0289FE-C97C-4896-A765-E226C535D429"
 },
@@ -183,20 +183,6 @@ typeid:7,
 uuid:"937189B0-AC65-4967-A7AD-004DEB74621D"
 },
 {
-background:"#4e9a06",
-borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"982,-1,-1,calc(100% - 375px),170,62",
-fontType:"FreeSans,1,15",
-foreground:"#ffffff",
-name:"create_build",
-onActionMethodID:"846F44DB-9C0A-4D88-92DD-420947BCE716",
-onDoubleClickMethodID:"-1",
-onRightClickMethodID:"-1",
-text:"Download Template",
-typeid:7,
-uuid:"9CD511F0-0EE9-4170-BD9F-101D7BC2E2E1"
-},
-{
 cssPosition:"454,-1,-1,9,44%,30",
 dataProviderID:"app_author",
 placeholderText:"Author Name",
@@ -233,7 +219,7 @@ uuid:"BDA94CF4-6E4C-40CE-AB48-6AC90575F46E"
 },
 {
 cssPosition:"4,-1,-1,10,561,30",
-text:"<h3> Servoy Phonegap Build Generator <\/h3> ",
+text:"<h3> Servoy Mobile Build Generator <\/h3>",
 transparent:true,
 typeid:7,
 uuid:"C0456531-C927-4372-B2D1-FB976A2C995D"
@@ -303,7 +289,7 @@ navigatorID:"-1",
 onShowMethodID:"EFA2A5C2-7D3D-4CD7-A980-64FE205FC21C",
 scrollbars:33,
 showInMenu:true,
-size:"738,767",
+size:"482,1075",
 titleText:"Phonegap Build Generator",
 typeid:3,
 uuid:"B7DF66C7-67C1-4E4D-9D6B-E335D63D2838"

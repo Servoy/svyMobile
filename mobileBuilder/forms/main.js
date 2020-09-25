@@ -14,8 +14,8 @@ var app_url = '';
 
 /**
  * @type {String}
- *
  * @properties={typeid:35,uuid:"1F45F84D-BFBC-425D-9C7C-15D974B1EC16"}
+ *
  */
 var app_email = '';
 
@@ -152,13 +152,6 @@ var android_title = '';
 var android_alias = '';
 
 /**
- * @type {String}
- *
- * @properties={typeid:35,uuid:"A317224A-FF1F-40A8-A7B9-7B298EE505FA"}
- */
-var android_key_id = null;
-
-/**
  * @properties={typeid:35,uuid:"100DB9EA-D1C0-476B-A4FB-32A82BF98D74",variableType:-4}
  */
 var ios_cert;
@@ -185,16 +178,14 @@ var ios_title = '';
 /**
  * @type {String}
  *
- * @properties={typeid:35,uuid:"F4EED9B4-4750-4F5A-912D-4A913910C338"}
- */
-var ios_key_id = null;
-
-/**
- * @type {String}
- *
  * @properties={typeid:35,uuid:"3EED66ED-7D7C-48DA-9684-4E39C0C3A614"}
  */
 var errors = '';
+
+/**
+ * @properties={typeid:35,uuid:"22954F4A-230B-4F87-8D5E-5CDEAF0DD23D",variableType:-4}
+ */
+var keyObj = { };
 
 /**
  * @param oldValue
@@ -259,8 +250,6 @@ function onShow(firstShow, event) {
 		"closeButton": false,
 		"newestOnTop": false,
 		"positionClass": "toast-top-full-width",
-		"showDuration": 30000,
-		"hideDuration": 1000,
 		"hideEasing": "linear",
 		"showMethod": "fadeIn",
 		"hideMethod": "fadeOut",
@@ -337,28 +326,28 @@ function onAction$getLocalBuild(event, cb) {
 	}
 
 	if (!img) {
-		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
+		plugins.webnotificationsToastr.info('Please upload an icon for your app.')
 		return null;
 	}
 
 	if (!app_name || !app_url || !app_version || !appid) {
-		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
+		plugins.webnotificationsToastr.info('Please fill some of details first.')
 		return null;
 	}
 
 	if (appid.split('.').length != 3) {
-		plugins.dialogs.showInfoDialog('INFO', 'Your App ID must be in the following naming convention: com.mobile.appname');
+		plugins.webnotificationsToastr.info('Your App ID must be in the following naming convention: com.mobile.appname')
 		return null;
 	}
 
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
 		if (!googlejson && !googleplist) {
-			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.')
+			plugins.webnotificationsToastr.info('Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.')
 			return null;
 		}
 	}
-	plugins.svyBlockUI.spinner = 'Wave';
-	plugins.svyBlockUI.show('Generating build...');
+	plugins.svyBlockUI.spinner = 'Wandering Cubes';
+	plugins.svyBlockUI.show('Compilation will take a few minutes...');
 	plugins.file.createFolder(b_dir);
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www"));
 	plugins.file.createFolder(plugins.file.convertToJSFile(b_dir + "/www/js"));
@@ -389,15 +378,14 @@ function onAction$getLocalBuild(event, cb) {
 	}
 
 	if (cb) {
-		var res = cb(build_file, { android: android_key_id, ios: ios_key_id });
+		var res = cb(build_file, keyObj);
 	}
 
 	plugins.file.deleteFolder(b_dir, false);
 	plugins.file.deleteFile(build_file.getAbsolutePath())
 	var dt = new Date();
 	dt.setSeconds(dt.getSeconds() + 10);
-	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir])
-	plugins.svyBlockUI.stop();
+	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir])	
 	if (res) return res;
 	return null;
 }
@@ -902,7 +890,7 @@ function channelCopy(src, dest) {
  * @properties={typeid:24,uuid:"39181E26-0B58-4B7C-9CB3-C62FE6533BDB"}
  */
 function addKeys() {
-	var keys = forms.phonegap_keys.show();
+	var keys = forms.cordova_keys.show();
 	if (keys.android_keystore || (keys.ios_cert && keys.ios_provision)) {
 		plugins.svyBlockUI.show('Adding keys..');
 		//we have keys to add, let's update local vars
@@ -916,13 +904,14 @@ function addKeys() {
 		ios_provision = keys.ios_provision;
 		ios_title = (keys.ios_title == null || keys.ios_title == '') ? appid : keys.ios_title;
 		if (keys.android_keystore) {
-			android_key_id = addAndroidKey()['id'];
+			keyObj.android = addAndroidKey();
 		}
 
 		if (keys.ios_cert && keys.ios_provision) {
-			ios_key_id = addIOSKey()['id'];
+			keyObj.ios = addIOSKey();
 		}
 	}
+	return forms.cordova_keys.selected;
 }
 
 /**
@@ -936,47 +925,37 @@ function addKeys() {
  */
 function onAction$getCloudBuild(event) {
 	if (!img) {
-		plugins.dialogs.showInfoDialog('INFO', 'Please upload an icon and splashscreen.');
+		plugins.webnotificationsToastr.info('Please upload an icon for your app.')
 		return null;
 	}
 
 	if (!app_name || !app_url || !app_version || !appid) {
-		plugins.dialogs.showInfoDialog('INFO', 'Please fill out all details first.')
+		plugins.webnotificationsToastr.info('Please fill out some of the details first.')
 		return null;
 	}
 
 	if (appid.split('.').length != 3) {
-		plugins.dialogs.showInfoDialog('INFO', 'Your App ID must be in the following naming convention: com.mobile.appname');
+		plugins.webnotificationsToastr.info('Your App ID must be in the following naming convention: com.mobile.appname')
 		return null;
 	}
 
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
 		if (!googlejson && !googleplist) {
-			plugins.dialogs.showInfoDialog('INFO', 'Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.')
+			plugins.webnotificationsToastr.info('Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.');
 			return null;
 		}
 	}
 	;
 
 	setBuildID();
-	if (!scopes.phonegapAuth.authenticated) {
-		if (forms.phonegap_auth.show()) {
-			addKeys();
-			var res = onAction$getLocalBuild(event, scopes.phonegapAuth.createApp);
+	if (!scopes.cordovaAuth.authenticated) {
+		if (forms.cordova_auth.show()) {
+			if (!addKeys()) return null;			
+			onAction$getLocalBuild(event, scopes.cordovaAuth.createApp);
 		}
 	} else {
-		addKeys();
-		res = onAction$getLocalBuild(event, scopes.phonegapAuth.createApp);
-	}
-
-	if (res && res.id) {
-		application.output('Created App with ID:' + res.id)
-		getAndroid();
-
-		if (ios_cert || ios_provision || ios_cert_pass) {
-			getIOS();
-		}
-
+		if (!addKeys()) return null;
+		onAction$getLocalBuild(event, scopes.cordovaAuth.createApp);
 	}
 	return null;
 }
@@ -986,14 +965,7 @@ function onAction$getCloudBuild(event) {
  */
 function addAndroidKey() {
 	var f = createFile(b_dir + 'android.keystore', android_keystore);
-	var keys = scopes.phonegapAuth.getKeys('android');
-	for (var i = 0; i < keys.length; i++) {
-		if (keys[i].title == android_title) {
-			//if we already added this key (based on title) , let's remove it first
-			scopes.phonegapAuth.deleteKey('android', keys[i].id);
-		}
-	}
-	return scopes.phonegapAuth.addAndroidKey(f, appid, android_alias, android_key_pass, android_key_store_pass);
+	return scopes.cordovaAuth.addAndroidKey(f, appid, android_alias, android_key_pass, android_key_store_pass);
 }
 
 /**
@@ -1002,39 +974,17 @@ function addAndroidKey() {
 function addIOSKey() {
 	var f_cert = createFile(b_dir + 'ios.p12', ios_cert);
 	var f_prov = createFile(b_dir + 'ios.mobileprovision', ios_provision);
-	var keys = scopes.phonegapAuth.getKeys('ios');
-	for (var i = 0; i < keys.length; i++) {
-		if (keys[i].title == ios_title) {
-			//if we already added this key (based on title) , let's remove it first
-			scopes.phonegapAuth.deleteKey('ios', keys[i].id);
-		}
-	}
-	return scopes.phonegapAuth.addIOSKey(f_cert, f_prov, appid, ios_cert_pass);
+	return scopes.cordovaAuth.addIOSKey(f_cert, f_prov, appid, ios_cert_pass);
 }
 
 /**
  * @properties={typeid:24,uuid:"F8C626B5-E6AC-473A-8B61-E4623668C990"}
  */
-function getAndroid() {
+function getAndroid(res) {
 	plugins.svyBlockUI.show('Getting Android Binary..');
 	// download APK
-	var androidFile = null;
-	while (!androidFile) {
-		if (scopes.phonegapAuth.getApps()[0].status.android == 'error') {
-			plugins.svyBlockUI.stop();
-			plugins.dialogs.showInfoDialog('INFO', 'Failed to get Android Binary, please refer to cloud build logs.')
-			return;
-		}
-		if (scopes.phonegapAuth.getApps()[0].status.android == 'complete') {
-			androidFile = scopes.phonegapAuth.downloadAndroid(b_dir);
-			application.output('get android : ' + androidFile);
-		}
-	}
-	var url = createRemoteFile(androidFile);
-	application.showURL(url, '_blank');
-	var dt = new Date()
-	dt.setSeconds(dt.getSeconds() + 15);
-	plugins.scheduler.addJob('removeandroid', dt, removeMiscFile, [androidFile])
+	res.androidURL = utils.stringReplace(res.androidURL, 'localhost', scopes.cordovaAuth.apiURL)
+	application.showURL(res.androidURL, '_blank');
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('Android Build Complete');
 
@@ -1043,26 +993,11 @@ function getAndroid() {
 /**
  * @properties={typeid:24,uuid:"AC62A4CC-C848-4655-BFAD-51190EDF2767"}
  */
-function getIOS() {
+function getIOS(res) {
 	plugins.svyBlockUI.show('Getting IOS Binary..');
-	// download APK
-	var iosFile = null;
-	while (!iosFile) {
-		if (scopes.phonegapAuth.getApps()[0].status.ios == 'error') {
-			plugins.svyBlockUI.stop();
-			plugins.dialogs.showInfoDialog('INFO', 'Failed to get IOS Binary, please refer to cloud build logs.')
-			return;
-		}
-		if (scopes.phonegapAuth.getApps()[0].status.ios == 'complete') {
-			iosFile = scopes.phonegapAuth.downloadIOS(b_dir);
-			application.output('get ios : ' + iosFile);
-		}
-	}
-	var url = createRemoteFile(iosFile);
-	application.showURL(url, '_blank');
-	var dt = new Date()
-	dt.setSeconds(dt.getSeconds() + 15);
-	plugins.scheduler.addJob('removeios', dt, removeMiscFile, [iosFile])
+	// download IPA
+	res.iosURL = utils.stringReplace(res.iosURL, 'localhost', scopes.cordovaAuth.apiURL)
+	application.showURL(res.iosURL, '_blank');
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');
 }

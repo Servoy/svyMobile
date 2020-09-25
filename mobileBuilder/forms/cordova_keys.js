@@ -77,16 +77,23 @@ var ios_provision_filename = '';
 var ios_title = '';
 
 /**
- * @return {{ android_keystore:String,  android_key_pass:String, 
- * android_key_store_pass:String, android_title:String, 
+ * @properties={typeid:35,uuid:"C979FFA9-C41D-4016-8C12-70EEBF86E173",variableType:-4}
+ */
+var selected = false;
+
+/**
+ * @return {{ android_keystore:String,  android_key_pass:String,
+ * android_key_store_pass:String, android_title:String,
  * android_alias:String, ios_cert:String,ios_cert_pass: String
  * ,ios_provision: String, ios_title: String}}
  * @properties={typeid:24,uuid:"274BB23A-834D-4AAA-BC96-215D7262E423"}
  */
 function show() {
+	selected = false;
 	if (android_keystore || (ios_cert && ios_provision)) {
 		var ans = plugins.dialogs.showQuestionDialog('INFO', "You've already added signing keys, do you want to add new ones?", 'Yes', 'No');
 		if (ans == 'No') {
+			selected = true;
 			return {
 				android_keystore: null,
 				android_key_pass: null,
@@ -101,7 +108,8 @@ function show() {
 		}
 	}
 
-	var w = application.createWindow(controller.getName(), JSWindow.MODAL_DIALOG);
+	var w = application.createWindow(controller.getName(), JSWindow.MODAL_DIALOG);	
+	w.undecorated = true;
 	w.show(controller.getName());
 	return {
 		android_keystore: android_keystore,
@@ -127,6 +135,7 @@ function show() {
  * @properties={typeid:24,uuid:"B89A447B-B343-4521-A09E-0895593A61B4"}
  */
 function onShow(firstShow, event) {
+	selected = false;
 	android_keystore = null;
 	android_title = '';
 	ios_cert = null;
@@ -173,6 +182,7 @@ function onDataChange(oldValue, newValue, event) {
  * @properties={typeid:24,uuid:"DD252BF9-1373-49CC-98EA-08467ED6ACC7"}
  */
 function onAction$addKeys(event) {
+	selected = true;
 	application.getActiveWindow().hide();
 }
 
@@ -182,6 +192,7 @@ function onAction$addKeys(event) {
  * @properties={typeid:24,uuid:"B0D03AD8-A9AF-4E09-B02D-F43249890991"}
  */
 function onAction$skip(event) {
+	selected = true;
 	if (!ios_cert || !ios_provision || !ios_cert_pass) {
 		var res = plugins.dialogs.showQuestionDialog('INFO', "You haven't uploaded an IOS certiface or provisioning profile. The IOS binary will not be built, is that okay?", "Yes, skip IOS build", "Cancel");
 		if (res == "Cancel") {
@@ -203,5 +214,19 @@ function onAction$skip(event) {
 	ios_cert_pass = '';
 	ios_provision = null;
 	ios_title = '';
+	application.getActiveWindow().hide();
+}
+
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"4685B52C-3EA2-4A8E-A371-86B654DCDC0A"}
+ */
+function onAction$hide(event) {
+	selected = false;
 	application.getActiveWindow().hide();
 }

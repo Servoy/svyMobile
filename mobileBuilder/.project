@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>phonegapUtils</name>
+	<name>mobileBuilder</name>
 	<comment></comment>
 	<projects>
 		<project>resources</project>
