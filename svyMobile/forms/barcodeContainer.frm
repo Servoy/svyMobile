@@ -1,0 +1,34 @@
+customProperties:"formComponent:false,\
+useCssPosition:true",
+encapsulation:108,
+items:[
+{
+cssPosition:"10,10,50,10,270,-1",
+dataProviderID:"messages",
+displayType:1,
+styleClass:"push-message",
+typeid:4,
+uuid:"50580BD7-30A2-47BB-9D7D-B60229735DE3"
+},
+{
+cssPosition:"calc( 100% - 45px),10,-1,10,104,38",
+onActionMethodID:"793C63F1-2DBC-4727-B99E-0955A1B193F9",
+rolloverCursor:12,
+text:"Start Scanner",
+typeid:7,
+uuid:"716A85A5-3A1C-4B56-A03B-41B6BD65D545"
+},
+{
+height:251,
+partType:5,
+typeid:19,
+uuid:"F1ED8087-3276-4860-A346-A5C009EB8005"
+}
+],
+name:"barcodeContainer",
+navigatorID:"-1",
+onShowMethodID:"A7E706AC-D17B-415D-8F26-814B23413F5A",
+showInMenu:true,
+size:"244,480",
+typeid:3,
+uuid:"81981F12-6A6C-4F0A-A099-DBDD120B4CFC"

@@ -13,7 +13,8 @@ function createMenuData() {
 	scopes.mobileBase.addMenuItem('push', 'Push', 'fa-bell', 'nav-orange', 3);
 	scopes.mobileBase.addMenuItem('fingerprint', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
 	scopes.mobileBase.addMenuItem('file', 'File', 'fa-folder', 'nav-yellow', 3);
-	scopes.mobileBase.addMenuItem('card', 'Card', 'fa-credit-card', 'nav-white', 3);		
+	scopes.mobileBase.addMenuItem('card', 'Card', 'fa-credit-card', 'nav-white', 3);
+	scopes.mobileBase.addMenuItem('barcode', 'Bar Code', 'fa-barcode', 'nav-green', 3);
 	databaseManager.saveData(f);
 }
 
