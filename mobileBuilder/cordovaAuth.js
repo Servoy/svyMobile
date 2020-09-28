@@ -30,10 +30,9 @@ var c;
 /**
  * @properties={typeid:24,uuid:"E09C56D9-D184-490F-A019-DCA1B1B1EAB5"}
  */
-function createApp(f, key) {
-	apiURL = application.getUserProperty('pgURL');
-	//	apiURL = '192.168.1.24:8183';
-	//		apiURL = '192.168.1.24:8081/ws';
+function createApp(f, key) {	
+	apiURL = '192.168.1.24:8081/ws';	
+
 	c = plugins.http.createNewHttpClient();
 	var req = c.createPostRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
 
@@ -61,10 +60,11 @@ function createApp(f, key) {
 	if (f && f.exists()) req.addFile('build', 'app.zip', f);
 	req.addHeader('Accept', 'application/json; charset=UTF-16');
 	//set up a scheduler to get files
+	plugins.scheduler.removeJob('getBuildJob')
 	var d = new Date();
-	d.setSeconds(d.getSeconds() + 120);
+	d.setSeconds(d.getSeconds() + 60);
 	plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
-	req.executeAsyncRequest(null, null);
+	req.executeRequest();
 	return null;
 }
 
@@ -76,12 +76,13 @@ function getBuildJob() {
 	c = plugins.http.createNewHttpClient();
 	var req = c.createGetRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
 	req.addHeader('build_num', forms.main.build_id)
-	application.output('get build ' + forms.main.build_id);
+	//	application.output('get build ' + forms.main.build_id);
 	var res = req.executeRequest();
 	if (res) {
 		if (res.getStatusCode() == 404) {
+			plugins.scheduler.removeJob('getBuildJob')
 			var d = new Date();
-			d.setSeconds(d.getSeconds() + 60);
+			d.setSeconds(d.getSeconds() + 25);
 			plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
 			return;
 		}
@@ -152,4 +153,19 @@ function addIOSKey(f_cert, f_prov, _title, _cert_pass) {
 	iosKeyObj.title = _title;
 	iosKeyObj.password = _cert_pass;
 	return iosKeyObj;
+}
+
+/**
+ * Callback method for when solution is opened.
+ * When deeplinking into solutions, the argument part of the deeplink url will be passed in as the first argument
+ * All query parameters + the argument of the deeplink url will be passed in as the second argument
+ * For more information on deeplinking, see the chapters on the different Clients in the Deployment Guide.
+ *
+ * @param {String} arg startup argument part of the deeplink url with which the Client was started
+ * @param {Object<Array<String>>} queryParams all query parameters of the deeplink url with which the Client was started
+ *
+ * @properties={typeid:24,uuid:"D6D0979F-1772-475E-A6A5-10365E071BA6"}
+ */
+function onSolutionOpen(arg, queryParams) {
+	plugins.ngclientutils.setViewportMetaDefaultForMobileAwareSites()
 }

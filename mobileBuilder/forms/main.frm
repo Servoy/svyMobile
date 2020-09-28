@@ -290,6 +290,6 @@ onShowMethodID:"EFA2A5C2-7D3D-4CD7-A980-64FE205FC21C",
 scrollbars:33,
 showInMenu:true,
 size:"482,1075",
-titleText:"Phonegap Build Generator",
+titleText:"-none-",
 typeid:3,
 uuid:"B7DF66C7-67C1-4E4D-9D6B-E335D63D2838"

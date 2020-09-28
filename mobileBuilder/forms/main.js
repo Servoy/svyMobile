@@ -306,8 +306,8 @@ function onDataChange$fcmfiles(oldValue, newValue, event) {
  * @properties={typeid:24,uuid:"6518773D-3EF0-48D5-BFCD-0D06403E4BF0"}
  */
 function setBuildID() {
-	build_id = application.getUUID().toString().split('-')[0];
-	build_dir = plugins.file.convertToJSFile("build_" + build_id);
+	build_id = application.getUUID().toString().split('-')[0];		
+	build_dir = plugins.file.convertToJSFile("build_" + build_id);	
 	b_dir = "build_" + build_id;
 }
 
@@ -620,9 +620,9 @@ function createConfig() {
 	xml += '</feature>\n'
 	xml += '<preference name="WKWebViewOnly" value="true" />\n'
 	xml += '<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />\n'
-	xml += '<preference name="SplashScreenDelay" value="10000" />\n'
+	xml += '<preference name="SplashScreenDelay" value="1000" />\n'
 	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
-	xml += '<preference name="AutoHideSplashScreen" value="false" />\n'
+	xml += '<preference name="AutoHideSplashScreen" value="true" />\n'
 	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
 	xml += '<icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />\n'
 	xml += '<icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />\n'
@@ -655,7 +655,8 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
-	xml += '<plugin name="cordova-plugin-cleartext" spec="https://github.com/tuanway/cordova-plugin-cleartext" />\n'
+	xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
+	
 	if (plugins_list.indexOf('Ionic WebView') != -1) {
 		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
 		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
