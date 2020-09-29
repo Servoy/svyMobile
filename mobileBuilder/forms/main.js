@@ -306,8 +306,8 @@ function onDataChange$fcmfiles(oldValue, newValue, event) {
  * @properties={typeid:24,uuid:"6518773D-3EF0-48D5-BFCD-0D06403E4BF0"}
  */
 function setBuildID() {
-	build_id = application.getUUID().toString().split('-')[0];		
-	build_dir = plugins.file.convertToJSFile("build_" + build_id);	
+	build_id = application.getUUID().toString().split('-')[0];
+	build_dir = plugins.file.convertToJSFile("build_" + build_id);
 	b_dir = "build_" + build_id;
 }
 
@@ -656,7 +656,7 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
 	xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
-	
+
 	if (plugins_list.indexOf('Ionic WebView') != -1) {
 		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
 		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
@@ -937,6 +937,11 @@ function onAction$getCloudBuild(event) {
 
 	if (appid.split('.').length != 3) {
 		plugins.webnotificationsToastr.info('Your App ID must be in the following naming convention: com.mobile.appname')
+		return null;
+	}
+	
+	if (!isNaN(app_name.charAt(0))) {
+		plugins.webnotificationsToastr.info('Your App ID must not start with a number')
 		return null;
 	}
 

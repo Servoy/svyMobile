@@ -30,8 +30,8 @@ var c;
 /**
  * @properties={typeid:24,uuid:"E09C56D9-D184-490F-A019-DCA1B1B1EAB5"}
  */
-function createApp(f, key) {	
-	apiURL = '192.168.1.24:8081/ws';	
+function createApp(f, key) {
+	apiURL = '192.168.1.24:8081/ws';
 
 	c = plugins.http.createNewHttpClient();
 	var req = c.createPostRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
@@ -102,9 +102,17 @@ function getBuildJob() {
 				if (r.log.length < 5) {
 					msg += 'Build Server is down...';
 				} else {
+					if (r.log.indexOf('Keystore was tampered with, or password was incorrect') != -1) {
+						msg += 'Keystore was tampered with or password was incorrect.'
+					}
+
+					if (r.log.indexOf('No key with alias') != -1) {
+						msg += 'No key with alias ' + forms.main.android_alias + ' found in keystore';
+					}
 					//					application.output(r.log)
 				}
 				plugins.webnotificationsToastr.error(msg)
+				plugins.dialogs.showErrorDialog('ERROR', msg);
 			}
 			if (r && r.result.ios == 'SUCCESS') {
 				if (forms.main.ios_cert || forms.main.ios_provision || forms.main.ios_cert_pass) {
@@ -115,9 +123,17 @@ function getBuildJob() {
 				if (r.log.length < 5) {
 					msg += 'Build Server is down...';
 				} else {
+					if (r.log.indexOf('IOS certificate or password is invalid') != -1) {
+						msg += 'IOS certificate or password is invalid'
+					}
+
+					if (r.log.indexOf('Code Signing Error:') != -1) {
+						msg += 'There is an issue with code Signing, \n  Make sure that you are using the proper certificate and provisioning file(s) that pertain to either development or distribution'
+					}
 					//					application.output(r.log)
 				}
-				plugins.webnotificationsToastr.error('Failed to compile IOS build')
+				plugins.webnotificationsToastr.error('Failed to compile IOS build');
+				plugins.dialogs.showErrorDialog('ERROR', msg);
 			}
 		} catch (e) {
 

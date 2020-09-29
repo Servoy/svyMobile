@@ -108,7 +108,7 @@ function show() {
 		}
 	}
 
-	var w = application.createWindow(controller.getName(), JSWindow.MODAL_DIALOG);	
+	var w = application.createWindow(controller.getName(), JSWindow.MODAL_DIALOG);
 	w.undecorated = true;
 	w.show(controller.getName());
 	return {
@@ -182,6 +182,21 @@ function onDataChange(oldValue, newValue, event) {
  * @properties={typeid:24,uuid:"DD252BF9-1373-49CC-98EA-08467ED6ACC7"}
  */
 function onAction$addKeys(event) {
+
+	if (!android_alias || !android_key_pass || !android_key_store_pass || !android_keystore) {
+		var res = plugins.dialogs.showQuestionDialog('INFO', "You haven't added all the proper details for the android build. A debug build will be generated, is that okay?", "Yes, create an Android Debug build", "Cancel");
+		if (res == "Cancel") {
+			return;
+		}
+	}
+
+	if (!ios_cert || !ios_provision || !ios_cert_pass) {
+		res = plugins.dialogs.showQuestionDialog('INFO', "You haven't uploaded an IOS certiface or provisioning profile. The IOS binary will not be built, is that okay?", "Yes, skip IOS build", "Cancel");
+		if (res == "Cancel") {
+			return;
+		}
+	}
+
 	selected = true;
 	application.getActiveWindow().hide();
 }
