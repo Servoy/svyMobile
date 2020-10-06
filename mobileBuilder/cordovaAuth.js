@@ -31,8 +31,7 @@ var c;
  * @properties={typeid:24,uuid:"E09C56D9-D184-490F-A019-DCA1B1B1EAB5"}
  */
 function createApp(f, key) {
-	apiURL = '192.168.1.24:8081/ws';
-
+	apiURL = '192.168.1.122:8081/ws';
 	c = plugins.http.createNewHttpClient();
 	var req = c.createPostRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
 
@@ -87,7 +86,7 @@ function getBuildJob() {
 			return;
 		}
 		try {
-			/** @type {{result:{android:string,ios:string}}} */
+			/** @type {{result:{android:String,ios:String},log:String}} */
 			var r = JSON.parse(res.getResponseBody())
 			r = JSON.parse(r['data']);
 			if (r && r.result) {
@@ -119,7 +118,7 @@ function getBuildJob() {
 					forms.main.getIOS(r);
 				}
 			} else if (forms.main.ios_cert) {
-				var msg = 'Failed to compile IOS build. \n'
+				msg = 'Failed to compile IOS build. \n'
 				if (r.log.length < 5) {
 					msg += 'Build Server is down...';
 				} else {
@@ -128,7 +127,12 @@ function getBuildJob() {
 					}
 
 					if (r.log.indexOf('Code Signing Error:') != -1) {
-						msg += 'There is an issue with code Signing, \n  Make sure that you are using the proper certificate and provisioning file(s) that pertain to either development or distribution'
+						msg += 'There is an issue with code signing, \n'
+						if (r.log.indexOf('which does not match the bundle ID') != -1) {
+							msg += 'the provisioning profile does not match bundle ID ' + forms.main.appid + '.\n';
+						}
+
+						msg += 'Make sure that you are using the proper certificate and provisioning file(s) that pertain to either development or distribution.'
 					}
 					//					application.output(r.log)
 				}

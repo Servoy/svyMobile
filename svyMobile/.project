@@ -9,6 +9,7 @@
 		<project>svyChartUtils</project>
 		<project>mobileBase</project>
 		<project>phonegap</project>
+		<project>svyphonegap</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -207,13 +207,22 @@ function onAction$addKeys(event) {
  * @properties={typeid:24,uuid:"B0D03AD8-A9AF-4E09-B02D-F43249890991"}
  */
 function onAction$skip(event) {
-	selected = true;
-	if (!ios_cert || !ios_provision || !ios_cert_pass) {
-		var res = plugins.dialogs.showQuestionDialog('INFO', "You haven't uploaded an IOS certiface or provisioning profile. The IOS binary will not be built, is that okay?", "Yes, skip IOS build", "Cancel");
+
+	if (!android_alias || !android_key_pass || !android_key_store_pass || !android_keystore) {
+		var res = plugins.dialogs.showQuestionDialog('INFO', "You haven't added all the proper details for the android build. A debug build will be generated, is that okay?", "Yes, create an Android Debug build", "Cancel");
 		if (res == "Cancel") {
 			return;
 		}
 	}
+
+	if (!ios_cert || !ios_provision || !ios_cert_pass) {
+		res = plugins.dialogs.showQuestionDialog('INFO', "You haven't uploaded an IOS certiface or provisioning profile. The IOS binary will not be built, is that okay?", "Yes, skip IOS build", "Cancel");
+		if (res == "Cancel") {
+			return;
+		}
+	}
+
+	selected = true;
 
 	android_keystore = null;
 	android_title = '';

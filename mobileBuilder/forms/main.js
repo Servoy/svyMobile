@@ -925,6 +925,12 @@ function addKeys() {
  * @properties={typeid:24,uuid:"87172287-5C65-4EEE-A837-43C099F502BF"}
  */
 function onAction$getCloudBuild(event) {
+
+	function containsSpecialCharacters(str) {
+		var regex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]/g;
+		return regex.test(str);
+	}
+
 	if (!img) {
 		plugins.webnotificationsToastr.info('Please upload an icon for your app.')
 		return null;
@@ -939,9 +945,19 @@ function onAction$getCloudBuild(event) {
 		plugins.webnotificationsToastr.info('Your App ID must be in the following naming convention: com.mobile.appname')
 		return null;
 	}
-	
+
 	if (!isNaN(app_name.charAt(0))) {
+		plugins.webnotificationsToastr.info('Your App Name must not start with a number')
+		return null;
+	}
+
+	if (!isNaN(appid.charAt(0))) {
 		plugins.webnotificationsToastr.info('Your App ID must not start with a number')
+		return null;
+	}
+
+	if (containsSpecialCharacters(appid)) {
+		plugins.webnotificationsToastr.info('Your App ID must not contain special characters')
 		return null;
 	}
 
