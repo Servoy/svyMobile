@@ -1059,14 +1059,18 @@ function onFileUploaded(jsUpload) {
 	setBuildID();
 	var uploadBuildFile = plugins.file.convertToJSFile('build_' + build_id + '.zip');
 	uploadBuildFile.setBytes(jsUpload.getBytes(), true);
-	elements.multifileupload.reset();
+	elements.multifileupload.reset();	
 	if (!scopes.cordovaAuth.authenticated) {
 		if (forms.cordova_auth.show()) {
 			if (!addKeys()) return null;
+			plugins.svyBlockUI.spinner = 'Wandering Cubes';
+			plugins.svyBlockUI.show('Compilation will take a few minutes...');
 			scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
 		}
 	} else {
 		if (!addKeys()) return null;
+		plugins.svyBlockUI.spinner = 'Wandering Cubes';
+		plugins.svyBlockUI.show('Compilation will take a few minutes...');
 		scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
 	}
 	return null;
