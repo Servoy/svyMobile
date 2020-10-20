@@ -28,10 +28,14 @@ function authenticate() {
 var c;
 
 /**
+ * @param {plugins.file.JSFile} f
+ * @param {Object} key
+ * @param {plugins.file.JSFile} uploadBuild
  * @properties={typeid:24,uuid:"E09C56D9-D184-490F-A019-DCA1B1B1EAB5"}
  */
-function createApp(f, key) {
-	apiURL = '192.168.1.122:8081/ws';
+function createApp(f, key, uploadBuild) {
+	//	apiURL = '192.168.1.122:8081/ws';
+	apiURL = '192.168.1.122:8183';
 	c = plugins.http.createNewHttpClient();
 	var req = c.createPostRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
 
@@ -57,6 +61,10 @@ function createApp(f, key) {
 		req.addParameter('ios_pw', '');
 	}
 	if (f && f.exists()) req.addFile('build', 'app.zip', f);
+	if (uploadBuild && uploadBuild.exists()) {
+		req.addFile('importBuild', uploadBuild.getName(), uploadBuild);
+	}
+
 	req.addHeader('Accept', 'application/json; charset=UTF-16');
 	//set up a scheduler to get files
 	plugins.scheduler.removeJob('getBuildJob')
