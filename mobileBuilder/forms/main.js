@@ -522,6 +522,18 @@ function removeMiscFile(fname) {
 }
 
 /**
+ * @properties={typeid:24,uuid:"A611E6DF-B090-4A41-92CE-EE5E15C3F07B"}
+ */
+function formatVersion() {	
+	var msg = '<widget android-versionCode="10000000" id="' + appid + '" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
+	var deVersion = 'versionCode="' + app_version.replace('.', 0).replace('.', 0) + '"';
+	msg = msg.replace(/versionCode="\d+\d+\d+\d+\d+"/, deVersion);
+	deVersion = 'CFBundleversion="' + app_version.replace('.', 0).replace('.', 0) + '"';
+	msg = msg.replace(/CFBundleversion="\d+\d+\d+\d+\d+"/, deVersion);
+	return msg;
+}
+
+/**
  * @properties={typeid:24,uuid:"0C1A301F-0E06-43AA-A477-928DA769768F"}
  */
 function createConfig() {
@@ -536,7 +548,7 @@ function createConfig() {
 	//create config.xml for build
 	var xml = '';
 	xml = "<?xml version='1.0' encoding='utf-8'?>\n";
-	xml += '<widget android-versionCode="10000000" id="' + appid + '" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
+	xml += formatVersion();
 	xml += '<name>' + app_name + '</name>\n';
 	xml += '<description>' + app_desc + '</description>\n';
 	xml += '<author email="' + app_email + '">' + app_author + '</author>\n';
@@ -1022,4 +1034,40 @@ function getIOS(res) {
 	application.showURL(createRemoteFile(f), '_blank');
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');
+}
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"4BA7D4D4-9345-41ED-8A20-B5AFC8C7F1BC"}
+ */
+function onAction$uploadMobileBuild(event) {
+	elements.multifileupload.openModal();
+}
+
+/**
+ * @param {JSUpload} jsUpload
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"7B2E3EEB-D57A-48D4-A72A-C0DC7A148A57"}
+ */
+function onFileUploaded(jsUpload) {
+	setBuildID();
+	var uploadBuildFile = plugins.file.convertToJSFile('build_' + build_id + '.zip');
+	uploadBuildFile.setBytes(jsUpload.getBytes(), true);
+	elements.multifileupload.reset();
+	if (!scopes.cordovaAuth.authenticated) {
+		if (forms.cordova_auth.show()) {
+			if (!addKeys()) return null;
+			scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
+		}
+	} else {
+		if (!addKeys()) return null;
+		scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
+	}
+	return null;
 }
