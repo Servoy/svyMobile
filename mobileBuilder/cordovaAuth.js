@@ -114,12 +114,23 @@ function getBuildJob() {
 					}
 
 					if (r.log.indexOf('No key with alias') != -1) {
-						msg += 'No key with alias ' + forms.main.android_alias + ' found in keystore';
+						msg += 'No key with alias ' + forms.main.android_alias + ' found in keystore.';
+					}
+
+					if (r.log.indexOf('Current working directory is not a Cordova-based project') != -1) {
+						msg += 'Current working directory is not a Cordova-based project.  Check the structure of your mobile upload.'
+					}
+
+					if (r.log.indexOf('Source path does not exist') != -1) {
+						msg += r.log.substring(r.log.indexOf('Source path does not exist'), r.log.indexOf('Source path does not exist') + 100)
 					}
 					//					application.output(r.log)
 				}
 				plugins.webnotificationsToastr.error(msg)
-				plugins.dialogs.showErrorDialog('ERROR', msg);
+				var vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
+				if (vl == 'View Build Log') {
+					forms.main.getBuildLog('android',r.log.substring(r.log.indexOf('ANDROID STARTING BUILD'),r.log.indexOf('ANDROID END BUILD')))					
+				}
 			}
 			if (r && r.result.ios == 'SUCCESS') {
 				if (forms.main.ios_cert || forms.main.ios_provision || forms.main.ios_cert_pass) {
@@ -145,7 +156,10 @@ function getBuildJob() {
 					//					application.output(r.log)
 				}
 				plugins.webnotificationsToastr.error('Failed to compile IOS build');
-				plugins.dialogs.showErrorDialog('ERROR', msg);
+				vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
+				if (vl == 'View Build Log') {
+					forms.main.getBuildLog('ios',r.log.substring(r.log.indexOf('IOS STARTING BUILD'),r.log.indexOf('IOS END BUILD')))					
+				}
 			}
 		} catch (e) {
 

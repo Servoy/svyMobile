@@ -524,7 +524,7 @@ function removeMiscFile(fname) {
 /**
  * @properties={typeid:24,uuid:"A611E6DF-B090-4A41-92CE-EE5E15C3F07B"}
  */
-function formatVersion() {	
+function formatVersion() {
 	var msg = '<widget android-versionCode="10000000" id="' + appid + '" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
 	var deVersion = 'versionCode="' + app_version.replace('.', 0).replace('.', 0) + '"';
 	msg = msg.replace(/versionCode="\d+\d+\d+\d+\d+"/, deVersion);
@@ -1035,6 +1035,17 @@ function getIOS(res) {
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');
 }
+
+/** 
+ * @param os
+ * @param msg
+ *
+ * @properties={typeid:24,uuid:"41451058-A2A5-45F1-9541-09F059A9C081"}
+ */
+function getBuildLog(os, msg) {
+	var f = createFile(os + '_build_' + build_id + '.log', null, msg)
+	application.showURL(createRemoteFile(f), '_blank');
+}
 /**
  * Perform the element onclick action.
  *
@@ -1059,7 +1070,7 @@ function onFileUploaded(jsUpload) {
 	setBuildID();
 	var uploadBuildFile = plugins.file.convertToJSFile('build_' + build_id + '.zip');
 	uploadBuildFile.setBytes(jsUpload.getBytes(), true);
-	elements.multifileupload.reset();	
+	elements.multifileupload.reset();
 	if (!scopes.cordovaAuth.authenticated) {
 		if (forms.cordova_auth.show()) {
 			if (!addKeys()) return null;
