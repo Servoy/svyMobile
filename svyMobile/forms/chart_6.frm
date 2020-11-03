@@ -19,7 +19,7 @@ location:{
 x:5,
 y:5
 },
-onClick:"853D7DF4-4605-453A-B757-918A2576BF57",
+onClick:"8D65AA24-5E1F-4EF4-97C8-9EB6C5FA65D6",
 size:{
 height:445,
 width:300

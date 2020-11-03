@@ -63,7 +63,6 @@ size:{
 height:31,
 width:142
 },
-styleClass:"take-img-btn btn btn-default",
 text:"Take Image"
 },
 location:"203,5",
@@ -107,7 +106,6 @@ size:{
 height:31,
 width:142
 },
-styleClass:"upload-img-btn btn btn-default",
 text:"Upload Image"
 },
 location:"15,5",
