@@ -668,7 +668,8 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
 	xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
-	xml += '<plugin name="cordova-plugin-inappbrowser" spec="^1.7.2"/>\n'
+	xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
+	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 
 	if (plugins_list.indexOf('Ionic WebView') != -1) {
 		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
@@ -683,12 +684,11 @@ function createConfig() {
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
-	if (plugins_list.indexOf('Filesystem') != -1) xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
-	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra" />\n'	
-	if (plugins_list.indexOf('Device Information') != -1) xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
+	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra" />\n'		
 	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />\n'
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated" />\n'
+	if (plugins_list.indexOf('In-App Browser') != -1)xml += '<plugin name="cordova-plugin-inappbrowser" spec="^1.7.2"/>\n'
 	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation"     source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 
