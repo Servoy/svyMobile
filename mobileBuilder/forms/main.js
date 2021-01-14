@@ -693,7 +693,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra" />\n'		
 	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />\n'
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated" />\n'
-	if (plugins_list.indexOf('In-App Browser') != -1) xml += '<plugin name="cordova-plugin-inappbrowser" spec="^4.0.0"/>\n'
+	if (plugins_list.indexOf('In-App Browser') != -1) xml += '<plugin name="cordova-plugin-inappbrowser" spec="^4.1.0"/>\n'
 	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation" source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 
