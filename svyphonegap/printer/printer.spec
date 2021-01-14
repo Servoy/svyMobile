@@ -25,11 +25,6 @@
 				},
 
 				{
-					"name": "contentType",
-					"type": "string"
-				},
-
-				{
 					"name": "options",
 					"type": "object"
 				},
