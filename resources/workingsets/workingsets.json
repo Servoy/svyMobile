@@ -87,6 +87,14 @@
 "paths":[]
 },
 {
+"name":"print",
+"paths":[
+"/svyMobile/.project",
+"/svyMobile/forms/printDesktop.frm",
+"/svyMobile/forms/printMobile.frm"
+]
+},
+{
 "name":"push",
 "paths":[
 "/svyMobile/.project",
