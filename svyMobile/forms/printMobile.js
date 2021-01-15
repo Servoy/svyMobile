@@ -76,7 +76,7 @@ function onAction$printPDF(event) {
 function onAction$printWebsite(event) {
 	//print a website
 	content = 'https://www.google.com/'
-	plugins.svyphonegapPrinter.print(content, { name: "pdf" }, callback)
+	plugins.svyphonegapPrinter.print(content, { name: "web" }, callback)
 }
 
 /**
@@ -88,7 +88,7 @@ function onAction$printWebsite(event) {
 function onAction$printText(event) {
 	//print some text
 	content = '<h1>Lorem Ipsum</h1> <h4>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id sagittis orci. In placerat scelerisque mi vel venenatis. In sagittis neque vitae est convallis, sed porta tellus imperdiet. Vestibulum condimentum ligula odio. Aenean vel mi orci. Maecenas id odio maximus, iaculis leo in, semper dui. Integer in eros dignissim, interdum turpis vitae, finibus quam. Morbi accumsan, dui a placerat maximus, lectus arcu tristique dui, a semper nibh arcu nec felis. Nulla facilisi. Donec sit amet nunc dictum felis consequat tincidunt. Aliquam erat volutpat. Nullam ornare at nibh in feugiat. Nulla elit velit, mollis a cursus nec, sodales id urna. Curabitur nec diam in nulla accumsan rhoncus non at leo. Ut velit mi, tempor at arcu non, auctor consequat massa.'
-	plugins.svyphonegapPrinter.print(content, { name: "pdf" }, callback)
+	plugins.svyphonegapPrinter.print(content, { name: "text" }, callback)
 }
 
 /**
