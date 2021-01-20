@@ -10,17 +10,17 @@ extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[
 {
 anchors:13,
-cssPosition:"calc(100% - 50px),-1,-1,24%,20%,30",
+cssPosition:"calc(100% - 50px),-1,-1,20%,16%,30",
 customProperties:"",
 json:{
 anchors:13,
 cssPosition:{
 bottom:"-1",
 height:"30",
-left:"24%",
+left:"20%",
 right:"-1",
 top:"calc(100% - 50px)",
-width:"20%"
+width:"16%"
 },
 location:{
 x:15,
@@ -41,24 +41,18 @@ typeid:47,
 uuid:"5E93EFB1-C105-4354-9C54-F76500285150"
 },
 {
-height:348,
-partType:5,
-typeid:19,
-uuid:"7963E0A8-8EEF-4E8E-96B7-8EE9181F63D2"
-},
-{
 anchors:13,
-cssPosition:"calc(100% - 50px),-1,-1,68%,20%,30",
+cssPosition:"calc(100% - 50px),-1,-1,57%,18%,30",
 customProperties:"",
 json:{
 anchors:13,
 cssPosition:{
 bottom:"-1",
 height:"30",
-left:"68%",
+left:"57%",
 right:"-1",
 top:"calc(100% - 50px)",
-width:"20%"
+width:"18%"
 },
 location:{
 x:15,
@@ -72,6 +66,44 @@ width:142
 text:"TEXT"
 },
 location:"15,5",
+name:"button_531_copy450_copy524ccc",
+size:"142,31",
+typeName:"bootstrapcomponents-button",
+typeid:47,
+uuid:"69656B7E-C8B9-46D4-9991-A14D21C67222"
+},
+{
+height:348,
+partType:5,
+typeid:19,
+uuid:"7963E0A8-8EEF-4E8E-96B7-8EE9181F63D2"
+},
+{
+anchors:13,
+cssPosition:"calc(100% - 50px),-1,-1,77%,18%,30",
+customProperties:"",
+json:{
+anchors:13,
+cssPosition:{
+bottom:"-1",
+height:"30",
+left:"77%",
+right:"-1",
+top:"calc(100% - 50px)",
+width:"18%"
+},
+location:{
+x:15,
+y:5
+},
+onActionMethodID:"AA616B4F-6062-45F0-AA4E-733761FE9B01",
+size:{
+height:31,
+width:142
+},
+text:"RUN"
+},
+location:"15,5",
 name:"button_531_copy450_copy524cc",
 size:"142,31",
 typeName:"bootstrapcomponents-button",
@@ -80,17 +112,17 @@ uuid:"ACDD42C3-DF81-4D75-B663-19BB86270859"
 },
 {
 anchors:13,
-cssPosition:"calc(100% - 50px),-1,-1,46%,20%,30",
+cssPosition:"calc(100% - 50px),-1,-1,38%,17%,30",
 customProperties:"",
 json:{
 anchors:13,
 cssPosition:{
 bottom:"-1",
 height:"30",
-left:"46%",
+left:"38%",
 right:"-1",
 top:"calc(100% - 50px)",
-width:"20%"
+width:"17%"
 },
 location:{
 x:15,
@@ -112,7 +144,39 @@ uuid:"B9CB2854-51B2-46C8-8DCF-91D3968B4CFF"
 },
 {
 anchors:13,
-cssPosition:"calc(100% - 50px),-1,-1,10,20%,30",
+cssPosition:"calc(100% - 50px),-1,-1,57%,18%,30",
+customProperties:"",
+json:{
+anchors:13,
+cssPosition:{
+bottom:"-1",
+height:"30",
+left:"57%",
+right:"-1",
+top:"calc(100% - 50px)",
+width:"18%"
+},
+location:{
+x:15,
+y:5
+},
+onActionMethodID:"BD72921B-669F-4DD7-92B1-3E44AF88598B",
+size:{
+height:31,
+width:142
+},
+text:"TEXT"
+},
+location:"15,5",
+name:"button_531_copy450_copy524cccc",
+size:"142,31",
+typeName:"bootstrapcomponents-button",
+typeid:47,
+uuid:"C601639E-99DC-4116-886E-007C3618164E"
+},
+{
+anchors:13,
+cssPosition:"calc(100% - 50px),-1,-1,10,16%,30",
 customProperties:"",
 json:{
 anchors:13,
@@ -122,7 +186,7 @@ height:"30",
 left:"10",
 right:"-1",
 top:"calc(100% - 50px)",
-width:"20%"
+width:"16%"
 },
 location:{
 x:15,
