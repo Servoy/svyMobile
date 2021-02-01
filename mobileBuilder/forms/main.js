@@ -681,7 +681,8 @@ function createConfig() {
 	}
 	
 	if (plugins_list.indexOf('Printer') != -1) {
-		xml += '<plugin name="cordova-plugin-printer" spec="^0.7.3" />\n'		
+		xml += '<plugin name="cordova-plugin-printer" spec="^0.7.3" />\n'
+		xml += '<plugin name="cordova-print-pdf-plugin" spec="https://github.com/sarahgoldman/cordova-print-pdf-plugin" />\n'		
 	}
 	
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
