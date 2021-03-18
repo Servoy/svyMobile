@@ -623,6 +623,12 @@ function createConfig() {
 		xml += '<string>This app needs microphone access</string>\n'
 		xml += '</edit-config>\n'
 	}
+	
+	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
+		xml+='<edit-config target="/manifest/application" mode="merge" file="app/src/main/AndroidManifest.xml">\n'
+		xml+='<application android:usesCleartextTraffic="true" />\n'
+		xml+='</edit-config>\n'
+	}
 
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'

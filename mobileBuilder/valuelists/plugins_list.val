@@ -1,6 +1,7 @@
 addEmptyValue:1,
 customValues:"Bar Code Scanner\r\
 Camera\r\
+Clear Text Traffic (Android Only)\r\
 FCM Push Notifications\r\
 Fingerprint\r\
 Full screen\r\
