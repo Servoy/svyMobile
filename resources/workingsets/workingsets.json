@@ -75,6 +75,13 @@
 ]
 },
 {
+"name":"misc",
+"paths":[
+"/svyMobile/.project",
+"/svyMobile/forms/miscContainer.frm"
+]
+},
+{
 "name":"network",
 "paths":[
 "/svyMobile/.project",
