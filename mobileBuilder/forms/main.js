@@ -597,6 +597,14 @@ function createConfig() {
 	xml += '<splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />\n'
 	xml += '<splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />\n'
 	xml += '<splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />\n'
+		
+	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
+		xml+='<preference name="Scheme" value="https" />'
+		xml+='<edit-config target="/manifest/application" mode="merge" file="app/src/main/AndroidManifest.xml">\n'
+		xml+='<application android:usesCleartextTraffic="true" />\n'
+		xml+='</edit-config>\n'
+	}
+	
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
 
@@ -624,11 +632,6 @@ function createConfig() {
 		xml += '</edit-config>\n'
 	}
 	
-	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
-		xml+='<edit-config target="/manifest/application" mode="merge" file="app/src/main/AndroidManifest.xml">\n'
-		xml+='<application android:usesCleartextTraffic="true" />\n'
-		xml+='</edit-config>\n'
-	}
 
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
