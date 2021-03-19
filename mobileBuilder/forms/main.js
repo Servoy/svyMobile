@@ -525,7 +525,7 @@ function removeMiscFile(fname) {
  * @properties={typeid:24,uuid:"A611E6DF-B090-4A41-92CE-EE5E15C3F07B"}
  */
 function formatVersion() {
-	var msg = '<widget android-versionCode="10000000" id="' + appid + '" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">\n';
+	var msg = '<widget android-versionCode="10000000" id="' + appid + '" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android"> \n';
 	var deVersion = 'versionCode="' + app_version.replace('.', 0).replace('.', 0) + '"';
 	msg = msg.replace(/versionCode="\d+\d+\d+\d+\d+"/, deVersion);
 	deVersion = 'CFBundleversion="' + app_version.replace('.', 0).replace('.', 0) + '"';
@@ -567,6 +567,12 @@ function createConfig() {
 		xml += '<preference name="phonegap-version" value="cli-9.0.0" />\n'
 	}
 	xml += '<platform name="android">\n'
+	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
+		xml+='<preference name="Scheme" value="https" />\n'
+		xml+='<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">\n'
+		xml+='<application android:usesCleartextTraffic="true" />\n'
+		xml+='</edit-config>\n'		
+	}
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
@@ -598,12 +604,7 @@ function createConfig() {
 	xml += '<splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />\n'
 	xml += '<splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />\n'
 		
-	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
-		xml+='<preference name="Scheme" value="https" />'
-		xml+='<edit-config target="/manifest/application" mode="merge" file="app/src/main/AndroidManifest.xml">\n'
-		xml+='<application android:usesCleartextTraffic="true" />\n'
-		xml+='</edit-config>\n'
-	}
+
 	
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
