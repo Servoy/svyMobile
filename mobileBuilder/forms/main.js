@@ -399,8 +399,12 @@ function createIconAndSplash() {
 	//generate IOS icons
 	createFile(b_dir + "/www/res/icon/ios/icon.png", createImageResize(img, 57, 57, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon@2x.png", createImageResize(img, 114, 114, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-20.png", createImageResize(img, 20, 20, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-24@2x.png", createImageResize(img, 48, 48, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-27.5@2x.png", createImageResize(img, 55, 55, false, true));	
 	createFile(b_dir + "/www/res/icon/ios/icon-40.png", createImageResize(img, 40, 40, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-40@2x.png", createImageResize(img, 80, 80, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-44@2x.png", createImageResize(img, 88, 88, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-50.png", createImageResize(img, 50, 50, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-50@2x.png", createImageResize(img, 100, 100, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-60.png", createImageResize(img, 60, 60, false, true));
@@ -410,6 +414,9 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/ios/icon-72@2x.png", createImageResize(img, 144, 144, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-76.png", createImageResize(img, 76, 76, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-76@2x.png", createImageResize(img, 152, 152, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-83.5@2x.png", createImageResize(img, 167, 167, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-86@2x.png", createImageResize(img, 172, 172, false, true));
+	createFile(b_dir + "/www/res/icon/ios/icon-98@2x.png", createImageResize(img, 196, 196, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small.png", createImageResize(img, 29, 29, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small@2x.png", createImageResize(img, 58, 58, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-small@3x.png", createImageResize(img, 87, 87, false, true));
@@ -568,6 +575,7 @@ function createConfig() {
 	}
 	xml += '<platform name="android">\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
+		xml+='<allow-navigation href="https://*"/>'
 		xml+='<preference name="Scheme" value="https" />\n'
 		xml+='<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">\n'
 		xml+='<application android:usesCleartextTraffic="true" />\n'
@@ -645,7 +653,14 @@ function createConfig() {
 	xml += '<preference name="SplashScreenDelay" value="1000" />\n'
 	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
 	xml += '<preference name="AutoHideSplashScreen" value="true" />\n'
-	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
+	xml += '<preference name="backgroundColor" value="0x00000000" />\n'			
+	xml += '<icon height="20" platform="ios" src="www/res/icon/ios/icon-20.png" width="20" />\n'
+	xml += '<icon height="48" platform="ios" src="www/res/icon/ios/icon-24@2x.png" width="48" />\n'
+	xml += '<icon height="55" platform="ios" src="www/res/icon/ios/icon-27.5@2x.png" width="55" />\n'
+	xml += '<icon height="88" platform="ios" src="www/res/icon/ios/icon-44@2x.png" width="88" />\n'		
+	xml += '<icon height="167" platform="ios" src="www/res/icon/ios/icon-83.5@2x.png" width="167" />\n'		
+	xml += '<icon height="172" platform="ios" src="www/res/icon/ios/icon-86@2x.png" width="172" />\n'
+	xml += '<icon height="196" platform="ios" src="www/res/icon/ios/icon-98@2x.png" width="196" />\n'				
 	xml += '<icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />\n'
 	xml += '<icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />\n'
 	xml += '<icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />\n'
@@ -677,7 +692,7 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
-	xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
+	
 	xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
 	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 
@@ -707,7 +722,8 @@ function createConfig() {
 	if (plugins_list.indexOf('In-App Browser') != -1) xml += '<plugin name="cordova-plugin-inappbrowser" spec="^4.1.0"/>\n'
 	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation" source="npm" />\n'
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
-	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
+	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'		
+	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
 
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
