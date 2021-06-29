@@ -335,7 +335,7 @@ function onAction$getLocalBuild(event, cb) {
 		return null;
 	}
 
-	if (appid.split('.').length != 3) {
+	if (appid.split('.').length < 3) {
 		plugins.webnotificationsToastr.info('Your App ID must be in the following naming convention: com.mobile.appname')
 		return null;
 	}
@@ -650,6 +650,7 @@ function createConfig() {
 	xml += '</feature>\n'
 	xml += '<preference name="WKWebViewOnly" value="true" />\n'
 	xml += '<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />\n'
+	xml += '<preference name="ScrollEnabled" value="true" />'
 	xml += '<preference name="SplashScreenDelay" value="1000" />\n'
 	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
 	xml += '<preference name="AutoHideSplashScreen" value="true" />\n'
@@ -694,13 +695,10 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
 	
 	xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
-	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
-
-	if (plugins_list.indexOf('Ionic WebView') != -1) {
-		xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
-		xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
-	}
-
+	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'	
+	xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
+	xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
+		
 	if (plugins_list.indexOf('IDTech CR') != -1) {
 		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag" />\n'
 	}
@@ -986,7 +984,7 @@ function onAction$getCloudBuild(event) {
 		return null;
 	}
 
-	if (appid.split('.').length != 3) {
+	if (appid.split('.').length < 3) {
 		plugins.webnotificationsToastr.info('Your App ID must be in the following naming convention: com.mobile.appname')
 		return null;
 	}
