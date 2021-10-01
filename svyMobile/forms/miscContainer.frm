@@ -19,6 +19,14 @@ typeid:7,
 uuid:"7AB3AB64-1373-460F-9537-157E1772C808"
 },
 {
+cssPosition:"110,12,-1,8,104,38",
+onActionMethodID:"BEC1A3F9-701D-4888-A3B6-1E2342315839",
+rolloverCursor:12,
+text:"In-App Browser Link",
+typeid:7,
+uuid:"AFE641F6-0DA1-499A-92B0-959126896B2A"
+},
+{
 height:251,
 partType:5,
 typeid:19,

@@ -24,6 +24,13 @@ function onShow(firstShow, event) {
 }
 
 /**
+ * @properties={typeid:24,uuid:"BEC1A3F9-701D-4888-A3B6-1E2342315839"}
+ */
+function showInAppBrowser(){
+	plugins.svyphonegapBrowser.openExternalLink('https://www.servoy.com');
+}
+
+/**
  * Perform the element onclick action.
  *
  * @param {JSEvent} event the event that triggered the action
