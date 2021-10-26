@@ -1050,6 +1050,13 @@ function getAndroid(res) {
 	res.androidURL = utils.stringReplace(res.androidURL, 'localhost', scopes.cordovaAuth.apiURL);
 	var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
+	
+	if (res.androidBundleURL) {
+	res.androidBundleURL = utils.stringReplace(res.androidBundleURL, 'localhost', scopes.cordovaAuth.apiURL);
+	f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
+	application.showURL(createRemoteFile(f), '_blank');
+	}
+	
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('Android Build Complete');
 
@@ -1115,5 +1122,5 @@ function onFileUploaded(jsUpload) {
 		plugins.svyBlockUI.show('Compilation will take a few minutes...');
 		scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
 	}
-	return null;
+	return null;	
 }

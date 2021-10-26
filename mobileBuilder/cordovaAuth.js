@@ -31,13 +31,13 @@ var c;
  * @param {plugins.file.JSFile} f
  * @param {Object} key
  * @param {plugins.file.JSFile} uploadBuild
+ * @return {Object}
  * @properties={typeid:24,uuid:"E09C56D9-D184-490F-A019-DCA1B1B1EAB5"}
  */
 function createApp(f, key, uploadBuild) {
-	//	apiURL = '192.168.1.122:8081/ws';
-	apiURL = '192.168.1.122:8183';
+	apiURL = 'https://mobile-builder.servoy.com/ws';
 	c = plugins.http.createNewHttpClient();
-	var req = c.createPostRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
+	var req = c.createPostRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
 
 	if (key.android && key.android['android.keystore'] && key.android['android.keystore'].exists()) req.addFile('android_key_store', 'android.keystore', key.android['android.keystore']);
 	if (key.ios && key.ios['ios.p12'] && key.ios['ios.p12'].exists()) req.addFile('ios_cert', 'ios.p12', key.ios['ios.p12']);
@@ -81,7 +81,7 @@ function createApp(f, key, uploadBuild) {
  */
 function getBuildJob() {
 	c = plugins.http.createNewHttpClient();
-	var req = c.createGetRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
+	var req = c.createGetRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
 	req.addHeader('build_num', forms.main.build_id)
 	//	application.output('get build ' + forms.main.build_id);
 	var res = req.executeRequest();
@@ -170,6 +170,7 @@ function getBuildJob() {
 }
 
 /**
+ * @return {Object}
  * @properties={typeid:24,uuid:"064DBB02-2A84-400E-99EE-0A9644E84652"}
  */
 function addAndroidKey(f, _title, _alias, _key_pw, _key_store_pw) {
@@ -185,6 +186,7 @@ function addAndroidKey(f, _title, _alias, _key_pw, _key_store_pw) {
 }
 
 /**
+ * @return {Object}
  * @properties={typeid:24,uuid:"BD140257-4CED-428A-893C-B3D6844839A8"}
  */
 function addIOSKey(f_cert, f_prov, _title, _cert_pass) {
@@ -208,6 +210,6 @@ function addIOSKey(f_cert, f_prov, _title, _cert_pass) {
  *
  * @properties={typeid:24,uuid:"D6D0979F-1772-475E-A6A5-10365E071BA6"}
  */
-function onSolutionOpen(arg, queryParams) {
+function onSolutionOpen(arg, queryParams) {	
 	plugins.ngclientutils.setViewportMetaDefaultForMobileAwareSites()
 }
