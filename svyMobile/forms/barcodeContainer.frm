@@ -3,7 +3,26 @@ useCssPosition:true",
 encapsulation:108,
 items:[
 {
-cssPosition:"10,10,50,10,270,-1",
+cssPosition:"calc( 100% - 45px),10,-1,10,104,38",
+json:{
+cssPosition:{
+bottom:"-1",
+height:"38",
+left:"10",
+right:"10",
+top:"calc( 100% - 45px)",
+width:"104"
+},
+onActionMethodID:"EE5EB800-BFE7-44AA-999D-C2A1A0ECA577",
+text:"Options"
+},
+name:"button_1",
+typeName:"bootstrapcomponents-button",
+typeid:47,
+uuid:"43D08030-1377-49C0-8FCB-821755EBAFB5"
+},
+{
+cssPosition:"10,10,90,10,270,-1",
 dataProviderID:"messages",
 displayType:1,
 styleClass:"push-message",
@@ -11,7 +30,7 @@ typeid:4,
 uuid:"50580BD7-30A2-47BB-9D7D-B60229735DE3"
 },
 {
-cssPosition:"calc( 100% - 45px),10,-1,10,104,38",
+cssPosition:"calc( 100% - 85px),10,-1,10,104,38",
 onActionMethodID:"793C63F1-2DBC-4727-B99E-0955A1B193F9",
 rolloverCursor:12,
 text:"Start Scanner",
@@ -19,7 +38,7 @@ typeid:7,
 uuid:"716A85A5-3A1C-4B56-A03B-41B6BD65D545"
 },
 {
-height:251,
+height:290,
 partType:5,
 typeid:19,
 uuid:"F1ED8087-3276-4860-A346-A5C009EB8005"

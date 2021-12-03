@@ -1,0 +1,8 @@
+addEmptyValue:1,
+customValues:"Landscape|landscape,\r\
+Portrait|portrait",
+displayValueType:12,
+name:"orientationList",
+realValueType:12,
+typeid:34,
+uuid:"0A527F02-8122-4582-82F8-4A6E1C2DA81F"

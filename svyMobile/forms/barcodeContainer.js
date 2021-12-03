@@ -15,7 +15,8 @@ var messages = '';
  * @properties={typeid:24,uuid:"793C63F1-2DBC-4727-B99E-0955A1B193F9"}
  */
 function onAction$startScanner(event) {
-	plugins.svyphonegapBarcode.scan(cb, cb)
+	var options = forms.scanOptions.getOptions();
+	plugins.svyphonegapBarcode.scan(cb, cb, options);
 }
 
 /**
@@ -37,9 +38,20 @@ function cb(data) {
  */
 function onShow(firstShow, event) {
 	messages = '';
-	if (!scopes.globals.phonegapEnabled) {
+	/*if (!scopes.globals.phonegapEnabled) {
 		messages = 'Plugin is not loaded or supported.'
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
 		scopes.mobileBase.goBack(event);
-	}
+	}*/
+}
+
+/**
+ * @param {JSEvent} event
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"EE5EB800-BFE7-44AA-999D-C2A1A0ECA577"}
+ */
+function onActionOptions(event) {
+	forms.scanOptions.setOptions();
 }
