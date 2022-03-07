@@ -66,12 +66,23 @@ function createApp(f, key, uploadBuild) {
 	}
 
 	req.addHeader('Accept', 'application/json; charset=UTF-16');
-	//set up a scheduler to get files
-	plugins.scheduler.removeJob('getBuildJob')
-	var d = new Date();
-	d.setSeconds(d.getSeconds() + 60);
-	plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
-	req.executeRequest();
+	var res = req.executeRequest();
+	var body = JSON.parse(res.getResponseBody());
+	if (body && body['log'] == 'Job in progress.') {
+		//set up a scheduler to get files
+		plugins.scheduler.removeJob('createJob');
+		var d = new Date();
+		d.setSeconds(d.getSeconds() + 60);
+		plugins.scheduler.addJob('createJob', d, createApp, [f, key, uploadBuild]);
+		return null;
+	} else {
+		//set up a scheduler to get files
+		plugins.scheduler.removeJob('getBuildJob');
+		d = new Date();
+		d.setSeconds(d.getSeconds() + 60);
+		plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
+	}
+
 	return null;
 }
 
