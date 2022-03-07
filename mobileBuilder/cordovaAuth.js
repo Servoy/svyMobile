@@ -67,7 +67,13 @@ function createApp(f, key, uploadBuild) {
 
 	req.addHeader('Accept', 'application/json; charset=UTF-16');
 	var res = req.executeRequest();
-	var body = JSON.parse(res.getResponseBody());
+	try {
+		if (res.getResponseBody())
+			var body = JSON.parse(res.getResponseBody());
+	} catch (e) {
+		//		application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
+		//		application.output(e, LOGGINGLEVEL.INFO)
+	}
 	if (body && body['log'] == 'Job in progress.') {
 		//set up a scheduler to get files
 		plugins.scheduler.removeJob('createJob');
@@ -140,7 +146,7 @@ function getBuildJob() {
 				plugins.webnotificationsToastr.error(msg)
 				var vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
 				if (vl == 'View Build Log') {
-					forms.main.getBuildLog('android',r.log.substring(r.log.indexOf('ANDROID STARTING BUILD'),r.log.indexOf('ANDROID END BUILD')))					
+					forms.main.getBuildLog('android', r.log.substring(r.log.indexOf('ANDROID STARTING BUILD'), r.log.indexOf('ANDROID END BUILD')))
 				}
 			}
 			if (r && r.result.ios == 'SUCCESS') {
@@ -169,7 +175,7 @@ function getBuildJob() {
 				plugins.webnotificationsToastr.error('Failed to compile IOS build');
 				vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
 				if (vl == 'View Build Log') {
-					forms.main.getBuildLog('ios',r.log.substring(r.log.indexOf('IOS STARTING BUILD'),r.log.indexOf('IOS END BUILD')))					
+					forms.main.getBuildLog('ios', r.log.substring(r.log.indexOf('IOS STARTING BUILD'), r.log.indexOf('IOS END BUILD')))
 				}
 			}
 		} catch (e) {
@@ -221,6 +227,6 @@ function addIOSKey(f_cert, f_prov, _title, _cert_pass) {
  *
  * @properties={typeid:24,uuid:"D6D0979F-1772-475E-A6A5-10365E071BA6"}
  */
-function onSolutionOpen(arg, queryParams) {	
+function onSolutionOpen(arg, queryParams) {
 	plugins.ngclientutils.setViewportMetaDefaultForMobileAwareSites()
 }
