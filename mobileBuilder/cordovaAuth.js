@@ -71,8 +71,8 @@ function createApp(f, key, uploadBuild) {
 		if (res.getResponseBody())
 			var body = JSON.parse(res.getResponseBody());
 	} catch (e) {
-		//		application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
-		//		application.output(e, LOGGINGLEVEL.INFO)
+		application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
+		application.output(e, LOGGINGLEVEL.INFO)
 	}
 	if (body && body['log'] == 'Job in progress.') {
 		//set up a scheduler to get files
