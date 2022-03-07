@@ -401,7 +401,7 @@ function createIconAndSplash() {
 	createFile(b_dir + "/www/res/icon/ios/icon@2x.png", createImageResize(img, 114, 114, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-20.png", createImageResize(img, 20, 20, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-24@2x.png", createImageResize(img, 48, 48, false, true));
-	createFile(b_dir + "/www/res/icon/ios/icon-27.5@2x.png", createImageResize(img, 55, 55, false, true));	
+	createFile(b_dir + "/www/res/icon/ios/icon-27.5@2x.png", createImageResize(img, 55, 55, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-40.png", createImageResize(img, 40, 40, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-40@2x.png", createImageResize(img, 80, 80, false, true));
 	createFile(b_dir + "/www/res/icon/ios/icon-44@2x.png", createImageResize(img, 88, 88, false, true));
@@ -575,11 +575,11 @@ function createConfig() {
 	}
 	xml += '<platform name="android">\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
-		xml+='<allow-navigation href="https://*"/>'
-		xml+='<preference name="Scheme" value="https" />\n'
-		xml+='<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">\n'
-		xml+='<application android:usesCleartextTraffic="true" />\n'
-		xml+='</edit-config>\n'		
+		xml += '<allow-navigation href="https://*"/>'
+		xml += '<preference name="Scheme" value="https" />\n'
+		xml += '<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">\n'
+		xml += '<application android:usesCleartextTraffic="true" />\n'
+		xml += '</edit-config>\n'
 	}
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
@@ -611,9 +611,7 @@ function createConfig() {
 	xml += '<splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />\n'
 	xml += '<splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />\n'
 	xml += '<splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />\n'
-		
 
-	
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
 
@@ -640,7 +638,6 @@ function createConfig() {
 		xml += '<string>This app needs microphone access</string>\n'
 		xml += '</edit-config>\n'
 	}
-	
 
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
@@ -654,14 +651,14 @@ function createConfig() {
 	xml += '<preference name="SplashScreenDelay" value="1000" />\n'
 	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
 	xml += '<preference name="AutoHideSplashScreen" value="true" />\n'
-	xml += '<preference name="backgroundColor" value="0x00000000" />\n'			
+	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
 	xml += '<icon height="20" platform="ios" src="www/res/icon/ios/icon-20.png" width="20" />\n'
 	xml += '<icon height="48" platform="ios" src="www/res/icon/ios/icon-24@2x.png" width="48" />\n'
 	xml += '<icon height="55" platform="ios" src="www/res/icon/ios/icon-27.5@2x.png" width="55" />\n'
-	xml += '<icon height="88" platform="ios" src="www/res/icon/ios/icon-44@2x.png" width="88" />\n'		
-	xml += '<icon height="167" platform="ios" src="www/res/icon/ios/icon-83.5@2x.png" width="167" />\n'		
+	xml += '<icon height="88" platform="ios" src="www/res/icon/ios/icon-44@2x.png" width="88" />\n'
+	xml += '<icon height="167" platform="ios" src="www/res/icon/ios/icon-83.5@2x.png" width="167" />\n'
 	xml += '<icon height="172" platform="ios" src="www/res/icon/ios/icon-86@2x.png" width="172" />\n'
-	xml += '<icon height="196" platform="ios" src="www/res/icon/ios/icon-98@2x.png" width="196" />\n'				
+	xml += '<icon height="196" platform="ios" src="www/res/icon/ios/icon-98@2x.png" width="196" />\n'
 	xml += '<icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />\n'
 	xml += '<icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />\n'
 	xml += '<icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />\n'
@@ -693,34 +690,34 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
 	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
-	
+
 	xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
-	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'	
+	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
-		
+
 	if (plugins_list.indexOf('IDTech CR') != -1) {
 		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag" />\n'
 	}
-	
+
 	if (plugins_list.indexOf('Printer') != -1) {
 		xml += '<plugin name="cordova-plugin-printer" spec="^0.7.3" />\n'
-		xml += '<plugin name="cordova-print-pdf-plugin" spec="https://github.com/sarahgoldman/cordova-print-pdf-plugin" />\n'		
+		xml += '<plugin name="cordova-print-pdf-plugin" spec="https://github.com/sarahgoldman/cordova-print-pdf-plugin" />\n'
 	}
-	
+
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
-	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra" />\n'		
+	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra" />\n'
 	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^1.6.0" />\n'
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated" />\n'
 	if (plugins_list.indexOf('In-App Browser') != -1) xml += '<plugin name="cordova-plugin-inappbrowser" spec="^4.1.0"/>\n'
 	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation" source="npm" />\n'
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
-	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'		
+	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
 
 	xml += '</widget>'
@@ -1047,17 +1044,19 @@ function addIOSKey() {
  */
 function getAndroid(res) {
 	// download APK
+	res.androidURL = res.androidURL.replace(':8183', ''); //fix for local dev
 	res.androidURL = utils.stringReplace(res.androidURL, 'localhost', scopes.cordovaAuth.apiURL);
 	var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
-	
+
 	if (res.androidBundleURL) {
-	res.androidBundleURL = utils.stringReplace(res.androidBundleURL, 'localhost', scopes.cordovaAuth.apiURL);
-	f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
-	application.showURL(createRemoteFile(f), '_blank');
+		res.androidBundleURL = utils.stringReplace(res.androidBundleURL, 'localhost', scopes.cordovaAuth.apiURL);
+		f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
+		application.showURL(createRemoteFile(f), '_blank');
 	}
-	
-	plugins.svyBlockUI.stop();
+	if (!res.iosURL) {
+		plugins.svyBlockUI.stop();
+	}
 	plugins.webnotificationsToastr.success('Android Build Complete');
 
 }
@@ -1067,14 +1066,14 @@ function getAndroid(res) {
  */
 function getIOS(res) {
 	// download IPA
+	res.iosURL = res.iosURL.replace(':8183', ''); //fix for local dev
 	res.iosURL = utils.stringReplace(res.iosURL, 'localhost', scopes.cordovaAuth.apiURL)
 	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
-	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');
 }
 
-/** 
+/**
  * @param os
  * @param msg
  *
@@ -1122,5 +1121,5 @@ function onFileUploaded(jsUpload) {
 		plugins.svyBlockUI.show('Compilation will take a few minutes...');
 		scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
 	}
-	return null;	
+	return null;
 }

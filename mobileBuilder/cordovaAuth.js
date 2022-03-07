@@ -71,25 +71,69 @@ function createApp(f, key, uploadBuild) {
 		if (res.getResponseBody())
 			var body = JSON.parse(res.getResponseBody());
 	} catch (e) {
-		application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
 		application.output(e, LOGGINGLEVEL.INFO)
 	}
-	if (body && body['log'] == 'Job in progress.') {
-		//set up a scheduler to get files
-		plugins.scheduler.removeJob('createJob');
+	application.output('POST:')
+	application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
+	if (body && body['data'] == 'Different job in progress.') {
+		//set up a scheduler to get setup job later
+		plugins.scheduler.removeJob('checkJob');
 		var d = new Date();
-		d.setSeconds(d.getSeconds() + 60);
-		plugins.scheduler.addJob('createJob', d, createApp, [f, key, uploadBuild]);
+		d.setSeconds(d.getSeconds() + 15);
+		plugins.scheduler.addJob('checkJob', d, checkJob, [f, key, uploadBuild]);
 		return null;
 	} else {
 		//set up a scheduler to get files
 		plugins.scheduler.removeJob('getBuildJob');
 		d = new Date();
-		d.setSeconds(d.getSeconds() + 60);
+		d.setSeconds(d.getSeconds() + 15);
 		plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
 	}
 
 	return null;
+}
+
+/**
+ * @param f
+ * @param key
+ * @param uploadBuild
+ *
+ * @properties={typeid:24,uuid:"6381EE21-9935-4BFB-AAD9-441D50480F72"}
+ */
+function checkJob(f, key, uploadBuild) {
+	c = plugins.http.createNewHttpClient();
+	var req = c.createGetRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
+	req.addHeader('build_num', forms.main.build_id)
+	//	application.output('get build ' + forms.main.build_id);
+	var res = req.executeRequest();
+	if (res) {
+		try {
+			if (res.getResponseBody())
+				var body = JSON.parse(res.getResponseBody());
+		} catch (e) {
+			application.output(e, LOGGINGLEVEL.INFO)
+		}
+	}
+	application.output('CHECK:')
+	application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
+	if (body) {
+		switch (body['data']) {
+		case 'This job not yet started. Another job is in progress.':
+			//set up a scheduler to get setup job later
+			plugins.scheduler.removeJob('checkJob');
+			var d = new Date();
+			d.setSeconds(d.getSeconds() + 15);
+			plugins.scheduler.addJob('checkJob', d, checkJob, [f, key, uploadBuild]);
+			break;
+		case 'Job not yet started.':
+			//try to create job again since queue is open
+			createApp(f, key, uploadBuild);
+			break;
+
+		default:
+			break;
+		}
+	}
 }
 
 /**
@@ -103,6 +147,7 @@ function getBuildJob() {
 	//	application.output('get build ' + forms.main.build_id);
 	var res = req.executeRequest();
 	if (res) {
+		application.output('GET:');
 		if (res.getStatusCode() == 404) {
 			plugins.scheduler.removeJob('getBuildJob')
 			var d = new Date();
@@ -111,15 +156,47 @@ function getBuildJob() {
 			return;
 		}
 		try {
-			/** @type {{result:{android:String,ios:String},log:String}} */
+			/** @type {{result:{android:String,ios:String},log:String,data:String}} */
 			var r = JSON.parse(res.getResponseBody())
-			r = JSON.parse(r['data']);
+			if (r.data) {
+				try {
+					r = JSON.parse(r.data);
+				} catch (e) {
+					r = JSON.parse(res.getResponseBody())
+					if (r.data)
+						r = r.data
+				}
+			}
+
 			if (r && r.result) {
 				//if results are ready stop the job
 				plugins.scheduler.removeJob('getBuildJob');
 				plugins.svyBlockUI.stop();
 			}
+
+			if (r && !r.result) {
+				application.output(r);
+				switch (r) {
+				case 'This job not yet started. Another job is in progress.':
+					plugins.scheduler.removeJob('getBuildJob')
+					d = new Date();
+					d.setSeconds(d.getSeconds() + 25);
+					plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
+					break;
+				case 'Job is in progress.':
+					plugins.scheduler.removeJob('getBuildJob')
+					d = new Date();
+					d.setSeconds(d.getSeconds() + 25);
+					plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
+					break;
+				default:
+					break;
+				}
+				return;
+			}
+			application.output('job finished');
 			if (r && r.result.android == 'SUCCESS') {
+				plugins.svyBlockUI.show('Downloading Android build...');
 				forms.main.getAndroid(r);
 			} else {
 				var msg = 'Could not compile Android build. \n'
@@ -151,6 +228,7 @@ function getBuildJob() {
 			}
 			if (r && r.result.ios == 'SUCCESS') {
 				if (forms.main.ios_cert || forms.main.ios_provision || forms.main.ios_cert_pass) {
+					plugins.svyBlockUI.show('Downloading iOS build...');
 					forms.main.getIOS(r);
 				}
 			} else if (forms.main.ios_cert) {
@@ -179,7 +257,7 @@ function getBuildJob() {
 				}
 			}
 		} catch (e) {
-
+			application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
 		}
 
 	}
