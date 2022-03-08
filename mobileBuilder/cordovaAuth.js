@@ -175,7 +175,7 @@ function getBuildJob() {
 			}
 
 			if (r && !r.result) {
-				application.output(r);
+				application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
 				switch (r) {
 				case 'This job not yet started. Another job is in progress.':
 					plugins.scheduler.removeJob('getBuildJob')
@@ -194,7 +194,7 @@ function getBuildJob() {
 				}
 				return;
 			}
-			application.output('job finished');
+			application.output('Job finished');
 			if (r && r.result.android == 'SUCCESS') {
 				plugins.svyBlockUI.show('Downloading Android build...');
 				forms.main.getAndroid(r);

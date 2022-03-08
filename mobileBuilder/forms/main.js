@@ -1044,13 +1044,12 @@ function addIOSKey() {
  */
 function getAndroid(res) {
 	// download APK
-	res.androidURL = res.androidURL.replace(':8183', ''); //fix for local dev
-	res.androidURL = utils.stringReplace(res.androidURL, 'localhost', scopes.cordovaAuth.apiURL);
+	res.androidURL = utils.stringReplace(res.androidURL, 'localhost:8080', scopes.cordovaAuth.apiURL);
 	var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
 
 	if (res.androidBundleURL) {
-		res.androidBundleURL = utils.stringReplace(res.androidBundleURL, 'localhost', scopes.cordovaAuth.apiURL);
+		res.androidBundleURL = utils.stringReplace(res.androidBundleURL, 'localhost:8080', scopes.cordovaAuth.apiURL);
 		f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
 		application.showURL(createRemoteFile(f), '_blank');
 	}
@@ -1066,8 +1065,7 @@ function getAndroid(res) {
  */
 function getIOS(res) {
 	// download IPA
-	res.iosURL = res.iosURL.replace(':8183', ''); //fix for local dev
-	res.iosURL = utils.stringReplace(res.iosURL, 'localhost', scopes.cordovaAuth.apiURL)
+	res.iosURL = utils.stringReplace(res.iosURL, 'localhost:8080', scopes.cordovaAuth.apiURL)
 	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
 	plugins.webnotificationsToastr.success('IOS Build Complete');
