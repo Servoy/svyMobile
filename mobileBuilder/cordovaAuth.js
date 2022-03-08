@@ -167,97 +167,97 @@ function getBuildJob() {
 						r = r.data
 				}
 			}
-
-			if (r && r.result) {
-				//if results are ready stop the job
-				plugins.scheduler.removeJob('getBuildJob');
-				plugins.svyBlockUI.stop();
-			}
-
-			if (r && !r.result) {
-				application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
-				switch (r) {
-				case 'This job not yet started. Another job is in progress.':
-					plugins.scheduler.removeJob('getBuildJob')
-					d = new Date();
-					d.setSeconds(d.getSeconds() + 25);
-					plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
-					break;
-				case 'Job is in progress.':
-					plugins.scheduler.removeJob('getBuildJob')
-					d = new Date();
-					d.setSeconds(d.getSeconds() + 25);
-					plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
-					break;
-				default:
-					break;
-				}
-				return;
-			}
-			application.output('Job finished');
-			if (r && r.result.android == 'SUCCESS') {
-				plugins.svyBlockUI.show('Downloading Android build...');
-				forms.main.getAndroid(r);
-			} else {
-				var msg = 'Could not compile Android build. \n'
-				if (r.log.length < 5) {
-					msg += 'Build Server is down...';
-				} else {
-					if (r.log.indexOf('Keystore was tampered with, or password was incorrect') != -1) {
-						msg += 'Keystore was tampered with or password was incorrect.'
-					}
-
-					if (r.log.indexOf('No key with alias') != -1) {
-						msg += 'No key with alias ' + forms.main.android_alias + ' found in keystore.';
-					}
-
-					if (r.log.indexOf('Current working directory is not a Cordova-based project') != -1) {
-						msg += 'Current working directory is not a Cordova-based project.  Check the structure of your mobile upload.'
-					}
-
-					if (r.log.indexOf('Source path does not exist') != -1) {
-						msg += r.log.substring(r.log.indexOf('Source path does not exist'), r.log.indexOf('Source path does not exist') + 100)
-					}
-					//					application.output(r.log)
-				}
-				plugins.webnotificationsToastr.error(msg)
-				var vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
-				if (vl == 'View Build Log') {
-					forms.main.getBuildLog('android', r.log.substring(r.log.indexOf('ANDROID STARTING BUILD'), r.log.indexOf('ANDROID END BUILD')))
-				}
-			}
-			if (r && r.result.ios == 'SUCCESS') {
-				if (forms.main.ios_cert || forms.main.ios_provision || forms.main.ios_cert_pass) {
-					plugins.svyBlockUI.show('Downloading iOS build...');
-					forms.main.getIOS(r);
-				}
-			} else if (forms.main.ios_cert) {
-				msg = 'Failed to compile IOS build. \n'
-				if (r.log.length < 5) {
-					msg += 'Build Server is down...';
-				} else {
-					if (r.log.indexOf('IOS certificate or password is invalid') != -1) {
-						msg += 'IOS certificate or password is invalid'
-					}
-
-					if (r.log.indexOf('Code Signing Error:') != -1) {
-						msg += 'There is an issue with code signing, \n'
-						if (r.log.indexOf('which does not match the bundle ID') != -1) {
-							msg += 'the provisioning profile does not match bundle ID ' + forms.main.appid + '.\n';
-						}
-
-						msg += 'Make sure that you are using the proper certificate and provisioning file(s) that pertain to either development or distribution.'
-					}
-					//					application.output(r.log)
-				}
-				plugins.webnotificationsToastr.error('Failed to compile IOS build');
-				vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
-				if (vl == 'View Build Log') {
-					forms.main.getBuildLog('ios', r.log.substring(r.log.indexOf('IOS STARTING BUILD'), r.log.indexOf('IOS END BUILD')))
-				}
-			}
 		} catch (e) {
 			application.output(res.getResponseBody(), LOGGINGLEVEL.INFO)
+		}
+
+		if (r && r.result) {
+			//if results are ready stop the job
+			plugins.scheduler.removeJob('getBuildJob');
+			plugins.svyBlockUI.stop();
+		}
+
+		if (r && !r.result) {
+			application.output(r, LOGGINGLEVEL.INFO)
+			switch (r) {
+			case 'This job not yet started. Another job is in progress.':
+				plugins.scheduler.removeJob('getBuildJob')
+				d = new Date();
+				d.setSeconds(d.getSeconds() + 25);
+				plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
+				break;
+			case 'Job is in progress.':
+				plugins.scheduler.removeJob('getBuildJob')
+				d = new Date();
+				d.setSeconds(d.getSeconds() + 25);
+				plugins.scheduler.addJob('getBuildJob', d, getBuildJob);
+				break;
+			default:
+				break;
+			}
+			return;
+		}
+		application.output('Job finished');
+		if (r && r.result.android == 'SUCCESS') {
+			plugins.svyBlockUI.show('Downloading Android build...');
+			forms.main.getAndroid(r);
+		} else {
+			var msg = 'Could not compile Android build. \n'
+			if (r.log.length < 5) {
+				msg += 'Build Server is down...';
+			} else {
+				if (r.log.indexOf('Keystore was tampered with, or password was incorrect') != -1) {
+					msg += 'Keystore was tampered with or password was incorrect.'
+				}
+
+				if (r.log.indexOf('No key with alias') != -1) {
+					msg += 'No key with alias ' + forms.main.android_alias + ' found in keystore.';
+				}
+
+				if (r.log.indexOf('Current working directory is not a Cordova-based project') != -1) {
+					msg += 'Current working directory is not a Cordova-based project.  Check the structure of your mobile upload.'
+				}
+
+				if (r.log.indexOf('Source path does not exist') != -1) {
+					msg += r.log.substring(r.log.indexOf('Source path does not exist'), r.log.indexOf('Source path does not exist') + 100)
+				}
+				//					application.output(r.log)
+			}
+			plugins.webnotificationsToastr.error(msg)
+			var vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
+			if (vl == 'View Build Log') {
+				forms.main.getBuildLog('android', r.log.substring(r.log.indexOf('ANDROID STARTING BUILD'), r.log.indexOf('ANDROID END BUILD')))
+			}
+		}
+		if (r && r.result.ios == 'SUCCESS') {
+			if (forms.main.ios_cert || forms.main.ios_provision || forms.main.ios_cert_pass) {
+				plugins.svyBlockUI.show('Downloading iOS build...');
+				forms.main.getIOS(r);
+			}
+		} else if (forms.main.ios_cert) {
+			msg = 'Failed to compile IOS build. \n'
+			if (r.log.length < 5) {
+				msg += 'Build Server is down...';
+			} else {
+				if (r.log.indexOf('IOS certificate or password is invalid') != -1) {
+					msg += 'IOS certificate or password is invalid'
+				}
+
+				if (r.log.indexOf('Code Signing Error:') != -1) {
+					msg += 'There is an issue with code signing, \n'
+					if (r.log.indexOf('which does not match the bundle ID') != -1) {
+						msg += 'the provisioning profile does not match bundle ID ' + forms.main.appid + '.\n';
+					}
+
+					msg += 'Make sure that you are using the proper certificate and provisioning file(s) that pertain to either development or distribution.'
+				}
+				//					application.output(r.log)
+			}
+			plugins.webnotificationsToastr.error('Failed to compile IOS build');
+			vl = plugins.dialogs.showErrorDialog('ERROR', msg, 'View Build Log', 'Close');
+			if (vl == 'View Build Log') {
+				forms.main.getBuildLog('ios', r.log.substring(r.log.indexOf('IOS STARTING BUILD'), r.log.indexOf('IOS END BUILD')))
+			}
 		}
 
 	}

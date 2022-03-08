@@ -317,7 +317,7 @@ function setBuildID() {
  * @param {JSEvent} event the event that triggered the action
  * @param {Function} cb
  * @private
- *
+ * @return 
  * @properties={typeid:24,uuid:"846F44DB-9C0A-4D88-92DD-420947BCE716"}
  */
 function onAction$getLocalBuild(event, cb) {
@@ -463,6 +463,7 @@ function createIconAndSplash() {
  * @param h
  * @param [rotate]
  * @param [removeTransparency]
+ * @return {Array<byte>}
  * @properties={typeid:24,uuid:"0A7DCB1F-A48F-464F-B3F7-FF7BCB00C5FA"}
  */
 function createImageResize(i, w, h, rotate, removeTransparency) {
@@ -529,7 +530,9 @@ function removeMiscFile(fname) {
 }
 
 /**
+ * @return {String}
  * @properties={typeid:24,uuid:"A611E6DF-B090-4A41-92CE-EE5E15C3F07B"}
+ * @SuppressWarnings(wrongparameters)
  */
 function formatVersion() {
 	var msg = '<widget android-versionCode="10000000" id="' + appid + '" ios-CFBundleversion="100000" version="' + app_version + '" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android"> \n';
@@ -750,6 +753,7 @@ function createIndexHTML() {
  * @param {String} fname
  * @param [bytes]
  * @param {String} [text]
+ * @return {plugins.file.JSFile}
  * @properties={typeid:24,uuid:"17641DD7-A355-450A-BCEC-EB2966C7454B"}
  */
 function createFile(fname, bytes, text) {
@@ -767,7 +771,7 @@ function createFile(fname, bytes, text) {
 
 /**
  * @param file
- *
+ * @return {String}
  * @properties={typeid:24,uuid:"BCCDCC5B-B0E5-4615-9720-FADDE868297D"}
  */
 function createRemoteFile(file) {
@@ -928,6 +932,7 @@ function channelCopy(src, dest) {
 }
 
 /**
+ * @return {Boolean}
  * @properties={typeid:24,uuid:"39181E26-0B58-4B7C-9CB3-C62FE6533BDB"}
  */
 function addKeys() {
@@ -973,38 +978,38 @@ function onAction$getCloudBuild(event) {
 
 	if (!img) {
 		plugins.webnotificationsToastr.info('Please upload an icon for your app.')
-		return null;
+		return;
 	}
 
 	if (!app_name || !app_url || !app_version || !appid) {
 		plugins.webnotificationsToastr.info('Please fill out some of the details first.')
-		return null;
+		return;
 	}
 
 	if (appid.split('.').length < 3) {
 		plugins.webnotificationsToastr.info('Your App ID must be in the following naming convention: com.mobile.appname')
-		return null;
+		return;
 	}
 
 	if (!isNaN(app_name.charAt(0))) {
 		plugins.webnotificationsToastr.info('Your App Name must not start with a number')
-		return null;
+		return;
 	}
 
 	if (!isNaN(appid.charAt(0))) {
 		plugins.webnotificationsToastr.info('Your App ID must not start with a number')
-		return null;
+		return;
 	}
 
 	if (containsSpecialCharacters(appid)) {
 		plugins.webnotificationsToastr.info('Your App ID must not contain special characters')
-		return null;
+		return;
 	}
 
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
 		if (!googlejson && !googleplist) {
 			plugins.webnotificationsToastr.info('Must upload google-services.json and/or GoogleService-Info.plist if using FCM plugin.');
-			return null;
+			return;
 		}
 	}
 	;
@@ -1012,17 +1017,18 @@ function onAction$getCloudBuild(event) {
 	setBuildID();
 	if (!scopes.cordovaAuth.authenticated) {
 		if (forms.cordova_auth.show()) {
-			if (!addKeys()) return null;
+			if (!addKeys()) return;
 			onAction$getLocalBuild(event, scopes.cordovaAuth.createApp);
 		}
 	} else {
-		if (!addKeys()) return null;
+		if (!addKeys()) return;
 		onAction$getLocalBuild(event, scopes.cordovaAuth.createApp);
 	}
-	return null;
+	return;
 }
 
 /**
+ * @return {Object}
  * @properties={typeid:24,uuid:"C2FD3F83-2BA1-4D25-ADCC-E756F0AB31C1"}
  */
 function addAndroidKey() {
@@ -1031,6 +1037,7 @@ function addAndroidKey() {
 }
 
 /**
+ * @return {Object}
  * @properties={typeid:24,uuid:"0B1FD978-BCF2-4656-A9A6-8602C64FD070"}
  */
 function addIOSKey() {
@@ -1040,16 +1047,27 @@ function addIOSKey() {
 }
 
 /**
+ * @param url
+ * @return {String}
+ * @properties={typeid:24,uuid:"061A79AA-3595-4A86-87C6-99F8257AFDFF"}
+ */
+function cleanRemoteUrl(url) {
+	url = utils.stringReplace(url, 'localhost:8080', scopes.cordovaAuth.apiURL);
+	url = utils.stringReplace(url, 'localhost:', scopes.cordovaAuth.apiURL);
+	url = utils.stringReplace(url, 'localhost', scopes.cordovaAuth.apiURL);
+	return url;
+}
+/**
  * @properties={typeid:24,uuid:"F8C626B5-E6AC-473A-8B61-E4623668C990"}
  */
 function getAndroid(res) {
 	// download APK
-	res.androidURL = utils.stringReplace(res.androidURL, 'localhost:8080', scopes.cordovaAuth.apiURL);
+	res.androidURL = cleanRemoteUrl(res.androidURL);
 	var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
 
 	if (res.androidBundleURL) {
-		res.androidBundleURL = utils.stringReplace(res.androidBundleURL, 'localhost:8080', scopes.cordovaAuth.apiURL);
+		res.androidBundleURL = cleanRemoteUrl(res.androidBundleURL);
 		f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
 		application.showURL(createRemoteFile(f), '_blank');
 	}
@@ -1065,7 +1083,7 @@ function getAndroid(res) {
  */
 function getIOS(res) {
 	// download IPA
-	res.iosURL = utils.stringReplace(res.iosURL, 'localhost:8080', scopes.cordovaAuth.apiURL)
+	res.iosURL = cleanRemoteUrl(res.iosURL);
 	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
 	plugins.webnotificationsToastr.success('IOS Build Complete');
@@ -1108,16 +1126,16 @@ function onFileUploaded(jsUpload) {
 	elements.multifileupload.reset();
 	if (!scopes.cordovaAuth.authenticated) {
 		if (forms.cordova_auth.show()) {
-			if (!addKeys()) return null;
+			if (!addKeys()) return;
 			plugins.svyBlockUI.spinner = 'Wandering Cubes';
 			plugins.svyBlockUI.show('Compilation will take a few minutes...');
 			scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
 		}
 	} else {
-		if (!addKeys()) return null;
+		if (!addKeys()) return;
 		plugins.svyBlockUI.spinner = 'Wandering Cubes';
 		plugins.svyBlockUI.show('Compilation will take a few minutes...');
 		scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
 	}
-	return null;
+	return;
 }
