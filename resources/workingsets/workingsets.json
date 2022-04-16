@@ -70,6 +70,7 @@
 "name":"media",
 "paths":[
 "/svyMobile/.project",
+"/svyMobile/forms/camerapreviewContainer.frm",
 "/svyMobile/forms/mediaDesktop.frm",
 "/svyMobile/forms/mediaMobile.frm"
 ]

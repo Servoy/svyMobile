@@ -27,6 +27,7 @@ function authenticate() {
  */
 var c;
 
+
 /**
  * @param {plugins.file.JSFile} f
  * @param {Object} key
@@ -35,9 +36,11 @@ var c;
  * @properties={typeid:24,uuid:"E09C56D9-D184-490F-A019-DCA1B1B1EAB5"}
  */
 function createApp(f, key, uploadBuild) {
-	apiURL = 'mobile-builder.servoy.com/ws';
+//	apiURL = 'mobile-builder.servoy.com/ws';
+	apiURL = 'mobilebuilderdev.com:8081/ws';
 	c = plugins.http.createNewHttpClient();
-	var req = c.createPostRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
+//	var req = c.createPostRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
+	var req = c.createPostRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
 
 	if (key.android && key.android['android.keystore'] && key.android['android.keystore'].exists()) req.addFile('android_key_store', 'android.keystore', key.android['android.keystore']);
 	if (key.ios && key.ios['ios.p12'] && key.ios['ios.p12'].exists()) req.addFile('ios_cert', 'ios.p12', key.ios['ios.p12']);
@@ -102,7 +105,8 @@ function createApp(f, key, uploadBuild) {
  */
 function checkJob(f, key, uploadBuild) {
 	c = plugins.http.createNewHttpClient();
-	var req = c.createGetRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
+//	var req = c.createGetRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
+	var req = c.createGetRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
 	req.addHeader('build_num', forms.main.build_id)
 	//	application.output('get build ' + forms.main.build_id);
 	var res = req.executeRequest();
@@ -142,7 +146,8 @@ function checkJob(f, key, uploadBuild) {
  */
 function getBuildJob() {
 	c = plugins.http.createNewHttpClient();
-	var req = c.createGetRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
+//	var req = c.createGetRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
+	var req = c.createGetRequest('http://' + apiURL + '/servoy-service/rest_ws/ws/cordova?build_num=' + forms.main.build_id);
 	req.addHeader('build_num', forms.main.build_id)
 	//	application.output('get build ' + forms.main.build_id);
 	var res = req.executeRequest();
@@ -277,7 +282,7 @@ function addAndroidKey(f, _title, _alias, _key_pw, _key_store_pw) {
 	androidKeyObj.alias = _alias
 	androidKeyObj.key_pw = _key_pw
 	androidKeyObj.keystore_pw = _key_store_pw
-	return androidKeyObj;
+	return androidKeyObj;	
 }
 
 /**

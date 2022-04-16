@@ -1,0 +1,43 @@
+customProperties:"formComponent:false,\
+useCssPosition:true",
+encapsulation:108,
+items:[
+{
+cssPosition:"calc( 100% - 45px),10,-1,10,104,38",
+onActionMethodID:"046CAA25-9273-485B-B2E3-AB077E7E5010",
+rolloverCursor:12,
+styleClass:"camera-shot",
+text:"Take Shot",
+typeid:7,
+uuid:"02856699-3510-487E-9B82-75F782C35814"
+},
+{
+anchors:11,
+cssPosition:"10,-1,-1,10,calc( 100% - 20px),80%",
+horizontalAlignment:0,
+imageMediaID:"84941405-D47C-414D-8153-DFDC632D063B",
+location:"8,32",
+name:"photo",
+size:"295,391",
+styleClass:"contact-photo",
+transparent:true,
+typeid:7,
+uuid:"11B04CF6-6BF2-4839-BFD1-5966C6013427",
+visible:false
+},
+{
+height:251,
+partType:5,
+typeid:19,
+uuid:"6C29221E-219F-41B1-840D-75D1C349C348"
+}
+],
+name:"camerapreviewContainer",
+navigatorID:"-1",
+onHideMethodID:"F2B394BA-1212-4ED6-9701-487363E28662",
+onShowMethodID:"B789D519-E958-4BE9-9E41-3AE8F1035501",
+showInMenu:true,
+size:"244,480",
+styleClass:"camera-body",
+typeid:3,
+uuid:"277E7209-7261-456A-8721-A1DA3368E6C4"
