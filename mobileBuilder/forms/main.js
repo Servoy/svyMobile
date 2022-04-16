@@ -565,7 +565,7 @@ function createConfig() {
 	xml += '<content src="' + temp_app_url + '" />\n'
 	xml += '<access origin="*" />\n'
 	xml += '<allow-navigation href="*" />\n'
-	xml += '<allow-intent href="https://*/*" />\n'
+	xml += '<allow-intent href="https://*/*" />\n'	
 	xml += '<preference name="swift-version" value="5" />\n'
 	xml += '<preference name="target-device" value="universal" />\n'
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
@@ -584,6 +584,10 @@ function createConfig() {
 		xml += '<application android:usesCleartextTraffic="true" />\n'
 		xml += '</edit-config>\n'
 	}
+	
+	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<hook src="hooks/qrscanner_add_barcode/301_android.js" type="after_prepare" ></hook>'
+	
+	
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
@@ -617,7 +621,10 @@ function createConfig() {
 
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
-
+		
+	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<hook src="hooks/qrscanner_add_barcode/301_ios.js" type="after_prepare" ></hook>'
+	
+	
 	if (plugins_list.indexOf('Location') != -1) {
 		xml += '<edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Require Location for showing Map</string>\n'
@@ -648,6 +655,7 @@ function createConfig() {
 	xml += '<feature name="CDVWKWebViewEngine">\n'
 	xml += '<param name="ios-package" value="CDVWKWebViewEngine" />\n'
 	xml += '</feature>\n'
+//	xml += '<preference name="UseSwiftLanguageVersion" value="5" ></preference>'
 	xml += '<preference name="WKWebViewOnly" value="true" />\n'
 	xml += '<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />\n'
 	xml += '<preference name="ScrollEnabled" value="true" />'
@@ -709,6 +717,7 @@ function createConfig() {
 	}
 
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
+	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'

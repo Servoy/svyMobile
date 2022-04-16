@@ -110,6 +110,14 @@
 ]
 },
 {
+"name":"scanners",
+"paths":[
+"/svyMobile/.project",
+"/svyMobile/forms/barcodeContainer.frm",
+"/svyMobile/forms/qrcodeContainer.frm"
+]
+},
+{
 "name":"tables",
 "paths":[
 "/svyMobile/.project",

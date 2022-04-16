@@ -25,7 +25,7 @@ width:"100%"
 },
 formIndex:1,
 pageLayout:"cardview",
-responsivePageSize:10000
+responsivePageSize:0
 },
 name:"main_menu",
 typeName:"servoyextra-listformcomponent",
