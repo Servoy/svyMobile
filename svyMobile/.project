@@ -4,12 +4,9 @@
 	<comment></comment>
 	<projects>
 		<project>resources</project>
-		<project>servoy-extra-components</project>
-		<project>googlemaps</project>
 		<project>svyChartUtils</project>
 		<project>mobileBase</project>
 		<project>phonegap</project>
-		<project>svyphonegap</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
