@@ -1095,6 +1095,7 @@ function getIOS(res) {
 	res.iosURL = cleanRemoteUrl(res.iosURL);
 	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
+	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');
 }
 
