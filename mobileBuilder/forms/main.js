@@ -592,7 +592,7 @@ function createConfig() {
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
-	xml += '<preference name="android-targetSdkVersion" value="29"/>\n'
+	xml += '<preference name="android-targetSdkVersion" value="31"/>\n' //31 should be the min starting of August 2022
 	xml += '<preference name="AndroidLaunchMode" value="singleInstance" />\n'
 	xml += '<preference name="ShowSplashScreenSpinner" value="false" />\n'
 	xml += '<preference name="AutoHideSplashScreen " value="true" />\n'
