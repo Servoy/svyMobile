@@ -592,7 +592,12 @@ function createConfig() {
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
-	xml += '<preference name="android-targetSdkVersion" value="31"/>\n' //31 should be the min starting of August 2022
+	
+	// add support for target level 31
+	xml += '<preference name="android-targetSdkVersion" value="31"/>\n'
+	//add android exported option to main activity
+	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'
+	
 	xml += '<preference name="AndroidLaunchMode" value="singleInstance" />\n'
 	xml += '<preference name="ShowSplashScreenSpinner" value="false" />\n'
 	xml += '<preference name="AutoHideSplashScreen " value="true" />\n'
@@ -705,6 +710,7 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
+	xml += '<plugin name="cordova-custom-config" source="https://github.com/dpa99c/cordova-custom-config" />\n'
 
 	if (plugins_list.indexOf('IDTech CR') != -1) {
 		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag" />\n'
