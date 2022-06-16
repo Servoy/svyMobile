@@ -36,7 +36,8 @@ var c;
  * @properties={typeid:24,uuid:"E09C56D9-D184-490F-A019-DCA1B1B1EAB5"}
  */
 function createApp(f, key, uploadBuild) {
-	apiURL = 'mobile-builder.servoy.com/ws';
+//	apiURL = 'mobile-builder.servoy.com/ws';
+	apiURL = 'cordovabuilder.tuannguyen.io/ws/';	
 //	apiURL = 'mobilebuilderdev.com:8081/ws';
 	c = plugins.http.createNewHttpClient();
 	var req = c.createPostRequest('https://' + apiURL + '/servoy-service/rest_ws/ws/cordova');
