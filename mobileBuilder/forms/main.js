@@ -597,7 +597,6 @@ function createConfig() {
 	xml += '<preference name="android-targetSdkVersion" value="31"/>\n'
 	//add android exported option to main activity
 	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'		
-	xml += '<custom-preference delete="true" name="android.hardware.camera" android:required="false"/>\n'
 	
 	xml += '<preference name="AndroidLaunchMode" value="singleInstance" />\n'
 	xml += '<preference name="ShowSplashScreenSpinner" value="false" />\n'
@@ -738,7 +737,16 @@ function createConfig() {
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
-
+	
+	//if we are using camera plugins, add the appropriate permissions
+	if (xml.indexOf('camera') != -1 || xml.indexOf('Scanner') != -1) {
+		xml += '<custom-preference name="android-manifest/uses-permission/[@android:name=' + "'android.hardware.camera']'" + '" delete="true"' + ' />'
+		xml += '<custom-preference name="android-manifest/uses-permission/[@android:name=' + "'android.hardware.camera']'" + '" delete="true"' + ' />'
+		xml += '<custom-config-file target="AndroidManifest.xml" parent="./" mode="add">'
+		xml += '<uses-feature android:name="android.hardware.camera" android:required="true" />'
+		xml += '</custom-config-file>'
+	}
+	
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
 }
