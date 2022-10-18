@@ -596,7 +596,8 @@ function createConfig() {
 	// add support for target level 31
 	xml += '<preference name="android-targetSdkVersion" value="31"/>\n'
 	//add android exported option to main activity
-	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'
+	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'		
+	xml += '<custom-preference delete="true" name="android.hardware.camera" android:required="false"/>\n'
 	
 	xml += '<preference name="AndroidLaunchMode" value="singleInstance" />\n'
 	xml += '<preference name="ShowSplashScreenSpinner" value="false" />\n'
