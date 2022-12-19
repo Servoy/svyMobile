@@ -66,7 +66,7 @@ function createApp(f, key, uploadBuild) {
 	}
 	if (f && f.exists()) req.addFile('build', 'app.zip', f);
 	if (uploadBuild && uploadBuild.exists()) {
-		req.addFile('importBuild', uploadBuild.getName(), uploadBuild);
+		req.addFile('importBuildD', uploadBuild.getName(), uploadBuild);
 	}
 
 	req.addHeader('Accept', 'application/json; charset=UTF-16');
