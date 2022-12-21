@@ -317,7 +317,7 @@ function setBuildID() {
  * @param {JSEvent} event the event that triggered the action
  * @param {Function} cb
  * @private
- * @return 
+ * @return
  * @properties={typeid:24,uuid:"846F44DB-9C0A-4D88-92DD-420947BCE716"}
  */
 function onAction$getLocalBuild(event, cb) {
@@ -565,7 +565,7 @@ function createConfig() {
 	xml += '<content src="' + temp_app_url + '" />\n'
 	xml += '<access origin="*" />\n'
 	xml += '<allow-navigation href="*" />\n'
-	xml += '<allow-intent href="https://*/*" />\n'	
+	xml += '<allow-intent href="https://*/*" />\n'
 	xml += '<preference name="swift-version" value="5" />\n'
 	xml += '<preference name="target-device" value="universal" />\n'
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
@@ -579,19 +579,18 @@ function createConfig() {
 		xml += '<application android:usesCleartextTraffic="true" />\n'
 		xml += '</edit-config>\n'
 	}
-	
+
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<hook src="hooks/qrscanner_add_barcode/301_android.js" type="after_prepare" ></hook>'
-	
-	
+
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
-	
+
 	// add support for target level 31
 	xml += '<preference name="android-targetSdkVersion" value="31"/>\n'
 	//add android exported option to main activity
-	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'	
+	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'
 	//if we are using camera plugins, add the appropriate permissions
 	if (plugins_list.indexOf('camera') != -1 || plugins_list.indexOf('Scanner') != -1) {
 		xml += '<custom-preference name="android-manifest/uses-permission/[@android:name=' + "'android.hardware.camera']" + '" delete="true"' + ' />\n'
@@ -600,7 +599,7 @@ function createConfig() {
 		xml += '<uses-feature android:name="android.hardware.camera" android:required="true" />\n'
 		xml += '</custom-config-file>\n'
 	}
-	
+
 	xml += '<preference name="AndroidLaunchMode" value="singleInstance" />\n'
 	xml += '<preference name="ShowSplashScreenSpinner" value="false" />\n'
 	xml += '<preference name="AutoHideSplashScreen " value="true" />\n'
@@ -629,10 +628,9 @@ function createConfig() {
 
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
-		
+
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<hook src="hooks/qrscanner_add_barcode/301_ios.js" type="after_prepare" ></hook>'
-	
-	
+
 	if (plugins_list.indexOf('Location') != -1) {
 		xml += '<edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Require Location for showing Map</string>\n'
@@ -725,7 +723,7 @@ function createConfig() {
 	}
 
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
-	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'	
+	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
 	if (plugins_list.indexOf('Camera Preview') != -1 && xml.indexOf('cordova-plugin-camera') == -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
 	if (plugins_list.indexOf('Camera') != -1 && xml.indexOf('cordova-plugin-camera-preview') == -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
@@ -740,7 +738,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
-	
+
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
 }
@@ -1080,10 +1078,11 @@ function cleanRemoteUrl(url) {
  */
 function getAndroid(res) {
 	// download APK
-	res.androidURL = cleanRemoteUrl(res.androidURL);
-	var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
-	application.showURL(createRemoteFile(f), '_blank');
-
+	if (res.androidURL && res.androidURL != '' && res.androidURL.length > 5) {
+		res.androidURL = cleanRemoteUrl(res.androidURL);
+		var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
+		application.showURL(createRemoteFile(f), '_blank');
+	}
 	if (res.androidBundleURL) {
 		res.androidBundleURL = cleanRemoteUrl(res.androidBundleURL);
 		f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
