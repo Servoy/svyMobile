@@ -554,6 +554,9 @@ function createConfig() {
 	} else {
 		temp_app_url = app_url.split('?')[0] + '?phonegap=true'
 	}
+	
+	//replace ampersands with proper escape characters
+	temp_app_url = utils.stringReplace(temp_app_url,'&','&#38;')
 
 	//create config.xml for build
 	var xml = '';
