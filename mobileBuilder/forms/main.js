@@ -649,7 +649,8 @@ function createConfig() {
 		xml += '</edit-config>\n'
 		xml += '<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Required for capturing camera images.</string>\n'
-		xml += '</edit-config>\n'
+		xml += '</edit-config>\n'		
+		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
 
 	if (plugins_list.indexOf('IDTech CR') != -1) {
