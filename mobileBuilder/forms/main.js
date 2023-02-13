@@ -557,7 +557,12 @@ function createConfig() {
 	
 	//replace ampersands with proper escape characters
 	temp_app_url = utils.stringReplace(temp_app_url,'&','&#38;')
-
+	var addAndroidX = false;
+	
+	if (plugins_list.indexOf('Bar Code Scanner') != -1 || plugins_list.indexOf('Camera') != -1 || plugins_list.indexOf('Camera Preview') != -1 || plugins_list.indexOf('QR Code Scanner') != -1) {
+		addAndroidX = true;
+	}
+	
 	//create config.xml for build
 	var xml = '';
 	xml = "<?xml version='1.0' encoding='utf-8'?>\n";
@@ -610,6 +615,9 @@ function createConfig() {
 	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
 	xml += '<preference name="SplashScreenDelay" value="10000" />\n'
 	xml += '<preference name="loadUrlTimeoutValue" value="999999999" />'
+	if (addAndroidX) {
+		xml += '<preference name="AndroidXEnabled" value="true" />\n'
+	}
 	xml += '<icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />\n'
 	xml += '<icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />\n'
 	xml += '<icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />\n'
@@ -643,15 +651,13 @@ function createConfig() {
 		xml += '</edit-config>\n'
 	}
 
-	if (plugins_list.indexOf('Bar Code Scanner') != -1 || plugins_list.indexOf('Camera') != -1 || plugins_list.indexOf('Camera Preview') != -1 || plugins_list.indexOf('QR Code Scanner') != -1) {
+	if (addAndroidX) {
 		xml += '<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge" overwrite="true" >\n'
 		xml += '<string>Required for showing gallery</string>\n'
 		xml += '</edit-config>\n'
 		xml += '<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Required for capturing camera images.</string>\n'
-		xml += '</edit-config>\n'		
-			
-		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'		
+		xml += '</edit-config>\n'			
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
 
@@ -667,6 +673,9 @@ function createConfig() {
 	xml += '<feature name="CDVWKWebViewEngine">\n'
 	xml += '<param name="ios-package" value="CDVWKWebViewEngine" />\n'
 	xml += '</feature>\n'
+	if(addAndroidX) {			
+		xml += '<preference name="AndroidXEnabled" value="true" />\n'
+	}
 	xml += '<preference name="WKWebViewOnly" value="true" />\n'
 	xml += '<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />\n'
 	xml += '<preference name="ScrollEnabled" value="true" />'
@@ -727,7 +736,9 @@ function createConfig() {
 		xml += '<plugin name="cordova-plugin-printer" spec="^0.7.3" />\n'
 		xml += '<plugin name="cordova-print-pdf-plugin" spec="https://github.com/sarahgoldman/cordova-print-pdf-plugin" />\n'
 	}
-
+	if(addAndroidX) {
+		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'		
+	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
 	if (plugins_list.indexOf('Camera Preview') != -1 && xml.indexOf('cordova-plugin-camera') == -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
