@@ -650,6 +650,9 @@ function createConfig() {
 		xml += '<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Required for capturing camera images.</string>\n'
 		xml += '</edit-config>\n'		
+			
+		xml += '<plugin name="cordova-plugin-androidx" spec="^2.0.0" />\n'
+		xml += '<plugin name="cordova-plugin-androidx-adapter" spec="^1.1.3" />\n'		
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
 
