@@ -651,7 +651,7 @@ function createConfig() {
 		xml += '<string>Required for capturing camera images.</string>\n'
 		xml += '</edit-config>\n'		
 			
-		xml += '<plugin name="cordova-androidx-build" spec="https://github.com/wf9a5m75/cordova-androidx-build" />\n'		
+		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'		
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
 
