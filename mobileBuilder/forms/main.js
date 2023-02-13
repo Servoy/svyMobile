@@ -297,8 +297,28 @@ function onDataChange$plugins(oldValue, newValue, event) {
 			application.executeLater(refreshPlugins, 0);
 			plugins.dialogs.showInfoDialog('INFO', 'Cannot use both Bar Code Scanner and QR Code Scanner.')
 		}
-	}
-
+	}	
+		
+	//if we are using either plugin and the zebra scanner, we must remove it
+	if (plugins_list.includes('Bar Code Scanner') || plugins_list.includes('QR Code Scanner') || plugins_list.includes('Camera')) {
+		arr = plugins_list.split('\n');
+		tmpArr = [];
+		var zebraFound = false;
+		for (i = 0; i < arr.length; i++) {
+			if (arr[i] != 'Zebra Scanner (Android Only)') {
+				tmpArr.push(arr[i])
+			} else {
+				zebraFound = true;
+			}
+		}
+		if (tmpArr.length > 0 && zebraFound) {
+			plugins_list = tmpArr.join('\n')
+			elements.pluginslist.visible = false;
+			application.executeLater(refreshPlugins, 0);
+			plugins.dialogs.showInfoDialog('INFO', 'Cannot use Zebra Scanner with these plugins.');
+		}
+	}	
+	
 	return true
 }
 
