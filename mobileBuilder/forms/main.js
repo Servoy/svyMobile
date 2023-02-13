@@ -741,12 +741,8 @@ function createConfig() {
 	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
-//	if (plugins_list.indexOf('Camera Preview') != -1 && xml.indexOf('cordova-plugin-camera') == -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
-//	if (plugins_list.indexOf('Camera') != -1 && xml.indexOf('cordova-plugin-camera-preview') == -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
-	
 	if (plugins_list.indexOf('Camera Preview') != -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
-	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
-	
+	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'	
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
