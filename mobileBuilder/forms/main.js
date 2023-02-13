@@ -651,8 +651,7 @@ function createConfig() {
 		xml += '<string>Required for capturing camera images.</string>\n'
 		xml += '</edit-config>\n'		
 			
-		xml += '<plugin name="cordova-plugin-androidx" spec="^2.0.0" />\n'
-		xml += '<plugin name="cordova-plugin-androidx-adapter" spec="^1.1.3" />\n'		
+		xml += '<plugin name="cordova-androidx-build" spec="https://github.com/wf9a5m75/cordova-androidx-build" />\n'		
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
 
@@ -661,7 +660,7 @@ function createConfig() {
 		xml += '<string>This app needs microphone access</string>\n'
 		xml += '</edit-config>\n'
 	}
-
+	
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
 	xml += '<allow-intent href="itms-apps:*" />\n'
