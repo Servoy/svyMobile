@@ -281,7 +281,32 @@ function onDataChange$plugins(oldValue, newValue, event) {
 		elements.googlejson.visible = false;
 		elements.googleplist.visible = false;
 	}
+
+	//if we are using both plugins we need to remove and give a warning
+	if (plugins_list.includes('Bar Code Scanner') && plugins_list.includes('QR Code Scanner')) {
+		var arr = plugins_list.split('\n');
+		var tmpArr = [];
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] != 'Bar Code Scanner' && arr[i] != 'QR Code Scanner') {
+				tmpArr.push(arr[i])
+			}
+		}
+		if (tmpArr.length > 0) {
+			plugins_list = tmpArr.join('\n')
+			elements.pluginslist.visible = false;
+			application.executeLater(refreshPlugins, 0);
+			plugins.dialogs.showInfoDialog('INFO', 'Cannot use both Bar Code Scanner and QR Code Scanner.')
+		}
+	}
+
 	return true
+}
+
+/**
+ * @properties={typeid:24,uuid:"9DE4965E-F806-409D-926A-63D02FD7D4B0"}
+ */
+function refreshPlugins() {
+	elements.pluginslist.visible = true;
 }
 
 /**
@@ -554,15 +579,15 @@ function createConfig() {
 	} else {
 		temp_app_url = app_url.split('?')[0] + '?phonegap=true'
 	}
-	
+
 	//replace ampersands with proper escape characters
-	temp_app_url = utils.stringReplace(temp_app_url,'&','&#38;')
+	temp_app_url = utils.stringReplace(temp_app_url, '&', '&#38;')
 	var addAndroidX = false;
-	
+
 	if (plugins_list.indexOf('Bar Code Scanner') != -1 || plugins_list.indexOf('Camera') != -1 || plugins_list.indexOf('Camera Preview') != -1 || plugins_list.indexOf('QR Code Scanner') != -1) {
 		addAndroidX = true;
 	}
-	
+
 	//create config.xml for build
 	var xml = '';
 	xml = "<?xml version='1.0' encoding='utf-8'?>\n";
@@ -657,7 +682,7 @@ function createConfig() {
 		xml += '</edit-config>\n'
 		xml += '<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Required for capturing camera images.</string>\n'
-		xml += '</edit-config>\n'			
+		xml += '</edit-config>\n'
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
 
@@ -666,14 +691,14 @@ function createConfig() {
 		xml += '<string>This app needs microphone access</string>\n'
 		xml += '</edit-config>\n'
 	}
-	
+
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
 	xml += '<allow-intent href="itms-apps:*" />\n'
 	xml += '<feature name="CDVWKWebViewEngine">\n'
 	xml += '<param name="ios-package" value="CDVWKWebViewEngine" />\n'
 	xml += '</feature>\n'
-	if(addAndroidX) {			
+	if (addAndroidX) {
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
 	xml += '<preference name="WKWebViewOnly" value="true" />\n'
@@ -736,13 +761,13 @@ function createConfig() {
 		xml += '<plugin name="cordova-plugin-printer" spec="^0.7.3" />\n'
 		xml += '<plugin name="cordova-print-pdf-plugin" spec="https://github.com/sarahgoldman/cordova-print-pdf-plugin" />\n'
 	}
-	if(addAndroidX) {
-		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'		
+	if (addAndroidX) {
+		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'
 	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
 	if (plugins_list.indexOf('Camera Preview') != -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
-	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'	
+	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
@@ -755,6 +780,8 @@ function createConfig() {
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
+
+	//can only use Bar code scanner or QR Code Scanner, not both.
 
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
