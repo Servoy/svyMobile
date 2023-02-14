@@ -297,8 +297,8 @@ function onDataChange$plugins(oldValue, newValue, event) {
 			plugins_list = '';
 		}
 		elements.pluginslist.visible = false;
-		application.executeLater(refreshPlugins, 0);
-		plugins.dialogs.showInfoDialog('INFO', 'Cannot use both Bar Code Scanner and QR Code Scanner.')
+		application.executeLater(refreshPlugins, 0);		
+		plugins.webnotificationsToastr.info('Cannot use both Bar Code Scanner and QR Code Scanner.','INFO');
 
 	}
 
@@ -318,10 +318,22 @@ function onDataChange$plugins(oldValue, newValue, event) {
 			plugins_list = tmpArr.join('\n')
 			elements.pluginslist.visible = false;
 			application.executeLater(refreshPlugins, 0);
-			plugins.dialogs.showInfoDialog('INFO', 'Cannot use Zebra Scanner with these plugins.');
+			plugins.webnotificationsToastr.info('Cannot use Zebra Scanner with these plugins.','INFO');
 		}
 	}
-
+	
+	if (app_url.includes('http://')) {
+		//if we are using either plugin and the zebra scanner, we must remove it
+		if (!plugins_list.includes('Clear Text Traffic')) {
+			arr = plugins_list.split('\n');
+			arr.push('Clear Text Traffic (Android Only)');
+			plugins_list = arr.join('\n');
+			elements.pluginslist.visible = false;
+			application.executeLater(refreshPlugins, 0);
+			plugins.webnotificationsToastr.info('The app URL used is not secure (https).  Adding the "Clear Text Traffic" plugin to support non-https endpoint.',"INFO");			
+		}
+	}
+	
 	return true
 }
 
@@ -1223,4 +1235,30 @@ function onFileUploaded(jsUpload) {
 		scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
 	}
 	return;
+}
+
+/**
+ * Handle changed data, return false if the value should not be accepted. In NGClient you can return also a (i18n) string, instead of false, which will be shown as a tooltip.
+ *
+ * @param {String} oldValue old value
+ * @param {String} newValue new value
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @return {Boolean}
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"DD9CA09E-1A4C-48FE-8212-00EA7B56F7B4"}
+ */
+function onDataChange$url(oldValue, newValue, event) {
+	if (app_url.includes('http://')) {
+		//if we are using either plugin and the zebra scanner, we must remove it
+		if (!plugins_list.includes('Clear Text Traffic')) {
+			var arr = plugins_list.split('\n');
+			arr.push('Clear Text Traffic (Android Only)');
+			plugins_list = arr.join('\n');
+			plugins.dialogs.showInfoDialog('INFO', 'The app URL used is not secure (https).  Adding the "Clear Text Traffic" plugin to support non-https endpoint.')
+		}
+	}
+	return true
 }
