@@ -1260,5 +1260,11 @@ function onDataChange$url(oldValue, newValue, event) {
 			plugins.dialogs.showInfoDialog('INFO', 'The app URL used is not secure (https).  Adding the "Clear Text Traffic" plugin to support non-https endpoint.')
 		}
 	}
+	
+	//remove # from address as that doesn't parse well
+	if (app_url.includes('#')) {
+		app_url = app_url.split('#')[0]				
+	}	
+	
 	return true
 }
