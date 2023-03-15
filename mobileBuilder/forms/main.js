@@ -119,6 +119,13 @@ var build_id;
 var build_dir;
 
 /**
+ * @type {plugins.file.JSFile}
+ *
+ * @properties={typeid:35,uuid:"13E77D44-DB2F-4FD3-8DBC-DB8C8270E5DB",variableType:-4}
+ */
+var build_file;
+
+/**
  * @properties={typeid:35,uuid:"5C5CDFF1-DBBB-4643-BB77-17FDC9DF00E7",variableType:-4}
  */
 var android_keystore;
@@ -430,7 +437,7 @@ function onAction$getLocalBuild(event, cb) {
 	createIndexHTML();
 	if (googlejson) createFile(b_dir + '/google-services.json', googlejson, null);
 	if (googleplist) createFile(b_dir + '/GoogleService-Info.plist', googleplist, null);
-	var build_file = zip(build_dir);
+	build_file = zip(build_dir);
 	var url = createRemoteFile(build_file);
 
 	if (!cb) {
@@ -440,14 +447,20 @@ function onAction$getLocalBuild(event, cb) {
 	if (cb) {
 		var res = cb(build_file, keyObj);
 	}
+	
+	if (res) return res;
+	return null;
+}
 
+/**
+ * @properties={typeid:24,uuid:"CB877E30-7A7E-49A8-B050-B59BCFBB7327"}
+ */
+function removeTempFiles(){
 	plugins.file.deleteFolder(b_dir, false);
 	plugins.file.deleteFile(build_file.getAbsolutePath())
 	var dt = new Date();
 	dt.setSeconds(dt.getSeconds() + 10);
 	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir])
-	if (res) return res;
-	return null;
 }
 /**
  * @properties={typeid:24,uuid:"374EE099-0701-4F88-905F-E3BDC0DF37B4"}
@@ -527,7 +540,8 @@ function createIconAndSplash() {
  * @properties={typeid:24,uuid:"0A7DCB1F-A48F-464F-B3F7-FF7BCB00C5FA"}
  */
 function createImageResize(i, w, h, rotate, removeTransparency) {
-	var input = new java.io.File(b_dir + '_tmp');
+	var input = Packages.java.io.File.createTempFile(b_dir + '_tmp',null);
+	
 	var fos = new java.io.FileOutputStream(input);
 	fos.write(i);
 	var im = Packages.javax.imageio.ImageIO.read(input);
@@ -559,7 +573,8 @@ function createImageResize(i, w, h, rotate, removeTransparency) {
 
 	baos.flush();
 	var bytes = baos.toByteArray();
-	baos.close();
+	baos.close();	
+	input.deleteOnExit();
 	input.delete();
 
 	var image = plugins.images.getImage(bytes);
@@ -583,7 +598,6 @@ function removeFile(fname) {
  * @properties={typeid:24,uuid:"ECF90525-0B1B-4178-8E49-8A69822BAE41"}
  */
 function removeMiscFile(fname) {
-	application.output(fname)
 	plugins.file.convertToJSFile(fname).deleteFile();
 	var file = plugins.file.convertToRemoteJSFile('/' + fname);
 	application.output('remove file ' + fname + ' ' + plugins.file.deleteFile(file));
@@ -853,6 +867,26 @@ function createIndexHTML() {
  */
 function createFile(fname, bytes, text) {
 	var file = plugins.file.createFile(fname);
+	if (bytes) {
+		file.createNewFile();
+		file.setBytes(bytes);
+	}
+
+	if (text) {
+		plugins.file.writeTXTFile(file, text)
+	}
+	return file;
+}
+
+/**
+ * @param {String} fname
+ * @param [bytes]
+ * @param {String} [text]
+ * @return {plugins.file.JSFile}
+ * @properties={typeid:24,uuid:"E0C86A07-505C-4930-9697-F5FB9A1ABE7B"}
+ */
+function createTempFile(fname, bytes, text){
+	var file = plugins.file.createTempFile(fname.split('.')[0],'.'+fname.split('.')[1]);
 	if (bytes) {
 		file.createNewFile();
 		file.setBytes(bytes);
@@ -1159,12 +1193,12 @@ function getAndroid(res) {
 	// download APK
 	if (res.androidURL && res.androidURL != '' && res.androidURL.length > 5) {
 		res.androidURL = cleanRemoteUrl(res.androidURL);
-		var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
+		var f = createTempFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
 		application.showURL(createRemoteFile(f), '_blank');
 	}
 	if (res.androidBundleURL) {
 		res.androidBundleURL = cleanRemoteUrl(res.androidBundleURL);
-		f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
+		f = createTempFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
 		application.showURL(createRemoteFile(f), '_blank');
 	}
 	if (!res.iosURL) {
@@ -1180,7 +1214,7 @@ function getAndroid(res) {
 function getIOS(res) {
 	// download IPA
 	res.iosURL = cleanRemoteUrl(res.iosURL);
-	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
+	var f = createTempFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');

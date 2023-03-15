@@ -73,7 +73,7 @@ function createApp(f, key, uploadBuild) {
 	var res = req.executeRequest();
 	try {
 		if (res.getResponseBody())
-			var body = JSON.parse(res.getResponseBody());
+			var body = JSON.parse(res.getResponseBody());			
 	} catch (e) {
 		application.output(e, LOGGINGLEVEL.INFO)
 	}
@@ -207,7 +207,9 @@ function getBuildJob() {
 		if (r && r.result.android == 'SUCCESS') {
 			plugins.svyBlockUI.show('Downloading Android build...');
 			forms.main.getAndroid(r);
+			forms.main.removeTempFiles();
 		} else {
+			forms.main.removeTempFiles();
 			var msg = 'Could not compile Android build. \n'
 			if (r.log.length < 5) {
 				msg += 'Build Server is down...';
@@ -269,6 +271,8 @@ function getBuildJob() {
 	}
 
 }
+
+
 
 /**
  * @return {Object}
