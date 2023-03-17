@@ -1193,17 +1193,18 @@ function getAndroid(res) {
 	// download APK
 	if (res.androidURL && res.androidURL != '' && res.androidURL.length > 5) {
 		res.androidURL = cleanRemoteUrl(res.androidURL);
-		var f = createTempFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
+		var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
 		application.showURL(createRemoteFile(f), '_blank');
 	}
 	if (res.androidBundleURL) {
 		res.androidBundleURL = cleanRemoteUrl(res.androidBundleURL);
-		f = createTempFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
+		f = createFile('build_' + build_id + '.aab', plugins.http.createNewHttpClient().createGetRequest(res.androidBundleURL).executeRequest().getMediaData())
 		application.showURL(createRemoteFile(f), '_blank');
 	}
 	if (!res.iosURL) {
 		plugins.svyBlockUI.stop();
 	}
+	f.deleteFile()
 	plugins.webnotificationsToastr.success('Android Build Complete');
 
 }
@@ -1214,8 +1215,9 @@ function getAndroid(res) {
 function getIOS(res) {
 	// download IPA
 	res.iosURL = cleanRemoteUrl(res.iosURL);
-	var f = createTempFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
+	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
+	f.deleteFile()
 	plugins.svyBlockUI.stop();
 	plugins.webnotificationsToastr.success('IOS Build Complete');
 }
