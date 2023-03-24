@@ -1302,5 +1302,15 @@ function onDataChange$url(oldValue, newValue, event) {
 		app_url = app_url.split('#')[0]				
 	}	
 	
+	if (app_url.includes('?phonegap')){
+		app_url = app_url.split('?phonegap')[0];
+		plugins.dialogs.showInfoDialog('INFO', 'phonegap parameter not required.')
+	}
+	
+	if (app_url.includes('&phonegap')){
+		app_url = app_url.split('&phonegap')[0];
+		plugins.dialogs.showInfoDialog('INFO', 'phonegap parameter not required.')
+	}
+	
 	return true
 }
