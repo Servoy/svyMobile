@@ -206,7 +206,13 @@ var keyObj = { };
  * @properties={typeid:24,uuid:"94F4804D-3E27-4D7D-B803-522C50C068B4"}
  */
 function onDataChange(oldValue, newValue, event) {
-	var b64 = new Packages.org.apache.commons.codec.binary.Base64();
+	if (newValue && ((newValue.length/1000)>512)){
+		img = null;
+		plugins.dialogs.showInfoDialog('INFO','Uploaded image is too large.  Please use an image that is 512KB or less.')
+		return false;
+	}	
+	
+	var b64 = new Packages.org.apache.commons.codec.binary.Base64();	
 	//display the image.
 	elements.icon_preview.text = '<img src="data:image/png;base64,' + b64.encodeAsString(newValue) + '"/>'
 	elements.icon_preview.visible = true;
@@ -1192,7 +1198,7 @@ function cleanRemoteUrl(url) {
 function getAndroid(res) {
 	// download APK
 	if (res.androidURL && res.androidURL != '' && res.androidURL.length > 5) {
-		res.androidURL = cleanRemoteUrl(res.androidURL);
+		res.androidURL = cleanRemoteUrl(res.androidURL);		
 		var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
 		application.showURL(createRemoteFile(f), '_blank');
 	}
