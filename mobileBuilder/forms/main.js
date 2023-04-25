@@ -1110,6 +1110,11 @@ function onAction$getCloudBuild(event) {
 		var regex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]/g;
 		return regex.test(str);
 	}
+	
+	function onlyNumbersAndPeriods(str){
+		var regex = /^[0-9.]*$/;
+		return regex.test(str);
+	}
 
 	if (!img) {
 		plugins.webnotificationsToastr.info('Please upload an icon for your app.')
@@ -1138,6 +1143,16 @@ function onAction$getCloudBuild(event) {
 
 	if (containsSpecialCharacters(appid)) {
 		plugins.webnotificationsToastr.info('Your App ID must not contain special characters')
+		return;
+	}
+	
+	if (!onlyNumbersAndPeriods(app_version)) {
+		plugins.webnotificationsToastr.info('Your App Version can only have numbers and periods.')
+		return;
+	}
+	
+	if (app_url.indexOf('http')==-1) {
+		plugins.webnotificationsToastr.info('Please enter a valid url.')
 		return;
 	}
 
@@ -1200,7 +1215,8 @@ function getAndroid(res) {
 	if (res.androidURL && res.androidURL != '' && res.androidURL.length > 5) {
 		res.androidURL = cleanRemoteUrl(res.androidURL);		
 		var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
-		application.showURL(createRemoteFile(f), '_blank');
+//		application.showURL(createRemoteFile(f), '_blank');
+		application.output(f.getAbsolutePath());		
 	}
 	if (res.androidBundleURL) {
 		res.androidBundleURL = cleanRemoteUrl(res.androidBundleURL);

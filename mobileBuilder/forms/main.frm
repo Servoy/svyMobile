@@ -62,7 +62,7 @@ borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;1
 cssPosition:"982,-1,-1,calc(100% - 197px),160,62",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
-formIndex:6,
+formIndex:7,
 name:"start_build",
 onActionMethodID:"87172287-5C65-4EEE-A837-43C099F502BF",
 onDoubleClickMethodID:"-1",
@@ -126,7 +126,7 @@ uuid:"4807ADD2-34BB-4284-B356-62532A058AEB"
 {
 cssPosition:"455,-1,-1,50%,44%,30",
 dataProviderID:"app_email",
-formIndex:8,
+formIndex:9,
 placeholderText:"Author Email",
 typeid:4,
 uuid:"4B0DD429-898C-432E-8E26-C6736E3A8AA3"
@@ -141,7 +141,7 @@ uuid:"58ABA27C-D85F-45B0-8F1D-7AFCAC8A9260"
 },
 {
 cssPosition:"857,-1,-1,10,45%,100",
-formIndex:10,
+formIndex:11,
 json:{
 accept:".json",
 cssPosition:{
@@ -153,7 +153,7 @@ top:"857",
 width:"45%"
 },
 dataProviderID:"googlejson",
-formIndex:10,
+formIndex:11,
 iconStyleClass:"none",
 onDataChangeMethodID:"67D74457-2761-4F1B-AD89-E217CAD45D71",
 showProgress:false,
@@ -188,7 +188,7 @@ valuelistID:"482F439E-1D42-410C-9F0D-71CC4C150394"
 {
 cssPosition:"397,-1,-1,50%,44%,30",
 dataProviderID:"app_desc",
-formIndex:5,
+formIndex:6,
 placeholderText:"My App Description...",
 typeid:4,
 uuid:"7C3C3DC8-6A0E-41AF-A856-1BC9C5030681"
@@ -211,7 +211,7 @@ uuid:"89BB3268-6424-4018-BFC4-AC3B81BB4A0E"
 },
 {
 cssPosition:"265,-1,-1,10,390,40",
-formIndex:9,
+formIndex:10,
 text:"<h4> Application Details <\/h4>  (Fill out all fields)",
 transparent:true,
 typeid:7,
@@ -220,7 +220,7 @@ uuid:"937189B0-AC65-4967-A7AD-004DEB74621D"
 {
 cssPosition:"454,-1,-1,9,44%,30",
 dataProviderID:"app_author",
-formIndex:4,
+formIndex:5,
 placeholderText:"Author Name",
 typeid:4,
 uuid:"A2140E3B-5991-4551-92FC-E6E640B05582"
@@ -235,7 +235,7 @@ uuid:"B01AD1E0-E9DA-4896-9D46-59B201853B72"
 },
 {
 cssPosition:"608,-1,-1,10,390,40",
-formIndex:11,
+formIndex:12,
 text:"<h4> Plugins <\/h4>  (Ctrl-click to select multiple)",
 transparent:true,
 typeid:7,
@@ -267,7 +267,7 @@ uuid:"C0456531-C927-4372-B2D1-FB976A2C995D"
 },
 {
 cssPosition:"318,-1,-1,50%,45%,20",
-formIndex:7,
+formIndex:8,
 text:"App Version",
 transparent:true,
 typeid:7,
@@ -336,7 +336,7 @@ uuid:"D5C5B674-27A8-4527-9B7B-8FACDFE43125"
 },
 {
 cssPosition:"1046,-1,-1,9,717,21",
-formIndex:3,
+formIndex:4,
 transparent:true,
 typeid:7,
 uuid:"DC7B67A6-D7D4-4725-AB11-12BD903CB917"
@@ -361,7 +361,7 @@ uuid:"E9A3A3D0-A0BB-4849-866D-5D989F82BB07"
 background:"#888a85",
 cssPosition:"42,-1,-1,135,75,20",
 foreground:"#ffffff",
-formIndex:12,
+formIndex:28,
 name:"clear_icon",
 onActionMethodID:"1F3E4461-006A-4F30-BA79-D3499849C184",
 onDoubleClickMethodID:"-1",
