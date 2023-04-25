@@ -1215,8 +1215,8 @@ function getAndroid(res) {
 	if (res.androidURL && res.androidURL != '' && res.androidURL.length > 5) {
 		res.androidURL = cleanRemoteUrl(res.androidURL);		
 		var f = createFile('build_' + build_id + '.apk', plugins.http.createNewHttpClient().createGetRequest(res.androidURL).executeRequest().getMediaData())
-//		application.showURL(createRemoteFile(f), '_blank');
-		application.output(f.getAbsolutePath());		
+		application.showURL(createRemoteFile(f), '_blank');
+		
 	}
 	if (res.androidBundleURL) {
 		res.androidBundleURL = cleanRemoteUrl(res.androidBundleURL);
