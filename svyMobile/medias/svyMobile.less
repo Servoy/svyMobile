@@ -342,3 +342,19 @@ html, body, .ion-app, .ion-content {
 .camera-shot{
 	z-index:1000;
 }
+
+body {
+	background-color:@header-bg-color;
+}
+
+/* add notch support */
+.header {
+	z-index:1000;
+	top: constant(safe-area-inset-top)!important;
+    top: env(safe-area-inset-top)!important;    
+}
+
+.main_content {
+	top: constant(safe-area-inset-top)!important;
+    top: env(safe-area-inset-top)!important;     
+}

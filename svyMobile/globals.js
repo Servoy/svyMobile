@@ -41,12 +41,12 @@ function onSolutionOpen(arg, queryParams) {
 	plugins.svyBlockUI.show('')
 	
 	plugins.fontawesomeLib.load();
-	
-	//initialize phonegap module
-	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);
 
 	//initialize mobile base
 	scopes.mobileBase.onSolutionOpen(arg, queryParams);
+	
+	//initialize phonegap module
+	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);
 
 	//setup main/sub menu
 	createMenuData();
