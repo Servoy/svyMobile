@@ -466,7 +466,32 @@ function removeTempFiles(){
 	plugins.file.deleteFile(build_file.getAbsolutePath())
 	var dt = new Date();
 	dt.setSeconds(dt.getSeconds() + 10);
-	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir])
+	plugins.scheduler.addJob('removeFile', dt, removeFile, [b_dir]);
+	
+	//clean up existing directory
+	try {
+
+		var temp = plugins.file.getFolderContents(plugins.file.getDefaultUploadLocation());
+
+		var currentDate = new Date();
+		for (var i = 0; i < temp.length; i++) {
+			var hours = Math.abs(currentDate - temp[i].lastModified()) / 36e5;
+			if (hours > 1 && (temp[i].getName().split('.')[1] == 'aab' || temp[i].getName().split('.')[1] == 'apk' || temp[i].getName().split('.')[1] == 'ipa')) {
+				temp[i].deleteFile();
+			}
+		}
+				
+		for (i = 0; i < temp.length; i++) {
+			hours = Math.abs(currentDate - temp[i].lastModified()) / 36e5;
+			
+			if (hours > 24) {
+				application.executeProgram('rm',['-r',temp[i].getAbsolutePath()])
+			}
+		}
+	} catch (e) {
+
+	}
+	
 }
 /**
  * @properties={typeid:24,uuid:"374EE099-0701-4F88-905F-E3BDC0DF37B4"}
