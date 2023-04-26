@@ -38,6 +38,14 @@ function onSolutionOpen(arg, queryParams, onReadyCallback) {
 		plugins.ngclientutils.contributedTags.push(android);
 	}
 
+	//add support for IOS devices with a notch
+	plugins.ngclientutils.setViewportMetaDefaultForMobileAwareSites()
+	/** @type {CustomType<ngclientutils.tag>} */
+	var tag = {
+		tagName: "meta", attrs: [{ name: "name", value: "viewport" }, { name: "content", value: "width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" }]
+	};
+	plugins.ngclientutils.replaceHeaderTag('meta', 'name', 'viewport', tag);
+
 	//initialize phonegap module
 	plugins.svyphonegapPhonegap.init(onReadyCallback);
 
