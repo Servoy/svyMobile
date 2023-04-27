@@ -12,13 +12,9 @@ uuid:"67218B72-FB92-4921-90BF-10F434293876"
 {
 extendsID:"2C37D2EF-29BE-4530-A358-ED1DC53B6B87",
 json:{
-containedForm:{
-item:{
-onActionMethodID:"082784C1-8390-4E6D-B755-D88F2876888B"
+
 },
-svy_form:"3F025F17-8EE4-4961-9DE5-A2C644D831E8"
-}
-},
+typeName:"servoycore-listformcomponent",
 typeid:47,
 uuid:"E436B322-9122-4CE9-9710-4B46F8EE9F0B"
 }

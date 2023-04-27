@@ -37,10 +37,12 @@ left:"0",
 right:"0",
 top:"40",
 width:"-1"
-}
+},
+styleClass:"main_content"
 },
 name:"content",
-typeName:"bootstrapcomponents-tablesspanel",
+styleClass:"main_content",
+typeName:"servoycore-formcontainer",
 typeid:47,
 uuid:"B5039CB7-188F-428F-B2A9-DD34BBB1075C"
 },

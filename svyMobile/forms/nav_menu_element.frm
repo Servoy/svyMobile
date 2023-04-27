@@ -23,9 +23,9 @@ styleClass:"nav_button"
 },
 name:"item",
 styleClass:"nav_button",
-typeName:"servoyextra-onrenderlabel",
+typeName:"bootstrapcomponents-datalabel",
 typeid:47,
-uuid:"D5302B70-1C15-4DE1-BECD-1D442B0EF88A"
+uuid:"EAE47514-EF21-4AA7-919E-D330891FA60F"
 }
 ],
 name:"nav_menu_element",

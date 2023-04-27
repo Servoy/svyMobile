@@ -41,12 +41,12 @@ function onSolutionOpen(arg, queryParams) {
 	plugins.svyBlockUI.show('')
 	
 	plugins.fontawesomeLib.load();
-
-	//initialize mobile base
-	scopes.mobileBase.onSolutionOpen(arg, queryParams);
 	
 	//initialize phonegap module
-	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);
+	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);	
+	
+	//initialize mobile base
+	scopes.mobileBase.onSolutionOpen(arg, queryParams);	
 
 	//setup main/sub menu
 	createMenuData();
@@ -79,6 +79,7 @@ function onSolutionOpen(arg, queryParams) {
  * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
  */
 function onReadyCallBack() {
+	application.output('onReadyCB!')
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);	
 	

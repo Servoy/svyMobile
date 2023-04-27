@@ -344,17 +344,10 @@ html, body, .ion-app, .ion-content {
 }
 
 body {
-	background-color:@header-bg-color;
+	background-color:@header-bg-color;	
 }
-
 /* add notch support */
-.header {
-	z-index:1000;
+.svy-main-window-container {
 	top: constant(safe-area-inset-top)!important;
-    top: env(safe-area-inset-top)!important;    
-}
-
-.main_content {
-	top: constant(safe-area-inset-top)!important;
-    top: env(safe-area-inset-top)!important;     
+    top: env(safe-area-inset-top)!important;
 }

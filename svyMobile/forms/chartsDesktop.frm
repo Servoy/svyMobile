@@ -19,7 +19,7 @@ visible:true,
 waitForData:false
 },
 name:"tablesspanel_615",
-typeName:"bootstrapcomponents-tablesspanel",
+typeName:"servoycore-formcontainer",
 typeid:47,
 uuid:"2094EA16-9638-4780-A3C8-E50B8F70EEC1"
 },
@@ -78,7 +78,7 @@ width:"48%"
 waitForData:false
 },
 name:"tablesspanel_928",
-typeName:"bootstrapcomponents-tablesspanel",
+typeName:"servoycore-formcontainer",
 typeid:47,
 uuid:"612125F7-B233-42A2-A754-2DE1F94CA98F"
 },
@@ -97,7 +97,7 @@ width:"48%"
 waitForData:false
 },
 name:"tablesspanel_517",
-typeName:"bootstrapcomponents-tablesspanel",
+typeName:"servoycore-formcontainer",
 typeid:47,
 uuid:"95340FBB-0B3F-4446-A164-79D2DE926D63"
 },
@@ -116,7 +116,7 @@ width:"48%"
 waitForData:false
 },
 name:"tablesspanel_427",
-typeName:"bootstrapcomponents-tablesspanel",
+typeName:"servoycore-formcontainer",
 typeid:47,
 uuid:"9B825E4A-9CD5-4BA9-ADAA-BDD904C335F1"
 }

@@ -64,8 +64,8 @@ function onShow(firstShow, event) {
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
 		scopes.mobileBase.goBack(event);
 	} else {
-		plugins.svyphonegapQrscanner.enableLight(prepcb,prepcb)//use light and prep
-//		plugins.svyphonegapQrscanner.prepare(prepcb, prepcb)
+//		plugins.svyphonegapQrscanner.enableLight(prepcb,prepcb)//use light and prep
+		plugins.svyphonegapQrscanner.prepare(prepcb, prepcb)
 	}
 }
 
