@@ -346,8 +346,13 @@ html, body, .ion-app, .ion-content {
 body {
 	background-color:@header-bg-color;	
 }
+
+.camera-override {
+	background-color: transparent!important;
+}
+
 /* add notch support */
 .svy-main-window-container {
 	top: constant(safe-area-inset-top)!important;
-    top: env(safe-area-inset-top)!important;
+    top: env(safe-area-inset-top)!important;    
 }

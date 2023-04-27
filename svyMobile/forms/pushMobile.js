@@ -24,7 +24,7 @@ var token
  * @properties={typeid:24,uuid:"79EA9E16-E42E-4F3C-B292-DBEB69BAB528"}
  */
 function onShow(firstShow, event) {
-	messages = '';
+	messages = '';	
 	if (scopes.globals.phonegapEnabled) {
 	//initialize and generate notification token
 	plugins.svyphonegapPush.getToken(updateToken, logInfo);

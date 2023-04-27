@@ -86,12 +86,13 @@ function start() {
 		height: controller.getPartHeight(JSPart.BODY - 100),
 		camera: 1, //use back camera
 		toBack: true,
-		tapPhoto: false,
+		tapPhoto: true,
 		tapFocus: true,
 		previewDrag: false,
 		storeToFile: false,
 		disableExifHeaderStripping: false
 	};
+	plugins.ngclientutils.addClassToDOMElement('body','camera-override');
 	plugins.svyphonegapCamerapreview.startCamera(options, cb, cb);
 	elements.photo.visible = false;		
 	application.executeLater(setOptions,1000)
@@ -125,5 +126,6 @@ function setOptions(){
  */
 function onHide(event) {
 	plugins.svyphonegapCamerapreview.stopCamera(cb,cb)
+	plugins.ngclientutils.removeClassFromDOMElement('body','camera-override');
 	return true
 }
