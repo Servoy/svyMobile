@@ -18,7 +18,7 @@ styleClass:"mobile_base"
 },
 name:"mobile",
 styleClass:"mobile_base",
-typeName:"bootstrapcomponents-tablesspanel",
+typeName:"servoycore-formcontainer",
 typeid:47,
 uuid:"599D9AC4-8993-44BC-B457-996380DA928E"
 },
@@ -38,10 +38,12 @@ left:"0",
 right:"0",
 top:"0",
 width:"-1"
-}
+},
+styleClass:"desktop_base"
 },
 name:"desktop",
-typeName:"bootstrapcomponents-tablesspanel",
+styleClass:"desktop_base",
+typeName:"servoycore-formcontainer",
 typeid:47,
 uuid:"DF885BB4-324C-4F54-8A53-235423D7443C"
 }
