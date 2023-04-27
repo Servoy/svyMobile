@@ -90,7 +90,8 @@ function onHide(event) {
  */
 function sendNotification() {
 	messages = 'Sending message <br> to connected devices..'
-	plugins.svyphonegapPush.sendNotification(scopes.globals.fcmAuthKey, 'INFO', 'This is a notification from svyMobile', 'svyMobile', logInfo, logInfo)
+	//channel 'urgent_alert' will try to push it out as a popup notification and not hidden in notification bar.
+	plugins.svyphonegapPush.sendNotification(scopes.globals.fcmAuthKey, 'INFO', 'This is a notification from svyMobile', 'svyMobile','urgent_alert', logInfo, logInfo)
 }
 
 /**
