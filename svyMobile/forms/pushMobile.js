@@ -27,9 +27,9 @@ function onShow(firstShow, event) {
 	messages = '';	
 	if (scopes.globals.phonegapEnabled) {
 	//initialize and generate notification token
-	plugins.svyphonegapPush.getToken(updateToken, logInfo);
+	plugins.svyphonegapPush.getToken(updateToken);
 	//when receiving a notification display a message if UI is visible.
-	plugins.svyphonegapPush.onNotification(showMessage, logInfo, logInfo)
+	plugins.svyphonegapPush.onNotification(showMessage)
 	} else {
 		messages = 'Plugin is not loaded or supported.'
 		plugins.dialogs.showInfoDialog('INFO','Cannot run this solution via web.');
@@ -80,7 +80,7 @@ function logInfo(m) {
  */
 function onHide(event) {
 	//unSubscribe from notifications
-	plugins.svyphonegapPush.unubscribeFromTopic(logInfo, logInfo, 'svyMobile')
+	plugins.svyphonegapPush.unubscribeFromTopic('svyMobile',logInfo)
 	return true
 }
 
@@ -105,7 +105,7 @@ function sendNotification() {
  */
 function onAction$generateToken(event) {
 	messages = 'Generating token...'
-	plugins.svyphonegapPush.getToken(updateToken, logInfo);
+	plugins.svyphonegapPush.getToken(updateToken);
 }
 
 /**
@@ -120,7 +120,7 @@ function onAction$generateToken(event) {
 function onAction$subscribe(event) {
 	//subscribe to notifications where topic = svyMobile
 	messages = 'Subscribing to <br> notification topics..'
-	plugins.svyphonegapPush.subscribeToTopic(logInfo, logInfo, 'svyMobile')
+	plugins.svyphonegapPush.subscribeToTopic('svyMobile',logInfo)
 }
 
 /**
@@ -135,5 +135,5 @@ function onAction$subscribe(event) {
 function onAction$unsubscribe(event) {
 	//unSubscribe from notifications
 	messages = 'Unsubscribing from <br> notification topics..'
-	plugins.svyphonegapPush.unubscribeFromTopic(logInfo, logInfo, 'svyMobile')
+	plugins.svyphonegapPush.unubscribeFromTopic('svyMobile',logInfo)
 }
