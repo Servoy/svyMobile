@@ -3,35 +3,28 @@ useCssPosition:true",
 encapsulation:44,
 items:[
 {
-cssPosition:"86,-1,-1,220,45%,30",
-dataProviderID:"android_title",
-placeholderText:"leave blank to use App ID",
-typeid:4,
-uuid:"023D011C-5122-4B02-A387-93290DE6D9C9"
-},
-{
-cssPosition:"362,-1,-1,50%,45%,20",
+cssPosition:"362,-1,-1,25%,50%,20",
 text:"Certificate Password (required)",
 transparent:true,
 typeid:7,
 uuid:"1B94A430-1A4A-4A99-9B77-85567050F102"
 },
 {
-cssPosition:"175,-1,-1,221,45%,20",
+cssPosition:"135,-1,-1,221,45%,20",
 text:"Key Password (required)",
 transparent:true,
 typeid:7,
 uuid:"2F03B835-E7B7-4B26-9938-FE43F2468B80"
 },
 {
-cssPosition:"197,-1,-1,221,45%,30",
+cssPosition:"167,-1,-1,221,45%,30",
 dataProviderID:"android_key_pass",
 displayType:6,
 typeid:4,
 uuid:"3EACF762-40F6-4C2F-B847-5D3398CD5728"
 },
 {
-cssPosition:"255,-1,-1,221,45%,30",
+cssPosition:"235,-1,-1,221,45%,30",
 dataProviderID:"android_key_store_pass",
 displayType:6,
 typeid:4,
@@ -44,13 +37,6 @@ typeid:19,
 uuid:"4D2F648B-9594-4944-842B-D07E2351220A"
 },
 {
-cssPosition:"64,-1,-1,220,45%,20",
-text:"Title",
-transparent:true,
-typeid:7,
-uuid:"7D9703C2-F10F-47D0-83C9-15B1EF0B1C3B"
-},
-{
 cssPosition:"5,10,-1,10,100%,55",
 horizontalAlignment:0,
 text:"<h3>Setup Android Keystore<\/h3> (required for uploading to play store)",
@@ -59,14 +45,14 @@ typeid:7,
 uuid:"8DABCC22-D232-4F77-9ADB-D7A5AE70F3FB"
 },
 {
-cssPosition:"233,-1,-1,221,45%,20",
+cssPosition:"210,-1,-1,221,45%,20",
 text:"Key Store Password (required)",
 transparent:true,
 typeid:7,
 uuid:"95F813ED-064E-443B-AC9D-63EAC79748AD"
 },
 {
-cssPosition:"120,-1,-1,221,45%,20",
+cssPosition:"80,-1,-1,221,45%,20",
 text:"Alias (required)",
 transparent:true,
 typeid:7,
@@ -129,7 +115,7 @@ typeid:7,
 uuid:"C2BD5824-C819-4126-8664-4B3BAA93D458"
 },
 {
-cssPosition:"142,-1,-1,221,45%,30",
+cssPosition:"102,-1,-1,221,45%,30",
 dataProviderID:"android_alias",
 typeid:4,
 uuid:"CC756B9E-9502-497C-9C88-2F01F6396575"
@@ -173,25 +159,11 @@ typeid:7,
 uuid:"D69CFDF1-EFE6-41FD-90D9-343892D7F9A2"
 },
 {
-cssPosition:"384,-1,-1,50%,45%,30",
+cssPosition:"384,-1,-1,25%,50%,30",
 dataProviderID:"ios_cert_pass",
 displayType:6,
 typeid:4,
 uuid:"F022F9F5-446A-474F-946B-2AD38534692A"
-},
-{
-cssPosition:"385,-1,-1,10,45%,30",
-dataProviderID:"ios_title",
-placeholderText:"leave blank to use App ID",
-typeid:4,
-uuid:"F1B649C6-F744-4AEE-A130-9A218BDC23B3"
-},
-{
-cssPosition:"363,-1,-1,10,45%,20",
-text:"iOS Key Title",
-transparent:true,
-typeid:7,
-uuid:"F97338B0-A106-44B3-BE1D-5761CB74843B"
 },
 {
 cssPosition:"425,-1,-1,10,45%,100",

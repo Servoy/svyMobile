@@ -683,7 +683,8 @@ function createConfig() {
 	xml += '<preference name="target-device" value="universal" />\n'
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
 	xml += '<preference name="InAppBrowserStorageEnabled" value="true" />\n'
-	xml += '<preference name="Orientation" value="' + app_orientation + '" />\n'
+	xml += '<preference name="Orientation" value="' + app_orientation + '" />\n'	
+	
 	xml += '<platform name="android">\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
 		xml += '<allow-navigation href="https://*"/>'
@@ -744,6 +745,7 @@ function createConfig() {
 
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
+	xml += '<preference name="WKSuspendInBackground" value="false" />\n';
 
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<hook src="hooks/qrscanner_add_barcode/301_ios.js" type="after_prepare" ></hook>'
 
@@ -881,7 +883,8 @@ function createIndexHTML() {
 	htm += '}';
 	htm += '</style>';
 	htm += '<head>'
-	htm += '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">'
+	htm += '<meta http-equiv="Content-Security-Policy" content="default-src ' + "'self' data:* gap://* tel:* 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'"+'" />'
+	htm += '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"/>'		
 	htm += '</head>'
 	htm += '<body>'
 	htm += '</body>'
