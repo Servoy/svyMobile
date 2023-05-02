@@ -840,7 +840,7 @@ function createConfig() {
 	}
 
 	if (plugins_list.indexOf('Printer') != -1) {
-		xml += '<plugin name="cordova-plugin-printer" spec="^0.7.3" />\n'
+		xml += '<plugin name="cordova-plugin-printer" spec="^0.8.0" />\n'
 		xml += '<plugin name="cordova-print-pdf-plugin" spec="https://github.com/sarahgoldman/cordova-print-pdf-plugin" />\n'
 	}
 	if (addAndroidX) {
