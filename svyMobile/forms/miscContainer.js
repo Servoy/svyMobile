@@ -55,3 +55,29 @@ function onAction$beep(event) {
 function onAction$vibrate(event) {
 	plugins.svyphonegapPhonegap.executeScript('navigator.vibrate(1000)')	
 }
+
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"90C02F23-BB8E-42E4-8E65-1DE00DD4950E"}
+ */
+function onAction$openPhone(event) {
+	plugins.svyphonegapBrowser.openHrefTag('tel:12345678');
+}
+
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"F22F6985-EE0C-4961-9406-CBDFD840B74E"}
+ */
+function onAction$sendEmail(event) {
+	plugins.svyphonegapBrowser.openHrefTag('mailto:info@servoy.com');
+}

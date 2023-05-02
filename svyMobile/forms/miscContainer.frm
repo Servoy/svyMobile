@@ -19,6 +19,14 @@ typeid:7,
 uuid:"7AB3AB64-1373-460F-9537-157E1772C808"
 },
 {
+cssPosition:"158,13,-1,9,104,38",
+onActionMethodID:"90C02F23-BB8E-42E4-8E65-1DE00DD4950E",
+rolloverCursor:12,
+text:"Open Phone Dialer",
+typeid:7,
+uuid:"8081FA0A-91C6-47A4-8D42-A87E531FB151"
+},
+{
 cssPosition:"110,12,-1,8,104,38",
 onActionMethodID:"BEC1A3F9-701D-4888-A3B6-1E2342315839",
 rolloverCursor:12,
@@ -27,16 +35,24 @@ typeid:7,
 uuid:"AFE641F6-0DA1-499A-92B0-959126896B2A"
 },
 {
-height:251,
+height:282,
 partType:5,
 typeid:19,
 uuid:"DF982BA6-E697-48C1-9D04-C186AA5E6720"
+},
+{
+cssPosition:"205,12,-1,8,104,38",
+onActionMethodID:"F22F6985-EE0C-4961-9406-CBDFD840B74E",
+rolloverCursor:12,
+text:"Send Email",
+typeid:7,
+uuid:"EA67983F-2679-4B25-AB1E-CC7574AD9390"
 }
 ],
 name:"miscContainer",
 navigatorID:"-1",
 onShowMethodID:"8C088CF7-1A94-402E-8C93-285E58572217",
 showInMenu:true,
-size:"244,480",
+size:"244,251",
 typeid:3,
 uuid:"01B57F4D-CA48-4D35-BF41-686F33C6E5A2"
