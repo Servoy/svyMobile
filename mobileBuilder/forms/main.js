@@ -701,8 +701,8 @@ function createConfig() {
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
 
-	// add support for target level 31
-	xml += '<preference name="android-targetSdkVersion" value="31"/>\n'
+	// add support for target level 33
+	xml += '<preference name="android-targetSdkVersion" value="33"/>\n'
 	//add android exported option to main activity
 	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'
 	//if we are using camera plugins, add the appropriate permissions
