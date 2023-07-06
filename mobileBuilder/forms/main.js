@@ -463,6 +463,7 @@ function onAction$getLocalBuild(event, cb) {
  */
 function removeTempFiles(){
 	plugins.file.deleteFolder(b_dir, false);
+	if(build_file)
 	plugins.file.deleteFile(build_file.getAbsolutePath())
 	var dt = new Date();
 	dt.setSeconds(dt.getSeconds() + 10);
