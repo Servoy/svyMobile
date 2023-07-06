@@ -702,6 +702,7 @@ function createConfig() {
 	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
 
 	// add support for target level 33
+	xml += '<preference name="cordova-version" value="cli-10.1.2" />'
 	xml += '<preference name="android-targetSdkVersion" value="33"/>\n'
 	//add android exported option to main activity
 	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'
