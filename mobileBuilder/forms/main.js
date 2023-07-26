@@ -758,6 +758,9 @@ function createConfig() {
 		xml += '<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
 		xml += '<string>Require Location for showing Map</string>\n'
 		xml += '</edit-config>\n'
+		xml += '<edit-config target="NSLocationAlwaysAndWhenInUseUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">\n'
+		xml += '<string>Require Location for showing Map</string>\n'
+		xml += '</edit-config>\n'			
 	}
 
 	if (addAndroidX) {
