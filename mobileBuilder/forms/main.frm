@@ -317,7 +317,7 @@ allowedFileTypes:[
 ".zip",
 "zip"
 ],
-maxFileSize:10000000,
+maxFileSize:13000000,
 maxNumberOfFiles:1,
 minNumberOfFiles:1,
 svyUUID:"A1A2E498-9FBA-4513-9071-CB8A1C80BF94"
