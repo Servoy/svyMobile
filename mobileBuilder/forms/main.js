@@ -839,6 +839,7 @@ function createConfig() {
 	xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
 	xml += '<plugin name="cordova-custom-config" source="https://github.com/dpa99c/cordova-custom-config" />\n'
+	xml += '<plugin name="phonegap-plugin-mobile-accessibility" spec="https://github.com/tuanway/phonegap-mobile-accessibility" />\n'
 
 	if (plugins_list.indexOf('IDTech CR') != -1) {
 		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag" />\n'
@@ -869,8 +870,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation" source="npm" />\n'
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
-	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'
-	if (plugins_list.indexOf('Mobile Accessibility') != -1) xml += '<plugin name="phonegap-plugin-mobile-accessibility" spec="https://github.com/herdwatch-apps/phonegap-mobile-accessibility" />\n'	
+	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'	
 
 	//can only use Bar code scanner or QR Code Scanner, not both.
 
