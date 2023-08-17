@@ -13,17 +13,18 @@ function createMenuData() {
 	scopes.mobileBase.addMenuItem('location', 'Location', 'fa-search-location', 'nav-green', 3);
 	scopes.mobileBase.addMenuItem('push', 'Push', 'fa-bell', 'nav-orange', 3);
 	scopes.mobileBase.addMenuItem('fingerprint', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
-	scopes.mobileBase.addMenuItem('file', 'File', 'fa-folder', 'nav-yellow', 3);	
-		
-	if(scopes.phonegap.isMobile.iOS() || scopes.phonegap.isMobile.iPadOS())
-	scopes.mobileBase.addMenuItem('card', 'Card', 'fa-credit-card', 'nav-white', 3);
-	
+	scopes.mobileBase.addMenuItem('file', 'File', 'fa-folder', 'nav-yellow', 3);
+
+	if (scopes.phonegap.isMobile.iOS() || scopes.phonegap.isMobile.iPadOS())
+		scopes.mobileBase.addMenuItem('card', 'Card', 'fa-credit-card', 'nav-white', 3);
+
 	scopes.mobileBase.addMenuItem('barcode', 'Bar Code', 'fa-barcode', 'nav-green', 3);
 	scopes.mobileBase.addMenuItem('qrcode', 'QR Code', 'fa-qrcode', 'nav-skyblue', 3);
-	scopes.mobileBase.addMenuItem('print', 'Print', 'fa-print', 'nav-neon', 3);	
+	scopes.mobileBase.addMenuItem('print', 'Print', 'fa-print', 'nav-neon', 3);
 	scopes.mobileBase.addMenuItem('misc', 'Misc', 'fa-play', 'nav-white', 3);
-	
+
 	databaseManager.saveData(f);
+
 }
 
 /**
@@ -39,14 +40,14 @@ function createMenuData() {
  */
 function onSolutionOpen(arg, queryParams) {
 	plugins.svyBlockUI.show('')
-	
+
 	plugins.fontawesomeLib.load();
-	
+
 	//initialize phonegap module
-	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);	
-	
+	scopes.phonegap.onSolutionOpen(arg, queryParams, onReadyCallBack);
+
 	//initialize mobile base
-	scopes.mobileBase.onSolutionOpen(arg, queryParams);	
+	scopes.mobileBase.onSolutionOpen(arg, queryParams);
 
 	//setup main/sub menu
 	createMenuData();
@@ -58,9 +59,9 @@ function onSolutionOpen(arg, queryParams) {
 
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
-	
+
 	plugins.svyBlockUI.stop();
-	
+
 	//add a javascript file to the head tag (helps us load a service worker if it exists in ROOT Context)
 	/** @type {CustomType<ngclientutils.tag>} */
 	var load_sw = {
@@ -70,9 +71,36 @@ function onSolutionOpen(arg, queryParams) {
 			value: application.getServerURL() + "resources/fs/" + application.getSolutionName() + "/" + 'load-service-worker.js'
 		}]
 	};
-	
+
 	plugins.ngclientutils.contributedTags.push(load_sw);
-	
+
+	//set text scaling for android
+	if (scopes.phonegap.isMobile.Android()) {
+		
+		if (application.getWindow().getWidth() < 630){
+			plugins.svyphonegapPhonegap.setTextZoom(140);
+		}
+		
+		if (application.getWindow().getWidth() < 549) {
+			plugins.svyphonegapPhonegap.setTextZoom(130);
+		}
+		
+		if (application.getWindow().getWidth() < 490) {
+			plugins.svyphonegapPhonegap.setTextZoom(120);
+		}
+		
+		if (application.getWindow().getWidth() < 445) {
+			plugins.svyphonegapPhonegap.setTextZoom(110);
+		}
+
+		if (application.getWindow().getWidth() < 395) {
+			plugins.svyphonegapPhonegap.setTextZoom(100);
+		}
+
+		if (application.getWindow().getWidth() < 360) {
+			plugins.svyphonegapPhonegap.setTextZoom(90);
+		}
+	}
 }
 
 /**
@@ -81,10 +109,10 @@ function onSolutionOpen(arg, queryParams) {
 function onReadyCallBack() {
 	application.output('onReadyCB!')
 	//add check for back button press
-	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);	
-	
+	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
+
 	//get build version
-	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0];	
+	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0];
 	forms.nav.version = 'V' + buildInfo.versionNumber;
 	//check if phonegap is supported
 	phonegapEnabled = true;
