@@ -681,6 +681,7 @@ function createConfig() {
 	xml += '<allow-navigation href="*" />\n'
 	xml += '<allow-intent href="https://*/*" />\n'
 	xml += '<preference name="swift-version" value="5" />\n'
+	xml += '<preference name="SwiftVersion" value="5"/>\n'			
 	xml += '<preference name="target-device" value="universal" />\n'
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
 	xml += '<preference name="InAppBrowserStorageEnabled" value="true" />\n'
