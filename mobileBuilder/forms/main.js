@@ -269,6 +269,9 @@ function onShow(firstShow, event) {
 		"progressBar": false
 	}
 	plugins.webnotificationsToastr.setGlobalOptions(options);
+	
+	//show discontinue message
+	forms.discontinue_message.show();
 }
 
 /**
