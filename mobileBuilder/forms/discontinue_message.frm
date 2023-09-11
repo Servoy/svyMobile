@@ -5,7 +5,7 @@ items:[
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,7.0;7.0;7.0;7.0;7.0;7.0;7.0;7.0,solid;solid;solid;solid",
-cssPosition:"132,-1,-1,calc(100% - 412px),213,43",
+cssPosition:"132,-1,-1,calc(100% - 402px),213,43",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 horizontalAlignment:0,
@@ -26,7 +26,7 @@ uuid:"15081BFE-959B-4387-A770-96A8075BF187"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"132,-1,-1,calc(100% - 185px),143,43",
+cssPosition:"132,-1,-1,calc(100% - 175px),143,43",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 name:"auth",
