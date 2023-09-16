@@ -1112,6 +1112,7 @@ function channelCopy(src, dest) {
  * @properties={typeid:24,uuid:"39181E26-0B58-4B7C-9CB3-C62FE6533BDB"}
  */
 function addKeys() {
+	scopes.cordovaAuth.authenticated = false;
 	var keys = forms.cordova_keys.show();
 	if (keys.android_keystore || (keys.ios_cert && keys.ios_provision)) {
 		plugins.svyBlockUI.show('Adding keys..');
@@ -1207,7 +1208,7 @@ function onAction$getCloudBuild(event) {
 
 	setBuildID();
 	if (!scopes.cordovaAuth.authenticated) {
-		if (forms.cordova_auth.show()) {
+		if (forms.cordova_auth.show(false)) {
 			if (!addKeys()) return;
 			onAction$getLocalBuild(event, scopes.cordovaAuth.createApp);
 		}
@@ -1321,7 +1322,7 @@ function onFileUploaded(jsUpload) {
 	uploadBuildFile.setBytes(jsUpload.getBytes(), true);
 	elements.multifileupload.reset();
 	if (!scopes.cordovaAuth.authenticated) {
-		if (forms.cordova_auth.show()) {
+		if (forms.cordova_auth.show(true)) {
 			if (!addKeys()) return;
 			plugins.svyBlockUI.spinner = 'Wandering Cubes';
 			plugins.svyBlockUI.show('Compilation will take a few minutes...');
@@ -1332,7 +1333,7 @@ function onFileUploaded(jsUpload) {
 		plugins.svyBlockUI.spinner = 'Wandering Cubes';
 		plugins.svyBlockUI.show('Compilation will take a few minutes...');
 		scopes.cordovaAuth.createApp(null, keyObj, uploadBuildFile);
-	}
+	}	
 	return;
 }
 

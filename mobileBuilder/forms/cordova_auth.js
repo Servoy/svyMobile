@@ -1,4 +1,17 @@
 /**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"CAD626F1-EBF6-4503-8FAE-EAC09F73E38A"}
+ */
+function onAction$gotoCCC(event) {
+	application.showURL('https://admin.servoy-cloud.eu/','_self')
+}
+
+/**
  * Perform the element default action.
  *
  * @param {JSEvent} event the event that triggered the action
@@ -15,7 +28,14 @@ function onAction$authenticate(event) {
 /**
  * @properties={typeid:24,uuid:"EB375C60-469D-4AC1-B9BD-20B9822AC080"}
  */
-function show() {
+function show(customUpload) {
+	if (customUpload) {
+		elements.authc.visible = false;
+		elements.auth.visible = true;
+	} else {
+		elements.authc.visible = true;
+		elements.auth.visible = false;
+	}
 	var w = application.createWindow(controller.getName(), JSWindow.MODAL_DIALOG);
 	w.undecorated = true;
 	w.show(controller.getName());	
@@ -32,4 +52,6 @@ function show() {
  *
  * @properties={typeid:24,uuid:"37E3DEC4-88BA-4F29-BB67-4AFF2902654F"}
  */
-function onShow(firstShow, event) { }
+function onShow(firstShow, event) {
+	scopes.cordovaAuth.authenticated = false;
+}

@@ -17,9 +17,24 @@ typeid:7,
 uuid:"6FC15AD6-24A7-4C4C-96D8-719E25D9AC24"
 },
 {
+background:"#4e9a06",
+borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,7.0;7.0;7.0;7.0;7.0;7.0;7.0;7.0,solid;solid;solid;solid",
+cssPosition:"134,-1,-1,calc(100% - 321px),213,43",
+fontType:"FreeSans,1,15",
+foreground:"#ffffff",
+horizontalAlignment:0,
+name:"authc",
+onActionMethodID:"CAD626F1-EBF6-4503-8FAE-EAC09F73E38A",
+onDoubleClickMethodID:"-1",
+onRightClickMethodID:"-1",
+text:"Cloud Control Center",
+typeid:7,
+uuid:"707E5C5A-0F2C-4E71-B89A-54061C02798F"
+},
+{
 cssPosition:"29,-1,-1,37,375,112",
 horizontalAlignment:0,
-text:"<h4>This service is currently in a working <br> beta state and may exihibit some issues. <br> Please report any that you may find.<\/h4>\r\
+text:"<h4>This service will be <b>discontinued <\/b>in the <br> upcoming weeks.  Mobile app generation will <br> be migrated over to the  Servoy <br> Cloud Control Center.<\/h4>\r\
 ",
 transparent:true,
 typeid:7,
@@ -28,7 +43,7 @@ uuid:"A2CAC5E2-8A4A-4C0F-B2C1-37913177D88C"
 {
 background:"#4e9a06",
 borderType:"RoundedBorder,0.0,0.0,0.0,0.0,#000000,#000000,#000000,#000000,12.0;12.0;12.0;12.0;12.0;12.0;12.0;12.0,solid;solid;solid;solid",
-cssPosition:"135,-1,-1,calc(100% - 277px),126,43",
+cssPosition:"133,-1,-1,calc(100% - 284px),126,43",
 fontType:"FreeSans,1,15",
 foreground:"#ffffff",
 name:"auth",
@@ -37,7 +52,8 @@ onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
 text:"Continue",
 typeid:7,
-uuid:"B002F424-FBAB-4D42-AFE4-08957DDEC47B"
+uuid:"B002F424-FBAB-4D42-AFE4-08957DDEC47B",
+visible:false
 }
 ],
 name:"cordova_auth",
