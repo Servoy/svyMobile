@@ -90,13 +90,37 @@ var rotation;
 /**
  * @properties={typeid:24,uuid:"97978972-FF14-4671-B4D5-6D0F447A9417"}
  */
-function toggleRotation(){
-	if (!rotation) rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT;
-	if (rotation == plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT) {
-		rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().LANDSCAPE
+function toggleRotation(){	
+	if (!rotation) rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT_PRIMARY;
+	if (rotation == plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT_PRIMARY) {
+		rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().LANDSCAPE_PRIMARY
 	} else {
-		rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT
+		rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT_PRIMARY
 	}
 	
 	plugins.svyphonegapPhonegapOrientation.lock(rotation);
+}
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"8ADB2BD8-F399-4917-83A9-12133854F14E"}
+ */
+function onAction$capture(event) {
+//	plugins.svycaptureAudio.capture(captureCB,captureCB);
+//	plugins.svycaptureScreen.capture(null,captureCB);
+	plugins.svycaptureScreen.captureViaDisplayMedia(captureCB);
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param data
+ *
+ * @properties={typeid:24,uuid:"12B59ABD-A5B5-48A4-910A-4469EA93144D"}
+ */
+function captureCB(data) {
+	application.output(data)
 }
