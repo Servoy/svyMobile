@@ -81,3 +81,22 @@ function onAction$openPhone(event) {
 function onAction$sendEmail(event) {
 	plugins.svyphonegapBrowser.openHrefTag('mailto:info@servoy.com');
 }
+
+/**
+ * @properties={typeid:35,uuid:"1E0D64F8-B4E8-46BB-B3C6-A25A229D6513",variableType:-4}
+ */
+var rotation;
+
+/**
+ * @properties={typeid:24,uuid:"97978972-FF14-4671-B4D5-6D0F447A9417"}
+ */
+function toggleRotation(){
+	if (!rotation) rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT;
+	if (rotation == plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT) {
+		rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().LANDSCAPE
+	} else {
+		rotation = plugins.svyphonegapPhonegapOrientation.getOrientationTypes().PORTRAIT
+	}
+	
+	plugins.svyphonegapPhonegapOrientation.lock(rotation);
+}

@@ -3,6 +3,14 @@ useCssPosition:true",
 encapsulation:108,
 items:[
 {
+cssPosition:"250,13,-1,9,104,38",
+onActionMethodID:"97978972-FF14-4671-B4D5-6D0F447A9417",
+rolloverCursor:12,
+text:"Toggle Rotation",
+typeid:7,
+uuid:"3B5919AC-B687-430F-A915-0DFC962BCB8A"
+},
+{
 cssPosition:"60,12,-1,8,104,38",
 onActionMethodID:"1F77748E-D0F0-4BFC-8177-A05E27B94CF6",
 rolloverCursor:12,
@@ -35,7 +43,7 @@ typeid:7,
 uuid:"AFE641F6-0DA1-499A-92B0-959126896B2A"
 },
 {
-height:282,
+height:307,
 partType:5,
 typeid:19,
 uuid:"DF982BA6-E697-48C1-9D04-C186AA5E6720"
@@ -53,6 +61,6 @@ name:"miscContainer",
 navigatorID:"-1",
 onShowMethodID:"8C088CF7-1A94-402E-8C93-285E58572217",
 showInMenu:true,
-size:"244,251",
+size:"244,282",
 typeid:3,
 uuid:"01B57F4D-CA48-4D35-BF41-686F33C6E5A2"

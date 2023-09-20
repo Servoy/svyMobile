@@ -46,7 +46,8 @@ function isAvailError(err) {
  */
 function showAuth() {
 	var config = {
-		clientId: "Servoy Fingerprint Demo", //what to show
+		description:"Please authenticate to continue.", //show for ios message
+		clientId: "Please authenticate to continue.", //what to show for android message
 		clientSecret: "password" //Only necessary for Android
 	};
 	plugins.svyphonegapFingerprintscan.show(config, showAuthSuccess, showAuthErr)

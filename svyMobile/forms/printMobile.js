@@ -107,7 +107,7 @@ function onAction$Run(event) {
 	//print whatever is in content
 	plugins.svyBlockUI.show('Loading...');
 	plugins.svyBlockUI.stop(1500);
-	plugins.svyphonegapPrinter.print(content, { name: "run" }, callback)
+	plugins.svyphonegapPrinter.print(content, { name: "run" }, callback)	
 }
 
 /**
@@ -116,7 +116,7 @@ function onAction$Run(event) {
  *
  * @properties={typeid:24,uuid:"DEE83867-556F-4967-96C8-4316D9D64E9F"}
  */
-function callback(data) {	
+function callback(data) {
 	plugins.svyBlockUI.stop();
 	application.output('Printed Something');
 }
