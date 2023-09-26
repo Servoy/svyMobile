@@ -49,9 +49,15 @@ y:11
 },
 onFileUploaded:"75ECA0F5-8EEC-4153-82DE-2A4418D96175",
 sources:[
-"ScreenCapture",
 "Webcam"
-]
+],
+webcamOptions:{
+modes:[
+"picture"
+],
+showVideoSourceDropdown:true,
+target:"Dashboard"
+}
 },
 location:"11,11",
 name:"multifileupload_1",
