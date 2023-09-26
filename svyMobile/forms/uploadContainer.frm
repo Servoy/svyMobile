@@ -68,7 +68,6 @@ uuid:"D095B4AC-F438-4348-BFAD-388A14044F53"
 ],
 name:"uploadContainer",
 navigatorID:"-1",
-onHideMethodID:"74D6A03F-90B0-44B5-8A86-09C0D8983EE8",
 onShowMethodID:"9399DA60-753E-4C5A-B247-D852DA9A97F2",
 showInMenu:true,
 size:"244,480",
