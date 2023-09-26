@@ -36,7 +36,7 @@ function onAction$takePicture(event) {
  */
 function onShow(firstShow, event) {
 	messages = '';
-	if (scopes.globals.phonegapEnabled) {
+	if (!scopes.globals.phonegapEnabled) {
 		messages = 'Plugin is not loaded or supported.'
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
 		scopes.mobileBase.goBack(event);
