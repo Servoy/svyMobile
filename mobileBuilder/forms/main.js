@@ -859,7 +859,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
 	if (plugins_list.indexOf('Camera Preview') != -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
-	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="^2.4.1" />\n'
+	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="https://github.com/jalios/cordova-plugin-camera" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
@@ -871,7 +871,7 @@ function createConfig() {
 		xml += '<plugin name="cordova-plugin-local-notification-12" spec="https://github.com/tuanway/cordova-plugin-local-notification-12" />\n'
 	}
 	if (plugins_list.indexOf('In-App Browser') != -1) xml += '<plugin name="cordova-plugin-inappbrowser" spec="^4.1.0"/>\n'
-	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation" source="npm" />\n'
+	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation" spec="https://github.com/apache/cordova-plugin-screen-orientation" />\n'
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'	
@@ -1278,7 +1278,7 @@ function getAndroid(res) {
  */
 function getIOS(res) {
 	// download IPA
-	res.iosURL = cleanRemoteUrl(res.iosURL);
+	res.iosURL = cleanRemoteUrl(res.iosURL);	
 	var f = createFile('build_' + build_id + '.ipa', plugins.http.createNewHttpClient().createGetRequest(res.iosURL).executeRequest().getMediaData())
 	application.showURL(createRemoteFile(f), '_blank');
 	f.deleteFile()
