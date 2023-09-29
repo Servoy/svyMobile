@@ -9,7 +9,7 @@ function createMenuData() {
 	scopes.mobileBase.addMenuItem('tables', 'Tables', 'fa-table', 'nav-neon', 1);
 	scopes.mobileBase.addMenuItem('charts', 'Charts', 'fa-chart-pie', 'nav-skyblue', 3);
 	scopes.mobileBase.addMenuItem('media', 'Media', 'fa-images', 'nav-yellow', 3);
-	scopes.mobileBase.addMenuItem('upload', 'Camera', 'fa-camera', 'nav-green', 3);
+	scopes.mobileBase.addMenuItem('camerapreview', 'Camera', 'fa-camera', 'nav-green', 3);
 	scopes.mobileBase.addMenuItem('location', 'Location', 'fa-search-location', 'nav-green', 3);
 	scopes.mobileBase.addMenuItem('push', 'Push', 'fa-bell', 'nav-orange', 3);
 	scopes.mobileBase.addMenuItem('fingerprint', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
@@ -140,7 +140,7 @@ function goBack() {
  */
 function support(data) {
 	application.output('supported');
-	phonegapEnabled = true;
+	phonegapEnabled = true;	z
 }
 
 /**
