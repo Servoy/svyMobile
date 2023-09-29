@@ -140,7 +140,7 @@ function goBack() {
  */
 function support(data) {
 	application.output('supported');
-	phonegapEnabled = true;	z
+	phonegapEnabled = true;
 }
 
 /**
