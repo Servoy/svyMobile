@@ -6,17 +6,14 @@ Clear Text Traffic (Android Only)\r\
 FCM Push Notifications\r\
 Fingerprint\r\
 Full screen\r\
-IDTech CR (IOS Only)\r\
 In-App Browser\r\
 Launch Navigator\r\
 Location\r\
 Network Information\r\
 Network Interface\r\
 Printer\r\
-QR Code Scanner\r\
 Screen Orientation\r\
-Vibration\r\
-Zebra Scanner (Android Only)",
+Vibration",
 displayValueType:12,
 name:"plugins_list",
 realValueType:12,

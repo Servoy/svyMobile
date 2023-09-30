@@ -688,14 +688,14 @@ function createConfig() {
 	xml += '<preference name="target-device" value="universal" />\n'
 	xml += '<preference name="DisallowOverscroll" value="true" />\n'
 	xml += '<preference name="InAppBrowserStorageEnabled" value="true" />\n'
-	xml += '<preference name="Orientation" value="' + app_orientation + '" />\n'	
+	xml += '<preference name="Orientation" value="' + app_orientation + '" />\n'		
 	
 	xml += '<platform name="android">\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) {
 		xml += '<allow-navigation href="https://*"/>'
 		xml += '<preference name="Scheme" value="https" />\n'
 		xml += '<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">\n'
-		xml += '<application android:usesCleartextTraffic="true" />\n'
+		xml += '<application android:usesCleartextTraffic="true" android:requestLegacyExternalStorage="true"/>\n'
 		xml += '</edit-config>\n'
 	}
 
@@ -708,13 +708,16 @@ function createConfig() {
 
 	// add support for target level 33
 	xml += '<preference name="cordova-version" value="cli-10.1.2" />'
-	xml += '<preference name="android-targetSdkVersion" value="33"/>\n'
+	xml += '<preference name="android-targetSdkVersion" value="33"/>\n'		
+	xml += '<preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />'
+	
 	//add android exported option to main activity
 	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'
 	//if we are using camera plugins, add the appropriate permissions
-	if (plugins_list.indexOf('camera') != -1 || plugins_list.indexOf('Scanner') != -1) {
+	if (plugins_list.indexOf('Camera') != -1 || plugins_list.indexOf('Scanner') != -1) {		
+		xml += '<custom-preference name="android-manifest/uses-permission/[@android:name=' + "'android.permission.WRITE_EXTERNAL_STORAGE']" + '" delete="true"' + ' />\n'
 		xml += '<custom-preference name="android-manifest/uses-permission/[@android:name=' + "'android.hardware.camera']" + '" delete="true"' + ' />\n'
-		xml += '<custom-preference name="android-manifest/uses-permission/[@android:name=' + "'android.hardware.camera']" + '" delete="true"' + ' />\n'
+		xml += '<custom-preference name="android-manifest/uses-permission/[@android:name=' + "'android.hardware.camera']" + '" delete="true"' + ' />\n'										
 		xml += '<custom-config-file target="AndroidManifest.xml" parent="./" mode="add">\n'
 		xml += '<uses-feature android:name="android.hardware.camera" android:required="true" />\n'
 		xml += '</custom-config-file>\n'
@@ -725,7 +728,7 @@ function createConfig() {
 	xml += '<preference name="AutoHideSplashScreen " value="true" />\n'
 	xml += '<preference name="SplashShowOnlyFirstTime" value="false" />\n'
 	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
-	xml += '<preference name="SplashScreenDelay" value="10000" />\n'
+	xml += '<preference name="SplashScreenDelay" value="0" />\n'
 	xml += '<preference name="loadUrlTimeoutValue" value="999999999" />'
 	if (addAndroidX) {
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
@@ -795,7 +798,7 @@ function createConfig() {
 	xml += '<preference name="WKWebViewOnly" value="true" />\n'
 	xml += '<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />\n'
 	xml += '<preference name="ScrollEnabled" value="true" />'
-	xml += '<preference name="SplashScreenDelay" value="1000" />\n'
+	xml += '<preference name="SplashScreenDelay" value="0" />\n'
 	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
 	xml += '<preference name="AutoHideSplashScreen" value="true" />\n'
 	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
@@ -835,15 +838,16 @@ function createConfig() {
 	xml += '<splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />\n'
 	xml += '</platform>\n'
 	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
-	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
+//	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
 
 	xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
-	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
+	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'	
 	xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
 	xml += '<plugin name="cordova-custom-config" source="https://github.com/dpa99c/cordova-custom-config" />\n'
-	xml += '<plugin name="phonegap-plugin-mobile-accessibility" spec="https://github.com/tuanway/phonegap-mobile-accessibility" />\n'
+	xml += '<plugin name="phonegap-plugin-mobile-accessibility" spec="https://github.com/tuanway/phonegap-mobile-accessibility" />\n'		
+	xml += '<plugin name="cordova-plugin-splashscreen" spec="https://github.com/apache/cordova-plugin-splashscreen" />\n'	
 
 	if (plugins_list.indexOf('IDTech CR') != -1) {
 		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag" />\n'
@@ -856,10 +860,10 @@ function createConfig() {
 	if (addAndroidX) {
 		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'
 	}
-	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1" />\n'
+	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="https://github.com/okhiroyuki/cordova-plugin-barcodescanner" />\n'
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
 	if (plugins_list.indexOf('Camera Preview') != -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
-	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="https://github.com/jalios/cordova-plugin-camera" />\n'
+	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="https://github.com/apache/cordova-plugin-camera" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
@@ -982,7 +986,7 @@ function createRemoteFile(file) {
  *
  * @throws {Error}
  *
- * @properties={typeid:24,uuid:"9D6CECAE-ACD0-497F-9994-355861A2DE24"}
+ * @properties={typeid:24,uuid:"D22AEF6F-9F50-4978-BA74-8FA7CC855275"}
  */
 function zip(fileToZip, targetFile, filenamesToStoreUncompressed) {
 	var filePath = fileToZip.getAbsolutePath();
@@ -1084,7 +1088,7 @@ function zip(fileToZip, targetFile, filenamesToStoreUncompressed) {
  * @param {java.nio.channels.ReadableByteChannel} src
  * @param {java.nio.channels.WritableByteChannel} dest
  *
- * @properties={typeid:24,uuid:"8E3DD438-43FB-4499-A7B4-0D00F4956E90"}
+ * @properties={typeid:24,uuid:"4173562D-8F0C-4CBA-A6F3-C3DC2A99FAFB"}
  */
 function channelCopy(src, dest) {
 	var buffer = java.nio.ByteBuffer.allocateDirect(16 * 1024);
