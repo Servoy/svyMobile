@@ -53,7 +53,8 @@ sources:[
 ],
 webcamOptions:{
 modes:[
-"picture"
+"picture",
+"video-only"
 ],
 showVideoSourceDropdown:true,
 target:"Dashboard"

@@ -100,27 +100,3 @@ function toggleRotation(){
 	
 	plugins.svyphonegapPhonegapOrientation.lock(rotation);
 }
-/**
- * Perform the element onclick action.
- *
- * @param {JSEvent} event the event that triggered the action
- *
- * @private
- *
- * @properties={typeid:24,uuid:"8ADB2BD8-F399-4917-83A9-12133854F14E"}
- */
-function onAction$capture(event) {
-//	plugins.svycaptureAudio.capture(captureCB,captureCB);
-//	plugins.svycaptureScreen.capture(null,captureCB);
-	plugins.svycaptureScreen.captureViaDisplayMedia(captureCB);
-}
-
-/**
- * TODO generated, please specify type and doc for the params
- * @param data
- *
- * @properties={typeid:24,uuid:"12B59ABD-A5B5-48A4-910A-4469EA93144D"}
- */
-function captureCB(data) {
-	application.output(data)
-}

@@ -3,14 +3,6 @@ useCssPosition:true",
 encapsulation:108,
 items:[
 {
-cssPosition:"294,13,-1,10,104,38",
-onActionMethodID:"8ADB2BD8-F399-4917-83A9-12133854F14E",
-rolloverCursor:12,
-text:"Toggle Capture",
-typeid:7,
-uuid:"0A45D7BE-8274-4AC8-A0AA-06902E46692E"
-},
-{
 cssPosition:"250,13,-1,9,104,38",
 onActionMethodID:"97978972-FF14-4671-B4D5-6D0F447A9417",
 rolloverCursor:12,
