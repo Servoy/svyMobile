@@ -699,17 +699,16 @@ function createConfig() {
 		xml += '</edit-config>\n'
 	}
 
-	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<hook src="hooks/qrscanner_add_barcode/301_android.js" type="after_prepare" ></hook>'
-
 	xml += '<icon src="www/res/icon.png" width="1024" height="1024"/>\n'
 	xml += '<allow-intent href="market:*" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="google-services.json" />\n'
 	if (googlejson) xml += '<resource-file src="google-services.json" target="app/google-services.json" />\n'
 
 	// add support for target level 33
-	xml += '<preference name="cordova-version" value="cli-10.1.2" />'
+	xml += '<preference name="cordova-version" value="cli-12.0.1" />'
 	xml += '<preference name="android-targetSdkVersion" value="33"/>\n'		
 	xml += '<preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />'
+	xml += '<preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar" />'
 	
 	//add android exported option to main activity
 	xml += '<custom-preference name="android-manifest/application/activity/@android:exported" value="true"/>\n'
@@ -730,6 +729,7 @@ function createConfig() {
 	xml += '<preference name="backgroundColor" value="0x00000000" />\n'
 	xml += '<preference name="SplashScreenDelay" value="0" />\n'
 	xml += '<preference name="loadUrlTimeoutValue" value="999999999" />'
+	xml += '<preference name="StatusBarOverlaysWebView" value="false" />\n'
 	if (addAndroidX) {
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
 	}
@@ -754,6 +754,7 @@ function createConfig() {
 
 	xml += '</platform>\n'
 	xml += '<platform name="ios">\n'
+	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
 	xml += '<preference name="WKSuspendInBackground" value="false" />\n';
 
 	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<hook src="hooks/qrscanner_add_barcode/301_ios.js" type="after_prepare" ></hook>'
@@ -778,13 +779,7 @@ function createConfig() {
 		xml += '<string>Required for capturing camera images.</string>\n'
 		xml += '</edit-config>\n'
 		xml += '<preference name="AndroidXEnabled" value="true" />\n'
-	}
-
-	if (plugins_list.indexOf('IDTech CR') != -1) {
-		xml += '<edit-config target="NSMicrophoneUsageDescription" file="*-Info.plist" mode="merge" overwrite="true" >\n'
-		xml += '<string>This app needs microphone access</string>\n'
-		xml += '</edit-config>\n'
-	}
+	}	
 
 	if (googleplist) xml += '<resource-file src="GoogleService-Info.plist" />\n'
 	xml += '<allow-intent href="itms:*" />\n'
@@ -797,7 +792,7 @@ function createConfig() {
 	}
 	xml += '<preference name="WKWebViewOnly" value="true" />\n'
 	xml += '<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />\n'
-	xml += '<preference name="ScrollEnabled" value="true" />'
+	xml += '<preference name="ScrollEnabled" value="true" />\n'
 	xml += '<preference name="SplashScreenDelay" value="0" />\n'
 	xml += '<preference name="StatusBarOverlaysWebView" value="true" />\n'
 	xml += '<preference name="AutoHideSplashScreen" value="true" />\n'
@@ -837,8 +832,7 @@ function createConfig() {
 	xml += '<splash height="960" platform="ios" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />\n'
 	xml += '<splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />\n'
 	xml += '</platform>\n'
-	xml += '<plugin name="cordova-plugin-statusbar" spec="^2.4.2" />\n'
-//	xml += '<plugin name="cordova-plugin-whitelist" spec="^1.3.3" />\n'
+	xml += '<plugin name="cordova-plugin-statusbar" spec="https://github.com/moodlemobile/cordova-plugin-statusbar" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
 
 	xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
@@ -849,10 +843,6 @@ function createConfig() {
 	xml += '<plugin name="phonegap-plugin-mobile-accessibility" spec="https://github.com/tuanway/phonegap-mobile-accessibility" />\n'		
 	xml += '<plugin name="cordova-plugin-splashscreen" spec="https://github.com/apache/cordova-plugin-splashscreen" />\n'	
 
-	if (plugins_list.indexOf('IDTech CR') != -1) {
-		xml += '<plugin name="com.idtechproducts.uniMagPlugin" spec="https://github.com/tuanway/unimag" />\n'
-	}
-
 	if (plugins_list.indexOf('Printer') != -1) {
 		xml += '<plugin name="cordova-plugin-printer" spec="^0.8.0" />\n'
 		xml += '<plugin name="cordova-print-pdf-plugin" spec="https://github.com/sarahgoldman/cordova-print-pdf-plugin" />\n'
@@ -860,27 +850,25 @@ function createConfig() {
 	if (addAndroidX) {
 		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'
 	}
-	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="https://github.com/okhiroyuki/cordova-plugin-barcodescanner" />\n'
-	if (plugins_list.indexOf('QR Code Scanner') != -1) xml += '<plugin name="cordova-plugin-qrscanner" spec="https://github.com/tuanway/cordova-plugin-qrscanner" />\n'
+	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="https://github.com/okhiroyuki/cordova-plugin-barcodescanner" />\n'	
 	if (plugins_list.indexOf('Camera Preview') != -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="https://github.com/apache/cordova-plugin-camera" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
-	if (plugins_list.indexOf('Zebra Scanner') != -1)xml += '<plugin name="com.jkt.zebra.barcode.plugin" spec="https://github.com/tuanway/zebra" />\n'
+	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="cordova-plugin-fullscreen" spec="^1.2.0" />\n'
 	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^5.0.1" />\n'
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
 		xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated-12" />\n'		
 		xml += '<plugin name="cordova-plugin-local-notification-12" spec="https://github.com/tuanway/cordova-plugin-local-notification-12" />\n'
 	}
-	if (plugins_list.indexOf('In-App Browser') != -1) xml += '<plugin name="cordova-plugin-inappbrowser" spec="^4.1.0"/>\n'
+	if (plugins_list.indexOf('In-App Browser') != -1) xml += '<plugin name="cordova-plugin-inappbrowser" spec="^4.1.0" />\n'
 	if (plugins_list.indexOf('Screen Orientation') != -1) xml += '<plugin name="cordova-plugin-screen-orientation" spec="https://github.com/apache/cordova-plugin-screen-orientation" />\n'
 	if (plugins_list.indexOf('Vibration') != -1) xml += '<plugin name="cordova-plugin-vibration" source="npm" />\n'
 	if (plugins_list.indexOf('Launch Navigator') != -1) xml += '<plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" > <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{your_api_key}" /> </plugin>\n'
 	if (plugins_list.indexOf('Clear Text Traffic (Android Only)') != -1) xml += '<plugin name="cordova-plugin-enable-cleartext-traffic" spec="^2.1.0" />\n'	
 
-	//can only use Bar code scanner or QR Code Scanner, not both.
 
 	xml += '</widget>'
 	createFile(b_dir + '/config.xml', null, xml);
