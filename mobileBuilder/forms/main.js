@@ -706,7 +706,7 @@ function createConfig() {
 
 	// add support for target level 33
 	xml += '<preference name="cordova-version" value="cli-12.0.1" />'
-	xml += '<preference name="android-targetSdkVersion" value="33"/>\n'		
+	xml += '<preference name="android-targetSdkVersion" value="34"/>\n'		
 	xml += '<preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />'
 	xml += '<preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar" />'
 	
@@ -834,9 +834,10 @@ function createConfig() {
 	xml += '</platform>\n'
 	xml += '<plugin name="cordova-plugin-statusbar" spec="https://github.com/moodlemobile/cordova-plugin-statusbar" />\n'
 	xml += '<plugin name="cordova-plugin-appversion" spec="https://github.com/tuanway/cordova-plugin-app-version" />\n'
-
-	xml += '<plugin name="cordova-plugin-device" spec="^1.1.7" />\n'
-	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'	
+	xml += '<plugin name="cordova-plugin-ios-base64" spec="https://github.com/sarahgoldman/cordova-plugin-ios-base64" />\n'
+	xml += '<plugin name="cordova-plugin-device" spec="^3.0.0" />\n'
+	xml += '<plugin name="cordova-plugin-file" spec="^4.3.3" />\n'
+	xml += '<plugin name="community-cordova-plugin-file-opener" spec="https://github.com/tuanway/community-cordova-plugin-file-opener" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-webview" source="npm" />\n'
 	xml += '<plugin name="cordova-plugin-ionic-keyboard" source="npm" />\n'
 	xml += '<plugin name="cordova-custom-config" source="https://github.com/dpa99c/cordova-custom-config" />\n'
@@ -851,7 +852,7 @@ function createConfig() {
 		xml += '<plugin name="cordova-androidx-build" source="npm" />\n'
 	}
 	if (plugins_list.indexOf('Bar Code Scanner') != -1) xml += '<plugin name="phonegap-plugin-barcodescanner" spec="https://github.com/okhiroyuki/cordova-plugin-barcodescanner" />\n'	
-	if (plugins_list.indexOf('Camera Preview') != -1) xml += '<plugin name="cordova-plugin-camera-preview" source="npm" />\n'
+	if (plugins_list.indexOf('Camera Preview') != -1) xml += '<plugin name="cordova-plugin-camera-preview" spec="https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview" />\n'
 	if (plugins_list.indexOf('Camera') != -1) xml += '<plugin name="cordova-plugin-camera" spec="https://github.com/apache/cordova-plugin-camera" />\n'
 	if (plugins_list.indexOf('Network Information') != -1) xml += '<plugin name="cordova-plugin-network-information" spec="^1.3.4" />\n'
 	if (plugins_list.indexOf('Network Interface') != -1) xml += '<plugin name="cordova-plugin-networkinterface" spec="^2.0.0" />\n'

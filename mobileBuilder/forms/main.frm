@@ -90,7 +90,7 @@ uuid:"2F8BCF45-9EBC-4F49-B512-7DE5D31D35E0"
 cssPosition:"42,-1,-1,10,200,200",
 formIndex:19,
 json:{
-accept:".png,.jpg,.jpeg",
+accept:".png,.jpg,.jpeg,.svg",
 cssPosition:{
 bottom:"-1",
 height:"200",
@@ -317,7 +317,7 @@ allowedFileTypes:[
 ".zip",
 "zip"
 ],
-maxFileSize:13000000,
+maxFileSize:130000000,
 maxNumberOfFiles:1,
 minNumberOfFiles:1,
 svyUUID:"A1A2E498-9FBA-4513-9071-CB8A1C80BF94"
