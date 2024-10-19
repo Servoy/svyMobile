@@ -859,7 +859,7 @@ function createConfig() {
 	if (plugins_list.indexOf('Location') != -1)xml += '<plugin name="cordova-plugin-geolocation" spec="^2.4.3" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="it.innowatio.cordova.ios-fullscreen" spec="https://github.com/tuanway/cordova-ios-fullscreen" />\n'
 	if (plugins_list.indexOf('Full screen') != -1)xml += '<plugin name="cordova-plugin-fullscreen" spec="^1.2.0" />\n'
-	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^5.0.1" />\n'
+	if (plugins_list.indexOf('Fingerprint') != -1) xml += '<plugin name="cordova-plugin-fingerprint-aio" spec="^6.0.0" />\n'
 	if (plugins_list.indexOf('FCM Push Notifications') != -1) {
 		xml += '<plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="https://github.com/tuanway/cordova-plugin-fcm-with-dependecy-updated-12" />\n'		
 		xml += '<plugin name="cordova-plugin-local-notification-12" spec="https://github.com/tuanway/cordova-plugin-local-notification-12" />\n'
