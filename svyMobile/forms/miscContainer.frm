@@ -11,6 +11,14 @@ typeid:7,
 uuid:"3B5919AC-B687-430F-A915-0DFC962BCB8A"
 },
 {
+cssPosition:"294,14,-1,9,104,38",
+onActionMethodID:"A5D0DC71-1417-4654-83BD-140F143AE372",
+rolloverCursor:12,
+text:"Open Native PDF",
+typeid:7,
+uuid:"419C8A81-B77D-444E-A145-39649E58925A"
+},
+{
 cssPosition:"60,12,-1,8,104,38",
 onActionMethodID:"1F77748E-D0F0-4BFC-8177-A05E27B94CF6",
 rolloverCursor:12,
@@ -41,6 +49,14 @@ rolloverCursor:12,
 text:"In-App Browser Link",
 typeid:7,
 uuid:"AFE641F6-0DA1-499A-92B0-959126896B2A"
+},
+{
+cssPosition:"294,10,-1,10,104,38",
+onActionMethodID:"A5D0DC71-1417-4654-83BD-140F143AE372",
+rolloverCursor:12,
+text:"Open Native PDF",
+typeid:7,
+uuid:"DF623CDA-2AF4-4062-A3CA-A2AFDF420094"
 },
 {
 height:364,

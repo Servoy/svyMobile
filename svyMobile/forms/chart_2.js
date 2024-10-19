@@ -29,7 +29,7 @@ function randomizeAndDraw() {
 	 * @properties={typeid:35,uuid:"63796707-1832-4650-A4C1-0D847CC7C485",variableType:-4}
 	 */
 	var data = {
-		type: 'horizontalBar',
+		type: 'bar',
 		data: {
 			labels: ["Red",
 			"Green",

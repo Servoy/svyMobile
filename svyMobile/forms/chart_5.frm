@@ -47,7 +47,7 @@ height:227,
 width:300
 },
 styleClass:"chart",
-type:"horizontalBar"
+type:"bar"
 },
 location:"5,5",
 name:"chart",

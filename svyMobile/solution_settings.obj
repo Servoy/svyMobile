@@ -1,4 +1,7 @@
-firstFormID:"-1",
+customProperties:"authenticator:{\
+type:0\
+}",
+firstFormID:"05EDA771-DCF7-40E3-BA8C-E31D67DA4E4C",
 modulesNames:"mobileBase,phonegap",
 onOpenMethodID:"5FB44370-D763-4043-AFF8-46E0F5CD1FF5",
 styleSheetID:"D58986B2-D0AD-439F-B95C-63926D8E52A9",

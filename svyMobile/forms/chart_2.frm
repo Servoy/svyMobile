@@ -42,7 +42,8 @@ size:{
 height:445,
 width:300
 },
-styleClass:"chart"
+styleClass:"chart",
+type:"bar"
 },
 location:"5,5",
 name:"chart",

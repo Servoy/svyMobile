@@ -23,32 +23,24 @@
 }
 
 /*Mobile and Desktop specific displays*/
-/* [ng-reflect-name="content"] > .svy-tabcontainer > svy-form > div > div > div:nth-child(2) desktop
-   [ng-reflect-name="content"] > .svy-tabcontainer > svy-form > div > div > div:nth-child(1) mobile */
 
-
-[ng-style="layout.mobile"],
-[ng-reflect-name="content"] > div > div > svy-form > div > div > div:nth-child(1) {	
-	display: none;
+[ng-reflect-svy-container-style="ComponentCache(mobile, servoyc"] {
+	display:none;
 	background-color: @main-bg-color;
-}
+	}
 
-[ng-style="layout.desktop"],
-[ng-reflect-name="content"] > div > div > svy-form > div > div > div:nth-child(2) {
-	display: block;
+[ng-reflect-svy-container-style="ComponentCache(desktop, servoy"] {
+	display:block;
 	background-color: @main-bg-color;
 }
 
 @media only screen and (max-width: 600px) {
-	[ng-style="layout.mobile"],
-	.base_mobile,
-	[ng-reflect-name="content"] > div > div > svy-form > div > div > div:nth-child(1) {
-		display: block;
+	[ng-reflect-svy-container-style="ComponentCache(mobile, servoyc"] {
+		display:block;
 	}
-	[ng-style="layout.desktop"],
-	.base_desktop,
-	[ng-reflect-name="content"] > div > div > svy-form > div > div > div:nth-child(2) {	
-		display: none;
+	
+	[ng-reflect-svy-container-style="ComponentCache(desktop, servoy"] {
+		display:none;
 	}
 }
 

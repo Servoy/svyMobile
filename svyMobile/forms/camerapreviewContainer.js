@@ -5,7 +5,6 @@
  */
 var messages = '';
 
-
 /**
  * Perform the element onclick action.
  *
@@ -15,8 +14,10 @@ var messages = '';
  *
  * @properties={typeid:24,uuid:"046CAA25-9273-485B-B2E3-AB077E7E5010"}
  */
-function onAction$takePicture(event) { 
-	plugins.svyphonegapCamerapreview.takePicture({width:640, height:480, quality: 100},picCB,picCB)
+function onAction$takePicture(event) {	
+	plugins.svyBlockUI.show('Capturing');	
+	plugins.svyphonegapCamerapreview.takePicture({ width: 640, height: 480, quality: 85 }, picCB, picCB)
+	elements.shot.visible = false;
 }
 
 /**
@@ -24,19 +25,21 @@ function onAction$takePicture(event) {
  *
  * @properties={typeid:24,uuid:"0FCD1EB6-3E42-46C5-9403-2C763740C739"}
  */
-function picCB(d){
-	plugins.svyphonegapCamerapreview.stopCamera(cb,cb);
-	elements.photo.imageURL = null;
-	elements.photo.text = '<img src="data:image/png;base64,' + d + '"/>'
+function picCB(d) {
+	plugins.svyBlockUI.stop();
+	plugins.svyphonegapCamerapreview.stopCamera(cb, cb);
+	elements.photo.imageURL = d;
+	elements.photo.text = '<img src="'+d+'"/>'
 	elements.photo.visible = true;
-	application.executeLater(start, 3500);
+	application.executeLater(start, 3000);
 }
 
 /**
  * @properties={typeid:24,uuid:"7D22A105-8C60-4FE6-ABCF-C20D998C27D3"}
  */
-function cb(msg) {	
-	application.output(msg)
+function cb(msg) {
+	plugins.svyBlockUI.stop();
+//	application.output(msg)
 }
 
 /**
@@ -56,8 +59,9 @@ function onShow(firstShow, event) {
 		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
 		scopes.mobileBase.goBack(event);
 	} else {
-		application.executeLater(start, 250);
-
+		plugins.svyBlockUI.show('Loading')
+		elements.shot.visible = false;
+		application.executeLater(start, 0);
 	}
 }
 
@@ -65,6 +69,7 @@ function onShow(firstShow, event) {
  * @properties={typeid:24,uuid:"2420289D-A5DB-4195-BA9C-1287308A43DF"}
  */
 function start() {
+	plugins.svyBlockUI.show('Loading')
 	//	Options: All options stated are optional and will default to values here
 	//
 	//			x - Defaults to 0
@@ -78,11 +83,11 @@ function start() {
 	//			previewDrag - Defaults to false - Does not work if toBack is set to false
 	//			storeToFile - Defaults to false - Capture images to a file and return back the file path instead of returning base64 encoded data.
 	//			disableExifHeaderStripping - Defaults to false - Android Only - Disable automatic rotation of the image, and let the browser deal with it (keep reading on how to achieve it)
-
+	
 	var options = {
 		x: 0,
 		y: 0,
-		width: controller.getFormWidth(),
+//		width: controller.getFormWidth(),
 		height: controller.getPartHeight(JSPart.BODY - 100),
 		camera: 1, //use back camera
 		toBack: true,
@@ -92,25 +97,26 @@ function start() {
 		storeToFile: false,
 		disableExifHeaderStripping: false
 	};
-	plugins.ngclientutils.addClassToDOMElement('body','camera-override');
+	plugins.ngclientutils.addClassToDOMElement('body', 'camera-override');
 	plugins.svyphonegapCamerapreview.startCamera(options, cb, cb);
-	elements.photo.visible = false;		
-	application.executeLater(setOptions,1000)
+	elements.photo.visible = false;
+	elements.shot.visible = true;
+	application.executeLater(setOptions, 1000)
 }
+
 
 /**
  * @properties={typeid:24,uuid:"A667F6BD-8A49-4919-988D-D2D4BFF7F1FE"}
  */
-function setOptions(){
+function setOptions() {
 	// all options at https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview
-	plugins.svyphonegapCamerapreview.setCameraOption('setFocusMode','continuous-picture',cb,cb);
-//	plugins.svyphonegapCamerapreview.setCameraOption('setFlashMode','torch',cb,cb);
-//	plugins.svyphonegapCamerapreview.setCameraOption('setColorEffect','aqua',cb,cb);
-	plugins.svyphonegapCamerapreview.setCameraOption('setExposureMode','auto',cb,cb);
-//	plugins.svyphonegapCamerapreview.setCameraOption('setWhiteBalanceMode','auto',cb,cb);
-//	plugins.svyphonegapCamerapreview.setCameraOption('switchCamera','',cb,cb);
-	
-	
+	plugins.svyphonegapCamerapreview.setCameraOption('setFocusMode', 'continuous-picture', cb, cb);
+	//	plugins.svyphonegapCamerapreview.setCameraOption('setFlashMode','torch',cb,cb);
+	//	plugins.svyphonegapCamerapreview.setCameraOption('setColorEffect','aqua',cb,cb);
+	plugins.svyphonegapCamerapreview.setCameraOption('setExposureMode', 'auto', cb, cb);
+	//	plugins.svyphonegapCamerapreview.setCameraOption('setWhiteBalanceMode','auto',cb,cb);
+	//	plugins.svyphonegapCamerapreview.setCameraOption('switchCamera','',cb,cb);
+
 }
 
 /**
@@ -125,7 +131,7 @@ function setOptions(){
  * @properties={typeid:24,uuid:"F2B394BA-1212-4ED6-9701-487363E28662"}
  */
 function onHide(event) {
-	plugins.svyphonegapCamerapreview.stopCamera(cb,cb)
-	plugins.ngclientutils.removeClassFromDOMElement('body','camera-override');
+	plugins.svyphonegapCamerapreview.stopCamera(cb, cb)
+	plugins.ngclientutils.removeClassFromDOMElement('body', 'camera-override');
 	return true
 }

@@ -74,21 +74,28 @@ function onSolutionOpen(arg, queryParams) {
 
 	plugins.ngclientutils.contributedTags.push(load_sw);
 
+}
+
+/**
+ * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
+ */
+function onReadyCallBack() {
+	application.output('onReadyCB!')
 	//set text scaling for android
 	if (scopes.phonegap.isMobile.Android()) {
-		
-		if (application.getWindow().getWidth() < 630){
+
+		if (application.getWindow().getWidth() < 630) {
 			plugins.svyphonegapPhonegap.setTextZoom(140);
 		}
-		
+
 		if (application.getWindow().getWidth() < 549) {
 			plugins.svyphonegapPhonegap.setTextZoom(130);
 		}
-		
+
 		if (application.getWindow().getWidth() < 490) {
 			plugins.svyphonegapPhonegap.setTextZoom(120);
 		}
-		
+
 		if (application.getWindow().getWidth() < 445) {
 			plugins.svyphonegapPhonegap.setTextZoom(110);
 		}
@@ -101,13 +108,6 @@ function onSolutionOpen(arg, queryParams) {
 			plugins.svyphonegapPhonegap.setTextZoom(90);
 		}
 	}
-}
-
-/**
- * @properties={typeid:24,uuid:"B214D50F-AA23-4125-92CE-62D335196D96"}
- */
-function onReadyCallBack() {
-	application.output('onReadyCB!')
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
 

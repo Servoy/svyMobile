@@ -60,23 +60,25 @@ function randomizeAndDraw() {
 
 		elements: {
 			point: {
-				backgroundColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
+				backgroundColor: clientutils.generateBrowserFunction(scopes.chartExamples.colorize),
 
-				borderColor: { isFunction: true, params: ['context'], expression: scopes.chartExamples.colorize },
+				borderColor: clientutils.generateBrowserFunction(scopes.chartExamples.colorize),
 
-				borderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.borderWidth },
+				borderWidth: clientutils.generateBrowserFunction(scopes.chartExamples.borderWidth),
 
 				hoverBackgroundColor: 'transparent',
 
 				hoverBorderColor: 'gray',
 
-				hoverBorderWidth: { isFunction: true, params: ['context'], expression: scopes.chartExamples.hoverBorderWidth },
+				hoverBorderWidth: clientutils.generateBrowserFunction(scopes.chartExamples.hoverBorderWidth),
 
-				radius: { isFunction: true, params: ['context'], expression: scopes.chartExamples.radius }
+				radius: clientutils.generateBrowserFunction(scopes.chartExamples.radius)
 			}
 		}
 	};
 
+	;
+	
 	//Initialize the chart by using setData
 	elements.chart.setData(data);
 	elements.chart.setOptions(options);

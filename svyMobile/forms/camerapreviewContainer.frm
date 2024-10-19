@@ -4,6 +4,7 @@ encapsulation:108,
 items:[
 {
 cssPosition:"calc( 100% - 45px),10,-1,10,104,38",
+name:"shot",
 onActionMethodID:"046CAA25-9273-485B-B2E3-AB077E7E5010",
 rolloverCursor:12,
 styleClass:"camera-shot",
@@ -13,7 +14,7 @@ uuid:"02856699-3510-487E-9B82-75F782C35814"
 },
 {
 anchors:11,
-cssPosition:"10,-1,-1,10,calc( 100% - 20px),80%",
+cssPosition:"10,10,60,10,-1,80%",
 horizontalAlignment:0,
 imageMediaID:"84941405-D47C-414D-8153-DFDC632D063B",
 location:"8,32",

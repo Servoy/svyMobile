@@ -15,7 +15,7 @@ var messages = '';
  * @properties={typeid:24,uuid:"793C63F1-2DBC-4727-B99E-0955A1B193F9"}
  */
 function onAction$startScanner(event) {
-	plugins.svyphonegapBarcode.scan(cb, cb)
+	plugins.svyphonegapBarcode.scan(cb, cb)	
 }
 
 /**
