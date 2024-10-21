@@ -33,8 +33,16 @@ function onAction$Save(event) {
 	if (isIOS != -1) {
 		dir = 'documentsDirectory';
 	}
-	application.output(dir)
-	plugins.svyphonegapFile.writeToFile(fileName, dir, fileContent, null, null);
+	
+	plugins.svyphonegapFile.writeToFile(fileName, dir, utils.stringToBase64(fileContent), writeCB, null);
+}
+
+/**
+ * @properties={typeid:24,uuid:"F6685232-4CB6-44E8-A7D3-5F985E67382A"}
+ */
+function writeCB(e) {
+	application.output('save successful')
+	application.output(e)
 }
 
 /**
