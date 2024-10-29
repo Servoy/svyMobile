@@ -15,21 +15,23 @@ typeid:19,
 uuid:"1A504961-824A-4D9E-A274-3ED53556CA5C"
 },
 {
-anchors:11,
 cssPosition:"102,15,-1,15,270,40",
-customProperties:"",
-displaysTags:true,
-fontType:"Noto Sans,0,13",
-formIndex:1,
-location:"15,102",
-name:"chart_type_piecc",
+json:{
+cssPosition:{
+bottom:"-1",
+height:"40",
+left:"15",
+right:"15",
+top:"102",
+width:"270"
+},
 onActionMethodID:"DE0F95B4-F4EB-4833-A290-94D493075E92",
-size:"270,40",
-styleClass:"push-btn",
-text:"Show Authentication",
-transparent:true,
-typeid:7,
-uuid:"5ED5B507-001E-492D-9DAF-951C7D8844E1"
+text:"Show Authentication"
+},
+name:"button_2",
+typeName:"bootstrapcomponents-button",
+typeid:47,
+uuid:"340232CB-B927-4144-99BD-5ED20B4F66AB"
 },
 {
 anchors:11,
@@ -43,21 +45,23 @@ typeid:7,
 uuid:"7727B8AA-049C-4745-A613-F8F5627C45FD"
 },
 {
-anchors:11,
 cssPosition:"57,15,-1,15,270,40",
-customProperties:"",
-displaysTags:true,
-fontType:"Noto Sans,0,13",
-formIndex:1,
-location:"15,57",
-name:"chart_type_piec",
+json:{
+cssPosition:{
+bottom:"-1",
+height:"40",
+left:"15",
+right:"15",
+top:"57",
+width:"270"
+},
 onActionMethodID:"8739F40B-EE27-44A3-B731-BEB555F746DF",
-size:"270,40",
-styleClass:"push-btn",
-text:"Check Authentication",
-transparent:true,
-typeid:7,
-uuid:"BC312506-748C-4F97-9C4A-8B9991E2475E"
+text:"Check Authentication"
+},
+name:"button_1",
+typeName:"bootstrapcomponents-button",
+typeid:47,
+uuid:"BAB007AD-E0A2-40BE-A96A-C671A96C101A"
 }
 ],
 name:"fingerprintMobile",

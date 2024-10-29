@@ -1,8 +1,8 @@
 @import "mobileBase.less";
-@import "mobile_base.css"; /* old css */
+/* @import "mobile_base.css"; old css */
 
 /* Custom Theme Variables White Theme*/
-@main-color:#f57900;
+/* @main-color:#f57900;
 @inactive-color:white;
 @active-color:lightgray;
 @button-color-main:@main-color;
@@ -20,9 +20,9 @@
 @input-text-size:15px;
 @color-warn:#ef2929;
 @text-shadow:none;
-
+ */
 /* Black Theme*/
-@main-color:#f57900;
+@main-color:#122D40;
 @inactive-color:rgb(34, 34, 34);
 @active-color:rgb(78, 78, 78);
 @button-color-main:@main-color;
@@ -355,4 +355,13 @@ body {
 .svy-main-window-container {
  	top: constant(safe-area-inset-top)!important;
     top: env(safe-area-inset-top)!important;     
+}
+
+.push-message {
+	color:white;
+}
+
+[ng-reflect-name="main_menu"] {
+	top: 60%!important;
+    position: relative!important;
 }
