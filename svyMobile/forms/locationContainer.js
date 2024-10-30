@@ -29,9 +29,6 @@ function getLocation(event) {
  * @properties={typeid:24,uuid:"14E1CB25-B697-47B0-A9A6-F52B0050EF39"}
  */
 function getLocationSuccess(pos, id) {
-	application.output(pos);
-	application.output(pos.coords);
-	application.output(id);
 	if (id)
 	watchID = id;
 	plugins.svyBlockUI.stop();
@@ -39,9 +36,8 @@ function getLocationSuccess(pos, id) {
 		located = true;
 	}
 	//send location to google map component
-	if (pos && pos.coords) {
-		elements.map.latitude = pos.coords.latitude
-		elements.map.longitude = pos.coords.longitude
+	if (pos && pos.coords) {		
+		elements.map.centerAtLatLng(pos.coords.latitude,pos.coords.longitude)
 	}
 	//clear watch once location found
 	plugins.svyphonegapLocation.clearWatch(watchID);
@@ -71,11 +67,11 @@ function onShow(firstShow, event) {
 		scopes.mobileBase.goBack(event);
 		return;
 	}
-	if (firstShow) {
+//	if (firstShow) {
 		plugins.svyBlockUI.show('Getting location...');
 		application.output('Loading location')
 		getLocation(event);
-	}
+//	}
 	
 }
 
