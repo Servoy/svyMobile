@@ -77,12 +77,24 @@ function showAuthErr(err) {
  * @properties={typeid:24,uuid:"6DC8C47D-3BC3-4528-A760-DBF807273C20"}
  */
 function onAction$registerSecret(event) {
+	var config = {
+		description: "Please authenticate to continue.", //show for ios message
+		clientId: "Please authenticate to continue.", //what to show for android message
+		clientSecret: "password" //Only necessary for Android
+	};
+	plugins.svyphonegapFingerprintscan.show(config, authRegisterCallback, showAuthErr)	
+}
+
+/**
+ * @properties={typeid:24,uuid:"86504131-A2BC-4E15-9652-7DF9732DB76C"}
+ */
+function authRegisterCallback(){
 	plugins.svyphonegapFingerprintscan.registerSecret({
-			description: "Some biometric description",
-			secret: "my-super-secret",
-			invalidateOnEnrollment: true,
-			disableBackup: true // always disabled on Android
-		}, registerSuccessful, showAuthErr)
+		description: "Some biometric description",
+		secret: "my-super-secret",
+		invalidateOnEnrollment: true,
+		disableBackup: true // always disabled on Android
+	}, registerSuccessful, showAuthErr)
 }
 
 /**
@@ -105,6 +117,7 @@ function registerSuccessful(e){
  * @properties={typeid:24,uuid:"F0941178-FD1B-497E-B8D6-937B7A499A4E"}
  */
 function onAction$loadSecret(event) {
+	
 	plugins.svyphonegapFingerprintscan.loadSecret({
 			description: "Some biometric description",
 			disableBackup: true // always disabled on Android
