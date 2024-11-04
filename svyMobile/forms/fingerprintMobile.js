@@ -46,7 +46,7 @@ function isAvailError(err) {
  */
 function showAuth() {
 	var config = {
-		description:"Please authenticate to continue.", //show for ios message
+		description: "Please authenticate to continue.", //show for ios message
 		clientId: "Please authenticate to continue.", //what to show for android message
 		clientSecret: "password" //Only necessary for Android
 	};
@@ -65,4 +65,57 @@ function showAuthSuccess(res) {
  */
 function showAuthErr(err) {
 	messages = err + '. You failed to authenticate.';
+}
+
+/**
+ * Fired when the button is clicked.
+ *
+ * @param {JSEvent} event
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"6DC8C47D-3BC3-4528-A760-DBF807273C20"}
+ */
+function onAction$registerSecret(event) {
+	plugins.svyphonegapFingerprintscan.registerSecret({
+			description: "Some biometric description",
+			secret: "my-super-secret",
+			invalidateOnEnrollment: true,
+			disableBackup: true // always disabled on Android
+		}, registerSuccessful, showAuthErr)
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param e
+ *
+ * @properties={typeid:24,uuid:"3A7DE52F-6361-42AF-9478-418A66508365"}
+ */
+function registerSuccessful(e){
+	messages = 'registered secret successfully';
+}
+
+/**
+ * Fired when the button is clicked.
+ *
+ * @param {JSEvent} event
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"F0941178-FD1B-497E-B8D6-937B7A499A4E"}
+ */
+function onAction$loadSecret(event) {
+	plugins.svyphonegapFingerprintscan.loadSecret({
+			description: "Some biometric description",
+			disableBackup: true // always disabled on Android
+		},loadSuccessCallback,showAuthErr)
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ *
+ * @properties={typeid:24,uuid:"063F92C9-47AB-405A-96E4-BB5373D15675"}
+ */
+function loadSuccessCallback(d){
+	messages = 'secret from vault recovered: ' + d; 
 }
