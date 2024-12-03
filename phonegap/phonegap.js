@@ -54,7 +54,8 @@ function onSolutionOpen(arg, queryParams, onReadyCallback) {
      var tag = {tagName: "meta", attrs: [{ name: "name", value: "viewport" }, 
     { name: "content", value: "width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" }]};
     plugins.ngclientutils.replaceHeaderTag('meta', 'name', 'viewport', tag);    
-           
+    
+     application.output('finished loading..')
 }
 
 /**
