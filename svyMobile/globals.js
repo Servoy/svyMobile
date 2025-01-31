@@ -19,7 +19,7 @@ function createMenuData() {
 //		scopes.mobileBase.addMenuItem('card', 'Card', 'fa-credit-card', 'nav-white', 3);
 
 	scopes.mobileBase.addMenuItem('barcode', 'Bar Code', 'fa-barcode', 'nav-green', 3);
-	/*scopes.mobileBase.addMenuItem('upload', 'Upload', 'fa-upload', 'nav-skyblue', 3);*/
+	scopes.mobileBase.addMenuItem('upload', 'Upload', 'fa-upload', 'nav-skyblue', 3);
 	scopes.mobileBase.addMenuItem('print', 'Print', 'fa-print', 'nav-neon', 3);
 	scopes.mobileBase.addMenuItem('misc', 'Misc', 'fa-play', 'nav-white', 3);
 
@@ -56,7 +56,6 @@ function onSolutionOpen(arg, queryParams) {
 
 	//load api keys
 	mapAPIKey = application.getUserProperty('googleAPIKey');
-
 	//load google firebase messaging key
 	fcmAuthKey = application.getUserProperty('fcmAuthKey');
 
@@ -110,6 +109,8 @@ function onReadyCallBack() {
 	}
 	//add check for back button press
 	plugins.svyphonegapPhonegap.setOnBackMethod(goBack);
+	plugins.svyphonegapPhonegap.setOnPauseMethod(onPause);
+	plugins.svyphonegapPhonegap.setOnResumeMethod(onResume);	
 
 	//get build version
 	buildInfo = plugins.svyphonegapPhonegap.getBuildInfo()[0];
@@ -118,6 +119,20 @@ function onReadyCallBack() {
 	phonegapEnabled = true;
 	application.output('Device Info', LOGGINGLEVEL.DEBUG)
 	application.output(plugins.svyphonegapDevice.getDeviceInfo(), LOGGINGLEVEL.DEBUG)
+}
+
+/**
+ * @properties={typeid:24,uuid:"CA21B227-4B0B-46E9-BA5B-FFD0D81B10AB"}
+ */
+function onPause(){
+	application.output('app is paused...');
+}
+
+/**
+ * @properties={typeid:24,uuid:"E701A133-6F4F-40D3-BEC1-32E08BC0F6A3"}
+ */
+function onResume(){
+	application.output('app is resumed...');
 }
 
 /**
