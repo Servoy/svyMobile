@@ -48,9 +48,15 @@ x:11,
 y:11
 },
 onFileUploaded:"75ECA0F5-8EEC-4153-82DE-2A4418D96175",
+options:{
+mirror:"false"
+},
 sources:[
 "Webcam"
 ],
+tusOptions:{
+mirror:"false"
+},
 webcamOptions:{
 modes:[
 "picture",
