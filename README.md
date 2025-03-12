@@ -3,9 +3,7 @@ A mobile sample solution built using Servoy & Phonegap
 
 Demo
 -------------
-Android release on the [Play Store](https://play.google.com/store/apps/details?id=com.servoy.mobile)
-
-You can also download the latest apk file [here](https://github.com/Servoy/svyMobile/releases)
+You can also download the latest pre-built android apk binary [here](https://github.com/Servoy/svyMobile/releases)
 
 Latest Release
 -------------
