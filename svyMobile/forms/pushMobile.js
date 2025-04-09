@@ -64,7 +64,7 @@ function showMessage(data) {
  *
  * @properties={typeid:24,uuid:"6C3402AE-BF15-4ABE-89E4-82E6E900C1EF"}
  */
-function logInfo(m) {
+function logInfo(m) {	
 	messages = m;
 }
 /**
@@ -91,7 +91,7 @@ function onHide(event) {
 function sendNotification() {
 	messages = 'Sending message <br> to connected devices..'
 	//channel 'urgent_alert' will try to push it out as a popup notification and not hidden in notification bar.
-	plugins.svyphonegapPush.sendNotification(scopes.globals.fcmAuthKey, 'INFO', 'This is a notification from svyMobile', 'svyMobile','urgent_alert', logInfo, logInfo)
+	scopes.phonegap.sendFCMPushMessage('svyMobile','INFO', 'This is a notification from svyMobile','urgent_alert')
 }
 
 /**
