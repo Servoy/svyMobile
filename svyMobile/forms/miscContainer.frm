@@ -51,6 +51,14 @@ typeid:7,
 uuid:"AFE641F6-0DA1-499A-92B0-959126896B2A"
 },
 {
+cssPosition:"340,10,-1,10,104,38",
+onActionMethodID:"F539BC48-3512-4858-AC56-22EF8E1AEC39",
+rolloverCursor:12,
+text:"Save Image to Gallery",
+typeid:7,
+uuid:"B448BC52-34C0-4AD2-9F73-2C332DACE0D6"
+},
+{
 cssPosition:"294,10,-1,10,104,38",
 onActionMethodID:"A5D0DC71-1417-4654-83BD-140F143AE372",
 rolloverCursor:12,
