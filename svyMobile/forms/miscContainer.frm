@@ -67,7 +67,7 @@ typeid:7,
 uuid:"DF623CDA-2AF4-4062-A3CA-A2AFDF420094"
 },
 {
-height:364,
+height:389,
 partType:5,
 typeid:19,
 uuid:"DF982BA6-E697-48C1-9D04-C186AA5E6720"
@@ -85,6 +85,6 @@ name:"miscContainer",
 navigatorID:"-1",
 onShowMethodID:"8C088CF7-1A94-402E-8C93-285E58572217",
 showInMenu:true,
-size:"244,307",
+size:"244,364",
 typeid:3,
 uuid:"01B57F4D-CA48-4D35-BF41-686F33C6E5A2"
