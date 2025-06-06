@@ -198,11 +198,9 @@ function onAction$docToPDFConversionTest(event) {
 	}
 	application.output(tex);
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
-	var obj = JSON.parse(application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
+	application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]);
 	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))
 	application.showURL(url, '_blank');
-
-	return obj;
 }
 
 /**
