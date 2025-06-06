@@ -169,7 +169,6 @@ function saveGalleryFail(err) {
 	application.output('failed to save to gallery due to : \n ' + err)
 }
 
-
 /**
  * @type {String}
  *
@@ -193,9 +192,9 @@ var sample = '';
  * @properties={typeid:24,uuid:"C667E881-0538-496D-B8B1-D77E5CF66166"}
  */
 function onAction$docToPDFConversionTest(event) {
-	if (tex == '' || tex.length < 5 || plugins.file.getFileSize(tex) < 40000) {
+//	if (tex == '' || tex.length < 5 || plugins.file.getFileSize(tex) < 40000) {
 		initLib();
-	}
+//	}
 	application.output('tex: ' + tex);
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
 	try {
@@ -203,7 +202,7 @@ function onAction$docToPDFConversionTest(event) {
 	} catch (e) {
 		application.output(e);
 	}
-	
+
 	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))
 	application.showURL(url, '_blank');
 }
@@ -224,7 +223,7 @@ function initLib() {
 		}
 		if (tmpdir[i].isFile()) {
 			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
-			application.output('tempdiro: ' + tmpdir[i])
+				application.output('tempdiro: ' + tmpdir[i])
 			}
 		}
 	}
@@ -237,10 +236,12 @@ function initLib() {
 	initHelper('libreoffice', 'tar.gz_ae');
 	initHelper('libreoffice', 'tar.gz_af');
 	var tpdir = Packages.java.lang.System.getProperty("java.io.tmpdir");
+
+	application.executeProgram('cat', [tpdir + '/libreoffice.tar.gz_*', '>', tpdir + '/libreoffice.tar.gz']);
+	application.executeProgram('tar', ['-xzvf', tpdir + '/libreoffice.tar.gz', '-C', tpdir]);
+	tex = tpdir + '/libreoffice.AppImage';
+	application.executeProgram('wget',['https://appimages.libreitalia.org/LibreOffice-still.basic-x86_64.AppImage','-O' ,tex])
 	
-	application.executeProgram('cat', [tpdir+'/libreoffice.tar.gz_*','>', tpdir+'/libreoffice.tar.gz']);	
-	application.executeProgram('tar',['-xzvf',tpdir+'/libreoffice.tar.gz','-C',tpdir]);	
-	tex = tpdir+'/libreoffice.AppImage';
 	application.output('temp file name: ' + tex);
 	application.output('OS: ' + Packages.java.lang.System.getProperty("os.name"));
 	//add execute permission for linux
@@ -262,8 +263,8 @@ function initLib() {
 function initHelper(file, ext) {
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
 	var tmpFile;
-	tmpFile = plugins.file.createTempFile(file, '.' + ext);	
+	tmpFile = plugins.file.createTempFile(file, '.' + ext);
 	tmpFile.setBytes(solutionModel.getMedia(file + '.' + ext).bytes);
-	tmpFile.renameTo(tmpDir+'/'+ file + '.' + ext);	
-	return tmpDir+'/'+ file + '.' + ext;
+	tmpFile.renameTo(tmpDir + '/' + file + '.' + ext);
+	return tmpDir + '/' + file + '.' + ext;
 }
