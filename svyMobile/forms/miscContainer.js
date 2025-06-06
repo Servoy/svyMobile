@@ -168,26 +168,7 @@ function saveGallerySuccess(d) {
 function saveGalleryFail(err) {
 	application.output('failed to save to gallery due to : \n ' + err)
 }
-/**
- * Perform the element onclick action.
- *
- * @param {JSEvent} event the event that triggered the action
- * @return
- * @private
- *
- * @properties={typeid:24,uuid:"C667E881-0538-496D-B8B1-D77E5CF66166"}
- */
-function onAction$docToPDFConversionTest(event) {
-	if (tex == '' || tex.length < 5 || plugins.file.getFileSize(tex) < 40000) {
-		initLib();
-	}
-	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
-	var obj = JSON.parse(application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
-	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))
-	application.showURL(url, '_blank');
 
-	return obj;
-}
 
 /**
  * @type {String}
@@ -201,10 +182,33 @@ var tex = '';
  * @properties={typeid:35,uuid:"A66A127B-4AA9-4399-B6C2-E0639BEAD148"}
  */
 var sample = '';
+
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ * @return
+ * @private
+ *
+ * @properties={typeid:24,uuid:"C667E881-0538-496D-B8B1-D77E5CF66166"}
+ */
+function onAction$docToPDFConversionTest(event) {
+//	if (tex == '' || tex.length < 5 || plugins.file.getFileSize(tex) < 40000) {
+		initLib();
+//	}
+	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
+	var obj = JSON.parse(application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
+	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))
+	application.showURL(url, '_blank');
+
+	return obj;
+}
+
 /**
  * @properties={typeid:24,uuid:"6A0A50DE-520C-4824-9C0F-9273C33C5720"}
  */
 function initLib() {
+	application.output('Init Libre Office')
 	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
 	for (var i = 0; i < tmpdir.length; i++) {
 		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
@@ -227,10 +231,10 @@ function initLib() {
 	application.executeProgram('tar',['-xzvf',tpdir+'/libreoffice.tar.gz','-C',tpdir]);
 	tex = tpdir+'/libreoffice.AppImage';
 	application.output('temp file name: ' + tex, LOGGINGLEVEL.DEBUG);
-	application.output('OS: ' + Packages.java.lang.System.getProperty("os.name"), LOGGINGLEVEL.DEBUG);
+	application.output('OS: ' + Packages.java.lang.System.getProperty("os.name"));
 	//add execute permission for linux
 	application.executeProgram('chmod', ['777', tex]);
-	application.output('Changing file permissions to 777', LOGGINGLEVEL.DEBUG);
+	application.output('Changing file permissions to 777');
 
 	//add example doc as well
 	sample = initHelper('sample', 'doc')
