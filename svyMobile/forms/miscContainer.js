@@ -221,7 +221,6 @@ function initLib() {
 	}
 	
 	//extract libreoffice files
-	var log = '';
 	initHelper('libreoffice', 'tar.gz_aa');
 	initHelper('libreoffice', 'tar.gz_ab');
 	initHelper('libreoffice', 'tar.gz_ac');
@@ -231,8 +230,7 @@ function initLib() {
 	var tpdir = Packages.java.lang.System.getProperty("java.io.tmpdir");
 	
 	application.executeProgram('cat', [tpdir+'/libreoffice.tar.gz_*','>', tpdir+'/libreoffice.tar.gz']);	
-	application.executeProgram('tar',['-xzvf',tpdir+'/libreoffice.tar.gz','-C',tpdir]);
-	application.output(log)
+	application.executeProgram('tar',['-xzvf',tpdir+'/libreoffice.tar.gz','-C',tpdir]);	
 	tex = tpdir+'/libreoffice.AppImage';
 	application.output('temp file name: ' + tex);
 	application.output('OS: ' + Packages.java.lang.System.getProperty("os.name"));
@@ -258,5 +256,5 @@ function initHelper(file, ext) {
 	tmpFile = plugins.file.createTempFile(file, '.' + ext);	
 	tmpFile.setBytes(solutionModel.getMedia(file + '.' + ext).bytes);
 	tmpFile.renameTo(tmpDir+'/'+ file + '.' + ext);	
-	return tmpFile.getAbsolutePath();
+	return tmpDir+'/'+ file + '.' + ext;
 }
