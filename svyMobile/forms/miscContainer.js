@@ -202,11 +202,10 @@ function onAction$docToPDFConversionTest(event) {
 			if (plugins.file.getFileSize(tmpdir[i]) > 100) {
 				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
 				tex = tmpdir[i];
-				return;
 			}
 		}
 		if (tmpdir[i].isFile()) {
-			if (plugins.file.getFileSize(tmpdir[i]) > 100) {
+			if ((plugins.file.getFileSize(tmpdir[i]) > 100) && (tmpdir[i].getName().indexOf('libreoffice.AppImage') == -1)) {
 				application.output('tempdiro: ' + tmpdir[i])
 			}
 		}
