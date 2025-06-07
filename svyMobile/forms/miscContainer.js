@@ -192,9 +192,26 @@ var sample = '';
  * @properties={typeid:24,uuid:"C667E881-0538-496D-B8B1-D77E5CF66166"}
  */
 function onAction$docToPDFConversionTest(event) {
-	if (tex == '' || tex.length < 5 || plugins.file.getFileSize(tex) < 40000) {
+//	if (tex == '' || tex.length < 5 || plugins.file.getFileSize(tex) < 40000) {
 		initLib();
+//	}
+		
+	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
+	for (var i = 0; i < tmpdir.length; i++) {
+		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
+			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
+				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
+				tex = tmpdir[i];
+				return;
+			}
+		}
+		if (tmpdir[i].isFile()) {
+			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
+				application.output('tempdiro: ' + tmpdir[i])
+			}
+		}
 	}
+	
 	application.output('tex: ' + tex);
 	application.output('tex2: ' + sample);
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
@@ -217,7 +234,7 @@ function initLib() {
 	for (var i = 0; i < tmpdir.length; i++) {
 		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
 			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
-				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) )
+				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
 				tex = tmpdir[i];
 				return;
 			}
