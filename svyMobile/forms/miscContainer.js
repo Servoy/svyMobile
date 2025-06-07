@@ -175,6 +175,14 @@ function saveGalleryFail(err) {
  * @properties={typeid:35,uuid:"F51CD32A-522D-4A9B-B672-D9176D640E67"}
  */
 var tex = '';
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"31323C58-217C-44BD-8873-25549EE80002"}
+ */
+var runsh = '';
+
 /**
  * @type {String}
  *
@@ -219,6 +227,12 @@ function onAction$docToPDFConversionTest(event) {
 	} catch (e) {
 		application.output(e);
 	}
+	
+	try {
+		application.output(application.executeProgram(runsh, ['>', tmpDir+'/runlog']));
+	} catch (e) {
+		application.output(e);
+	}
 
 	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))
 	application.output('url' + url);
@@ -255,19 +269,21 @@ function initLib() {
 //	initHelper('libreoffice', 'tar.gz_af');
 	//add example doc as well
 	sample = initHelper('sample', 'doc');	
-	application.output(sample)
+	initHelper('run', 'sh');	
 	var tpdir = Packages.java.lang.System.getProperty("java.io.tmpdir");
 
 //	application.executeProgram('cat', [tpdir + '/libreoffice.tar.gz_*', '>', tpdir + '/libreoffice.tar.gz']);
 //	application.executeProgram('tar', ['-xzvf', tpdir + '/libreoffice.tar.gz', '-C', tpdir]);
 	tex = tpdir + '/libreoffice';
+	runsh = tpdir + '/run.sh';
 	application.executeProgram('wget',['https://appimages.libreitalia.org/LibreOffice-still.basic-x86_64.AppImage','-O' ,tex])
 	application.executeProgram('chmod',['a+x',tex])
+	application.executeProgram('chmod',['a+x',runsh])
 	application.output('temp file name: ' + tex);
 	application.output('OS: ' + Packages.java.lang.System.getProperty("os.name"));
 	//add execute permission for linux
-	application.executeProgram('chmod', ['777', tex]);
-	application.output('Changing file permissions to 777');
+//	application.executeProgram('chmod', ['777', tex]);
+//	application.output('Changing file permissions to 777');
 
 	
 }

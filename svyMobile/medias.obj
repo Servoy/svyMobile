@@ -184,6 +184,13 @@ uuid:"48AEFA59-E122-4639-9705-A24F707150AD"
 },
 {
 encapsulation:0,
+mimeType:"application/x-sh",
+name:"run.sh",
+typeid:37,
+uuid:"0FDCE106-F57F-4175-9E0B-41556424DF1B"
+},
+{
+encapsulation:0,
 mimeType:"application/msword",
 name:"sample.doc",
 typeid:37,
