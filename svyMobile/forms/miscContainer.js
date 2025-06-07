@@ -204,27 +204,23 @@ function onAction$docToPDFConversionTest(event) {
 		initLib();
 //	}
 		
-	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
-	for (var i = 0; i < tmpdir.length; i++) {
-		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
-			if (plugins.file.getFileSize(tmpdir[i]) > 100) {
-				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
-				tex = tmpdir[i];
-			}
-		}
-		if (tmpdir[i].isFile()) {
-			if ((plugins.file.getFileSize(tmpdir[i]) > 100) && (tmpdir[i].getName().indexOf('libreoffice.AppImage') == -1)) {
-				application.output('tempdiro: ' + tmpdir[i])
-			}
-		}
-	}
-	
-	application.output('tex: ' + tex);
-	application.output('tex2: ' + sample);
-	application.output('tex3: ' + runsh);
+//	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
+//	for (var i = 0; i < tmpdir.length; i++) {
+//		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
+//			if (plugins.file.getFileSize(tmpdir[i]) > 100) {
+//				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
+//				tex = tmpdir[i];
+//			}
+//		}
+//		if (tmpdir[i].isFile()) {
+//			if ((plugins.file.getFileSize(tmpdir[i]) > 100) && (tmpdir[i].getName().indexOf('libreoffice.AppImage') == -1)) {
+//				application.output('tempdiro: ' + tmpdir[i])
+//			}
+//		}
+//	}
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
 	try {
-		application.output(application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
+		application.output(application.executeProgram('libreoffice', ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
 	} catch (e) {
 		application.output(e);
 	}
@@ -241,8 +237,7 @@ function onAction$docToPDFConversionTest(event) {
 		application.output(e);
 	}
 
-	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))
-	application.output('url' + url);
+	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))	
 	application.showURL(url, '_blank');
 }
 
@@ -251,22 +246,6 @@ function onAction$docToPDFConversionTest(event) {
  */
 function initLib() {
 	application.output('Init Libre Office')
-//	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
-//	for (var i = 0; i < tmpdir.length; i++) {
-//		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
-//			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
-//				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
-//				tex = tmpdir[i];
-//				return;
-//			}
-//		}
-//		if (tmpdir[i].isFile()) {
-//			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
-//				application.output('tempdiro: ' + tmpdir[i])
-//			}
-//		}
-//	}
-	
 	//extract libreoffice files
 //	initHelper('libreoffice', 'tar.gz_aa');
 //	initHelper('libreoffice', 'tar.gz_ab');
@@ -276,23 +255,9 @@ function initLib() {
 //	initHelper('libreoffice', 'tar.gz_af');
 	//add example doc as well
 	sample = initHelper('sample', 'doc');	
-	initHelper('run', 'sh');	
-	var tpdir = Packages.java.lang.System.getProperty("java.io.tmpdir");
-
-//	application.executeProgram('cat', [tpdir + '/libreoffice.tar.gz_*', '>', tpdir + '/libreoffice.tar.gz']);
-//	application.executeProgram('tar', ['-xzvf', tpdir + '/libreoffice.tar.gz', '-C', tpdir]);
-	tex = tpdir + '/libreoffice';
-	runsh = tpdir + '/run.sh';
-	application.executeProgram('wget',['https://appimages.libreitalia.org/LibreOffice-still.basic-x86_64.AppImage','-O' ,tex])
-	application.executeProgram('chmod',['a+x',tex])
-	application.executeProgram('chmod',['a+x',runsh])
+	application.executeProgram('apk',['add','libreoffice'])
 	application.output('temp file name: ' + tex);
 	application.output('OS: ' + Packages.java.lang.System.getProperty("os.name"));
-	//add execute permission for linux
-//	application.executeProgram('chmod', ['777', tex]);
-//	application.output('Changing file permissions to 777');
-
-	
 }
 
 /**
