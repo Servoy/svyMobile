@@ -221,6 +221,7 @@ function onAction$docToPDFConversionTest(event) {
 	
 	application.output('tex: ' + tex);
 	application.output('tex2: ' + sample);
+	application.output('tex3: ' + runsh);
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
 	try {
 		application.output(application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
@@ -230,6 +231,12 @@ function onAction$docToPDFConversionTest(event) {
 	
 	try {
 		application.output(application.executeProgram(runsh, ['>', tmpDir+'/runlog']));
+	} catch (e) {
+		application.output(e);
+	}
+	
+	try {
+		application.output(application.executeProgram(runsh));
 	} catch (e) {
 		application.output(e);
 	}
