@@ -222,6 +222,7 @@ function onAction$docToPDFConversionTest(event) {
 	}
 
 	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))
+	application.output('url' + url);
 	application.showURL(url, '_blank');
 }
 
@@ -260,7 +261,7 @@ function initLib() {
 
 //	application.executeProgram('cat', [tpdir + '/libreoffice.tar.gz_*', '>', tpdir + '/libreoffice.tar.gz']);
 //	application.executeProgram('tar', ['-xzvf', tpdir + '/libreoffice.tar.gz', '-C', tpdir]);
-	tex = tpdir + '/libreoffice.AppImage';
+	tex = tpdir + '/libreoffice';
 	application.executeProgram('wget',['https://appimages.libreitalia.org/LibreOffice-still.basic-x86_64.AppImage','-O' ,tex])
 	application.executeProgram('chmod',['a+x',tex])
 	application.output('temp file name: ' + tex);
