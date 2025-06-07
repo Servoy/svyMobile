@@ -215,7 +215,7 @@ function onAction$docToPDFConversionTest(event) {
 	application.output('tex2: ' + sample);
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
 	try {
-		application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]);
+		application.output(application.executeProgram(tex, ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
 	} catch (e) {
 		application.output(e);
 	}
