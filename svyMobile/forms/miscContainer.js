@@ -199,14 +199,14 @@ function onAction$docToPDFConversionTest(event) {
 	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
 	for (var i = 0; i < tmpdir.length; i++) {
 		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
-			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
+			if (plugins.file.getFileSize(tmpdir[i]) > 100) {
 				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
 				tex = tmpdir[i];
 				return;
 			}
 		}
 		if (tmpdir[i].isFile()) {
-			if (plugins.file.getFileSize(tmpdir[i]) > 40000) {
+			if (plugins.file.getFileSize(tmpdir[i]) > 100) {
 				application.output('tempdiro: ' + tmpdir[i])
 			}
 		}
