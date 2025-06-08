@@ -225,19 +225,7 @@ function onAction$docToPDFConversionTest(event) {
 		application.output(e);
 	}
 	
-	try {
-		application.output(application.executeProgram(runsh, ['>', tmpDir+'/runlog']));
-	} catch (e) {
-		application.output(e);
-	}
-	
-	try {
-		application.output(application.executeProgram(runsh));
-	} catch (e) {
-		application.output(e);
-	}
-
-	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))	
+	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))		
 	application.showURL(url, '_blank');
 }
 
