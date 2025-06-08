@@ -204,20 +204,15 @@ function onAction$docToPDFConversionTest(event) {
 		initLib();
 //	}
 		
-//	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
-//	for (var i = 0; i < tmpdir.length; i++) {
-//		if (tmpdir[i].isFile() && tmpdir[i].getName().indexOf('libreoffice.AppImage') != -1) {
-//			if (plugins.file.getFileSize(tmpdir[i]) > 100) {
-//				application.output('tempdir: ' + tmpdir[i] + ' size: ' + plugins.file.getFileSize(tmpdir[i]) 	)
-//				tex = tmpdir[i];
-//			}
-//		}
-//		if (tmpdir[i].isFile()) {
-//			if ((plugins.file.getFileSize(tmpdir[i]) > 100) && (tmpdir[i].getName().indexOf('libreoffice.AppImage') == -1)) {
-//				application.output('tempdiro: ' + tmpdir[i])
-//			}
-//		}
-//	}
+	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
+	for (var i = 0; i < tmpdir.length; i++) {
+		if (tmpdir[i].isFile()) {
+			if ((plugins.file.getFileSize(tmpdir[i]) > 100) ) {
+				application.output('tempdiro: ' + tmpdir[i])
+			}
+		}
+	}
+	
 	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
 	try {
 		application.output(application.executeProgram('libreoffice', ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
@@ -226,6 +221,7 @@ function onAction$docToPDFConversionTest(event) {
 	}
 	
 	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))		
+	application.output(url)
 	application.showURL(url, '_blank');
 }
 
