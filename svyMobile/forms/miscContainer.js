@@ -219,7 +219,8 @@ function onAction$docToPDFConversionTest(event) {
 	} catch (e) {
 		application.output(e);
 	}
-	var url = createRemoteFile(tmpDir + '/sample.pdf');		
+	var url = createRemoteFile(plugins.file.convertToJSFile(tmpDir + '/sample.pdf'));		
+	
 	application.output(url)
 	application.showURL(url, '_blank');
 }
