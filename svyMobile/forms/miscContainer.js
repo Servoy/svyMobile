@@ -16,11 +16,11 @@ var messages;
  * @properties={typeid:24,uuid:"8C088CF7-1A94-402E-8C93-285E58572217"}
  */
 function onShow(firstShow, event) {
-	//	if (!scopes.globals.phonegapEnabled) {
-	//		messages = 'Plugin is not loaded or supported.'
-	//		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
-	//		scopes.mobileBase.goBack(event);
-	//	}
+		if (!scopes.globals.phonegapEnabled) {
+			messages = 'Plugin is not loaded or supported.'
+			plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
+			scopes.mobileBase.goBack(event);
+		}
 }
 
 /**
@@ -167,116 +167,4 @@ function saveGallerySuccess(d) {
  */
 function saveGalleryFail(err) {
 	application.output('failed to save to gallery due to : \n ' + err)
-}
-
-/**
- * @type {String}
- *
- * @properties={typeid:35,uuid:"F51CD32A-522D-4A9B-B672-D9176D640E67"}
- */
-var tex = '';
-
-/**
- * @type {String}
- *
- * @properties={typeid:35,uuid:"31323C58-217C-44BD-8873-25549EE80002"}
- */
-var runsh = '';
-
-/**
- * @type {String}
- *
- * @properties={typeid:35,uuid:"A66A127B-4AA9-4399-B6C2-E0639BEAD148"}
- */
-var sample = '';
-
-/**
- * Perform the element onclick action.
- *
- * @param {JSEvent} event the event that triggered the action
- * @return
- * @private
- *
- * @properties={typeid:24,uuid:"C667E881-0538-496D-B8B1-D77E5CF66166"}
- */
-function onAction$docToPDFConversionTest(event) {
-//	if (tex == '' || tex.length < 5 || plugins.file.getFileSize(tex) < 40000) {
-		initLib();
-//	}
-		
-	var tmpdir = plugins.file.getFolderContents(Packages.java.lang.System.getProperty("java.io.tmpdir"));
-	for (var i = 0; i < tmpdir.length; i++) {
-		if (tmpdir[i].isFile()) {
-			if ((plugins.file.getFileSize(tmpdir[i]) > 100) ) {
-				application.output('tempdiro: ' + tmpdir[i])
-			}
-		}
-	}
-	
-	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
-	try {
-		application.output(application.executeProgram('libreoffice', ['--headless', '--convert-to', 'pdf', sample, '--outdir', tmpDir]));
-	} catch (e) {
-		application.output(e);
-	}
-	var url = createRemoteFile(plugins.file.convertToJSFile(tmpDir + '/sample.pdf'));		
-	
-	application.output(url)
-	application.showURL(url, '_blank');
-}
-
-
-/**
- * @param file
- * @return {String}
- * @properties={typeid:24,uuid:"BCCDCC5B-B0E5-4615-9720-FADDE868297D"}
- */
-function createRemoteFile(file) {
-	var path = "/";
-	if (application.getOSName() == 'Linux') {
-		/** @type {String} */
-		var fileName = file.getPath().split('/');
-	} else {
-		fileName = file.getPath().split('\\');
-	}
-	fileName = fileName[fileName.length - 1];
-	var remoteFile = plugins.file.convertToRemoteJSFile(path + encodeURIComponent(fileName));
-	remoteFile.setBytes(file.getBytes(), true);
-	return plugins.file.getUrlForRemoteFile(path + encodeURIComponent(fileName));
-}
-
-
-/**
- * @properties={typeid:24,uuid:"6A0A50DE-520C-4824-9C0F-9273C33C5720"}
- */
-function initLib() {
-	application.output('Init Libre Office')
-	//extract libreoffice files
-//	initHelper('libreoffice', 'tar.gz_aa');
-//	initHelper('libreoffice', 'tar.gz_ab');
-//	initHelper('libreoffice', 'tar.gz_ac');
-//	initHelper('libreoffice', 'tar.gz_ad');
-//	initHelper('libreoffice', 'tar.gz_ae');
-//	initHelper('libreoffice', 'tar.gz_af');
-	//add example doc as well
-	sample = initHelper('sample', 'doc');	
-	application.executeProgram('apk',['add','libreoffice'])
-	application.output('temp file name: ' + tex);
-	application.output('OS: ' + Packages.java.lang.System.getProperty("os.name"));
-}
-
-/**
- * TODO generated, please specify type and doc for the params
- * @param {String} file
- * @param {String} ext
- * @return {String}
- * @properties={typeid:24,uuid:"4EC8AFD6-F69F-4BF1-BAB5-8DF217933D16"}
- */
-function initHelper(file, ext) {
-	var tmpDir = Packages.java.lang.System.getProperty("java.io.tmpdir")
-	var tmpFile;
-	tmpFile = plugins.file.createTempFile(file, '.' + ext);
-	tmpFile.setBytes(solutionModel.getMedia(file + '.' + ext).bytes);
-	tmpFile.renameTo(tmpDir + '/' + file + '.' + ext);
-	return tmpDir + '/' + file + '.' + ext;
 }
