@@ -219,11 +219,31 @@ function onAction$docToPDFConversionTest(event) {
 	} catch (e) {
 		application.output(e);
 	}
-	application.output('out: ' + tmpDir + '/sample.pdf')
-	var url = plugins.file.getUrlForRemoteFile(plugins.file.convertToRemoteJSFile(tmpDir + '/sample.pdf'))		
+	var url = createRemoteFile(tmpDir + '/sample.pdf');		
 	application.output(url)
 	application.showURL(url, '_blank');
 }
+
+
+/**
+ * @param file
+ * @return {String}
+ * @properties={typeid:24,uuid:"BCCDCC5B-B0E5-4615-9720-FADDE868297D"}
+ */
+function createRemoteFile(file) {
+	var path = "/";
+	if (application.getOSName() == 'Linux') {
+		/** @type {String} */
+		var fileName = file.getPath().split('/');
+	} else {
+		fileName = file.getPath().split('\\');
+	}
+	fileName = fileName[fileName.length - 1];
+	var remoteFile = plugins.file.convertToRemoteJSFile(path + encodeURIComponent(fileName));
+	remoteFile.setBytes(file.getBytes(), true);
+	return plugins.file.getUrlForRemoteFile(path + encodeURIComponent(fileName));
+}
+
 
 /**
  * @properties={typeid:24,uuid:"6A0A50DE-520C-4824-9C0F-9273C33C5720"}
