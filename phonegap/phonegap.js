@@ -141,6 +141,9 @@ function initFCMLib() {
 		application.executeProgram('chmod', ['777', tex]);
 //		application.output('Changing file permissions to 777',LOGGINGLEVEL.DEBUG);	
 	}
+	if (tex == '') {
+		application.output('No FCM binaries found. Cannot send notifications. Please add those to /media/lib/fcm directory first.')
+	}
 }
 
 /**
@@ -167,6 +170,9 @@ function sendFCMPushMessage(topic,title,body,channel) {
 		/** @type {{project_id:String}} */		
 		var key_obj = JSON.parse(plugins.file.readTXTFile(key_file));
 		var project_id = key_obj.project_id;		
+	} else {
+		application.output('No services.json found. Cannot send notifications')
+		return null;
 	}
 	
 	var obj = application.executeProgram(tex, [key,project_id,topic,title,body,channel]);	
@@ -177,5 +183,5 @@ function sendFCMPushMessage(topic,title,body,channel) {
  * @properties={typeid:24,uuid:"0260CAF8-76E7-442A-BC3C-62A402FEE74E"}
  */
 function testSend(){
-	scopes.phonegap.sendFCMPushMessage('svyMobile','INFO','This is a test','urgent_alert');
+	scopes.phonegap.sendFCMPushMessage('Topic','INFO','This is a test','urgent_alert');
 }
