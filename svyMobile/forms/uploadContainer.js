@@ -19,10 +19,9 @@ var messages = '';
  *
  * @properties={typeid:24,uuid:"EE5B1442-B42F-4DFA-9145-1DD6BEB08068"}
  */
-function onAction$takePicture(event) { 
+function onAction$takePicture(event) {
 	elements.multifileupload_1.openModal();
 }
-
 
 /**
  * Callback method for when form is shown.
@@ -49,7 +48,64 @@ function onShow(firstShow, event) {
  * @properties={typeid:24,uuid:"EC58BBE3-B39F-4B41-AFB4-0EB1A20CD715"}
  */
 function start() {
-	elements.multifileupload_1.openModal();
+	//check for camera permissions
+	if (scopes.phonegap.isMobile.Android()) {
+		plugins.svyphonegapPhonegap.checkPermission('android.permission.CAMERA', checkPermissionSuccessCallback, checkPermissionFailureCallback)
+	} else {
+		elements.multifileupload_1.openModal();
+	}
+
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param d
+ *
+ * @properties={typeid:24,uuid:"40C454CF-3847-4913-BAF2-38EDF7BD71DB"}
+ */
+function checkPermissionSuccessCallback(d) { 
+	application.output('checkPermissionSuccessCallback')
+	if (!d.hasPermission) {
+		application.output('no permissions set')
+		plugins.svyphonegapPhonegap.requestPermissions(['android.permission.CAMERA'], requestPermissionsSuccessCallback, requestPermissionsFailureCallback)
+	}
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param d
+ *
+ * @properties={typeid:24,uuid:"EF98F81C-2192-4845-ABC2-19FF747451D6"}
+ */
+function requestPermissionsSuccessCallback(d) {
+	application.output('requestPermissionsSuccessCallback')
+	application.output(d)
+	if (!d.hasPermission) {
+		plugins.dialogs.showInfoDialog('INFO','Failed to set Camera Permission.  Please update the permissions settings on the app to allow camera use.');
+		scopes.mobileBase.goBack(null);
+	}
+}
+	
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param d
+ *
+ * @properties={typeid:24,uuid:"C7876348-ECC5-4283-952D-C649A303521D"}
+ */
+function requestPermissionsFailureCallback(d) {
+	plugins.dialogs.showInfoDialog('INO','Failed to get Camera Permission');
+}
+
+
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param d
+ *
+ * @properties={typeid:24,uuid:"1113BFD0-A6A3-42E1-A834-A4875523D981"}
+ */
+function checkPermissionFailureCallback(d) { 
+	plugins.dialogs.showInfoDialog('INFO','Failed to check Camera Permission');
 }
 
 /**
@@ -59,7 +115,7 @@ function start() {
  *
  * @properties={typeid:24,uuid:"75ECA0F5-8EEC-4153-82DE-2A4418D96175"}
  */
-function onFileUploaded(jsUpload) {	
-	img = jsUpload.getBytes(); 
+function onFileUploaded(jsUpload) {
+	img = jsUpload.getBytes();
 	elements.photo.visible = true;
 }

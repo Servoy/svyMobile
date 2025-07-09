@@ -51,6 +51,14 @@ typeid:7,
 uuid:"AFE641F6-0DA1-499A-92B0-959126896B2A"
 },
 {
+cssPosition:"390,10,-1,10,104,38",
+onActionMethodID:"61053EFA-DF6D-44A3-BFE5-3A8921948E97",
+rolloverCursor:12,
+text:"Test URL",
+typeid:7,
+uuid:"B0DE9A6B-AC33-4B5E-B112-A9A184843F54"
+},
+{
 cssPosition:"340,10,-1,10,104,38",
 onActionMethodID:"F539BC48-3512-4858-AC56-22EF8E1AEC39",
 rolloverCursor:12,
@@ -67,7 +75,7 @@ typeid:7,
 uuid:"DF623CDA-2AF4-4062-A3CA-A2AFDF420094"
 },
 {
-height:386,
+height:446,
 partType:5,
 typeid:19,
 uuid:"DF982BA6-E697-48C1-9D04-C186AA5E6720"

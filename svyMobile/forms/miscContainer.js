@@ -16,11 +16,11 @@ var messages;
  * @properties={typeid:24,uuid:"8C088CF7-1A94-402E-8C93-285E58572217"}
  */
 function onShow(firstShow, event) {
-		if (!scopes.globals.phonegapEnabled) {
-			messages = 'Plugin is not loaded or supported.'
-			plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
-			scopes.mobileBase.goBack(event);
-		}
+	if (!scopes.globals.phonegapEnabled) {
+		messages = 'Plugin is not loaded or supported.'
+		plugins.dialogs.showInfoDialog('INFO', 'Cannot run this solution via web.');
+		scopes.mobileBase.goBack(event);
+	}
 }
 
 /**
@@ -167,4 +167,19 @@ function saveGallerySuccess(d) {
  */
 function saveGalleryFail(err) {
 	application.output('failed to save to gallery due to : \n ' + err)
+}
+
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"61053EFA-DF6D-44A3-BFE5-3A8921948E97"}
+ */
+function onAction$openURL(event) {
+	var u = plugins.dialogs.showInputDialog('Open URL', 'Enter a url to open')
+	if (u && u.length > 0)
+		application.showURL(u, '_self');
 }
