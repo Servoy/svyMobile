@@ -3,7 +3,6 @@
 	<name>svyMobile</name>
 	<comment></comment>
 	<projects>
-		<project>resources</project>
 		<project>svyChartUtils</project>
 		<project>mobileBase</project>
 		<project>phonegap</project>

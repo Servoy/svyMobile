@@ -1,9 +1,0 @@
-foreignDataSource:"db:/example_data/customers",
-items:[
-{foreignColumnName:"customerid",primaryDataProviderID:"customerid",typeid:23,uuid:"92E1CB29-E4C4-40F5-8C91-E429C4CF344F"}
-],
-joinType:1,
-name:"orders_to_customers",
-primaryDataSource:"db:/example_data/orders",
-typeid:22,
-uuid:"535160D1-FBCD-470A-8846-2B432274B64E"

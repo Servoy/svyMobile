@@ -1,9 +1,0 @@
-groups:[
-"Administrators"
-],
-usergroups:{
-
-},
-users:[
-{name:"tuan",password_hash:"PBKDF2:2E19343271ED39D4:9999:FF47FA5789B0317BDB6E538A374E615FAC311075",user_uid:"F833DA01-1CA5-43B7-9836-8423A17EE1E2"}
-]
