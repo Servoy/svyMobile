@@ -1,4 +1,9 @@
 /**
+ * @properties={typeid:35,uuid:"C8773BCB-840D-47BE-811A-FCE036216765",variableType:-4}
+ */
+var img;
+
+/**
  * @type {String}
  *
  * @properties={typeid:35,uuid:"A4AD3BD5-2985-445B-B3BE-668AC734C5CE"}
@@ -28,8 +33,7 @@ function onAction$takePicture(event) {
 function picCB(d) {
 	plugins.svyBlockUI.stop();
 	plugins.svyphonegapCamerapreview.stopCamera(cb, cb);
-	elements.photo.imageURL = d;
-	elements.photo.text = '<img src="'+d+'"/>'
+	img = utils.base64ToBytes(d);
 	elements.photo.visible = true;
 	application.executeLater(start, 3000);
 }

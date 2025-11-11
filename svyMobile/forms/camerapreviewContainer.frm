@@ -15,6 +15,7 @@ uuid:"02856699-3510-487E-9B82-75F782C35814"
 {
 anchors:11,
 cssPosition:"10,10,60,10,-1,80%",
+dataProviderID:"img",
 horizontalAlignment:0,
 imageMediaID:"84941405-D47C-414D-8153-DFDC632D063B",
 location:"8,32",

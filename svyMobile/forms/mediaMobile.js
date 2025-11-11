@@ -1,4 +1,9 @@
 /**
+ * @properties={typeid:35,uuid:"1F2DF802-D650-48A5-9BD3-A04ADB011DAC",variableType:-4}
+ */
+var img;
+
+/**
  * Get an Image using camera service
  * @param {JSEvent} event
  * @param {String} type
@@ -29,9 +34,8 @@ function getPicture(event, type) {
  * @properties={typeid:24,uuid:"8EEAFB0D-133F-4009-9C41-83B8A890D19B"}
  */
 function getPicSuccess(res) {
+	img = utils.base64ToBytes(res)
 	//display the image.
-	elements.contact_photo.imageURL = null;
-	elements.contact_photo.text = '<img src="data:image/png;base64,' + res + '"/>'
 	plugins.svyBlockUI.stop(150);
 }
 
@@ -43,6 +47,7 @@ function getPicFail(err) {
 	application.output('failed to get picture - ' + err);
 	plugins.svyBlockUI.stop();
 }
+
 /**
  * @param {Boolean} firstShow
  * @param {JSEvent} event

@@ -13,6 +13,7 @@ items:[
 {
 anchors:11,
 cssPosition:"10,-1,-1,10,calc( 100% - 20px),80%",
+dataProviderID:"img",
 horizontalAlignment:0,
 imageMediaID:"84941405-D47C-414D-8153-DFDC632D063B",
 location:"8,32",
