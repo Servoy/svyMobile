@@ -6,18 +6,12 @@ function createMenuData() {
 	f.deleteAllRecords();
 
 	//Add Main Menu
-//	scopes.mobileBase.addMenuItem('tables', 'Tables', 'fa-table', 'nav-neon', 1);
-//	scopes.mobileBase.addMenuItem('charts', 'Charts', 'fa-chart-pie', 'nav-skyblue', 3);
 	scopes.mobileBase.addMenuItem('media', 'Camera', 'fa-camera', 'nav-yellow', 3);
 	scopes.mobileBase.addMenuItem('camerapreview', 'Cam-Preview', 'fa-camera', 'nav-green', 3);
 	scopes.mobileBase.addMenuItem('location', 'Location', 'fa-search-location', 'nav-skyblue', 3);
 	scopes.mobileBase.addMenuItem('push', 'Push', 'fa-bell', 'nav-orange', 3);
 	scopes.mobileBase.addMenuItem('fingerprint', 'Fingerprint', 'fa-fingerprint', 'nav-white', 3);
 	scopes.mobileBase.addMenuItem('file', 'File', 'fa-folder', 'nav-yellow', 3);
-
-//	if (scopes.phonegap.isMobile.iOS() || scopes.phonegap.isMobile.iPadOS())
-//		scopes.mobileBase.addMenuItem('card', 'Card', 'fa-credit-card', 'nav-white', 3);
-
 	scopes.mobileBase.addMenuItem('barcode', 'Bar Code', 'fa-barcode', 'nav-green', 3);
 	scopes.mobileBase.addMenuItem('upload', 'Upload', 'fa-upload', 'nav-skyblue', 3);
 	scopes.mobileBase.addMenuItem('print', 'Print', 'fa-print', 'nav-neon', 3);
