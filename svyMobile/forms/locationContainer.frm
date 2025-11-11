@@ -10,7 +10,6 @@ parameters:null\
 }\
 },\
 useCssPosition:true",
-dataSource:"db:/example_data/customers",
 encapsulation:60,
 extendsID:"41A4A812-1F60-4887-8AFD-FA76C5F54876",
 items:[

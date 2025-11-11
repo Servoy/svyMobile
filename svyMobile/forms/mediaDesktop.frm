@@ -1,6 +1,5 @@
 customProperties:"formComponent:false,\
 useCssPosition:true",
-dataSource:"db:/example_data/customers",
 extendsID:"F7710D49-A5C3-48DF-B924-0D36940C5F77",
 name:"mediaDesktop",
 typeid:3,

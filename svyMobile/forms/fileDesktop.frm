@@ -1,6 +1,5 @@
 customProperties:"formComponent:false,\
 useCssPosition:true",
-dataSource:"db:/example_data/customers",
 extendsID:"D19B830E-087C-4FB7-A449-634F96C5E703",
 name:"fileDesktop",
 typeid:3,

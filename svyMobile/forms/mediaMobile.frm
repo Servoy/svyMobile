@@ -6,7 +6,6 @@ parameters:null\
 }\
 },\
 useCssPosition:true",
-dataSource:"db:/example_data/customers",
 encapsulation:60,
 extendsID:"949256C2-DB35-4FED-93B4-5CC2E0643090",
 items:[
