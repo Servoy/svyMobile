@@ -40,10 +40,10 @@ function showInAppBrowser() {
  * @properties={typeid:24,uuid:"05A7D890-887B-4B77-B85A-FE54A4356FAB"}
  */
 function onAction$beep(event) {
-	plugins.svyphonegapPhonegap.executeScript('function(n){navigator.notification.beep(n);}', 1)
+	plugins.svyphonegapPhonegap.executeBeep(1)
+//	plugins.svyphonegapPhonegap.executeScript('function(n){navigator.notification.beep(n);}', 1)
 	//	OR plugins.svyphonegapPhonegap.executeBeep(1)
 }
-
 /**
  * Perform the element onclick action.
  *

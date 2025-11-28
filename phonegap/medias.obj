@@ -568,6 +568,13 @@ uuid:"F59882AD-0CCD-495E-B2EA-D78C25A99FC4"
 },
 {
 encapsulation:0,
+mimeType:"text/javascript",
+name:"lib/ios/plugins/cordova-plugin-android-permissions/www/permissions-dummy.js",
+typeid:37,
+uuid:"B3882F79-C880-4131-AFBC-D3B651FD5C8C"
+},
+{
+encapsulation:0,
 mimeType:"application/javascript",
 name:"lib/ios/plugins/cordova-plugin-app-version/www/AppVersionPlugin.js",
 typeid:37,
