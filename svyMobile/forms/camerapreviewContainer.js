@@ -21,7 +21,7 @@ var messages = '';
  */
 function onAction$takePicture(event) {	
 	plugins.svyBlockUI.show('Capturing');	
-	plugins.svyphonegapCamerapreview.takePicture({ width: 640, height: 480, quality: 85 }, picCB, picCBFail)
+	plugins.svyphonegapCamerapreview.takePicture({ width: 640, height: 480, quality: 85 }, picCB, picCB)
 	elements.shot.visible = false;
 }
 
@@ -35,20 +35,6 @@ function picCB(d) {
 	plugins.svyphonegapCamerapreview.stopCamera(cb, cb);
 	img = utils.base64ToBytes(d[0]);
 	elements.photo.visible = true;
-	application.executeLater(start, 3000);
-}
-
-/**
- * @param d
- * 
- *
- * @properties={typeid:24,uuid:"BAA30911-5D52-4F67-8953-6F4E3E39B5F4"}
- */
-function picCBFail(d) {
-	application.output('capture failed.')
-	plugins.svyBlockUI.stop();
-	plugins.svyphonegapCamerapreview.stopCamera(cb, cb);	
-	elements.photo.visible = false;
 	application.executeLater(start, 3000);
 }
 
