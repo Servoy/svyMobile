@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-camera.CameraPopoverHandle", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,14 +20,50 @@
  *
 */
 
+const exec = require('cordova/exec');
+
 /**
- * @ignore in favour of iOS' one
+ * @namespace navigator
+ */
+
+/**
  * A handle to an image picker popover.
+ *
+ * __Supported Platforms__
+ *
+ * - iOS
+ *
+ * @example
+ * navigator.camera.getPicture(onSuccess, onFail,
+ * {
+ *     destinationType: Camera.DestinationType.FILE_URI,
+ *     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+ *     popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY, 300, 600)
+ * });
+ *
+ * // Reposition the popover if the orientation changes.
+ * window.onorientationchange = function() {
+ *     var cameraPopoverHandle = new CameraPopoverHandle();
+ *     var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY, 400, 500);
+ *     cameraPopoverHandle.setPosition(cameraPopoverOptions);
+ * }
+ * @module CameraPopoverHandle
  */
 const CameraPopoverHandle = function () {
+    /**
+     * Can be used to reposition the image selection dialog,
+     * for example, when the device orientation changes.
+     * @memberof CameraPopoverHandle
+     * @instance
+     * @method setPosition
+     * @param {module:CameraPopoverOptions} popoverOptions
+     */
     this.setPosition = function (popoverOptions) {
-        console.log('CameraPopoverHandle.setPosition is only supported on iOS.');
+        const args = [popoverOptions];
+        exec(null, null, 'Camera', 'repositionPopover', args);
     };
 };
 
 module.exports = CameraPopoverHandle;
+
+});

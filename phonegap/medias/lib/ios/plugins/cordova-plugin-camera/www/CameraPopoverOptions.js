@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-camera.CameraPopoverOptions", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -54,3 +55,5 @@ const CameraPopoverOptions = function (x, y, width, height, arrowDir, popoverWid
 };
 
 module.exports = CameraPopoverOptions;
+
+});

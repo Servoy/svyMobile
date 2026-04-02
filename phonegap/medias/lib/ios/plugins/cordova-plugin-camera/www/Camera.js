@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-camera.camera", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -75,7 +76,6 @@ for (const key in Camera) {
  * @property {Boolean} [saveToPhotoAlbum] - Save the image to the photo album on the device after capture.
  * @property {module:CameraPopoverOptions} [popoverOptions] - iOS-only options that specify popover location in iPad.
  * @property {module:Camera.Direction} [cameraDirection=BACK] - Choose the camera to use (front- or back-facing).
- * @property {Boolean} [allowSelectMultiple=false] - Allow selection of multiple images from the gallery. Only works when `PictureSourceType` is `PHOTOLIBRARY` or `SAVEDPHOTOALBUM`.
  * @property {Boolean} [allowSelectMultiple=false] - Allow selection of multiple images from the gallery. Only works when `PictureSourceType` is `PHOTOLIBRARY` or `SAVEDPHOTOALBUM`.
  */
 
@@ -184,3 +184,5 @@ cameraExport.cleanup = function (successCallback, errorCallback) {
 };
 
 module.exports = cameraExport;
+
+});
