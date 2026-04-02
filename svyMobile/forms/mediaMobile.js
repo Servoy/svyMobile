@@ -11,7 +11,11 @@ var img;
  */
 function getPicture(event, type) {
 	plugins.svyBlockUI.show('Getting image...');
-	var options = { }
+	var options = { 
+		allowSelectMultiple: true, 
+		allowEdit: false,
+		sourceType: scopes.datamodel.Camera.PictureSourceType.PHOTOLIBRARY
+		}
 	if (type == 'take') {
 		//use camera instead of file gallery
 		options = {
@@ -25,7 +29,7 @@ function getPicture(event, type) {
 		plugins.svyphonegapCamera.getPicture(getPicSuccess, getPicFail, options);
 	} else {
 		//get media from from default gallery on device
-		plugins.svyphonegapCamera.getPicture(getPicSuccess, getPicFail);
+		plugins.svyphonegapCamera.getPicture(getPicSuccess, getPicFail, options);
 	}
 }
 
@@ -34,8 +38,25 @@ function getPicture(event, type) {
  * @properties={typeid:24,uuid:"8EEAFB0D-133F-4009-9C41-83B8A890D19B"}
  */
 function getPicSuccess(res) {
-	img = utils.base64ToBytes(res)
-	//display the image.
+	
+	 // res is now always base64 (either single value or array)                                                                                               
+    var images = [];                                                                                                                                         
+    if (res instanceof Array) {                                                                                                                              
+        images = res;                                                                                                                                        
+    } else {                                                                                                                                                 
+        images = [res];                                                                                                                                      
+    }                                                                                                                                                        
+                                                                                                                                                             
+    // Convert all base64 strings to bytes                                                                                                                   
+    var bytesArray = [];                                                                                                                                     
+    for (var i = 0; i < images.length; i++) {                                                                                                                
+        bytesArray.push(utils.base64ToBytes(images[i]));                                                                                                     
+    }                                                                                                                                                        
+          
+    //display the first image in array of images
+    img = bytesArray[0];
+	
+	
 	plugins.svyBlockUI.stop(150);
 }
 
