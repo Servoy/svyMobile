@@ -67,6 +67,14 @@ typeid:7,
 uuid:"B448BC52-34C0-4AD2-9F73-2C332DACE0D6"
 },
 {
+cssPosition:"440,12,-1,8,104,38",
+onActionMethodID:"082D8931-5219-4923-9ECB-97F36B6EFA68",
+rolloverCursor:12,
+text:"Open Table",
+typeid:7,
+uuid:"D4E5F6A7-B8C9-4D0E-A1F2-B3C4D5E6F7A8"
+},
+{
 cssPosition:"294,10,-1,10,104,38",
 onActionMethodID:"A5D0DC71-1417-4654-83BD-140F143AE372",
 rolloverCursor:12,
@@ -87,14 +95,6 @@ rolloverCursor:12,
 text:"Send Email",
 typeid:7,
 uuid:"EA67983F-2679-4B25-AB1E-CC7574AD9390"
-},
-{
-cssPosition:"440,12,-1,8,104,38",
-onActionMethodID:"5F79B3AA-4597-4375-8A8A-C62F4970D79B",
-rolloverCursor:12,
-text:"Open Table",
-typeid:7,
-uuid:"D4E5F6A7-B8C9-4D0E-A1F2-B3C4D5E6F7A8"
 }
 ],
 name:"miscContainer",
