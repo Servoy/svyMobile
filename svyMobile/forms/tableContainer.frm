@@ -40,7 +40,7 @@ uuid:"AABDB214-C1EA-4DDE-9DC6-73ADB3771896"
 ],
 name:"tableContainer",
 navigatorID:"-1",
-onShowMethodID:"BAB2623D-4E26-4292-BCAF-1FE65886211F",
+onShowMethodID:"-1",
 showInMenu:true,
 size:"244,364",
 typeid:3,
