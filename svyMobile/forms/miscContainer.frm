@@ -82,11 +82,19 @@ uuid:"DF982BA6-E697-48C1-9D04-C186AA5E6720"
 },
 {
 cssPosition:"205,12,-1,8,104,38",
-onActionMethodID:"F22F6985-EE0C-4961-9406-CBDFD840B74E",
+onActionMethodID:"F22F6985-EE0C-4B25-AB1E-CC7574AD9390",
 rolloverCursor:12,
 text:"Send Email",
 typeid:7,
 uuid:"EA67983F-2679-4B25-AB1E-CC7574AD9390"
+},
+{
+cssPosition:"440,12,-1,8,104,38",
+onActionMethodID:"5F79B3AA-4597-4375-8A8A-C62F4970D79B",
+rolloverCursor:12,
+text:"Open Table",
+typeid:7,
+uuid:"D4E5F6A7-B8C9-4D0E-A1F2-B3C4D5E6F7A8"
 }
 ],
 name:"miscContainer",

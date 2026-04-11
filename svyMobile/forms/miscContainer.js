@@ -84,6 +84,19 @@ function onAction$sendEmail(event) {
 }
 
 /**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"5F79B3AA-4597-4375-8A8A-C62F4970D79B"}
+ */
+function onAction$openTable(event) {
+	scopes.mobileBase.gotoForm(event, 'table', 'Table');
+}
+
+/**
  * @properties={typeid:35,uuid:"1E0D64F8-B4E8-46BB-B3C6-A25A229D6513",variableType:-4}
  */
 var rotation;
