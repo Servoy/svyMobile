@@ -90,7 +90,7 @@ uuid:"DF982BA6-E697-48C1-9D04-C186AA5E6720"
 },
 {
 cssPosition:"205,12,-1,8,104,38",
-onActionMethodID:"F22F6985-EE0C-4B25-AB1E-CC7574AD9390",
+onActionMethodID:"AF61F3A9-E09F-4284-B4DE-6466A15664AF",
 rolloverCursor:12,
 text:"Send Email",
 typeid:7,
