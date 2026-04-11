@@ -68,7 +68,7 @@ uuid:"B448BC52-34C0-4AD2-9F73-2C332DACE0D6"
 },
 {
 cssPosition:"440,12,-1,8,104,38",
-onActionMethodID:"082D8931-5219-4923-9ECB-97F36B6EFA68",
+onActionMethodID:"AF61F3A9-E09F-4284-B4DE-6466A15664AF",
 rolloverCursor:12,
 text:"Open Table",
 typeid:7,

@@ -90,7 +90,8 @@ function onAction$sendEmail(event) {
  *
  * @private
  *
- * @properties={typeid:24,uuid:"082D8931-5219-4923-9ECB-97F36B6EFA68"}
+ *
+ * @properties={typeid:24,uuid:"AF61F3A9-E09F-4284-B4DE-6466A15664AF"}
  */
 function onAction$openTable(event) {
 	scopes.mobileBase.gotoForm(event, 'table', 'Table');
