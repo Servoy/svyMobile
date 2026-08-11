@@ -122,6 +122,22 @@ function toggleRotation() {
  *
  * @private
  *
+ * @properties={typeid:24,uuid:"7F24FCE5-B2D2-4331-A73F-27528D6E3935"}
+ */
+function onAction$getOrientation(event) {
+	var orientation = plugins.svyphonegapPhonegapOrientation.getScreenOrientation();
+	var angle = plugins.svyphonegapPhonegapOrientation.getScreenOrientationAngle();
+	var msg = 'Current orientation: ' + orientation + ' (angle ' + angle + '\u00B0)';
+	application.output(msg);
+	plugins.dialogs.showInfoDialog('Screen Orientation', msg);
+}
+/**
+ * Perform the element onclick action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
  * @properties={typeid:24,uuid:"A5D0DC71-1417-4654-83BD-140F143AE372"}
  */
 function onAction$openPDFNative(event) {

@@ -3,7 +3,15 @@ useCssPosition:true",
 encapsulation:108,
 items:[
 {
-cssPosition:"250,13,-1,9,104,38",
+cssPosition:"54,12,-1,8,104,38",
+onActionMethodID:"7F24FCE5-B2D2-4331-A73F-27528D6E3935",
+rolloverCursor:12,
+text:"Get Orientation",
+typeid:7,
+uuid:"288C9C2C-34FF-4DBB-A9AA-D86C293FDAB5"
+},
+{
+cssPosition:"10,12,-1,9,104,38",
 onActionMethodID:"97978972-FF14-4671-B4D5-6D0F447A9417",
 rolloverCursor:12,
 text:"Toggle Rotation",
@@ -11,7 +19,7 @@ typeid:7,
 uuid:"3B5919AC-B687-430F-A915-0DFC962BCB8A"
 },
 {
-cssPosition:"294,14,-1,9,104,38",
+cssPosition:"318,12,-1,9,104,38",
 onActionMethodID:"A5D0DC71-1417-4654-83BD-140F143AE372",
 rolloverCursor:12,
 text:"Open Native PDF",
@@ -19,7 +27,7 @@ typeid:7,
 uuid:"419C8A81-B77D-444E-A145-39649E58925A"
 },
 {
-cssPosition:"60,12,-1,8,104,38",
+cssPosition:"142,12,-1,8,104,38",
 onActionMethodID:"1F77748E-D0F0-4BFC-8177-A05E27B94CF6",
 rolloverCursor:12,
 text:"Vibrate",
@@ -27,7 +35,7 @@ typeid:7,
 uuid:"5BD99214-FB4C-4D5D-8C2C-BA0285E6A1F4"
 },
 {
-cssPosition:"10,12,-1,8,104,38",
+cssPosition:"98,12,-1,8,104,38",
 onActionMethodID:"05A7D890-887B-4B77-B85A-FE54A4356FAB",
 rolloverCursor:12,
 text:"Beep",
@@ -35,7 +43,7 @@ typeid:7,
 uuid:"7AB3AB64-1373-460F-9537-157E1772C808"
 },
 {
-cssPosition:"158,13,-1,9,104,38",
+cssPosition:"186,12,-1,9,104,38",
 onActionMethodID:"90C02F23-BB8E-42E4-8E65-1DE00DD4950E",
 rolloverCursor:12,
 text:"Open Phone Dialer",
@@ -43,7 +51,7 @@ typeid:7,
 uuid:"8081FA0A-91C6-47A4-8D42-A87E531FB151"
 },
 {
-cssPosition:"110,12,-1,8,104,38",
+cssPosition:"230,12,-1,8,104,38",
 onActionMethodID:"BEC1A3F9-701D-4888-A3B6-1E2342315839",
 rolloverCursor:12,
 text:"In-App Browser Link",
@@ -51,7 +59,7 @@ typeid:7,
 uuid:"AFE641F6-0DA1-499A-92B0-959126896B2A"
 },
 {
-cssPosition:"390,10,-1,10,104,38",
+cssPosition:"406,12,-1,10,104,38",
 onActionMethodID:"61053EFA-DF6D-44A3-BFE5-3A8921948E97",
 rolloverCursor:12,
 text:"Test URL",
@@ -59,7 +67,7 @@ typeid:7,
 uuid:"B0DE9A6B-AC33-4B5E-B112-A9A184843F54"
 },
 {
-cssPosition:"340,10,-1,10,104,38",
+cssPosition:"362,12,-1,10,104,38",
 onActionMethodID:"F539BC48-3512-4858-AC56-22EF8E1AEC39",
 rolloverCursor:12,
 text:"Save Image to Gallery",
@@ -67,7 +75,7 @@ typeid:7,
 uuid:"B448BC52-34C0-4AD2-9F73-2C332DACE0D6"
 },
 {
-cssPosition:"440,12,-1,8,104,38",
+cssPosition:"450,12,-1,8,104,38",
 onActionMethodID:"AF61F3A9-E09F-4284-B4DE-6466A15664AF",
 rolloverCursor:12,
 text:"Open Table",
@@ -75,21 +83,13 @@ typeid:7,
 uuid:"D4E5F6A7-B8C9-4D0E-A1F2-B3C4D5E6F7A8"
 },
 {
-cssPosition:"294,10,-1,10,104,38",
-onActionMethodID:"A5D0DC71-1417-4654-83BD-140F143AE372",
-rolloverCursor:12,
-text:"Open Native PDF",
-typeid:7,
-uuid:"DF623CDA-2AF4-4062-A3CA-A2AFDF420094"
-},
-{
-height:446,
+height:500,
 partType:5,
 typeid:19,
 uuid:"DF982BA6-E697-48C1-9D04-C186AA5E6720"
 },
 {
-cssPosition:"205,12,-1,8,104,38",
+cssPosition:"274,12,-1,8,104,38",
 onActionMethodID:"AF61F3A9-E09F-4284-B4DE-6466A15664AF",
 rolloverCursor:12,
 text:"Send Email",
@@ -101,6 +101,6 @@ name:"miscContainer",
 navigatorID:"-1",
 onShowMethodID:"8C088CF7-1A94-402E-8C93-285E58572217",
 showInMenu:true,
-size:"244,364",
+size:"244,500",
 typeid:3,
 uuid:"01B57F4D-CA48-4D35-BF41-686F33C6E5A2"
